@@ -3,12 +3,11 @@
  */
 
  
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800');
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
  
 body {
   padding-top: 54px;
-  font-family:'³ª´®½ºÄù¾î¶ó¿îµå Regular, NanumSquareRoundR','Futura Std Medium';
+  font-family:Futura Std Medium, 'NanumSquareRoundR';
   font-size: 14px;
   color: #4e3914;
 }
@@ -372,7 +371,7 @@ footer p {
 
 .full-title{
 	padding: 80px 0px;
-	background: url(../images/all-title-bg.jpg) no-repeat center;
+	background: url(../images/forest.jpg) no-repeat center;
 	position: relative;
 }
 .full-title:before{
