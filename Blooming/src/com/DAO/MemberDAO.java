@@ -1,16 +1,11 @@
-package com.DTO;
+package com.DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-public class MemberDTO {
-
+public class MemberDAO {
 	private String email;
 	private String pw;
 	private String tel;
 	private String nickname;
-	public MemberDTO(String email, String pw, String tel, String nickname) {
+	public MemberDAO(String email, String pw, String tel, String nickname) {
 		super();
 		this.email = email;
 		this.pw = pw;
