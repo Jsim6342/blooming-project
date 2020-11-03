@@ -4,10 +4,15 @@
 
  
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
- 
+
+@font-face{
+	font-family:"Futura Std Medium";
+	src : url("fonts/"FuturaStd-Medium.otf);
+}
+
 body {
   padding-top: 54px;
-  font-family:Futura Std Medium, 'NanumSquareRoundR';
+  font-family:'Futura Std Medium';
   font-size: 14px;
   color: #4e3914;
 }
