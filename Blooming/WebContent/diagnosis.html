@@ -13,6 +13,13 @@
    <link href="css/all.css" rel="stylesheet">
    <!-- Custom styles for this template -->
    <link href="css/style.css" rel="stylesheet">
+   
+   <meta name="viewport" content="width=device-width"/>
+        <script src="https://unpkg.com/jquery"></script>
+        <script src="https://surveyjs.azureedge.net/1.8.12/survey.jquery.min.js"></script>
+        <!-- <link href="https://surveyjs.azureedge.net/1.8.12/modern.css" type="text/css" rel="stylesheet"/> -->
+        <link rel="stylesheet" href="./css/diagnosis.css">
+   
 </head>
 <body>
     <!-- Navigation -->
@@ -101,7 +108,13 @@
             </li>
             <li class="breadcrumb-item active">About</li>
          </ol>
-      </div>  
+      </div>
+     <div id="surveyElement" style="display:inline-block;width:100%;align:center;"></div>
+        <div id="surveyResult"></div>
+
+        <script type="text/javascript" src="./survey.js"></script>   
+     </div>
+     
        
     <!-- /.container -->
     <!--footer starts from here-->

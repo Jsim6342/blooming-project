@@ -3,11 +3,10 @@
  */
 
  
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
  
 body {
   padding-top: 54px;
-  font-family:Futura Std Medium, 'NanumSquareRoundR';
+  font-family:Futura Std Medium, NanumSquare;
   font-size: 14px;
   color: #4e3914;
 }
