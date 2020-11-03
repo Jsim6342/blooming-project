@@ -4,6 +4,12 @@
 	<title>Blooming - 회원가입</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Fontawesome CSS -->
+	<link href="css/all.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/style.css" rel="stylesheet">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -31,31 +37,31 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100 p-t-85 p-b-20">
+			<div class="wrap-login100 p-t-0 p-b-10">
 				<form class="login100-form validate-form" action = "MemberSignup" method = "post">
 					<span class="login100-form-title p-b-70">
 						회원가입
 					</span>
-					<a class="login100-form-avatar" href="index.html">
+					<a class="login100-form-avatar" href="index.jsp">
 						<img src="images/marigold.png"  alt="AVATAR">
 					</a>
 
-					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter email">
+					<div class="wrap-input100 validate-input m-t-55 m-b-35" data-validate = "Enter email">
 						<input class="input100" type="text" name="email" placeholder="이메일">
 						<!-- <span class="focus-input100" data-placeholder="이메일"></span> -->
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-50" data-validate = "Enter password">
+					<div class="wrap-input100 validate-input m-b-45" data-validate = "Enter password">
 						<input class="input100" type="password" name="pw" placeholder="비밀번호">
 						<!-- <span class="focus-input100" data-placeholder="비밀번호"></span> -->
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-50" data-validate = "Enter tel">
+					<div class="wrap-input100 validate-input m-b-45" data-validate = "Enter tel">
 						<input class="input100" type="text" name="tel" placeholder="전화번호">
 						<!-- <span class="focus-input100" data-placeholder="전화번호"></span> -->
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+					<div class="wrap-input100 validate-input m-b-45" data-validate="Enter password">
 						<input class="input100" type="text" name="nickname" placeholder="활동명">
 						<!-- <span class="focus-input100" data-placeholder="활동명"></span> -->
 					</div>
@@ -113,5 +119,107 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
+<!--footer starts from here-->
+    <footer class="footer">
+        <div class="container bottom_border">
+            <div class="row">
+               <!-- <div class="col-lg-3 col-md-6 col-sm-6 col">
+					<h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
+					headin5_amrc
+					<p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+					<p><i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
+					<p><i class="fa fa-phone"></i> +91-9999878398 </p>
+					<p><i class="fa fa fa-envelope"></i> info@example.com </p>
+               </div>
+               <div class="col-lg-3 col-md-6 col-sm-6 col">
+					<h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+					headin5_amrc ends here
+					<ul class="footer_ul2_amrc">
+						<li>
+							<a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+							<p>Lorem Ipsum is simply dummy printing...<a href="#">https://www.lipsum.com/</a></p>
+						</li>
+						<li>
+							<a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+							<p>Lorem Ipsum is simply dummy printing...<a href="#">https://www.lipsum.com/</a></p>
+						</li>
+						<li>
+							<a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+							<p>Lorem Ipsum is simply dummy printing...<a href="#">https://www.lipsum.com/</a></p>
+						</li>
+					</ul>
+					footer_ul2_amrc ends here
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+					headin5_amrc
+					<ul class="footer_ul_amrc">
+						<li><a href="#">Default Version</a></li>
+						<li><a href="#">Boxed Version</a></li>
+						<li><a href="#">Our Team </a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Our Services</a></li>
+						<li><a href="#">Get In Touch</a></li>
+					</ul>
+					footer_ul_amrc ends here
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 ">
+					<h5 class="headin5_amrc col_white_amrc pt2">Recent posts</h5>
+					headin5_amrc
+					<ul class="footer_ul_amrc">
+						<li class="media">
+							<div class="media-left">
+								<img class="img-fluid" src="images/post-img-01.jpg" alt="" />
+							</div>
+							<div class="media-body">
+								<p>How to find best dog food?</p>
+								<span>22 Sep 2018</span>
+							</div>
+						</li>
+						<li class="media">
+							<div class="media-left">
+								<img class="img-fluid" src="images/post-img-02.jpg" alt="" />
+							</div>
+							<div class="media-body">
+								<p>How to find best dog food?</p>
+								<span>34 Sep 2018</span>
+							</div>
+						</li>
+						<li class="media">
+							<div class="media-left">
+								<img class="img-fluid" src="images/post-img-03.jpg" alt="" />
+							</div>
+							<div class="media-body">
+								<p>How to find best dog food?</p>
+								<span>30 Sep 2018</span>
+							</div>
+						</li>
+					</ul>
+					footer_ul_amrc ends here
+				</div>
+			</div>
+		</div> -->
+        <div class="container">
+            <div class="footer-logo">
+				<a href="#"><img src="images/marigold4.png" alt="" /></a>
+			</div>
+            <!--foote_bottom_ul_amrc ends here-->
+            <p class="copyright text-center">All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design By : SINOZO, 9uack
+				<a href="https://html.design/">html design</a>
+            </p>
+            <!-- 맨 아래 footer SNS페이지 이동 ul태그 -->
+            <!-- <ul class="social_footer_ul">
+				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+				<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul> -->
+            <!--social_footer_ul ends here-->
+        </div>
+    </footer>
+	  
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
