@@ -13,44 +13,14 @@ public class MemberDAO {
 	private Connection conn;
 	private PreparedStatement pst;
 	private ResultSet rs;
-	//DB연결 기능
-	public void connection() {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "hr";
-			String password = "hr";
-			
-			
-			conn = DriverManager.getConnection(url, user, password);
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
-
-	//DB연결 종료
-	public void close() {
-		try {
-			if(pst != null) {pst.close();}
-			if(conn != null) {conn.close();}
-			if(rs != null) {rs.close();}
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
+	
+	Connect dao = new Connect();
 	
 	public int member_join(MemberDTO member) {
 		int cnt = 0;
-		connection();
 		
+		//DB연결 기능
+		dao.getConn();
 		
 		try {
 			String sql = "insert into member values(?,?,?,?)";
@@ -66,13 +36,16 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			close();
+			//DB연결 종료
+			dao.close();
 		}
 		return cnt;
 	}
 	public MemberDTO member_login(String email, String pw) {
 		MemberDTO member = null;
-		connection();
+
+		//DB연결 기능
+		dao.getConn();
 		
 		
 		try {
@@ -92,8 +65,10 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			close();
+			//DB연결 종료
+			dao.close();
 		}
+		
 		return member;
 	}
 
