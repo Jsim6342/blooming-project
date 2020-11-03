@@ -10,29 +10,26 @@ import com.DTO.MemberDTO;
 
 public class MemberDAO {
 
-	
+	//전역변수 선언
+	//conn의 경우 static변수로 선언
 	private PreparedStatement pst;
 	private ResultSet rs;
 	int cnt = 0;
 	
 	Connect dao = new Connect();
 	
-	
+	//회원가입기능
 	public int member_join(String email, String pw, String tel, String nickname) {
 		
-		System.out.println("dao"+email);
-		System.out.println("dao"+pw);
-		System.out.println("dao"+tel);
-		System.out.println("dao"+nickname);
-		
-		
-		//DB연결 기능
-		dao.getConn();
 		
 		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
 			String sql = "insert into member values(?,?,?,?)";
 			
-			pst = Connect.conn.prepareStatement(sql);
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
 			
 			pst.setString(1, email);
 			pst.setString(2, pw);
@@ -52,24 +49,27 @@ public class MemberDAO {
 		return cnt;
 	}
 	
-	public MemberDTO member_login(String email, String pw) {
-		MemberDTO member = null;
+	//로그인 기능
+	public boolean member_login(String email, String pw) {
 
-		//DB연결 기능
-		dao.getConn();
-		
+		boolean check = true;
 		
 		try {
-			String sql = "select * from member Where email = ? and pw = ?";
-			pst = Connect.conn.prepareStatement(sql);
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from member where email = ? and pw = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
 			pst.setString(1, email);
 			pst.setString(2, pw);
 			
 			rs = pst.executeQuery();
 			
-			if(rs.next()) {
-				member = new MemberDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
-				
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+				check = true;
+			}else {
+				check = false;
 			}
 			
 		} catch (SQLException e) {
@@ -80,7 +80,7 @@ public class MemberDAO {
 			dao.close();
 		}
 		
-		return member;
+		return check;
 	}
 
 }

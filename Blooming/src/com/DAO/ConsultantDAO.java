@@ -20,13 +20,13 @@ public class ConsultantDAO {
 	public int consultant_join(String email, String pw, String name, String tel, String license, String location) {
 		int cnt = 0;
 		
-		//DB연결 기능
-		dao.getConn();
-		
-		
-		try {  
+		try { 
+			
+			//DB연결 기능
+			dao.getConn();
+			
 			String sql = "insert into consultant values(?,?,?,?,?,?)";
-			pst = Connect.conn.prepareStatement(sql);
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
 			pst.setString(1, email);
 			pst.setString(2, pw);
 			pst.setString(3, name);
@@ -47,25 +47,28 @@ public class ConsultantDAO {
 	}
 
 
-	public ConsultantDTO consultant_login(String email, String pw) {
+	public boolean consultant_login(String email, String pw) {
 		
-		ConsultantDTO consultant = null;
-		//DB연결 기능
-		dao.getConn();
+		boolean check = true;
 		
 		
 		try {
-			String sql = "select * from consultant Where email = ? and pw = ?";
-			pst = Connect.conn.prepareStatement(sql);
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from consultant where email = ? and pw = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
 			pst.setString(1, email);
 			pst.setString(2, pw);
 			
 			rs = pst.executeQuery();
 			
-			if(rs.next()) {
-				consultant = new ConsultantDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
-				
-			}
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+	        	 check = true;
+	         }else {
+	        	 check = false;
+	         }
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -74,7 +77,7 @@ public class ConsultantDAO {
 			//DB연결 종료
 			dao.close();
 		}
-		return consultant;
+		return check;
 	}
 	
 }

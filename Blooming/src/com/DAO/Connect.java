@@ -8,11 +8,13 @@ import java.sql.ResultSet;
 public class Connect {
 
 	//주로 많이 전역적으로 사용하는 것들을 멤버변수로 빼놓는다. 
+	//static 변수로 선언하여 다른 class에서도 사용할 수 있게 함.
 		static Connection conn = null;
 		static PreparedStatement psmt = null;
 		static ResultSet rs = null;
 		
 		//DB연동 메소드
+		//static으로 선언하여 다른 class에서도 사용할 수 있게 함.
 		public static void getConn() {
 			try {
 				
@@ -30,6 +32,7 @@ public class Connect {
 		
 		//DB종료
 		//rs, psmt, conn순으로 연결을 끊어준다.(연결순서 conn, psmt, rs의 역순)
+		//static으로 선언하여 다른 class에서도 사용할 수 있게 함.
 		public static void close() {
 			try {
 				if(rs!=null) {
