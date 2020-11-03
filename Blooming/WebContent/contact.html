@@ -13,6 +13,7 @@
 	<!-- Custom styles for this template -->
 	<link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
@@ -104,12 +105,23 @@
 
       <!-- Content Row -->
       <div class="row">
-        <!-- Map Column -->
-        <div class="col-lg-8 mb-4">
-          <!-- Embedded Google Map -->
-          <iframe width="100%" height="300px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
-        </div>
-        <!-- Contact Details Column -->
+			<!-- Map Column -->
+			<div class="col-lg-8 mb-4">
+					<!-- <div id="map" style="width: 500px; height: 400px;">
+				카카오 맵
+					<script type="text/javascript"
+						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9927ec523a94a34c526792f9fc8dfb30&libraries=services"></script>
+					<script>
+						var container = document.getElementById('map');
+						var options = {
+							center : new kakao.maps.LatLng(33.450701,126.570667),
+							level : 3
+						};
+						var map = new kakao.maps.Map(container, options);
+					</script>
+			</div> -->
+		</div>
+			<!-- Contact Details Column -->
         <div class="col-lg-4 mb-4 contact-right">
           <h3>Contact Details</h3>
           <p>
@@ -134,7 +146,7 @@
 
       <!-- Contact Form -->
       <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-lg-8 mb-4 contact-left">
           <h3>Send us a Message</h3>
           <form name="sentMessage" id="contactForm" novalidate>
@@ -164,12 +176,12 @@
               </div>
             </div>
             <div id="success"></div>
-            <!-- For success/fail messages -->
+            For success/fail messages
             <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
           </form>
         </div>
 
-      </div>
+      </div> -->
       <!-- /.row -->
 
     </div>
