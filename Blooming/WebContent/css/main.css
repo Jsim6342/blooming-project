@@ -25,7 +25,15 @@
   src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
 }
 
+@font-face {
+  font-family: NanumSquare;
+  src: url('../fonts/poppins/NanumSquareRoundR.ttf'); 
+}
 
+@font-face {
+  font-family: Futura Std Medium;
+  src: url('../fonts/poppins/FuturaStd-Medium.otf'); 
+}
 
 
 /*//////////////////////////////////////////////////////////////////
