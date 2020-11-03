@@ -10,14 +10,20 @@ import com.DTO.MemberDTO;
 
 public class MemberDAO {
 
-	private Connection conn;
+	
 	private PreparedStatement pst;
 	private ResultSet rs;
 	int cnt = 0;
 	
 	Connect dao = new Connect();
 	
+	
 	public int member_join(String email, String pw, String tel, String nickname) {
+		
+		System.out.println("dao"+email);
+		System.out.println("dao"+pw);
+		System.out.println("dao"+tel);
+		System.out.println("dao"+nickname);
 		
 		
 		//DB연결 기능
@@ -26,7 +32,7 @@ public class MemberDAO {
 		try {
 			String sql = "insert into member values(?,?,?,?)";
 			
-			pst = conn.prepareStatement(sql);
+			pst = Connect.conn.prepareStatement(sql);
 			
 			pst.setString(1, email);
 			pst.setString(2, pw);
@@ -55,7 +61,7 @@ public class MemberDAO {
 		
 		try {
 			String sql = "select * from member Where email = ? and pw = ?";
-			pst = conn.prepareStatement(sql);
+			pst = Connect.conn.prepareStatement(sql);
 			pst.setString(1, email);
 			pst.setString(2, pw);
 			

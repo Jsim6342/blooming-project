@@ -8,12 +8,12 @@ import java.sql.ResultSet;
 public class Connect {
 
 	//주로 많이 전역적으로 사용하는 것들을 멤버변수로 빼놓는다. 
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
+		static Connection conn = null;
+		static PreparedStatement psmt = null;
+		static ResultSet rs = null;
 		
 		//DB연동 메소드
-		public void getConn() {
+		public static void getConn() {
 			try {
 				
 				 Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -30,7 +30,7 @@ public class Connect {
 		
 		//DB종료
 		//rs, psmt, conn순으로 연결을 끊어준다.(연결순서 conn, psmt, rs의 역순)
-		public void close() {
+		public static void close() {
 			try {
 				if(rs!=null) {
 					rs.close();

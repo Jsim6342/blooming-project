@@ -11,7 +11,6 @@ import com.DTO.ConsultantDTO;
 public class ConsultantDAO {
 
 	//주로 많이 전역적으로 사용하는 것들을 멤버변수로 빼놓는다. 
-		Connection conn = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 	
@@ -27,7 +26,7 @@ public class ConsultantDAO {
 		
 		try {  
 			String sql = "insert into consultant values(?,?,?,?,?,?)";
-			pst = conn.prepareStatement(sql);
+			pst = Connect.conn.prepareStatement(sql);
 			pst.setString(1, email);
 			pst.setString(2, pw);
 			pst.setString(3, name);
@@ -57,7 +56,7 @@ public class ConsultantDAO {
 		
 		try {
 			String sql = "select * from consultant Where email = ? and pw = ?";
-			pst = conn.prepareStatement(sql);
+			pst = Connect.conn.prepareStatement(sql);
 			pst.setString(1, email);
 			pst.setString(2, pw);
 			
