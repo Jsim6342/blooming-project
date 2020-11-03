@@ -41,6 +41,7 @@ public class MemberDAO {
 		}
 		return cnt;
 	}
+	
 	public MemberDTO member_login(String email, String pw) {
 		MemberDTO member = null;
 
