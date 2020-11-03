@@ -15,7 +15,10 @@ public class ConsultantSignup extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//회원가입 페이지에서 값 받아오기
+	   //한글 인코딩
+	   request.setCharacterEncoding("UTF-8");
+		
+	   //회원가입 페이지에서 값 받아오기
 	   String con_email = request.getParameter("con_email");
 	   String con_pw = request.getParameter("con_pw");
 	   String con_name = request.getParameter("con_name");
@@ -28,7 +31,7 @@ public class ConsultantSignup extends HttpServlet {
 	   
 	   //Consultant DAO 객체생성
 	   ConsultantDAO dao = new ConsultantDAO();
-	   int cnt = dao.consultant_join(consultant);
+	   int cnt = dao.consultant_join(con_email, con_pw, con_name, con_tel, license, location);
 
 	   //회원가입 성공 시 login.html로 이동
 	   if(cnt > 0) {

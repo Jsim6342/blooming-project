@@ -18,7 +18,7 @@ public class ConsultantDAO {
 	Connect dao = new Connect();
 	
 	
-	public int consultant_join(ConsultantDTO consultant) {
+	public int consultant_join(String email, String pw, String name, String tel, String license, String location) {
 		int cnt = 0;
 		
 		//DB연결 기능
@@ -28,12 +28,12 @@ public class ConsultantDAO {
 		try {  
 			String sql = "insert into consultant values(?,?,?,?,?,?)";
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, consultant.getCon_email());
-			pst.setString(2, consultant.getCon_pw());
-			pst.setString(3, consultant.getCon_name());
-			pst.setString(4, consultant.getCon_tel());
-			pst.setString(4, consultant.getLicense());
-			pst.setString(4, consultant.getLocation());
+			pst.setString(1, email);
+			pst.setString(2, pw);
+			pst.setString(3, name);
+			pst.setString(4, tel);
+			pst.setString(5, license);
+			pst.setString(6, location);
 			cnt = pst.executeUpdate();
 			
 			

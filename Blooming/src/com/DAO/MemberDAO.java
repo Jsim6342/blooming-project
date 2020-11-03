@@ -13,22 +13,26 @@ public class MemberDAO {
 	private Connection conn;
 	private PreparedStatement pst;
 	private ResultSet rs;
+	int cnt = 0;
 	
 	Connect dao = new Connect();
 	
-	public int member_join(MemberDTO member) {
-		int cnt = 0;
+	public int member_join(String email, String pw, String tel, String nickname) {
+		
 		
 		//DB연결 기능
 		dao.getConn();
 		
 		try {
 			String sql = "insert into member values(?,?,?,?)";
+			
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, member.getEmail());
-			pst.setString(2, member.getPw());
-			pst.setString(3, member.getTel());
-			pst.setString(4, member.getNickname());
+			
+			pst.setString(1, email);
+			pst.setString(2, pw);
+			pst.setString(3, tel);
+			pst.setString(4, nickname);
+			
 			cnt = pst.executeUpdate();
 			
 			

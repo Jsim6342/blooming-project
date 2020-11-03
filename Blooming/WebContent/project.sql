@@ -21,3 +21,4 @@ SELECT * FROM USER_OBJECTS WHERE OBJECT_TYPE='TABLE'
 
 drop table web_member
 
+select * from MEMBER
