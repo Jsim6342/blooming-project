@@ -55,3 +55,4 @@ drop table web_member
 테이블 확인
 select * from MEMBER
 select * from CONSULTANT
+select * from REVIEW
