@@ -49,7 +49,7 @@
                      <a class="nav-link" href="counsel.html">집단상담</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="comments.html">극복후기</a>
+                     <a class="nav-link" href="comments.jsp">극복후기</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="contact.html">센터찾기</a>

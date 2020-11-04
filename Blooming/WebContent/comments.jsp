@@ -19,7 +19,7 @@
 	<!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.jsp">
             <img src="images/marigold4.png" width="180px"; height="53px"; alt="logo" />
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@
                      <a class="nav-link" href="counsel.html">집단상담</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" href="comments.html">극복후기</a>
+                     <a class="nav-link active" href="comments.jsp">극복후기</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="contact.html">센터찾기</a>
@@ -198,9 +198,13 @@
 				  </a>
 				</li>
 			</ul>
-				<div class="col-md-4">
-               <a class="btn btn-lg btn-secondary btn-block" href="signup.html">극복후기작성</a>
+				<div class="row mb-4">
+            <div class="col-md-8">
             </div>
+            <div class="col-md-4">
+               <a class="btn btn-lg btn-secondary btn-block" href="post.html">후기작성</a>
+            </div>
+        </div>
 		</div>
 
     </div>
