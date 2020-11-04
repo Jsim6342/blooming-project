@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.DTO.ConsultantDTO;
+import com.DTO.MemberDTO;
 
 public class ConsultantDAO {
 
@@ -17,7 +18,7 @@ public class ConsultantDAO {
 	Connect dao = new Connect();
 	
 	
-	public int consultant_join(String email, String pw, String name, String tel, String license, String location) {
+	public int consultant_join(String con_email, String con_pw, String con_name, String con_tel, String license, String location) {
 		int cnt = 0;
 		
 		try { 
@@ -27,10 +28,10 @@ public class ConsultantDAO {
 			
 			String sql = "insert into consultant values(?,?,?,?,?,?)";
 			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
-			pst.setString(1, email);
-			pst.setString(2, pw);
-			pst.setString(3, name);
-			pst.setString(4, tel);
+			pst.setString(1, con_email);
+			pst.setString(2, con_pw);
+			pst.setString(3, con_name);
+			pst.setString(4, con_tel);
 			pst.setString(5, license);
 			pst.setString(6, location);
 			cnt = pst.executeUpdate();
@@ -46,10 +47,10 @@ public class ConsultantDAO {
 		return cnt;
 	}
 
-
-	public boolean consultant_login(String email, String pw) {
+	//상담사 로그인 기능
+	public ConsultantDTO consultant_login(String con_email, String con_pw) {
 		
-		boolean check = true;
+		ConsultantDTO consultant = new ConsultantDTO();
 		
 		
 		try {
@@ -57,17 +58,17 @@ public class ConsultantDAO {
 			//DB연결 기능
 			dao.getConn();
 			
-			String sql = "select * from consultant where email = ? and pw = ?";
+			String sql = "select * from consultant where con_email = ? and con_pw = ?";
 			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
-			pst.setString(1, email);
-			pst.setString(2, pw);
+			pst.setString(1, con_email);
+			pst.setString(2, con_pw);
 			
 			rs = pst.executeQuery();
 			
 			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
-	        	 check = true;
+				consultant = new ConsultantDTO(rs.getNString(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getNString(5),rs.getNString(6));
 	         }else {
-	        	 check = false;
+	        	consultant = null;
 	         }
 			
 		} catch (SQLException e) {
@@ -77,7 +78,7 @@ public class ConsultantDAO {
 			//DB연결 종료
 			dao.close();
 		}
-		return check;
+		return consultant;
 	}
 	
 }

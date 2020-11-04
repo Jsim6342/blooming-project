@@ -8,6 +8,12 @@ public class ConsultantDTO {
 	private String license;
 	private String location;
 	
+	
+	
+	public ConsultantDTO() {
+		super();
+	}
+
 	public ConsultantDTO(String con_email, String con_pw, String con_name, String con_tel, String license,
 			String location) {
 		super();

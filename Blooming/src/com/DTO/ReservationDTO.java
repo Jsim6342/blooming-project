@@ -8,6 +8,12 @@ public class ReservationDTO {
 	private String res_date;
 	private String consultant;
 
+	
+	
+	public ReservationDTO() {
+		super();
+	}
+
 	public ReservationDTO(int res_num, String nickname, String res_date, String consultant) {
 		super();
 		this.res_num = res_num;
