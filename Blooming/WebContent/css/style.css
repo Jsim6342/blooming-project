@@ -39,8 +39,9 @@ button.btn-primary:hover{
 }
 
 a.btn-secondary{
-	background-color: #4eae3a;
-	border-color: #4eae3a;
+	background-color: #AED581;
+	border-color: #AED581;
+	align-content: right;
 }
 a.btn-secondary:hover{
 	background-color: #5ec549;

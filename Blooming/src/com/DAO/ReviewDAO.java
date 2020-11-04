@@ -35,7 +35,7 @@ public class ReviewDAO {
 		         
 		         while(rs.next()) {
 		        	 
-		        	//전체 회원 데이터를 출력
+		        	//전체 후기 데이터를 출력
 		        	 int rev_num = rs.getInt(1);
 		        	 String nickname = rs.getString(2);
 		        	 String rev_title = rs.getString(3);
