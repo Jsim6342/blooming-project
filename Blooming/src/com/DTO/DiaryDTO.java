@@ -9,6 +9,13 @@ public class DiaryDTO {
 	private String di_contents;
 	private double di_score;
 	
+	
+	
+	
+	public DiaryDTO() {
+		super();
+	}
+
 	public DiaryDTO(int di_num, String nickname, String di_date, String di_title, String di_contents, double di_score) {
 		super();
 		this.di_num = di_num;

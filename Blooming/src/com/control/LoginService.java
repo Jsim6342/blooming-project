@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.DAO.ConsultantDAO;
 import com.DAO.MemberDAO;
+import com.DTO.ConsultantDTO;
+import com.DTO.MemberDTO;
 
 @WebServlet("/LoginService")
 public class LoginService extends HttpServlet {
@@ -29,30 +31,46 @@ public class LoginService extends HttpServlet {
 				
 		//DB와 연동해서 사용자가 입력한 email값과 pw값 확인
 		//member table 조회
+		MemberDTO member = new MemberDTO();
 		MemberDAO dao_mem = new MemberDAO();
-		boolean check_mem = dao_mem.member_login(email, pw);
+		member = dao_mem.member_login(email, pw);
 		//consultant table 조회
+		ConsultantDTO consultant = new ConsultantDTO();
 		ConsultantDAO dao_con = new ConsultantDAO();
-		boolean check_con = dao_con.consultant_login(email, pw);
-			 
-		if(check_mem || check_con) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+		consultant = dao_con.consultant_login(email, pw);
+		
+		
+		//로그인 성공/실패 했을 때 페이지 이동
+		if(consultant != null && !consultant.equals(null)) {
 			        	 	 
 		//Session영역에 값 저장
 		 HttpSession session = request.getSession(); //Session영역을 사용하기 위한 객체생성
-		 session.setAttribute("email", email); //Session영역에 email이름표로 로그인에 성공한 사람의 email값 저장
+		 session.setAttribute("email", consultant.getCon_email()); //Session영역에 email이름표로 로그인에 성공한 사람의 email값 저장
 			        	 
-			         
-		 response.sendRedirect("index.html");
+		//메인으로 이동        
+		 response.sendRedirect("index.jsp");
+		 }else if(member != null && !member.equals(null)){
+			 
+		//Session영역에 값 저장
+		HttpSession session = request.getSession(); //Session영역을 사용하기 위한 객체생성
+		session.setAttribute("nickname", member.getNickname()); //Session영역에 email이름표로 로그인에 성공한 사람의 email값 저장
+			
+		//메인으로 이동
+		response.sendRedirect("index.jsp");
+			 
+	 
 		 }else {
-	     System.out.println("이메일과 비밀번호를 확인해주세요.");
+			    System.out.println("이메일과 비밀번호를 확인해주세요."); 
 		 }
+		
+	
 			         
 			      
 			   
 				
 				
 				
-				//3. 로그인 성공/실패 했을 때 페이지 이동
+				
 		
 	}
 
