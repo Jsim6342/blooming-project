@@ -108,7 +108,8 @@
       
       <div class="row">
         <div class="col-lg-8 mb-4 contact-left">
-          <form name="" id="" novalidate>
+        <!--  -->
+          <form name="" id="" action="ReviewPost" method="post" novalidate>
             <div class="control-group form-group">
               <div class="controls">
                 </div>
@@ -116,13 +117,13 @@
             <div class="control-group form-group">
               <div class="controls">
                 <label>제목</label>
-                <input type="text" class="form-control" id="title" required data-validation-required-message="Please enter your email address.">
+                <input type="text" class="form-control" name="title" id="title" required data-validation-required-message="Please enter your email address.">
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
                 <label>내용</label>
-                <textarea rows="20" cols="100" class="form-control" id="content" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                <textarea rows="20" cols="100" class="form-control" name="content" id="content" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
               </div>
             </div>
             <div id="success"></div>
