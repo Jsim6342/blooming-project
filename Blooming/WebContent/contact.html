@@ -15,6 +15,11 @@
 </head>
 
 <body>
+
+
+
+
+
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
         <div class="container">
@@ -103,25 +108,26 @@
 			</ol>
 		</div>
 
+
+
       <!-- Content Row -->
       <div class="row">
-			<!-- Map Column -->
-			<div class="col-lg-8 mb-4">
-					<!-- <div id="map" style="width: 500px; height: 400px;">
-				카카오 맵
-					<script type="text/javascript"
-						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9927ec523a94a34c526792f9fc8dfb30&libraries=services"></script>
+        <!-- Map Column -->
+        <div class="col-lg-8 mb-4">
+          <!-- Kakao Map -->
+		    <div id="map" style="width:100%;height:300px;"></div>
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5311b344ef03b736320ef18c05a8f976"></script>
 					<script>
 						var container = document.getElementById('map');
 						var options = {
-							center : new kakao.maps.LatLng(33.450701,126.570667),
-							level : 3
+							center: new kakao.maps.LatLng(33.450701, 126.570667),
+							level: 3
 						};
+				
 						var map = new kakao.maps.Map(container, options);
 					</script>
-			</div> -->
-		</div>
-			<!-- Contact Details Column -->
+        </div>
+        <!-- Contact Details Column -->
         <div class="col-lg-4 mb-4 contact-right">
           <h3>Contact Details</h3>
           <p>
