@@ -50,9 +50,10 @@ public class MemberDAO {
 	}
 	
 	//로그인 기능
-	public boolean member_login(String email, String pw) {
-
-		boolean check = true;
+	public MemberDTO member_login(String email, String pw) {
+		
+		
+		MemberDTO member = new MemberDTO();
 		
 		try {
 			
@@ -67,9 +68,9 @@ public class MemberDAO {
 			rs = pst.executeQuery();
 			
 			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
-				check = true;
+				member = new MemberDTO(rs.getNString(1), rs.getNString(2), rs.getNString(3), rs.getNString(4));
 			}else {
-				check = false;
+				member = null;
 			}
 			
 		} catch (SQLException e) {
@@ -80,7 +81,7 @@ public class MemberDAO {
 			dao.close();
 		}
 		
-		return check;
+		return member;
 	}
 
 }

@@ -8,6 +8,13 @@ public class ReviewDTO {
 	private String rev_contents;
 	
 	
+	
+	
+	public ReviewDTO() {
+		super();
+	}
+
+
 	public ReviewDTO(int rev_num, String nickname, String rev_title, String rev_contents) {
 		super();
 		this.rev_num = rev_num;
