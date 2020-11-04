@@ -124,11 +124,22 @@
 						};
 				
 						var map = new kakao.maps.Map(container, options);
+						
+						// 마커가 표시될 위치입니다 
+						var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+
+						// 마커를 생성합니다
+						var marker = new kakao.maps.Marker({
+						    position: markerPosition
+						});
+
+						// 마커가 지도 위에 표시되도록 설정합니다
+						marker.setMap(map);
 					</script>
         </div>
         <!-- Contact Details Column -->
         <div class="col-lg-4 mb-4 contact-right">
-          <h3>Contact Details</h3>
+          <h3>센터 정보</h3>
           <p>
             3481 Melrose Place
             <br>Beverly Hills, CA 90210
