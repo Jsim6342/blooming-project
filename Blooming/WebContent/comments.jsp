@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.DTO.ReviewDTO"%>
+<%@page import="com.DAO.ReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -77,95 +80,31 @@
 			</ol>
 		</div>
 
-		<div class="row">
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="commentspost.jsp"><img class="card-img-top"
-						src="images/portfolio-big-01.jpg" alt="" /></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="commentspost.jsp">Project One</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Amet numquam aspernatur eum quasi sapiente
-							nesciunt? Voluptatibus sit, repellat sequi itaque deserunt,
-							dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="commentspost.jsp"><img class="card-img-top"
-						src="images/portfolio-big-02.jpg" alt="" /></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="commentspost.jsp">Project Two</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-							urna varius vitae.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="commentspost.jsp"><img class="card-img-top"
-						src="images/portfolio-big-03.jpg" alt="" /></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="commentspost.jsp">Project Three</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Quos quisquam, error quod sed cumque, odio
-							distinctio velit nostrum temporibus necessitatibus et facere
-							atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="commentspost.jsp"><img class="card-img-top"
-						src="images/portfolio-big-04.jpg" alt="" /></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="commentspost.jsp">Project Four</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-							urna varius vitae.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="commentspost.jsp"><img class="card-img-top"
-						src="images/portfolio-big-05.jpg" alt="" /></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="commentspost.jsp">Project Five</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-							urna varius vitae.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="commentspost.jsp"><img class="card-img-top"
-						src="images/portfolio-big-01.jpg" alt="" /></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="commentspost.jsp">Project Six</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Itaque earum nostrum suscipit ducimus nihil
-							provident, perferendis rem illo, voluptate atque, sit eius in
-							voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-					</div>
-				</div>
-			</div>
-		</div>
+	
+	<!-- 게시글  출력 부분 -->
+	 <%
+         ReviewDAO dao = new ReviewDAO();
+         ArrayList<ReviewDTO> reviewList = dao.showReview();   %>
+           
+      <div class="row">
+      
+      <% for(int i = 0;i<reviewList.size();i++) {  
+      
+    	  out.println("<div class='col-lg-4 col-sm-6 portfolio-item'>");
+    	  out.println("<div class='card h-100'>");
+    	  out.println("<a href='commentspost.jsp'><img class='card-img-top' src='images/portfolio-big-01.jpg' alt='' /></a>");
+    	  out.println("<div class='card-body'>");
+    	  out.println("<h4 class='card-title'>");
+    	  out.println("<a href=commentspost.jsp?title="+reviewList.get(i).getRev_title()+">"+reviewList.get(i).getRev_title()+"</a>");
+    	  out.println("</h4>");
+    	  out.println("<p class='card-text'>"+reviewList.get(i).getRev_contents()+"</p>");
+    	  out.println("</div>");
+    	  out.println("</div>");
+    	  out.println("</div>");
+    	  
+      } %>
+ 
+      </div>
 
 		<div class="pagination_bar">
 			<!-- Pagination -->
