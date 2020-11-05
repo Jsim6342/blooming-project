@@ -1,6 +1,3 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.DTO.ReviewDTO"%>
-<%@page import="com.DAO.ReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -11,7 +8,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - 극복후기</title>
+<title>N & LW Lawn Care - Landscaping Bootstrap4 HTML5
+	Responsive Template</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
@@ -24,7 +22,7 @@
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.jsp"> <img
+			<a class="navbar-brand" href="index.html"> <img
 				src="images/marigold4.png" width="180px" ; height="53px"
 				; alt="logo" />
 			</a>
@@ -75,59 +73,81 @@
 	<div class="container">
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-				<li class="breadcrumb-item active">극복후기</li>
+				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+				<a href="comments.jsp" class="breadcrumb-item active">극복후기 게시판으로
+					돌아가기</a>
 			</ol>
 		</div>
 
-	
-	<!-- 게시글  출력 부분 -->
-	 <%
-         ReviewDAO dao = new ReviewDAO();
-         ArrayList<ReviewDTO> reviewList = dao.showReview();   %>
-           
-      <div class="row">
-      
-      <% for(int i = 0;i<reviewList.size();i++) {  
-      
-    	  out.println("<div class='col-lg-4 col-sm-6 portfolio-item'>");
-    	  out.println("<div class='card h-100'>");
-    	  out.println("<a href='commentspost.jsp'><img class='card-img-top' src='images/portfolio-big-01.jpg' alt='' /></a>");
-    	  out.println("<div class='card-body'>");
-    	  out.println("<h4 class='card-title'>");
-    	  out.println("<a href=commentspost.jsp?title="+reviewList.get(i).getRev_title()+">"+reviewList.get(i).getRev_title()+"</a>");
-    	  out.println("</h4>");
-    	  out.println("<p class='card-text'>"+reviewList.get(i).getRev_contents()+"</p>");
-    	  out.println("</div>");
-    	  out.println("</div>");
-    	  out.println("</div>");
-    	  
-      } %>
- 
-      </div>
+		<div class="row">
+			<!-- Post Content Column -->
+			<div class="col-lg-20">
 
-		<div class="pagination_bar">
-			<!-- Pagination -->
-			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-						<span class="sr-only">Previous</span>
-				</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-						class="sr-only">Next</span>
-				</a></li>
-			</ul>
-			<div class="row mb-4">
-				<div class="col-md-8"></div>
-				<div class="col-md-4">
-					<a class="btn btn-lg btn-secondary btn-block" href="post.jsp">후기작성</a>
+				<!-- Preview Image -->
+				<img class="img-fluid rounded" src="images/forest.jpg" alt="" />
+				<hr>
+				<!-- Date/Time -->
+				<p>Posted on January 1, 2018 at 18:00 PM</p>
+				<hr>
+				<!-- Post Content -->
+				<p class="lead">Lorem ipsum dolor sit amet, consectetur
+					adipisicing elit. Ducimus, vero, obcaecati, aut, error quam
+					sapiente nemo saepe quibusdam sit excepturi nam quia corporis
+					eligendi eos magni recusandae laborum minus inventore?</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut,
+					tenetur natus doloremque laborum quos iste ipsum rerum obcaecati
+					impedit odit illo dolorum ab tempora nihil dicta earum fugiat.
+					Temporibus, voluptatibus.</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					Eos, doloribus, dolorem iusto blanditiis unde eius illum
+					consequuntur neque dicta incidunt ullam ea hic porro optio ratione
+					repellat perspiciatis. Enim, iure!</p>
+
+				<blockquote class="blockquote">
+					<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
+						adipiscing elit. Integer posuere erat a ante.</p>
+					<footer class="blockquote-footer">
+						Someone famous in <cite title="Source Title">Source Title</cite>
+					</footer>
+				</blockquote>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora
+					commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem
+					obcaecati?</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione
+					tempore quidem voluptates cupiditate voluptas illo saepe quaerat
+					numquam recusandae? Qui, necessitatibus, est!</p>
+
+				<hr>
+
+
+				<div class="blog-right-side">
+					<!-- Comments Form -->
+					<div class="card my-4">
+						<h5 class="card-header">댓글 :</h5>
+						<div class="card-body">
+							<form>
+								<div class="form-group">
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+								<div class="row mb-4">
+									<div class="col-md-8"></div>
+									<div class="col-md-4">
+										<a class="btn btn-lg btn-secondary btn-block"
+											href="signup.html">댓글작성하기</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+	</div>
+	<!-- /.row -->
 
 	</div>
 	<!-- /.container -->
@@ -145,14 +165,6 @@
 						All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design
 						By : SINOZO, 9uack <a href="https://html.design/">html design</a>
 					</p>
-					<!-- 맨 아래 footer SNS페이지 이동 ul태그 -->
-					<!-- <ul class="social_footer_ul">
-				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-				<li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul> -->
-					<!--social_footer_ul ends here-->
 				</div>
 	</footer>
 
