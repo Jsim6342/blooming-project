@@ -8,6 +8,12 @@ public class C_ProfileDTO {
 	private String background;
 	private String introduce;
 	
+	
+	
+	public C_ProfileDTO() {
+		super();
+	}
+
 	public C_ProfileDTO(String pro_email, String pro_name, String pro_location, String background, String introduce) {
 		super();
 		this.pro_email = pro_email;
