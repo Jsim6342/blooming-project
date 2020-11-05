@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Blooming - 전문가 회원가입</title>
+<title>Blooming - ���� ������ ���</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap core CSS -->
@@ -47,67 +49,39 @@
 			<div class="wrap-login100 p-t-0 p-b-10">
 				<form class="login100-form validate-form" action="ConsultantSignup"
 					method="post">
-					<span class="login100-form-title p-b-70"> 전문가 회원가입 </span> <a
-						class="login100-form-avatar" href="index.jsp"> <img
-						src="images/marigold.png" alt="AVATAR">
+					<span class="login100-form-title p-b-70"> ���� ������ ��� </span> <a
+						class="login100-form-avatar" href="index.jsp"> <img src="images/marigold.png" alt="AVATAR">
 					</a>
 
-					<div class="wrap-input100 validate-input m-t-65 m-b-35"
+					<!-- <div class="wrap-input100 validate-input m-t-65 m-b-35"
 						data-validate="Enter email">
-						<input class="input100" type="text" name="con_email"
-							placeholder="이메일">
-						<!-- <span class="focus-input100" data-placeholder="이메일"></span> -->
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-30"
-						data-validate="Enter password">
-						<input class="input100" type="password" name="con_pw"
-							placeholder="비밀번호">
-						<!-- <span class="focus-input100" data-placeholder="비밀번호"></span> -->
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-30"
-						data-validate="Enter password">
-						<input class="input100" type="text" name="con_name"
-							placeholder="이름">
-						<!-- <span class="focus-input100" data-placeholder="이름"></span> -->
-					</div>
-					<div class="wrap-input100 validate-input m-b-30"
-						data-validate="Enter tel">
-						<input class="input100" type="text" name="con_tel"
-							placeholder="전화번호">
-						<!-- <span class="focus-input100" data-placeholder="전화번호"></span> -->
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-30"
-						data-validate="Enter password">
-						<input class="input100" type="text" name="license"
-							placeholder="자격증 번호">
-						<!-- <span class="focus-input100" data-placeholder="자격증 번호"></span> -->
-					</div>
-					<div class="wrap-input100 validate-input m-b-30"
-						data-validate="Enter password">
-						<input class="input100" type="text" name="location"
-							placeholder="소속 상담센터">
-						<!-- <span class="focus-input100" data-placeholder="소속 상담센터"></span> -->
-					</div>
-
+						<input class="input100" type="text" name=""
+							placeholder="�з�">
+					</div> -->
+					
+					<div class="control-group form-group">
+							<div class="controls">
+								<label>�з�/�̷�</label>
+								<textarea rows="5" cols="30" class="form-control"
+									name="rev_contents" id="content" required
+									data-validation-required-message="Please enter your message"
+									maxlength="100" style="resize: none"></textarea>
+							</div>
+						</div>
+					
+					<div class="control-group form-group">
+							<div class="controls">
+								<label>����</label>
+								<textarea rows="10" cols="30" class="form-control"
+									name="rev_contents" id="content" required
+									data-validation-required-message="Please enter your message"
+									maxlength="100" style="resize: none"></textarea>
+							</div>
+						</div>
 					<div class="container-login100-form-btn">
-						<input type="submit" method="get" value="가입하기"
-							class="login100-form-btn">
+						<input type="submit" method="get" value="������ ���"
+							class="login100-form-btn" >
 					</div>
-
-					<ul class="login-more p-t-30">
-						<li class="m-b-8"><span class="txt1"> Forgot </span> <a
-							href="#" class="txt2"> Email / Password? </a></li>
-
-						<li>
-							<!-- <span class="txt1">
-								회원이 아니신가요?
-							</span> --> <a href="signup.html" class="txt2"> 일반 회원가입 / </a> <a
-							href="c_signup.html" class="txt2"> 전문가 회원가입 </a>
-						</li>
-					</ul>
 				</form>
 			</div>
 		</div>
