@@ -36,8 +36,11 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" href="diagnosis.html">진단하기</a>
 					</li>
-					<li class="nav-item"><a class="nav-link active"
-						href="diary.jsp">일기작성</a></li>
+					<li class="nav-item"><a class="nav-link active" href="diary.jsp">일기작성</a>
+					</li>
+					<!-- <li class="nav-item">
+                     <a class="nav-link" href="counsel.jsp">집단상담</a>
+                  </li> -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +56,6 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
-					
 				</ul>
 			</div>
 		</div>
