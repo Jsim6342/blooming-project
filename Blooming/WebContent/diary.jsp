@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!-- ªÛ¥‹πŸ, «œ¥‹πŸ∏∏ ¿÷¥¬ ∆‰¿Ã¡ˆ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description" content="">
    <meta name="author" content="">
-   <title>Blooming</title>
+   <title>Blooming - ¿œ±‚</title>
    <!-- Bootstrap core CSS -->
    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <!-- Fontawesome CSS -->
@@ -21,36 +24,36 @@
             <img src="images/marigold4.png" width="180px"; height="53px"; alt="logo" />
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="fas fa-bars"></span>
+				<span class="fas fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                     <a class="nav-link" href="diagnosis.html">ÏßÑÎã®ÌïòÍ∏∞</a>
+                     <a class="nav-link" href="diagnosis.html">¡¯¥‹«œ±‚</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="diary.jsp">ÏùºÍ∏∞ÏûëÏÑ±</a>
+                     <a class="nav-link active" href="diary.jsp">¿œ±‚¿€º∫</a>
                   </li>
                   <!-- <li class="nav-item">
-                     <a class="nav-link" href="counsel.jsp">ÏßëÎã®ÏÉÅÎã¥</a>
+                     <a class="nav-link" href="counsel.jsp">¡˝¥‹ªÛ¥„</a>
                   </li> -->
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     	ÏßëÎã®ÏÉÅÎã¥
+                     	¡˝¥‹ªÛ¥„
                      </a>
                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                        <a class="dropdown-item" href="counsel.jsp">ÏßëÎã®ÏÉÅÎã¥ÏòàÏïΩ</a>
-                        <a class="dropdown-item" href="booking.jsp">ÏßëÎã®ÏÉÅÎã¥ ÏòàÏïΩÌòÑÌô©</a>
+                        <a class="dropdown-item" href="counsel.jsp">¡˝¥‹ªÛ¥„øπæ‡</a>
+                        <a class="dropdown-item" href="booking.jsp">¡˝¥‹ªÛ¥„ øπæ‡«ˆ»≤</a>
                      </div>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" href="comments.jsp">Í∑πÎ≥µÌõÑÍ∏∞</a>
+                     <a class="nav-link" href="comments.jsp">±ÿ∫π»ƒ±‚</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="contact.html">ÏÑºÌÑ∞Ï∞æÍ∏∞</a>
+                     <a class="nav-link" href="contact.html">ºæ≈Õ√£±‚</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="login.html">Î°úÍ∑∏Ïù∏</a>
+                     <a class="nav-link" href="login.html">∑Œ±◊¿Œ</a>
                   </li>
                   <!-- <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,8 +66,8 @@
                         <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
                         <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
                      </div>
-                  </li>
-                  <li class="nav-item dropdown">
+                  </li> -->
+                  <!-- <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      Blog
                      </a>
@@ -83,76 +86,37 @@
                         <a class="dropdown-item" href="404.html">404</a>
                         <a class="dropdown-item" href="pricing.html">Pricing Table</a>
                      </div>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="contact.html">ÏßëÎã®ÏÉÅÎã¥</a>
                   </li> -->
+                  
                </ul>
             </div>
         </div>
     </nav>
   
- <!-- full Title -->
+  <!-- full Title -->
    <div class="full-title">
       <div class="container">
          <!-- Page Heading/Breadcrumbs -->
-         <h1 class="mt-4 mb-3">Í∑πÎ≥µÌõÑÍ∏∞ÏûëÏÑ±
-            <small>Post</small>
+         <h1 class="mt-4 mb-3">¿œ±‚
+            <small>diary</small>
          </h1>
       </div>
    </div>
-       
-        <!-- Page Content -->
+  
+<!-- Page Content -->
     <div class="container">
       <div class="breadcrumb-main">
          <ol class="breadcrumb">
             <li class="breadcrumb-item">
                <a href="index.jsp">Home</a>
             </li>
-            <li class="breadcrumb-item active">Post</li>
+            <li class="breadcrumb-item active">¿œ±‚</li>
          </ol>
       </div>
-      <div class="container">
-         
-      
-      <div class="row">
-        <div class="col-lg-8 mb-4 contact-left">
-        <!--  -->
-          <form name="" id="" action="ReviewPost" method="post" novalidate>
-            <div class="control-group form-group">
-              <div class="controls">
-                </div>
-                </div>
-            <div class="control-group form-group">
-              <div class="controls">
-                <label>Ï†úÎ™©</label>
-                <input type="text" class="form-control" name="title" id="title" required data-validation-required-message="Please enter your email address.">
-              </div>
-            </div>
-            <div class="control-group form-group">
-              <div class="controls">
-                <label>ÎÇ¥Ïö©</label>
-                <textarea rows="20" cols="100" class="form-control" name="content" id="content" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
-              </div>
-            </div>
-            <div id="success"></div>
-            <!-- For success/fail messages -->
-            <button type="submit" class="btn btn-primary" id="sendMessageButton">ÏûëÏÑ±ÏôÑÎ£å</button>
-          </form>
-      </div>
-          
-          <!-- Í≤åÏãúÍ∏ÄÏûÖÎ†• ÏòÅÏó≠ ÏòÜÏóê Ï∂úÎ†•ÎêòÎäî ÏòÅÏó≠ÏãúÏûë -->
-          
-          <!-- Í≤åÏãúÍ∏ÄÏûÖÎ†• ÏòÅÏó≠ ÏòÜÏóê Ï∂úÎ†•ÎêòÎäî ÏòÅÏó≠ÎÅù -->
-      </div>
-      <!-- /.row -->
-      
-      
-      </div>
-    </div>
+     </div>    
+       
     <!-- /.container -->
-    
-     <!--footer starts from here-->
+    <!--footer starts from here-->
     <footer class="footer">
         <div class="container bottom_border">
             <div class="row">
@@ -240,7 +204,7 @@
             <p class="copyright text-center">All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design By : SINOZO, 9uack
 				<a href="https://html.design/">html design</a>
             </p>
-            <!-- Îß® ÏïÑÎûò footer SNSÌéòÏù¥ÏßÄ Ïù¥Îèô ulÌÉúÍ∑∏ -->
+            <!-- ∏« æ∆∑° footer SNS∆‰¿Ã¡ˆ ¿Ãµø ul≈¬±◊ -->
             <!-- <ul class="social_footer_ul">
 				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
