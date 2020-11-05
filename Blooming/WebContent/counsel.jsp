@@ -310,6 +310,15 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="row mb-4">
+			<div class="col-md-8">
+				<p>집단상담 서비스를 진행하시려면 프로필을 등록해주세요.</p>
+			</div>
+			<div class="col-md-4">
+				<a class="btn btn-lg btn-secondary btn-block" href="profile.jsp">프로필 등록하기</a>
+			</div>
+		</div>
 	</div>
 	<!-- /.container -->
 
