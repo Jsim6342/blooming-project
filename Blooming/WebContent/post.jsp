@@ -40,13 +40,22 @@
                      <a class="nav-link" href="diagnosis.html">진단하기</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="diary.html">일기작성</a>
+                     <a class="nav-link" href="diary.jsp">일기작성</a>
+                  </li>
+                  <!-- <li class="nav-item">
+                     <a class="nav-link" href="counsel.jsp">집단상담</a>
+                  </li> -->
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     	집단상담
+                     </a>
+                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                        <a class="dropdown-item" href="counsel.jsp">집단상담예약</a>
+                        <a class="dropdown-item" href="booking.jsp">집단상담 예약현황</a>
+                     </div>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="counsel.html">집단상담</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link active" href="comments.html">극복후기</a>
+                     <a class="nav-link" href="comments.jsp">극복후기</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="contact.html">센터찾기</a>

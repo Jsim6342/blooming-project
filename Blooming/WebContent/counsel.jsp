@@ -268,6 +268,7 @@
 		</div>
 </div>
     </div>
+    </div>
     <!-- /.container -->
 
     <!--footer starts from here-->
