@@ -202,7 +202,7 @@
             <div class="col-md-8">
             </div>
             <div class="col-md-4">
-               <a class="btn btn-lg btn-secondary btn-block" href="post.html">후기작성</a>
+               <a class="btn btn-lg btn-secondary btn-block" href="post.jsp">후기작성</a>
             </div>
         </div>
 		</div>

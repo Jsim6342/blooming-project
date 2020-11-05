@@ -2,6 +2,7 @@ package com.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import com.DTO.ReviewDTO;
 
@@ -14,6 +15,37 @@ public class ReviewDAO {
 	int cnt = 0;
 		
 	Connect dao = new Connect();
+	
+	//후기 작성
+	public int review_post(String nickname, String rev_title, String rev_contents) {
+		
+		
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "insert into review values(rev_seq.nextval,?,?,?)";
+			
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			
+			pst.setString(1, nickname);
+			pst.setString(2, rev_title);
+			pst.setString(3, rev_contents);
+			
+			cnt = pst.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		return cnt;
+	}
+	
 	
 	//후기 게시판 출력
 		public ArrayList<ReviewDTO> showReview() {
