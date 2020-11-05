@@ -154,20 +154,17 @@
 					</div>
 				</div>
 
-				<div class="col-lg-4 col-sm-6 portfolio-item">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top" src="images/step1.png"
-							alt="" /></a>
+				<div class="col-lg-4 mb-4">
+					<div class="card h-80">
 						<div class="card-body">
-							<h4 class="card-title">
-								<a href="https://zoom.us/download">&rarr; ZOOM 다운로드 링크</a>
-							</h4>
-							<p class="card-text">
-								컴퓨터를 사용하여 상담에 참가하시는 분은 <br>회의용 ZOOM 클라이언트를 다운로드 하세요. <br>스마트폰을
-								이용하여 상담에 참가하시는 분은 ZOOM 모바일 앱을 다운로드 하세요.
-							</p>
+							<div class="display-4">신호조</div>
+							<div class="font-italic">sinozo1882@gmail.com</div>
 						</div>
-						<div class="card-footer">
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">근무지 : 스마트인재개발원</li>
+							<li class="list-group-item">학력/이력 : 스마트인재개발원 연구원</li>
+							<li class="list-group-item">상담소개 : 가나다라마바사아자차카타파하가나다라마바사아자차카가나다라마바사아자차카타파하가나다라마바사아자차카타파하타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하</li>
+							<li class="list-group-item">
 							<script>
 				function next(){
  					if(confirm("상담을 예약하시겠습니까?"))
@@ -181,7 +178,37 @@
 					}</script>
 
 							<a onclick="next()" href="#" class="btn btn-primary">예약하기</a>
+						  </li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-4 mb-4">
+					<div class="card h-80">
+						<div class="card-body">
+							<div class="display-4">신호조</div>
+							<div class="font-italic">sinozo1882@gmail.com</div>
 						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">근무지 : 스마트인재개발원</li>
+							<li class="list-group-item">학력/이력 : 스마트인재개발원 연구원</li>
+							<li class="list-group-item">상담소개 : 가나다라마아하가나다라마바사아자차카타파하타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하</li>
+							<li class="list-group-item">
+							<script>
+				function next(){
+ 					if(confirm("상담을 예약하시겠습니까?"))
+ 					{
+						 alert('확인을 누르셨습니다. 집단상담 예약현황 페이지로 이동합니다.');
+ 						 location.href="http://localhost:8085/Blooming/booking.jsp";
+ 					}else
+ 					{
+ 					alert('취소를 누르셨습니다. 집단상담예약페이지로 돌아갑니다.');
+ 					}
+					}</script>
+
+							<a onclick="next()" href="#" class="btn btn-primary">예약하기</a>
+						  </li>
+						</ul>
 					</div>
 				</div>
 
@@ -198,37 +225,7 @@
 								이용하여 상담에 참가하시는 분은 ZOOM 모바일 앱을 다운로드 하세요.
 							</p>
 						</div>
-						<div class="card-footer">
-							<script>
-				function next(){
- 					if(confirm("상담을 예약하시겠습니까?"))
- 					{
-						 alert('확인을 누르셨습니다. 집단상담 예약현황 페이지로 이동합니다.');
- 						 location.href="http://localhost:8085/Blooming/booking.jsp";
- 					}else
- 					{
- 					alert('취소를 누르셨습니다. 집단상담예약페이지로 돌아갑니다.');
- 					}
-					}</script>
-
-							<a onclick="next()" href="#" class="btn btn-primary">예약하기</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-sm-6 portfolio-item">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top" src="images/step1.png"
-							alt="" /></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="https://zoom.us/download">&rarr; ZOOM 다운로드 링크</a>
-							</h4>
-							<p class="card-text">
-								컴퓨터를 사용하여 상담에 참가하시는 분은 <br>회의용 ZOOM 클라이언트를 다운로드 하세요. <br>스마트폰을
-								이용하여 상담에 참가하시는 분은 ZOOM 모바일 앱을 다운로드 하세요.
-							</p>
-						</div>
+						
 						<div class="card-footer">
 							<script>
 				function next(){
