@@ -1,4 +1,7 @@
-<!-- ìƒë‹¨ë°”, í•˜ë‹¨ë°”ë§Œ ìžˆëŠ” íŽ˜ì´ì§€ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+
+<!-- »ó´Ü¹Ù, ÇÏ´Ü¹Ù¸¸ ÀÖ´Â ÆäÀÌÁö -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,20 +9,13 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description" content="">
    <meta name="author" content="">
-   <title>Blooming - ì§„ë‹¨</title>
+   <title>Blooming - Áý´Ü»ó´ã ¿¹¾àÇöÈ²</title>
    <!-- Bootstrap core CSS -->
    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <!-- Fontawesome CSS -->
    <link href="css/all.css" rel="stylesheet">
    <!-- Custom styles for this template -->
    <link href="css/style.css" rel="stylesheet">
-   
-   <meta name="viewport" content="width=device-width"/>
-        <script src="https://unpkg.com/jquery"></script>
-        <script src="https://surveyjs.azureedge.net/1.8.12/survey.jquery.min.js"></script>
-        <!-- <link href="https://surveyjs.azureedge.net/1.8.12/modern.css" type="text/css" rel="stylesheet"/> -->
-        <link rel="stylesheet" href="./css/diagnosis.css">
-   
 </head>
 <body>
     <!-- Navigation -->
@@ -34,31 +30,31 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                     <a class="nav-link active" href="diagnosis.html">ì§„ë‹¨í•˜ê¸°</a>
+                     <a class="nav-link" href="diagnosis.html">Áø´ÜÇÏ±â</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="diary.jsp">ì¼ê¸°ìž‘ì„±</a>
+                     <a class="nav-link" href="diary.jsp">ÀÏ±âÀÛ¼º</a>
                   </li>
                   <!-- <li class="nav-item">
-                     <a class="nav-link" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´</a>
+                     <a class="nav-link" href="counsel.jsp">Áý´Ü»ó´ã</a>
                   </li> -->
                   <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     	ì§‘ë‹¨ìƒë‹´
+                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     	Áý´Ü»ó´ã
                      </a>
                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                        <a class="dropdown-item" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´ì˜ˆì•½</a>
-                        <a class="dropdown-item" href="booking.jsp">ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™©</a>
+                        <a class="dropdown-item" href="counsel.jsp">Áý´Ü»ó´ã¿¹¾à</a>
+                        <a class="dropdown-item" href="booking.jsp">Áý´Ü»ó´ã ¿¹¾àÇöÈ²</a>
                      </div>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" href="comments.jsp">ê·¹ë³µí›„ê¸°</a>
+                     <a class="nav-link" href="comments.jsp">±Øº¹ÈÄ±â</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="contact.html">ì„¼í„°ì°¾ê¸°</a>
+                     <a class="nav-link" href="contact.html">¼¾ÅÍÃ£±â</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="login.html">ë¡œê·¸ì¸</a>
+                     <a class="nav-link" href="login.html">·Î±×ÀÎ</a>
                   </li>
                   <!-- <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -97,33 +93,28 @@
             </div>
         </div>
     </nav>
- 
- <!-- full Title -->
+  
+  <!-- full Title -->
    <div class="full-title">
       <div class="container">
          <!-- Page Heading/Breadcrumbs -->
-         <h1 class="mt-4 mb-3">ì§„ë‹¨
-            <small>diagnosis</small>
+         <h1 class="mt-4 mb-3">¿¹¾à È®ÀÎÇÏ±â
+            <small>booking</small>
          </h1>
       </div>
    </div>
   
-  <!-- Page Content -->
+<!-- Page Content -->
     <div class="container">
       <div class="breadcrumb-main">
          <ol class="breadcrumb">
             <li class="breadcrumb-item">
                <a href="index.jsp">Home</a>
             </li>
-            <li class="breadcrumb-item active">About</li>
+            <li class="breadcrumb-item active">Áý´Ü»ó´ã ¿¹¾àÇöÈ²</li>
          </ol>
       </div>
-     <div id="surveyElement" style="display:inline-block;width:100%;align:center;"></div>
-        <div id="surveyResult"></div>
-
-        <script type="text/javascript" src="./survey.js"></script>   
-     </div>
-     
+     </div>    
        
     <!-- /.container -->
     <!--footer starts from here-->
@@ -214,7 +205,7 @@
             <p class="copyright text-center">All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design By : SINOZO, 9uack
 				<a href="https://html.design/">html design</a>
             </p>
-            <!-- ë§¨ ì•„ëž˜ footer SNSíŽ˜ì´ì§€ ì´ë™ ulíƒœê·¸ -->
+            <!-- ¸Ç ¾Æ·¡ footer SNSÆäÀÌÁö ÀÌµ¿ ulÅÂ±× -->
             <!-- <ul class="social_footer_ul">
 				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
