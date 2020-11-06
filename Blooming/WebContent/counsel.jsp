@@ -139,57 +139,66 @@
 <% 
        for(int i = 0;i<profileList.size();i++) {
                       		
-   	   out.print("<div class='col-lg-4 mb-4'>");
-   	   out.print("<div class='card h-80'>");
+   	   out.print("<div class='col-lg-4 col-sm-6 portfolio-item'>");
+   	   out.print("<div class='card h-100'>");
    	   out.print("<div class='card-body'>");
    	   out.print("<div class='display-4'>"+profileList.get(i).getPro_name()+"</div>");
    	   out.print("<div class='font-italic'>"+profileList.get(i).getPro_email()+"</div>");
    	   out.print("</div>");
    	   out.print("<ul class='list-group list-group-flush'>");
-   	   out.print("<li class='list-group-item'>근무지: "+profileList.get(i).getPro_location()+"</li>");
+   	   out.print("<li class='list-group-item'>상담일자: "+profileList.get(i).getPro_date()+"</li>");
    	   out.print("<li class='list-group-item'>학력/이력 : "+profileList.get(i).getBackground()+"</li>");
    	   out.print("<li class='list-group-item'>상담소개 : "+profileList.get(i).getIntroduce()+"</li>");
-   	   out.print("<li class='list-group-item'>");
+   	   out.print("<li class='card-footer'>");
+   	   out.print("<a onclick='next()' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
    	   %>
    	   <script type="text/javascript">
    	   
-   	     var res_date = "<%=profileList.get(i).getPro_location()%>";
+   	     var res_date = "<%=profileList.get(i).getPro_date()%>";
    	     var consultant = "<%=profileList.get(i).getPro_name()%>";
+   	     var max_people = "<%=profileList.get(i).getMax_people()%>";
+   	     var pro_email = "<%=profileList.get(i).getPro_email()%>";
    	     
-				function next(){
- 					if(confirm("상담을 예약하시겠습니까?"))
- 					{
-						 alert('확인을 누르셨습니다. 집단상담 예약현황 페이지로 이동합니다.');
- 						 location.href="http://localhost:8085/Blooming/booking.jsp";
- 					}else
- 					{
- 					alert('취소를 누르셨습니다. 집단상담예약페이지로 돌아갑니다.');
- 					}
-					}
-	  
-	  
-	   <!-- Ajax함수  -->
+	    //Ajax함수 
        
 		function ajaxCall() { //ajax 함수 부분
 			$.ajax({
 				//ajax 통신 방식으로 데이터를 전송
 				type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
 				url : "ReserveRequest", //어떤 서버페이지로 이 값을 보낼 것인지
-				data : {"res_date" : res_date , "consultant" : consultant}, //보낼 데이터 지정
+				data : {"res_date" : res_date , "consultant" : consultant, "max_people" : max_people, "pro_email" : pro_email}, //보낼 데이터 지정
 				dataType : "text",
-				success : function() { //서버로 부터 받은 값
-				
+				success : function(data) { //서버로 부터 받은 값
+					console.log(data);
+					//var update_people = data;
+					var h = document.getElementById("update_people");
+				    h.innerHTML = "남은인원: "+data;
+					
 				},
 				error : function() {
 
 				}
 			});
+		
+		
 		}
+		
+		function next(){
+				if(confirm("상담을 예약하시겠습니까?"))
+				{
+			     ajaxCall();
+				 alert('확인을 누르셨습니다. 집단상담 예약현황 페이지로 이동합니다.');
+				}else
+				{
+				alert('취소를 누르셨습니다. 집단상담예약페이지로 돌아갑니다.');
+				}
+			}
+		
 	  </script>
 	  
 	  
 	   <%
-   	   out.print("<a onclick='next(); ajaxCall();' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; [0/10]");
+	  
    	   out.print("</li>");
    	   out.print("</ul>");
    	   out.print("</div>");
@@ -197,38 +206,6 @@
             }%>
         
        
-        
-      
-         	             
-				<!-- <div class="col-lg-4 mb-4">
-					<div class="card h-80">
-						<div class="card-body">
-							<div class="display-4">신호조</div>
-							<div class="font-italic">sinozo1882@gmail.com</div>
-						</div>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">근무지 : 스마트인재개발원</li>
-							<li class="list-group-item">학력/이력 : 스마트인재개발원 연구원</li>
-							<li class="list-group-item">상담소개 : 가나다라마바사아자차카타파하가나다라마바사아자차카가나다라마바사아자차카타파하가나다라마바사아자차카타파하타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하</li>
-							<li class="list-group-item">
-							<script>
-				function next(){
- 					if(confirm("상담을 예약하시겠습니까?"))
- 					{
-						 alert('확인을 누르셨습니다. 집단상담 예약현황 페이지로 이동합니다.');
- 						 location.href="http://localhost:8085/Blooming/booking.jsp";
- 					}else
- 					{
- 					alert('취소를 누르셨습니다. 집단상담예약페이지로 돌아갑니다.');
- 					}
-					}</script>
-
-							<a onclick="next()" href="#" class="btn btn-primary">예약하기</a>
-						  </li>
-						</ul>
-					</div>
-				</div> -->
-
 				
 				<div class="col-lg-4 col-sm-6 portfolio-item">
 					<div class="card h-100">
@@ -244,17 +221,7 @@
 							</p>
 						</div>
 						<div class="card-footer">
-							<script>
-				function next(){
- 					if(confirm("상담을 예약하시겠습니까?"))
- 					{
- 						 alert('확인을 누르셨습니다. 집단상담 예약현황 페이지로 이동합니다.');
- 						 location.href="http://localhost:8085/Blooming/booking.jsp";
- 					}else
- 					{
- 					alert('취소를 누르셨습니다. 집단상담 예약 페이지로 돌아갑니다.');
- 					}
-					}</script>
+				
 
 							<a onclick="next()" href="#" class="btn btn-primary">예약하기</a>
 						</div>
