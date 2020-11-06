@@ -20,7 +20,7 @@ public class C_ProfileDAO {
 	
 	
 	//프로필 등록 기능
-	public int profile_join(String pro_email, String pro_name, String pro_location, String background, String introduce) {
+	public int profile_join(String pro_email, String pro_name, String pro_location, String background, String introduce, int max_people) {
 		
 		
 		try {
@@ -28,7 +28,7 @@ public class C_ProfileDAO {
 			//DB연결 기능
 			dao.getConn();
 			
-			String sql = "insert into c_profile values(?,?,?,?,?)";
+			String sql = "insert into c_profile values(?,?,?,?,?,?)";
 			
 			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
 			
@@ -37,6 +37,7 @@ public class C_ProfileDAO {
 			pst.setString(3, pro_location);
 			pst.setString(4, background);
 			pst.setString(5, introduce);
+			pst.setInt(6, max_people);
 			
 			cnt = pst.executeUpdate();
 			
@@ -74,12 +75,13 @@ public class C_ProfileDAO {
 	        	//전체 후기 데이터를 출력
 	        	 String pro_email = rs.getString(1);
 	        	 String pro_name = rs.getString(2);
-	        	 String pro_location = rs.getString(3);
+	        	 String pro_date = rs.getString(3);
 	        	 String background = rs.getString(4);
 	        	 String introduce = rs.getString(5);
+	        	 int max_people = rs.getInt(6);
 
  	        	 //ReviewDTO 객체를 1개씩 DB에서 받은 후, ArrayList인 reviewList에 저장
-	        	 profile = new C_ProfileDTO(pro_email, pro_name, pro_location, background, introduce);
+	        	 profile = new C_ProfileDTO(pro_email, pro_name, pro_date, background, introduce, max_people);
 	        	 profileList.add(profile);
 	         
 	         }
@@ -90,6 +92,35 @@ public class C_ProfileDAO {
 			dao.close();
 		}
 		return profileList;
+	}
+	
+	//최대인원 카운트 기능
+	public int update_people(String pro_email, int max_people) {
+
+		int update = max_people-1;
+		
+		try {
+			
+			 dao.getConn();
+			 
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "update c_profile set max_people=? where pro_email = ?"; 
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setInt(1, update);
+	         pst.setString(2, pro_email);
+
+	         cnt = pst.executeUpdate(); //성공 시 1을 반환
+	      // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	      // --------------------- DB에 SQL문 명령준비	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return update;
 	}
 	
 }
