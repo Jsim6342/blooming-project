@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.DTO.C_ProfileDTO"%>
+<%@page import="com.DAO.C_ProfileDAO"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - Áý´Ü»ó´ã</title>
+<title>Blooming - ì§‘ë‹¨ìƒë‹´</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
@@ -33,24 +36,24 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="diagnosis.html">Áø´ÜÇÏ±â</a>
+					<li class="nav-item"><a class="nav-link" href="diagnosis.html">ì§„ë‹¨í•˜ê¸°</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="diary.jsp">ÀÏ±âÀÛ¼º</a>
+					<li class="nav-item"><a class="nav-link" href="diary.jsp">ì¼ê¸°ìž‘ì„±</a>
 					</li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle active" href="#"
 						id="navbarDropdownBlog" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> Áý´Ü»ó´ã </a>
+						aria-haspopup="true" aria-expanded="false"> ì§‘ë‹¨ìƒë‹´ </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownBlog">
-							<a class="dropdown-item" href="counsel.jsp">Áý´Ü»ó´ã¿¹¾à</a> <a
-								class="dropdown-item" href="booking.jsp">Áý´Ü»ó´ã ¿¹¾àÇöÈ²</a>
+							<a class="dropdown-item" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´ì˜ˆì•½</a> <a
+								class="dropdown-item" href="booking.jsp">ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™©</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link" href="comments.jsp">±Øº¹ÈÄ±â</a>
+					<li class="nav-item"><a class="nav-link" href="comments.jsp">ê·¹ë³µí›„ê¸°</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">¼¾ÅÍÃ£±â</a>
+					<li class="nav-item"><a class="nav-link" href="contact.html">ì„¼í„°ì°¾ê¸°</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="login.html">·Î±×ÀÎ</a>
+					<li class="nav-item"><a class="nav-link" href="login.html">ë¡œê·¸ì¸</a>
 					</li>
 				</ul>
 			</div>
@@ -62,7 +65,7 @@
 		<div class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h1 class="mt-4 mb-3">
-				Áý´Ü»ó´ã¿¹¾à <small>group counseling</small>
+				ì§‘ë‹¨ìƒë‹´ì˜ˆì•½ <small>group counseling</small>
 			</h1>
 		</div>
 	</div>
@@ -72,7 +75,7 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-				<li class="breadcrumb-item active">Áý´Ü»ó´ã</li>
+				<li class="breadcrumb-item active">ì§‘ë‹¨ìƒë‹´</li>
 			</ol>
 		</div>
 
@@ -82,11 +85,11 @@
 					<a><img class="card-img-top" src="images/step1.png" alt="" /></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a href="https://zoom.us/download">&rarr; ZOOM ´Ù¿î·Îµå ¸µÅ©</a>
+							<a href="https://zoom.us/download">&rarr; ZOOM ë‹¤ìš´ë¡œë“œ ë§í¬</a>
 						</h4>
 						<p class="card-text">
-							ÄÄÇ»ÅÍ¸¦ »ç¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº <br>È¸ÀÇ¿ë ZOOM Å¬¶óÀÌ¾ðÆ®¸¦ ´Ù¿î·Îµå ÇÏ¼¼¿ä. <br>½º¸¶Æ®ÆùÀ»
-							ÀÌ¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº ZOOM ¸ð¹ÙÀÏ ¾ÛÀ» ´Ù¿î·Îµå ÇÏ¼¼¿ä.
+							ì»´í“¨í„°ë¥¼ ì‚¬ìš©í•˜ì—¬ ìƒë‹´ì— ì°¸ê°€í•˜ì‹œëŠ” ë¶„ì€ <br>íšŒì˜ìš© ZOOM í´ë¼ì´ì–¸íŠ¸ë¥¼ ë‹¤ìš´ë¡œë“œ í•˜ì„¸ìš”. <br>ìŠ¤ë§ˆíŠ¸í°ì„
+							ì´ìš©í•˜ì—¬ ìƒë‹´ì— ì°¸ê°€í•˜ì‹œëŠ” ë¶„ì€ ZOOM ëª¨ë°”ì¼ ì•±ì„ ë‹¤ìš´ë¡œë“œ í•˜ì„¸ìš”.
 						</p>
 					</div>
 				</div>
@@ -97,11 +100,11 @@
 					<a><img class="card-img-top" src="images/step2_2.png" alt="" /></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a>Àü¹® »ó´ã»ç</a>
+							<a>ì „ë¬¸ ìƒë‹´ì‚¬</a>
 						</h4>
 						<p class="card-text">
-							ÇöÀç ±¹°¡¿¡¼­ ÀÎÁõ¹ÞÀº Àü¹®»ó´ã¼¾ÅÍ¿¡¼­ <br>±Ù¹«ÇÏ´Â »ó´ã»çµéÀÇ Á¤º¸ ¹× ÀÌ·ÂÀ» È®ÀÎÇÏ°í <br>»ó´ã
-							¿¹¾àÀ» ÁøÇàÇØÁÖ¼¼¿ä.
+							í˜„ìž¬ êµ­ê°€ì—ì„œ ì¸ì¦ë°›ì€ ì „ë¬¸ìƒë‹´ì„¼í„°ì—ì„œ <br>ê·¼ë¬´í•˜ëŠ” ìƒë‹´ì‚¬ë“¤ì˜ ì •ë³´ ë° ì´ë ¥ì„ í™•ì¸í•˜ê³  <br>ìƒë‹´
+							ì˜ˆì•½ì„ ì§„í–‰í•´ì£¼ì„¸ìš”.
 						</p>
 					</div>
 				</div>
@@ -112,197 +115,154 @@
 					<a><img class="card-img-top" src="images/step3.png" alt="" /></a>
 					<div class="card-body">
 						<h4 class="card-title">
-							<a>»ó´ã ÁøÇà</a>
+							<a>ìƒë‹´ ì§„í–‰</a>
 						</h4>
 						<p class="card-text">
-							»ó´ã ¿¹¾à ÈÄ Á¦°ø¹ÞÀ¸½Å »ó´ã½Ã°£°ú ZOOM<br>¸µÅ©¸¦ ÅëÇØ ZOOMÇÁ·Î±×·¥¿¡ Á¢¼ÓÇÏ¿© »ó´ãÀ» ÁøÇàÇÏ½Ç ¼ö
-							ÀÖ½À´Ï´Ù. ZOOMÈ¸ÀÇ¿¡ µé¾î°¡±â Àü ÀÚ½Å¸¸ ¾Æ´Â ´Ð³×ÀÓÀ» ¼³Á¤ÇÏ¿© ÀÍ¸í¼ºÀ» <br>º¸Àå¹ÞÀ¸¼¼¿ä.
+							ìƒë‹´ ì˜ˆì•½ í›„ ì œê³µë°›ìœ¼ì‹  ìƒë‹´ì‹œê°„ê³¼ ZOOM<br>ë§í¬ë¥¼ í†µí•´ ZOOMí”„ë¡œê·¸ëž¨ì— ì ‘ì†í•˜ì—¬ ìƒë‹´ì„ ì§„í–‰í•˜ì‹¤ ìˆ˜
+							ìžˆìŠµë‹ˆë‹¤. ZOOMíšŒì˜ì— ë“¤ì–´ê°€ê¸° ì „ ìžì‹ ë§Œ ì•„ëŠ” ë‹‰ë„¤ìž„ì„ ì„¤ì •í•˜ì—¬ ìµëª…ì„±ì„ <br>ë³´ìž¥ë°›ìœ¼ì„¸ìš”.
 						</p>
 					</div>
 				</div>
 			</div>
 
+			<!-- ìƒë‹´ì‚¬  í”„ë¡œí•„ ì¶œë ¥  -->
+			
+	<!-- Ajaxë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ Ajax import ë¶€ë¶„  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 			<div class="row">
-				<div class="col-lg-4 col-sm-6 portfolio-item">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top" src="images/step1.png"
-							alt="" /></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="https://zoom.us/download">&rarr; ZOOM ´Ù¿î·Îµå ¸µÅ©</a>
-							</h4>
-							<p class="card-text">
-								ÄÄÇ»ÅÍ¸¦ »ç¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº <br>È¸ÀÇ¿ë ZOOM Å¬¶óÀÌ¾ðÆ®¸¦ ´Ù¿î·Îµå ÇÏ¼¼¿ä. <br>½º¸¶Æ®ÆùÀ»
-								ÀÌ¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº ZOOM ¸ð¹ÙÀÏ ¾ÛÀ» ´Ù¿î·Îµå ÇÏ¼¼¿ä.
-							</p>
-						</div>
-						<div class="card-footer">
-							<script>
+
+ <%
+       C_ProfileDAO dao = new C_ProfileDAO();
+       ArrayList<C_ProfileDTO> profileList = dao.showProfile();   %>
+                  
+<% 
+       for(int i = 0;i<profileList.size();i++) {
+                      		
+   	   out.print("<div class='col-lg-4 mb-4'>");
+   	   out.print("<div class='card h-80'>");
+   	   out.print("<div class='card-body'>");
+   	   out.print("<div class='display-4'>"+profileList.get(i).getPro_name()+"</div>");
+   	   out.print("<div class='font-italic'>"+profileList.get(i).getPro_email()+"</div>");
+   	   out.print("</div>");
+   	   out.print("<ul class='list-group list-group-flush'>");
+   	   out.print("<li class='list-group-item'>ê·¼ë¬´ì§€: "+profileList.get(i).getPro_location()+"</li>");
+   	   out.print("<li class='list-group-item'>í•™ë ¥/ì´ë ¥ : "+profileList.get(i).getBackground()+"</li>");
+   	   out.print("<li class='list-group-item'>ìƒë‹´ì†Œê°œ : "+profileList.get(i).getIntroduce()+"</li>");
+   	   out.print("<li class='list-group-item'>");
+   	   %>
+   	   <script type="text/javascript">
+   	   
+   	     var res_date = "<%=profileList.get(i).getPro_location()%>";
+   	     var consultant = "<%=profileList.get(i).getPro_name()%>";
+   	     
 				function next(){
- 					if(confirm("»ó´ãÀ» ¿¹¾àÇÏ½Ã°Ú½À´Ï±î?"))
+ 					if(confirm("ìƒë‹´ì„ ì˜ˆì•½í•˜ì‹œê² ìŠµë‹ˆê¹Œ?"))
  					{
-						 alert('È®ÀÎÀ» ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã ¿¹¾àÇöÈ² ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
+						 alert('í™•ì¸ì„ ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤. ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™© íŽ˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.');
  						 location.href="http://localhost:8085/Blooming/booking.jsp";
  					}else
  					{
- 					alert('Ãë¼Ò¸¦ ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã¿¹¾àÆäÀÌÁö·Î µ¹¾Æ°©´Ï´Ù.');
+ 					alert('ì·¨ì†Œë¥¼ ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤. ì§‘ë‹¨ìƒë‹´ì˜ˆì•½íŽ˜ì´ì§€ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.');
  					}
-					}</script>
+					}
+	  
+	  
+	   <!-- Ajaxí•¨ìˆ˜  -->
+       
+		function ajaxCall() { //ajax í•¨ìˆ˜ ë¶€ë¶„
+			$.ajax({
+				//ajax í†µì‹  ë°©ì‹ìœ¼ë¡œ ë°ì´í„°ë¥¼ ì „ì†¡
+				type : "post", //ì„œë²„ë¡œ ì–´ë–¤ ë°©ì‹ìœ¼ë¡œ í˜¸ì¶œí•  ê²ƒì¸ì§€. get or post
+				url : "ReserveRequest", //ì–´ë–¤ ì„œë²„íŽ˜ì´ì§€ë¡œ ì´ ê°’ì„ ë³´ë‚¼ ê²ƒì¸ì§€
+				data : {"res_date" : res_date , "consultant" : consultant}, //ë³´ë‚¼ ë°ì´í„° ì§€ì •
+				dataType : "text",
+				success : function() { //ì„œë²„ë¡œ ë¶€í„° ë°›ì€ ê°’
+				
+				},
+				error : function() {
 
-							<a onclick="next()" href="#" class="btn btn-primary">¿¹¾àÇÏ±â</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 mb-4">
+				}
+			});
+		}
+	  </script>
+	  
+	  
+	   <%
+   	   out.print("<a onclick='next(); ajaxCall();' href='#' class='btn btn-primary'>ì˜ˆì•½í•˜ê¸°</a> &nbsp;&nbsp; [0/10]");
+   	   out.print("</li>");
+   	   out.print("</ul>");
+   	   out.print("</div>");
+   	   out.print("</div>");
+            }%>
+        
+       
+        
+      
+         	             
+				<!-- <div class="col-lg-4 mb-4">
 					<div class="card h-80">
 						<div class="card-body">
-							<div class="display-4">½ÅÈ£Á¶</div>
+							<div class="display-4">ì‹ í˜¸ì¡°</div>
 							<div class="font-italic">sinozo1882@gmail.com</div>
 						</div>
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item">±Ù¹«Áö : ½º¸¶Æ®ÀÎÀç°³¹ß¿ø</li>
-							<li class="list-group-item">ÇÐ·Â/ÀÌ·Â : ½º¸¶Æ®ÀÎÀç°³¹ß¿ø ¿¬±¸¿ø</li>
-							<li class="list-group-item">»ó´ã¼Ò°³ : °¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏ°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏ°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏÅ¸ÆÄÇÏ°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏ°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏ°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏ</li>
+							<li class="list-group-item">ê·¼ë¬´ì§€ : ìŠ¤ë§ˆíŠ¸ì¸ìž¬ê°œë°œì›</li>
+							<li class="list-group-item">í•™ë ¥/ì´ë ¥ : ìŠ¤ë§ˆíŠ¸ì¸ìž¬ê°œë°œì› ì—°êµ¬ì›</li>
+							<li class="list-group-item">ìƒë‹´ì†Œê°œ : ê°€ë‚˜ë‹¤ë¼ë§ˆë°”ì‚¬ì•„ìžì°¨ì¹´íƒ€íŒŒí•˜ê°€ë‚˜ë‹¤ë¼ë§ˆë°”ì‚¬ì•„ìžì°¨ì¹´ê°€ë‚˜ë‹¤ë¼ë§ˆë°”ì‚¬ì•„ìžì°¨ì¹´íƒ€íŒŒí•˜ê°€ë‚˜ë‹¤ë¼ë§ˆë°”ì‚¬ì•„ìžì°¨ì¹´íƒ€íŒŒí•˜íƒ€íŒŒí•˜ê°€ë‚˜ë‹¤ë¼ë§ˆë°”ì‚¬ì•„ìžì°¨ì¹´íƒ€íŒŒí•˜ê°€ë‚˜ë‹¤ë¼ë§ˆë°”ì‚¬ì•„ìžì°¨ì¹´íƒ€íŒŒí•˜ê°€ë‚˜ë‹¤ë¼ë§ˆë°”ì‚¬ì•„ìžì°¨ì¹´íƒ€íŒŒí•˜</li>
 							<li class="list-group-item">
 							<script>
 				function next(){
- 					if(confirm("»ó´ãÀ» ¿¹¾àÇÏ½Ã°Ú½À´Ï±î?"))
+ 					if(confirm("ìƒë‹´ì„ ì˜ˆì•½í•˜ì‹œê² ìŠµë‹ˆê¹Œ?"))
  					{
-						 alert('È®ÀÎÀ» ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã ¿¹¾àÇöÈ² ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
+						 alert('í™•ì¸ì„ ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤. ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™© íŽ˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.');
  						 location.href="http://localhost:8085/Blooming/booking.jsp";
  					}else
  					{
- 					alert('Ãë¼Ò¸¦ ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã¿¹¾àÆäÀÌÁö·Î µ¹¾Æ°©´Ï´Ù.');
+ 					alert('ì·¨ì†Œë¥¼ ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤. ì§‘ë‹¨ìƒë‹´ì˜ˆì•½íŽ˜ì´ì§€ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.');
  					}
 					}</script>
 
-							<a onclick="next()" href="#" class="btn btn-primary">¿¹¾àÇÏ±â</a>
+							<a onclick="next()" href="#" class="btn btn-primary">ì˜ˆì•½í•˜ê¸°</a>
 						  </li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="col-lg-4 mb-4">
-					<div class="card h-80">
-						<div class="card-body">
-							<div class="display-4">½ÅÈ£Á¶</div>
-							<div class="font-italic">sinozo1882@gmail.com</div>
-						</div>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item">±Ù¹«Áö : ½º¸¶Æ®ÀÎÀç°³¹ß¿ø</li>
-							<li class="list-group-item">ÇÐ·Â/ÀÌ·Â : ½º¸¶Æ®ÀÎÀç°³¹ß¿ø ¿¬±¸¿ø</li>
-							<li class="list-group-item">»ó´ã¼Ò°³ : °¡³ª´Ù¶ó¸¶¾ÆÇÏ°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏÅ¸ÆÄÇÏ°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏ°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏ°¡³ª´Ù¶ó¸¶¹Ù»ç¾ÆÀÚÂ÷Ä«Å¸ÆÄÇÏ</li>
-							<li class="list-group-item">
-							<script>
-				function next(){
- 					if(confirm("»ó´ãÀ» ¿¹¾àÇÏ½Ã°Ú½À´Ï±î?"))
- 					{
-						 alert('È®ÀÎÀ» ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã ¿¹¾àÇöÈ² ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
- 						 location.href="http://localhost:8085/Blooming/booking.jsp";
- 					}else
- 					{
- 					alert('Ãë¼Ò¸¦ ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã¿¹¾àÆäÀÌÁö·Î µ¹¾Æ°©´Ï´Ù.');
- 					}
-					}</script>
-
-							<a onclick="next()" href="#" class="btn btn-primary">¿¹¾àÇÏ±â</a>
-						  </li>
-						</ul>
-					</div>
-				</div>
-
+				
 				<div class="col-lg-4 col-sm-6 portfolio-item">
 					<div class="card h-100">
 						<a href="#"><img class="card-img-top" src="images/step1.png"
 							alt="" /></a>
 						<div class="card-body">
 							<h4 class="card-title">
-								<a href="https://zoom.us/download">&rarr; ZOOM ´Ù¿î·Îµå ¸µÅ©</a>
+								<a href="https://zoom.us/download">&rarr; ZOOM ë‹¤ìš´ë¡œë“œ ë§í¬</a>
 							</h4>
 							<p class="card-text">
-								ÄÄÇ»ÅÍ¸¦ »ç¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº <br>È¸ÀÇ¿ë ZOOM Å¬¶óÀÌ¾ðÆ®¸¦ ´Ù¿î·Îµå ÇÏ¼¼¿ä. <br>½º¸¶Æ®ÆùÀ»
-								ÀÌ¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº ZOOM ¸ð¹ÙÀÏ ¾ÛÀ» ´Ù¿î·Îµå ÇÏ¼¼¿ä.
-							</p>
-						</div>
-						
-						<div class="card-footer">
-							<script>
-				function next(){
- 					if(confirm("»ó´ãÀ» ¿¹¾àÇÏ½Ã°Ú½À´Ï±î?"))
- 					{
-						 alert('È®ÀÎÀ» ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã ¿¹¾àÇöÈ² ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
- 						 location.href="http://localhost:8085/Blooming/booking.jsp";
- 					}else
- 					{
- 					alert('Ãë¼Ò¸¦ ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã¿¹¾àÆäÀÌÁö·Î µ¹¾Æ°©´Ï´Ù.');
- 					}
-					}</script>
-
-							<a onclick="next()" href="#" class="btn btn-primary">¿¹¾àÇÏ±â</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 portfolio-item">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top" src="images/step1.png"
-							alt="" /></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="https://zoom.us/download">&rarr; ZOOM ´Ù¿î·Îµå ¸µÅ©</a>
-							</h4>
-							<p class="card-text">
-								ÄÄÇ»ÅÍ¸¦ »ç¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº <br>È¸ÀÇ¿ë ZOOM Å¬¶óÀÌ¾ðÆ®¸¦ ´Ù¿î·Îµå ÇÏ¼¼¿ä. <br>½º¸¶Æ®ÆùÀ»
-								ÀÌ¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº ZOOM ¸ð¹ÙÀÏ ¾ÛÀ» ´Ù¿î·Îµå ÇÏ¼¼¿ä.
+								ì»´í“¨í„°ë¥¼ ì‚¬ìš©í•˜ì—¬ ìƒë‹´ì— ì°¸ê°€í•˜ì‹œëŠ” ë¶„ì€ <br>íšŒì˜ìš© ZOOM í´ë¼ì´ì–¸íŠ¸ë¥¼ ë‹¤ìš´ë¡œë“œ í•˜ì„¸ìš”. <br>ìŠ¤ë§ˆíŠ¸í°ì„
+								ì´ìš©í•˜ì—¬ ìƒë‹´ì— ì°¸ê°€í•˜ì‹œëŠ” ë¶„ì€ ZOOM ëª¨ë°”ì¼ ì•±ì„ ë‹¤ìš´ë¡œë“œ í•˜ì„¸ìš”.
 							</p>
 						</div>
 						<div class="card-footer">
 							<script>
 				function next(){
- 					if(confirm("»ó´ãÀ» ¿¹¾àÇÏ½Ã°Ú½À´Ï±î?"))
+ 					if(confirm("ìƒë‹´ì„ ì˜ˆì•½í•˜ì‹œê² ìŠµë‹ˆê¹Œ?"))
  					{
-						 alert('È®ÀÎÀ» ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã ¿¹¾àÇöÈ² ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
+ 						 alert('í™•ì¸ì„ ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤. ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™© íŽ˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.');
  						 location.href="http://localhost:8085/Blooming/booking.jsp";
  					}else
  					{
- 					alert('Ãë¼Ò¸¦ ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã¿¹¾àÆäÀÌÁö·Î µ¹¾Æ°©´Ï´Ù.');
+ 					alert('ì·¨ì†Œë¥¼ ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤. ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½ íŽ˜ì´ì§€ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.');
  					}
 					}</script>
 
-							<a onclick="next()" href="#" class="btn btn-primary">¿¹¾àÇÏ±â</a>
+							<a onclick="next()" href="#" class="btn btn-primary">ì˜ˆì•½í•˜ê¸°</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-sm-6 portfolio-item">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top" src="images/step1.png"
-							alt="" /></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="https://zoom.us/download">&rarr; ZOOM ´Ù¿î·Îµå ¸µÅ©</a>
-							</h4>
-							<p class="card-text">
-								ÄÄÇ»ÅÍ¸¦ »ç¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº <br>È¸ÀÇ¿ë ZOOM Å¬¶óÀÌ¾ðÆ®¸¦ ´Ù¿î·Îµå ÇÏ¼¼¿ä. <br>½º¸¶Æ®ÆùÀ»
-								ÀÌ¿ëÇÏ¿© »ó´ã¿¡ Âü°¡ÇÏ½Ã´Â ºÐÀº ZOOM ¸ð¹ÙÀÏ ¾ÛÀ» ´Ù¿î·Îµå ÇÏ¼¼¿ä.
-							</p>
-						</div>
-						<div class="card-footer">
-							<script>
-				function next(){
- 					if(confirm("»ó´ãÀ» ¿¹¾àÇÏ½Ã°Ú½À´Ï±î?"))
- 					{
- 						 alert('È®ÀÎÀ» ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã ¿¹¾àÇöÈ² ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
- 						 location.href="http://localhost:8085/Blooming/booking.jsp";
- 					}else
- 					{
- 					alert('Ãë¼Ò¸¦ ´©¸£¼Ì½À´Ï´Ù. Áý´Ü»ó´ã ¿¹¾à ÆäÀÌÁö·Î µ¹¾Æ°©´Ï´Ù.');
- 					}
-					}</script>
-
-							<a onclick="next()" href="#" class="btn btn-primary">¿¹¾àÇÏ±â</a>
-						</div>
-					</div>
-				</div>
+				
+				
+				
 				<div class="pagination_bar">
 				</div>
 			</div>
@@ -310,10 +270,10 @@
 		
 		<div class="row mb-4">
 			<div class="col-md-8">
-				<p>Áý´Ü»ó´ã ¼­ºñ½º¸¦ ÁøÇàÇÏ½Ã·Á¸é ÇÁ·ÎÇÊÀ» µî·ÏÇØÁÖ¼¼¿ä.</p>
+				<p>ì§‘ë‹¨ìƒë‹´ ì„œë¹„ìŠ¤ë¥¼ ì§„í–‰í•˜ì‹œë ¤ë©´ í”„ë¡œí•„ì„ ë“±ë¡í•´ì£¼ì„¸ìš”.</p>
 			</div>
 			<div class="col-md-4">
-				<a class="btn btn-lg btn-secondary btn-block" href="profile.jsp">ÇÁ·ÎÇÊ µî·ÏÇÏ±â</a>
+				<a class="btn btn-lg btn-secondary btn-block" href="profile.jsp">í”„ë¡œí•„ ë“±ë¡í•˜ê¸°</a>
 			</div>
 		</div>
 	</div>

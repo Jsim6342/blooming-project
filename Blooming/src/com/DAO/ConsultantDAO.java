@@ -17,7 +17,7 @@ public class ConsultantDAO {
 	
 	Connect dao = new Connect();
 	
-	
+	//상담사 가입
 	public int consultant_join(String con_email, String con_pw, String con_name, String con_tel, String license, String location) {
 		int cnt = 0;
 		
@@ -81,4 +81,36 @@ public class ConsultantDAO {
 		return consultant;
 	}
 	
+	//상담사 name, location값 반환 기능(상담사 프로필 등록에 사용)
+	public ConsultantDTO return_name_location(String con_email) {
+		
+		ConsultantDTO consultant = new ConsultantDTO();
+		
+		
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from consultant where con_email = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			pst.setString(1, con_email);
+			
+			rs = pst.executeQuery();
+			
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+				consultant = new ConsultantDTO(rs.getNString(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getNString(5),rs.getNString(6));
+	         }else {
+	        	consultant = null;
+	         }
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		return consultant;
+	}
 }

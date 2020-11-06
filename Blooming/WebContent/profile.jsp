@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Blooming - ╩С╢Ц╩Г га╥нгй ╣Н╥о</title>
+<title>Blooming - Л┐│К▀╢Л┌╛ М■└К║°М∙└ К⌠╠К║²</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap core CSS -->
@@ -47,23 +47,22 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-0 p-b-10">
-				<form class="login100-form validate-form" action="ConsultantSignup"
-					method="post">
-					<span class="login100-form-title p-b-70"> ╩С╢Ц╩Г га╥нгй ╣Н╥о </span> <a
+				<form class="login100-form validate-form" action="ProfileSignup" method="post">
+					<span class="login100-form-title p-b-70"> Л┐│К▀╢Л┌╛ М■└К║°М∙└ К⌠╠К║² </span> <a
 						class="login100-form-avatar" href="index.jsp"> <img src="images/marigold.png" alt="AVATAR">
 					</a>
 
 					<!-- <div class="wrap-input100 validate-input m-t-65 m-b-35"
 						data-validate="Enter email">
 						<input class="input100" type="text" name=""
-							placeholder="гп╥б">
+							placeholder="М∙≥К═╔">
 					</div> -->
 					
 					<div class="control-group form-group">
 							<div class="controls">
-								<label>гп╥б/юл╥б</label>
+								<label>М∙≥К═╔/Л²╢К═╔</label>
 								<textarea rows="5" cols="30" class="form-control"
-									name="rev_contents" id="content" required
+									name="background" id="content" required
 									data-validation-required-message="Please enter your message"
 									maxlength="100" style="resize: none"></textarea>
 							</div>
@@ -71,16 +70,15 @@
 					
 					<div class="control-group form-group">
 							<div class="controls">
-								<label>Ё╩©К</label>
+								<label>Л┐│К▀╢Л├▄Й╟°</label>
 								<textarea rows="10" cols="30" class="form-control"
-									name="rev_contents" id="content" required
+									name="introduce" id="content" required
 									data-validation-required-message="Please enter your message"
 									maxlength="100" style="resize: none"></textarea>
 							</div>
 						</div>
 					<div class="container-login100-form-btn">
-						<input type="submit" method="get" value="га╥нгй ╣Н╥о"
-							class="login100-form-btn" >
+						<input type="submit" value="М■└К║°М∙└ К⌠╠К║²" class="login100-form-btn" >
 					</div>
 				</form>
 			</div>
