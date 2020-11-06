@@ -70,7 +70,7 @@
 		<div class="page-hearder col-md-offset-3" style="padding-bottom: 20px">
 		</div>
 		<div class="col-sm-offset-9"></div>
-		<div class="col-md-10 col-md-offset-5">
+		<div class="col-md-10 col-md-offset-3">
 			<table class="table table-striped ">
 				<tr class="text-center">
 					<th>¹øÈ£</th>
