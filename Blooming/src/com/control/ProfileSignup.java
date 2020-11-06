@@ -28,23 +28,26 @@ public class ProfileSignup extends HttpServlet {
 	     String con_email = (String)session.getAttribute("email");
 		 
 		 //프로필 작성 페이지 가져오기
+	     String pro_date = request.getParameter("pro_date");
 		 String background = request.getParameter("background");
 		 String introduce = request.getParameter("introduce");
+		 int max_people = Integer.parseInt(request.getParameter("max_people"));
 	   	 
 		 System.out.println(con_email);
+		 System.out.println(pro_date);
 		 System.out.println(background);
 		 System.out.println(introduce);
+		 System.out.println(max_people);
 		   
-		 //email 값으로 name, location 값 가져오기
+		 //email 값으로 name 값 가져오기
 		 ConsultantDTO consultant = new ConsultantDTO();
 		 ConsultantDAO con_dao = new ConsultantDAO();
 		 consultant = con_dao.return_name_location(con_email);
 		 String pro_name = consultant.getCon_name();
-		 String pro_location = consultant.getLocation();
 		 
 		   //C_ProfileDAO 객체생성
 		   C_ProfileDAO pro_dao = new C_ProfileDAO();
-		   int cnt = pro_dao.profile_join(con_email, pro_name, pro_location, background, introduce); //review_post 메소드. 성공 시 1 반환
+		   int cnt = pro_dao.profile_join(con_email, pro_name, pro_date, background, introduce, max_people); //review_post 메소드. 성공 시 1 반환
 		   
 		   //프로필 등록 성공 시 counsel.jsp로 이동
 		   if(cnt > 0) {
