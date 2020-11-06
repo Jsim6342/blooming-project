@@ -132,7 +132,6 @@
 					    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 					    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 					    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-					    kakao.maps.event.addListner(maker,'click,')
 					}
 					
 					// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
@@ -149,33 +148,11 @@
 					    };
 					}
 					
-					// 마커에 클릭이벤트를 등록합니다
-					function clickLisnter(maker) {
-						return functioin(){
-							<div class="col-lg-4 mb-4 contact-right">
-							<h3>센터 정보</h3>
-							<p>
-								광주 동구 남문로 734 103동 206호 <br>
-							</p>
-							<p>
-								<abbr title="Phone">P</abbr>: 062-512-0039
-							</p>
-							<p>
-								<abbr title="Email">E</abbr>: <a href="mailto:name@example.com">pimang95@naver.com
-								</a>
-							</p>
-							<p>
-								<abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
-							</p>
-						</div>
-						};					    
-					      
-					}
 					
 					</script>
 			</div>
 			<!-- Contact Details Column -->
-			<!-- <div class="col-lg-4 mb-4 contact-right">
+			<div class="col-lg-4 mb-4 contact-right">
 				<h3>센터 정보</h3>
 				<p>
 					광주 동구 남문로 734 103동 206호 <br>
@@ -190,7 +167,7 @@
 				<p>
 					<abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
 				</p>
-			</div> -->
+			</div>
 		</div>
 		<!-- /.row -->
 
