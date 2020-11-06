@@ -18,7 +18,7 @@
 
 </head>
 <body>
-	<% //스크립틀릿
+<% //스크립틀릿
  
  	//session값 email 가져오기
 	String email = (String)session.getAttribute("email");

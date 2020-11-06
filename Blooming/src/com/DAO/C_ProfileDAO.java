@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.DTO.C_ProfileDTO;
+import com.DTO.ReservationDTO;
 import com.DTO.ReviewDTO;
 
 public class C_ProfileDAO {
@@ -122,5 +123,55 @@ public class C_ProfileDAO {
 		}
 		return update;
 	}
+	
+	// 예약한 상담사 프로필 출력
+	public ArrayList<C_ProfileDTO> res_ShowProfile(ArrayList<ReservationDTO> reservationList) {
+		
+		C_ProfileDTO profile = null;
+		ArrayList<C_ProfileDTO> profileList = new ArrayList<>();
+		
+		    try {
+			
+		    for(int i = 0;i<reservationList.size();i++) {
+		    String consultant = reservationList.get(i).getConsultant();
+		    	
+			dao.getConn();
+			
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "select * from c_profile where pro_name = ?";
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, consultant);
+	         // --------------------- DB에 SQL문 명령준비
+	         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+	         // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	         if(rs.next()) {
+	        	 
+	        	//전체 후기 데이터를 출력
+	        	 String pro_email = rs.getString(1);
+	        	 String pro_name = rs.getString(2);
+	        	 String pro_date = rs.getString(3);
+	        	 String background = rs.getString(4);
+	        	 String introduce = rs.getString(5);
+	        	 int max_people = rs.getInt(6);
+
+ 	        	 //ReviewDTO 객체를 1개씩 DB에서 받은 후, ArrayList인 reviewList에 저장
+	        	 profile = new C_ProfileDTO(pro_email, pro_name, pro_date, background, introduce, max_people);
+	        	 profileList.add(profile);
+	         
+	         }
+		    }
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return profileList;
+		
+	}
+	
 	
 }

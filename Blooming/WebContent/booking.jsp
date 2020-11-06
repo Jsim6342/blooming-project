@@ -1,3 +1,8 @@
+<%@page import="com.DTO.ReservationDTO"%>
+<%@page import="com.DAO.ReservationDAO"%>
+<%@page import="com.DTO.C_ProfileDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.DAO.C_ProfileDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 
@@ -28,6 +33,17 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<% //스크립틀릿
+ 
+ 	//session값 email 가져오기
+	String email = (String)session.getAttribute("email");
+	System.out.println("현재 접속한 사람의 이메일: " + email);
+	
+	//session값 nickname 가져오기
+	String nickname = (String)session.getAttribute("nickname");
+	System.out.println("현재 접속한 사람의 닉네임: " + nickname);
+	
+ %>
 	<!-- Navigation -->
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
@@ -70,23 +86,61 @@
 		<div class="page-hearder col-md-offset-3" style="padding-bottom: 20px">
 		</div>
 		<div class="col-sm-offset-9"></div>
-		<div class="col-md-10 col-md-offset-3">
-			<table class="table table-striped ">
+		<div class="col-md-10 col-md-offset-2">
+		
+		<table class="table table-striped ">
 				<tr class="text-center">
-					<th>번호</th>
-					<th>ZOOM 링크</th>
 					<th>상담사</th>
-					<th>상담일</th>
-					<th>예약현황</th>
+					<th>상담사 이메일</th>
+					<th>상담일자</th>
+					<th>남은인원</th>
+					
 					<th><br></th>
 				</tr>
-				<tr>
-					<td class="col-sm-1">1</td>
-					<td><a href="#">zoom링크</a></td>
+		
+		<!--예약현황 테이블 출력  -->
+		<%
+		C_ProfileDAO pro_dao = new C_ProfileDAO();
+		ReservationDAO res_dao = new ReservationDAO();
+		ReservationDTO reservation = new ReservationDTO();
+		ArrayList<ReservationDTO> reservationList = res_dao.return_consultant(nickname);
+		ArrayList<C_ProfileDTO> profileList = pro_dao.res_ShowProfile(reservationList);
+		
+	    
+		%>
+		
+		<% 
+		for(int i = 0;i<profileList.size();i++) {
+			
+			 out.print("<tr>");
+	         out.println("<td>"+profileList.get(i).getPro_name()+"</td>");
+	         out.println("<td>"+profileList.get(i).getPro_email()+"</td>");
+	         out.println("<td>"+profileList.get(i).getPro_date()+"</td>"); 
+	         out.println("<td>"+profileList.get(i).getMax_people()+"</td>"); 
+	         out.print("<td>");
+	         
+	         %>
+	         <script>
+						function next() {
+							if (confirm("상담을 취소하시겠습니까?")) {
+								alert('상담을 취소하셨습니다. 집단상담 예약 페이지로 이동합니다.');
+								location.href = "ReserveDelete?date="<%=profileList.get(i).getPro_date()%>;
+							} else {
+							}
+						}
+			</script> 
+	         <%
+	         out.print("<a onclick='next()' href='#' class='btn btn-primary'>상담취소</a>");
+	         out.print("</td>");
+	         out.print("<tr>");
+	         
+				/* <tr>
 					<td>정상훈</td>
-					<td>2020.11.26</td>
-					<td class="col-sm-1">5/5</td>
-					<td><script>
+					<td>email@naver.com</td>
+					<td>매주 수요일 7시</td>
+					<td>20</td>
+					<td>
+					<script>
 						function next() {
 							if (confirm("상담을 취소하시겠습니까?")) {
 								alert('상담을 취소하셨습니다. 집단상담 예약 페이지로 이동합니다.');
@@ -95,7 +149,8 @@
 							}
 						}
 					</script> <a onclick="next()" href="#" class="btn btn-primary">상담취소</a></td>
-				</tr>
+				</tr> */
+				} %>
 			</table>
 		</div>
 	</div>

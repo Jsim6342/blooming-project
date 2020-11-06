@@ -138,7 +138,8 @@
                   
 <% 
        for(int i = 0;i<profileList.size();i++) {
-                      		
+       
+    	  
    	   out.print("<div class='col-lg-4 col-sm-6 portfolio-item'>");
    	   out.print("<div class='card h-100'>");
    	   out.print("<div class='card-body'>");
@@ -153,15 +154,13 @@
    	   out.print("<a onclick='next()' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
    	   %>
    	   <script type="text/javascript">
-   	   
-   	     var res_date = "<%=profileList.get(i).getPro_date()%>";
-   	     var consultant = "<%=profileList.get(i).getPro_name()%>";
-   	     var max_people = "<%=profileList.get(i).getMax_people()%>";
-   	     var pro_email = "<%=profileList.get(i).getPro_email()%>";
-   	     
 	    //Ajax함수 
        
 		function ajaxCall() { //ajax 함수 부분
+			 var res_date = "<%=profileList.get(i).getPro_date()%>";
+		   	 var consultant = "<%=profileList.get(i).getPro_name()%>";
+		   	 var max_people = "<%=profileList.get(i).getMax_people()%>";
+		   	 var pro_email = "<%=profileList.get(i).getPro_email()%>";
 			$.ajax({
 				//ajax 통신 방식으로 데이터를 전송
 				type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
@@ -186,11 +185,12 @@
 		function next(){
 				if(confirm("상담을 예약하시겠습니까?"))
 				{
+				 
 			     ajaxCall();
-				 alert('확인을 누르셨습니다. 집단상담 예약현황 페이지로 이동합니다.');
+				 alert('예약이 완료되었습니다.');
 				}else
 				{
-				alert('취소를 누르셨습니다. 집단상담예약페이지로 돌아갑니다.');
+				alert('취소되었습니다.');
 				}
 			}
 		
