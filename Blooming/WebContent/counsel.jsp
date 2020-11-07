@@ -130,8 +130,6 @@
 	<!-- Ajax를 사용하기 위한 Ajax import 부분  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-			<div class="row">
-
  <%
        C_ProfileDAO dao = new C_ProfileDAO();
        ArrayList<C_ProfileDTO> profileList = dao.showProfile();   %>
@@ -143,14 +141,14 @@
    	   out.print("<div class='col-lg-4 col-sm-6 portfolio-item'>");
    	   out.print("<div class='card h-100'>");
    	   out.print("<div class='card-body'>");
-   	   out.print("<div class='display-4'>"+profileList.get(i).getPro_name()+"</div>");
+   	   out.print("<h2 class='card-title'><a>"+profileList.get(i).getPro_name()+"</a></h2>");
    	   out.print("<div class='font-italic'>"+profileList.get(i).getPro_email()+"</div>");
    	   out.print("</div>");
    	   out.print("<ul class='list-group list-group-flush'>");
    	   out.print("<li class='list-group-item'>상담일자: "+profileList.get(i).getPro_date()+"</li>");
    	   out.print("<li class='list-group-item'>학력/이력 : "+profileList.get(i).getBackground()+"</li>");
    	   out.print("<li class='list-group-item'>상담소개 : "+profileList.get(i).getIntroduce()+"</li>");
-   	   out.print("<li class='card-footer'>");
+   	   out.print("<ul class='card-footer'>");
    	   out.print("<a onclick='next()' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
    	   %>
    	   <script type="text/javascript">
@@ -197,7 +195,10 @@
 	  
 	  
 	   <%
-   	   out.print("</li>");
+
+	  
+   	   out.print("</ul>");
+
    	   out.print("</ul>");
    	   out.print("</div>");
    	   out.print("</div>");
@@ -205,7 +206,7 @@
         
        
 				
-				<div class="col-lg-4 col-sm-6 portfolio-item">
+				<!-- <div class="col-lg-4 col-sm-6 portfolio-item">
 					<div class="card h-100">
 						<a href="#"><img class="card-img-top" src="images/step1.png"
 							alt="" /></a>
@@ -224,15 +225,12 @@
 							<a onclick="next()" href="#" class="btn btn-primary">예약하기</a>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				
 				
 				
-				<div class="pagination_bar">
-				</div>
-			</div>
+				
 		</div>
-		
 		<div class="row mb-4">
 			<div class="col-md-8">
 				<p>집단상담 서비스를 진행하시려면 프로필을 등록해주세요.</p>
@@ -242,6 +240,7 @@
 			</div>
 		</div>
 	</div>
+		</div>
 	<!-- /.container -->
 
 	<!--footer starts from here-->
