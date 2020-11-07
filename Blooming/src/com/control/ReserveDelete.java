@@ -26,7 +26,9 @@ public class ReserveDelete extends HttpServlet {
 	     String nickname = (String)session.getAttribute("nickname");
 		 
 		 //삭제 선택한 예약 날짜 가져오기
-	     String res_date = request.getParameter("date");
+	     
+	     String date = request.getParameter("res_date");
+	     String res_date = java.net.URLDecoder.decode(date,"UTF-8");
 		 
 	   	 
 		 System.out.println(nickname);

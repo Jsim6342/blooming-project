@@ -185,7 +185,6 @@
 		function next(){
 				if(confirm("상담을 예약하시겠습니까?"))
 				{
-				 
 			     ajaxCall();
 				 alert('예약이 완료되었습니다.');
 				}else
@@ -198,7 +197,6 @@
 	  
 	  
 	   <%
-	  
    	   out.print("</li>");
    	   out.print("</ul>");
    	   out.print("</div>");

@@ -132,10 +132,11 @@ public class C_ProfileDAO {
 		
 		    try {
 			
-		    for(int i = 0;i<reservationList.size();i++) {
-		    String consultant = reservationList.get(i).getConsultant();
 		    	
 			dao.getConn();
+			
+			for(int i = 0;i<reservationList.size();i++) {
+			String consultant = reservationList.get(i).getConsultant();
 			
 	         // --------------------- DB 연결(고정된 문법)
 	         

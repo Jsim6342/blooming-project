@@ -98,7 +98,7 @@ public class ReservationDAO {
 		         dao.getConn();
 		         // --------------------- DB 연결(고정된 문법)
 		         
-		         String sql = "delete from reservation where nickname = ?, res_date = ?"; //sysdate는 SQL문이 가지고 있는 함수
+		         String sql = "delete from reservation where nickname=? and res_date=?";
 		         pst = Connect.conn.prepareStatement(sql);
 		         
 		         pst.setString(1, nickname);

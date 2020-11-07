@@ -3,10 +3,11 @@
 <%@page import="com.DTO.C_ProfileDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DAO.C_ProfileDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@page import="java.net.URLEncoder"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<!-- »ó´Ü¹Ù, ÇÏ´Ü¹Ù¸¸ ÀÖ´Â ÆäÀÌÁö -->
+<!-- ìƒë‹¨ë°”, í•˜ë‹¨ë°”ë§Œ ìˆëŠ” í˜ì´ì§€ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - Áı´Ü»ó´ã ¿¹¾àÇöÈ²</title>
+<title>Blooming - ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™©</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
@@ -33,15 +34,15 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<% //½ºÅ©¸³Æ²¸´
+<% //ìŠ¤í¬ë¦½í‹€ë¦¿
  
- 	//session°ª email °¡Á®¿À±â
+ 	//sessionê°’ email ê°€ì ¸ì˜¤ê¸°
 	String email = (String)session.getAttribute("email");
-	System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ÀÌ¸ŞÀÏ: " + email);
+	System.out.println("í˜„ì¬ ì ‘ì†í•œ ì‚¬ëŒì˜ ì´ë©”ì¼: " + email);
 	
-	//session°ª nickname °¡Á®¿À±â
+	//sessionê°’ nickname ê°€ì ¸ì˜¤ê¸°
 	String nickname = (String)session.getAttribute("nickname");
-	System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ´Ğ³×ÀÓ: " + nickname);
+	System.out.println("í˜„ì¬ ì ‘ì†í•œ ì‚¬ëŒì˜ ë‹‰ë„¤ì„: " + nickname);
 	
  %>
 	<!-- Navigation -->
@@ -67,7 +68,7 @@
 		<div class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h1 class="mt-4 mb-3">
-				¿¹¾à È®ÀÎÇÏ±â <small>booking</small>
+				ì˜ˆì•½ í™•ì¸í•˜ê¸° <small>booking</small>
 			</h1>
 		</div>
 	</div>
@@ -77,7 +78,7 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-				<li class="breadcrumb-item active">Áı´Ü»ó´ã ¿¹¾àÇöÈ²</li>
+				<li class="breadcrumb-item active">ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™©</li>
 			</ol>
 		</div>
 	</div>
@@ -87,70 +88,43 @@
 		</div>
 		<div class="col-sm-offset-9"></div>
 		<div class="col-md-10 col-md-offset-2">
-		
+
+    
 		<table class="table table-striped ">
+		
 				<tr class="text-center">
-					<th>»ó´ã»ç</th>
-					<th>»ó´ã»ç ÀÌ¸ŞÀÏ</th>
-					<th>»ó´ãÀÏÀÚ</th>
-					<th>³²ÀºÀÎ¿ø</th>
-					
+					<th>ìƒë‹´ì‚¬</th>
+					<th>ìƒë‹´ì‚¬ ì´ë©”ì¼</th>
+					<th>ìƒë‹´ì¼ì</th>
+					<th>ë‚¨ì€ì¸ì›</th>	
 					<th><br></th>
 				</tr>
-		
-		<!--¿¹¾àÇöÈ² Å×ÀÌºí Ãâ·Â  -->
+				
+		<!--ì˜ˆì•½í˜„í™© í…Œì´ë¸” ì¶œë ¥  -->
 		<%
 		C_ProfileDAO pro_dao = new C_ProfileDAO();
 		ReservationDAO res_dao = new ReservationDAO();
 		ReservationDTO reservation = new ReservationDTO();
+		
 		ArrayList<ReservationDTO> reservationList = res_dao.return_consultant(nickname);
 		ArrayList<C_ProfileDTO> profileList = pro_dao.res_ShowProfile(reservationList);
 		
-	    
-		%>
-		
-		<% 
-		for(int i = 0;i<profileList.size();i++) {
-			
+		for(int i = 0;i<profileList.size();i++) { %>
+			 <script type="text/javascript" charset="UTF-8">
+			 var date = "<%=profileList.get(i).getPro_date()%>";
+			 </script>
+			 <%
 			 out.print("<tr>");
 	         out.println("<td>"+profileList.get(i).getPro_name()+"</td>");
 	         out.println("<td>"+profileList.get(i).getPro_email()+"</td>");
-	         out.println("<td>"+profileList.get(i).getPro_date()+"</td>"); 
-	         out.println("<td>"+profileList.get(i).getMax_people()+"</td>"); 
+	         out.println("<td>"+profileList.get(i).getPro_date()+"</td>");
+	         out.println("<td>"+profileList.get(i).getMax_people()+"</td>");
 	         out.print("<td>");
-	         
-	         %>
-	         <script>
-						function next() {
-							if (confirm("»ó´ãÀ» Ãë¼ÒÇÏ½Ã°Ú½À´Ï±î?")) {
-								alert('»ó´ãÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù. Áı´Ü»ó´ã ¿¹¾à ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
-								location.href = "ReserveDelete?date="<%=profileList.get(i).getPro_date()%>;
-							} else {
-							}
-						}
-			</script> 
-	         <%
-	         out.print("<a onclick='next()' href='#' class='btn btn-primary'>»ó´ãÃë¼Ò</a>");
+	         out.print("<a onclick='next(date)' href='#' class='btn btn-primary'>ìƒë‹´ì·¨ì†Œ</a>");
 	         out.print("</td>");
-	         out.print("<tr>");
-	         
-				/* <tr>
-					<td>Á¤»óÈÆ</td>
-					<td>email@naver.com</td>
-					<td>¸ÅÁÖ ¼ö¿äÀÏ 7½Ã</td>
-					<td>20</td>
-					<td>
-					<script>
-						function next() {
-							if (confirm("»ó´ãÀ» Ãë¼ÒÇÏ½Ã°Ú½À´Ï±î?")) {
-								alert('»ó´ãÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù. Áı´Ü»ó´ã ¿¹¾à ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
-								location.href = "http://localhost:8085/Blooming/counsel.jsp";
-							} else {
-							}
-						}
-					</script> <a onclick="next()" href="#" class="btn btn-primary">»ó´ãÃë¼Ò</a></td>
-				</tr> */
+	         out.print("</tr>");
 				} %>
+				
 			</table>
 		</div>
 	</div>
@@ -170,10 +144,22 @@
 						By : SINOZO, 9uack <a href="https://html.design/">html design</a>
 					</p>
 				</div>
+				</div>
+				</div>
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+<script type="text/javascript" charset="UTF-8">
+		function next(date) {
+		if (confirm("ìƒë‹´ì„ ì·¨ì†Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
+			alert("ìƒë‹´ì´ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+			location.href = "ReserveDelete?res_date="+encodeURIComponent(encodeURIComponent(date),"UTF-8");
+			}else{
+			alert("ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+		    }
+			}
+</script> 
 </html>
