@@ -84,7 +84,7 @@
 	<!-- 게시글  출력 부분 -->
 	 <%
          ReviewDAO dao = new ReviewDAO();
-         ArrayList<ReviewDTO> reviewList = dao.showReview();   %>
+         ArrayList<ReviewDTO> reviewList = dao.showReviewList();   %>
            
       <div class="row">
       
@@ -95,7 +95,7 @@
     	  out.println("<a href='commentspost.jsp'><img class='card-img-top' src='images/portfolio-big-01.jpg' alt='' /></a>");
     	  out.println("<div class='card-body'>");
     	  out.println("<h4 class='card-title'>");
-    	  out.println("<a href=commentspost.jsp?title="+reviewList.get(i).getRev_title()+">"+reviewList.get(i).getRev_title()+"</a>");
+    	  out.println("<a href=commentspost.jsp?rev_num="+reviewList.get(i).getRev_num()+">"+reviewList.get(i).getRev_title()+"</a>");
     	  out.println("</h4>");
     	  out.println("<p class='card-text'>"+reviewList.get(i).getRev_contents()+"</p>");
     	  out.println("</div>");

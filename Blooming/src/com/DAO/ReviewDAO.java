@@ -48,7 +48,7 @@ public class ReviewDAO {
 	
 	
 	//후기 게시판 출력
-		public ArrayList<ReviewDTO> showReview() {
+		public ArrayList<ReviewDTO> showReviewList() {
 			
 			ReviewDTO review = null;
 			ArrayList<ReviewDTO> reviewList = new ArrayList<>();
@@ -59,7 +59,7 @@ public class ReviewDAO {
 				
 		         // --------------------- DB 연결(고정된 문법)
 		         
-		         String sql = "select * from review";
+		         String sql = "select * from review order by rev_num desc";
 		         pst = Connect.conn.prepareStatement(sql);
 		         // --------------------- DB에 SQL문 명령준비
 		         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
@@ -88,4 +88,46 @@ public class ReviewDAO {
 			return reviewList;
 		}
 	
+		//후기 출력
+		public ReviewDTO showReview(int rev_num) {
+			
+			ReviewDTO review = null;
+			
+			try {
+				
+				dao.getConn();
+				
+		         // --------------------- DB 연결(고정된 문법)
+		         
+		         String sql = "select * from review where rev_num = ?";
+		         pst = Connect.conn.prepareStatement(sql);
+		         
+		         pst.setInt(1, rev_num);
+		         
+		         // --------------------- DB에 SQL문 명령준비
+		         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+		         // --------------------- SQL문 실행/ 실행 후 처리
+		         
+		         if(rs.next()) {
+		        	 
+		        	//전체 후기 데이터를 출력
+		        	 int rev_nums = rs.getInt(1);
+		        	 String nickname = rs.getString(2);
+		        	 String rev_title = rs.getString(3);
+		        	 String rev_contents = rs.getString(4);
+		        	 
+
+	 	        	 //ReviewDTO 객체를 1개씩 DB에서 받은 후, ArrayList인 reviewList에 저장
+		        	 review = new ReviewDTO(rev_nums, nickname, rev_title, rev_contents);
+	 	        	 
+		         }
+		         
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+				dao.close();
+			}
+			return review;
+		}
+		
 }
