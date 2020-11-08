@@ -47,7 +47,7 @@ public class ReserveRequest extends HttpServlet {
 		   
 		   //ReservationDAO 객체생성
 		   ReservationDAO res_dao = new ReservationDAO();
-		   int cnt = res_dao.reserve_insert(nickname, res_date, consultant); //review_post 메소드. 성공 시 1 반환
+		   int cnt = res_dao.reserve_insert(nickname, res_date, consultant, pro_email); //review_post 메소드. 성공 시 1 반환
 		   
 		   //예약 등록 성공 시
 		   if(cnt > 0) {

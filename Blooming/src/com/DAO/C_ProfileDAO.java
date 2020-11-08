@@ -153,7 +153,7 @@ public class C_ProfileDAO {
 			return update;
 		}
 	
-	// 예약한 상담사 프로필 출력
+	//예약한 상담사 프로필 출력
 	public ArrayList<C_ProfileDTO> res_ShowProfile(ArrayList<ReservationDTO> reservationList) {
 		
 		C_ProfileDTO profile = null;

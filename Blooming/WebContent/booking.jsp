@@ -1,3 +1,5 @@
+<%@page import="com.DTO.MemberDTO"%>
+<%@page import="com.DAO.MemberDAO"%>
 <%@page import="com.DTO.ReservationDTO"%>
 <%@page import="com.DAO.ReservationDAO"%>
 <%@page import="com.DTO.C_ProfileDTO"%>
@@ -89,7 +91,8 @@
 		<div class="col-sm-offset-9"></div>
 		<div class="col-md-10 col-md-offset-2">
 
-    
+		<!-- 회원일 경우에 -->
+        <%if(email==null&&nickname!=null) {%> 
 		<table class="table table-striped ">
 		
 				<tr class="text-center">
@@ -126,8 +129,54 @@
 	         out.print("</td>");
 	         out.print("</tr>");
 				} %>
-				
 			</table>
+			
+			
+		  <!-- 상담사일 경우에 -->
+		  <%}else if(email!=null&&nickname==null) { %> 
+		  <table class="table table-striped ">
+		
+				<tr class="text-center">
+					<th>상담일자</th>
+					<th>상담사</th>
+					<th>회원 닉네임</th>
+					<th>회원 이메일</th>	
+					<th><br></th>
+				</tr>
+				
+		<!--예약현황 테이블 출력  -->
+		<%
+		// 1. 상담사 이메일로 부터 profilelist 가져오기. 
+		// 2. profilelist 반복문 돌리면서, 해당되는 회원 닉네임으로 부터 회원 이메일 가져오기()
+		
+		ReservationDAO res_dao = new ReservationDAO();
+		MemberDAO mem_dao = new MemberDAO();
+		MemberDTO member = new MemberDTO();
+		ArrayList<ReservationDTO> reservationList = res_dao.return_reservation(email);
+	    %>
+		
+		
+		
+		<% for(int i = 0;i<reservationList.size();i++) {
+			
+			//nickname에 맞는 회원정보 추출
+			String now_nickname = reservationList.get(i).getNickname();
+			member = mem_dao.return_member(now_nickname);
+			
+			 
+			 out.print("<tr>");
+	         out.println("<td>"+reservationList.get(i).getRes_date()+"</td>");
+	         out.println("<td>"+reservationList.get(i).getConsultant()+"</td>");
+	         out.println("<td>"+reservationList.get(i).getNickname()+"</td>");
+	         out.println("<td>"+member.getEmail()+"</td>");
+	         out.print("<td>");
+	         out.print("<br>");
+	         out.print("</td>");
+	         out.print("</tr>");
+				} %>
+			</table>
+			<%} %>
+			
 		</div>
 	</div>
 

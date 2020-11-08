@@ -7,21 +7,31 @@ public class ReservationDTO {
 	private String nickname;
 	private String res_date;
 	private String consultant;
-
+	private String pro_email;
 	
 	
 	public ReservationDTO() {
 		super();
 	}
-
-	public ReservationDTO(int res_num, String nickname, String res_date, String consultant) {
+	
+	public ReservationDTO(int res_num, String nickname, String res_date, String consultant, String pro_email) {
 		super();
 		this.res_num = res_num;
 		this.nickname = nickname;
 		this.res_date = res_date;
 		this.consultant = consultant;
+		this.pro_email = pro_email;
 	}
+
 	
+	public String getPro_email() {
+		return pro_email;
+	}
+
+	public void setPro_email(String pro_email) {
+		this.pro_email = pro_email;
+	}
+
 	public int getRes_num() {
 		return res_num;
 	}

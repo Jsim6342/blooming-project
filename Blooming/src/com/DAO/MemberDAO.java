@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.DTO.MemberDTO;
+import com.DTO.ReservationDTO;
 
 public class MemberDAO {
 
@@ -81,6 +83,49 @@ public class MemberDAO {
 			dao.close();
 		}
 		
+		return member;
+	}
+	
+	//닉네임에 맞는 회원 정보 출력
+	public MemberDTO return_member(String nickname) {
+		
+		MemberDTO member = null;
+		
+		
+		try {
+			
+			dao.getConn();
+			
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "select * from member where nickname=?";
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, nickname);
+	         
+	         // --------------------- DB에 SQL문 명령준비
+	         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+	         // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	         if(rs.next()) {
+	        	 
+	        	//전체 맴버 데이터를 출력
+	        	 String nicknames = rs.getString(1);
+	        	 String email = rs.getString(2);
+	        	 String pw = rs.getString(3);
+	        	 String tel = rs.getString(4);
+
+ 	        	 //MemberDTO 객체를 1개씩 DB에서 받은 후, ArrayList인 reviewList에 저장
+	        	 member = new MemberDTO(nicknames, email, pw, tel);
+	        	 
+	         
+	         }
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
 		return member;
 	}
 
