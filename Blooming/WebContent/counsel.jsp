@@ -127,108 +127,38 @@
 
 			<!-- 상담사  프로필 출력  -->
 			
-	<!-- Ajax를 사용하기 위한 Ajax import 부분  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
  <%
        C_ProfileDAO dao = new C_ProfileDAO();
        ArrayList<C_ProfileDTO> profileList = dao.showProfile();   %>
                   
 <% 
        for(int i = 0;i<profileList.size();i++) {
-       
-    	  
-   	   out.print("<div class='col-lg-4 col-sm-6 portfolio-item'>");
-   	   out.print("<div class='card h-100'>");
-   	   out.print("<div class='card-body'>");
-   	   out.print("<h2 class='card-title'><a>"+profileList.get(i).getPro_name()+"</a></h2>");
-   	   out.print("<div class='font-italic'>"+profileList.get(i).getPro_email()+"</div>");
-   	   out.print("</div>");
-   	   out.print("<ul class='list-group list-group-flush'>");
-   	   out.print("<li class='list-group-item'>상담일자: "+profileList.get(i).getPro_date()+"</li>");
-   	   out.print("<li class='list-group-item'>학력/이력 : "+profileList.get(i).getBackground()+"</li>");
-   	   out.print("<li class='list-group-item'>상담소개 : "+profileList.get(i).getIntroduce()+"</li>");
-   	   out.print("<ul class='card-footer'>");
-   	   out.print("<a onclick='next()' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
-   	   %>
-   	   <script type="text/javascript">
-	    //Ajax함수 
-       
-		function ajaxCall() { //ajax 함수 부분
-			 var res_date = "<%=profileList.get(i).getPro_date()%>";
-		   	 var consultant = "<%=profileList.get(i).getPro_name()%>";
-		   	 var max_people = "<%=profileList.get(i).getMax_people()%>";
-		   	 var pro_email = "<%=profileList.get(i).getPro_email()%>";
-			$.ajax({
-				//ajax 통신 방식으로 데이터를 전송
-				type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
-				url : "ReserveRequest", //어떤 서버페이지로 이 값을 보낼 것인지
-				data : {"res_date" : res_date , "consultant" : consultant, "max_people" : max_people, "pro_email" : pro_email}, //보낼 데이터 지정
-				dataType : "text",
-				success : function(data) { //서버로 부터 받은 값
-					console.log(data);
-					//var update_people = data;
-					var h = document.getElementById("update_people");
-				    h.innerHTML = "남은인원: "+data;
-					
-				},
-				error : function() {
-
-				}
-			});
-		
-		
-		}
-		
-		function next(){
-				if(confirm("상담을 예약하시겠습니까?"))
-				{
-			     ajaxCall();
-				 alert('예약이 완료되었습니다.');
-				}else
-				{
-				alert('취소되었습니다.');
-				}
-			}
-		
-	  </script>
-	  
-	  
-	   <%
-
-	  
-   	   out.print("</ul>");
-
-   	   out.print("</ul>");
-   	   out.print("</div>");
-   	   out.print("</div>");
+    	   
+    	//next함수에 담을 매개변수 선언
+    	String res_date = profileList.get(i).getPro_date();
+    	String consultant = profileList.get(i).getPro_name();
+    	int max_people = profileList.get(i).getMax_people();
+    	String pro_email = profileList.get(i).getPro_email();
+   	   
+  
+   	   out.println("<div class='col-lg-4 col-sm-6 portfolio-item'>");
+   	   out.println("<div class='card h-100'>");
+   	   out.println("<div class='card-body'>");
+   	   out.println("<h2 class='card-title'><a>"+profileList.get(i).getPro_name()+"</a></h2>");
+   	   out.println("<div class='font-italic'>"+profileList.get(i).getPro_email()+"</div>");
+   	   out.println("</div>");
+   	   out.println("<ul class='list-group list-group-flush'>");
+   	   out.println("<li class='list-group-item'>상담일자: "+profileList.get(i).getPro_date()+"</li>");
+   	   out.println("<li class='list-group-item'>학력/이력 : "+profileList.get(i).getBackground()+"</li>");
+   	   out.println("<li class='list-group-item'>상담소개 : "+profileList.get(i).getIntroduce()+"</li>");
+   	   out.println("<ul class='card-footer'>");
+   	   out.println("<a onclick='next(\""+res_date+"\",\""+consultant+"\",\""+max_people+"\",\""+pro_email+"\")' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
+   	   out.println("</ul>");
+   	   out.println("</ul>");
+   	   out.println("</div>");
+   	   out.println("</div>");
             }%>
-        
-       
-				
-				<!-- <div class="col-lg-4 col-sm-6 portfolio-item">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top" src="images/step1.png"
-							alt="" /></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="https://zoom.us/download">&rarr; ZOOM 다운로드 링크</a>
-							</h4>
-							<p class="card-text">
-								컴퓨터를 사용하여 상담에 참가하시는 분은 <br>회의용 ZOOM 클라이언트를 다운로드 하세요. <br>스마트폰을
-								이용하여 상담에 참가하시는 분은 ZOOM 모바일 앱을 다운로드 하세요.
-							</p>
-						</div>
-						<div class="card-footer">
-				
-
-							<a onclick="next()" href="#" class="btn btn-primary">예약하기</a>
-						</div>
-					</div>
-				</div> -->
-				
-				
-				
+  	
 				
 		</div>
 		<div class="row mb-4">
@@ -263,5 +193,44 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Ajax를 사용하기 위한 Ajax import 부분  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	    //Ajax함수(미사용 부분. ajax 생성 시 참고용)
+		function ajaxCall(res_date,consultant,max_people,pro_email) { //ajax 함수 부분
+			$.ajax({
+				//ajax 통신 방식으로 데이터를 전송
+				type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
+				url : "ReserveRequest", //어떤 서버페이지로 이 값을 보낼 것인지
+				data : {"res_date" : res_date , "consultant" : consultant, "max_people" : max_people, "pro_email" : pro_email}, //보낼 데이터 지정
+				dataType : "text",
+				success : function(data) { //서버로 부터 받은 값
+					console.log(data);
+					//var update_people = data;
+					var h = document.getElementById("update_people");
+				    h.innerHTML = "남은인원: "+data;
+					
+				},
+				error : function() {
+
+				}
+			});
+		
+		
+		}
+		
+		function next(res_date,consultant,max_people,pro_email){
+				if(confirm("상담을 예약하시겠습니까?"))
+				{
+			     //ajaxCall(res_date,consultant,max_people,pro_email);
+				 alert('예약이 완료되었습니다.');
+				 location.href = "ReserveRequest?res_date="+encodeURIComponent(encodeURIComponent(res_date),"UTF-8")+"&consultant="+encodeURIComponent(encodeURIComponent(consultant),"UTF-8")+"&max_people="+encodeURIComponent(encodeURIComponent(max_people),"UTF-8")+"&pro_email="+encodeURIComponent(encodeURIComponent(pro_email),"UTF-8");
+				}else
+				{
+				alert('취소되었습니다.');
+				}
+			}
+		
+	  </script>
 </body>
 </html>

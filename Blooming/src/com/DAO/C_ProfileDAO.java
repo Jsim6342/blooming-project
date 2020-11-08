@@ -95,8 +95,8 @@ public class C_ProfileDAO {
 		return profileList;
 	}
 	
-	//최대인원 카운트 기능
-	public int update_people(String pro_email, int max_people) {
+	//최대인원 -1 기능(상담예약시)
+	public int down_people(String pro_email, int max_people) {
 
 		int update = max_people-1;
 		
@@ -123,6 +123,35 @@ public class C_ProfileDAO {
 		}
 		return update;
 	}
+	
+	//최대인원 +1 기능(상담예약시)
+		public int up_people(String pro_email, int max_people) {
+
+			int update = max_people+1;
+			
+			try {
+				
+				 dao.getConn();
+				 
+		         // --------------------- DB 연결(고정된 문법)
+		         
+		         String sql = "update c_profile set max_people=? where pro_email = ?"; 
+		         pst = Connect.conn.prepareStatement(sql);
+		         
+		         pst.setInt(1, update);
+		         pst.setString(2, pro_email);
+
+		         cnt = pst.executeUpdate(); //성공 시 1을 반환
+		      // --------------------- SQL문 실행/ 실행 후 처리
+		         
+		      // --------------------- DB에 SQL문 명령준비	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+				dao.close();
+			}
+			return update;
+		}
 	
 	// 예약한 상담사 프로필 출력
 	public ArrayList<C_ProfileDTO> res_ShowProfile(ArrayList<ReservationDTO> reservationList) {

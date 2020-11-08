@@ -65,8 +65,15 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">센터찾기</a>
 					</li>
+					<%if(email==null&&nickname==null) {%>
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
+					<%}else { %>
+					<li class="nav-item"><a class="nav-link" href="login.html">정보수정</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
+					</li>
+					<%} %>
 				</ul>
 			</div>
 		</div>
@@ -243,6 +250,7 @@
 
 		<hr>
 		<!-- Get In Touch Now Section -->
+		<%if(email==null&&nickname==null) {%>
 		<div class="row mb-4">
 			<div class="col-md-8">
 				<p>Blooming 웹 서비스를 이용하시려면 우측의 회원가입 버튼을 클릭해주세요.</p>
@@ -252,6 +260,7 @@
 					하러가기</a>
 			</div>
 		</div>
+		<%} %>
 	</div>
 	<!-- /.container -->
 	<!--footer starts from here-->

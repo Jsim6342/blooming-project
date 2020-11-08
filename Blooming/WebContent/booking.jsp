@@ -107,20 +107,22 @@
 		ReservationDTO reservation = new ReservationDTO();
 		
 		ArrayList<ReservationDTO> reservationList = res_dao.return_consultant(nickname);
-		ArrayList<C_ProfileDTO> profileList = pro_dao.res_ShowProfile(reservationList);
+		ArrayList<C_ProfileDTO> profileList = pro_dao.res_ShowProfile(reservationList); %>
 		
-		for(int i = 0;i<profileList.size();i++) { %>
-			 <script type="text/javascript" charset="UTF-8">
-			 var date = "<%=profileList.get(i).getPro_date()%>";
-			 </script>
-			 <%
+		<% for(int i = 0;i<profileList.size();i++) {
+			
+			//next 함수 매개변수 선언
+			 String res_date = profileList.get(i).getPro_date();
+			 String pro_email = profileList.get(i).getPro_email();
+			 int max_people = profileList.get(i).getMax_people();
+			 
 			 out.print("<tr>");
 	         out.println("<td>"+profileList.get(i).getPro_name()+"</td>");
 	         out.println("<td>"+profileList.get(i).getPro_email()+"</td>");
 	         out.println("<td>"+profileList.get(i).getPro_date()+"</td>");
 	         out.println("<td>"+profileList.get(i).getMax_people()+"</td>");
 	         out.print("<td>");
-	         out.print("<a onclick='next(date)' href='#' class='btn btn-primary'>상담취소</a>");
+	         out.print("<a onclick='next(\""+res_date+"\",\""+pro_email+"\",\""+max_people+"\")' href='#' class='btn btn-primary'>상담취소</a>");
 	         out.print("</td>");
 	         out.print("</tr>");
 				} %>
@@ -151,15 +153,16 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-<script type="text/javascript" charset="UTF-8">
-		function next(date) {
+	<script type="text/javascript" charset="UTF-8">
+		function next(res_date,pro_email,max_people) {
 		if (confirm("상담을 취소하시겠습니까?")) {
 			alert("상담이 취소되었습니다.");
-			location.href = "ReserveDelete?res_date="+encodeURIComponent(encodeURIComponent(date),"UTF-8");
+			location.href = "ReserveDelete?res_date="+encodeURIComponent(encodeURIComponent(res_date),"UTF-8")+"&pro_email="+encodeURIComponent(encodeURIComponent(pro_email),"UTF-8")+"&max_people="+encodeURIComponent(encodeURIComponent(max_people),"UTF-8");
 			}else{
 			alert("취소되었습니다.");
 		    }
 			}
 </script> 
+</body>
+
 </html>
