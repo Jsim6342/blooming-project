@@ -43,13 +43,13 @@ public class DiagnosisCheck extends HttpServlet {
 		System.out.println(sum);
 		
 		if(sum>=0 && sum <= 9) {
-			 response.sendRedirect("result1.html");
+			 response.sendRedirect("result1.jsp");
 		}else if(sum>=10 && sum <= 15) {
-			 response.sendRedirect("result2.html");
+			 response.sendRedirect("result2.jsp");
 		}else if(sum>=16 && sum <= 23) {
-			 response.sendRedirect("result3.html");
+			 response.sendRedirect("result3.jsp");
 		}else {
-			 response.sendRedirect("result4.html");
+			 response.sendRedirect("result4.jsp");
 		}
 	}
 

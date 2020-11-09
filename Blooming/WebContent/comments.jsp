@@ -20,6 +20,18 @@
 <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+<% //스크립틀릿
+ 
+ 	//session값 email 가져오기
+	String email = (String)session.getAttribute("email");
+	System.out.println("현재 접속한 사람의 이메일: " + email);
+	
+	//session값 nickname 가져오기
+	String nickname = (String)session.getAttribute("nickname");
+	System.out.println("현재 접속한 사람의 닉네임: " + nickname);
+	
+ %>
+
 	<!-- Navigation -->
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
@@ -36,10 +48,13 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="diagnosis.html">진단하기</a>
+					<li class="nav-item"><a class="nav-link" href="diagnosis.jsp">진단하기</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="diary.jsp">일기작성</a>
 					</li>
+					<!-- <li class="nav-item">
+                     <a class="nav-link" href="counsel.jsp">집단상담</a>
+                  </li> -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,12 +64,19 @@
 							<a class="dropdown-item" href="counsel.jsp">집단상담예약</a> <a
 								class="dropdown-item" href="booking.jsp">집단상담 예약현황</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link active"
-						href="comments.jsp">극복후기</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">센터찾기</a>
+					<li class="nav-item "><a class="nav-link active" href="comments.jsp">극복후기</a>
 					</li>
+					<li class="nav-item "><a class="nav-link" href="contact.jsp">센터찾기</a>
+					</li>
+					<%if(email==null&&nickname==null) {%>
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
+					<%}else { %>
+					<li class="nav-item"><a class="nav-link" href="login.html">정보수정</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
+					</li>
+					<%} %>
 
 				</ul>
 			</div>
