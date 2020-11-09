@@ -98,6 +98,7 @@
 		</div>
 	</div>
 
+
 	<!-- /.container -->
 	<!--footer starts from here-->
 	<footer class="footer">

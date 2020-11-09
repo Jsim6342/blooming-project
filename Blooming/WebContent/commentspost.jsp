@@ -70,8 +70,7 @@
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
 					<%}else { %>
-					<li class="nav-item"><a class="nav-link" href="login.html">정보수정</a>
-					</li>
+					
 					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
 					</li>
 					<%} %>
@@ -115,13 +114,19 @@ ReviewDAO dao = new ReviewDAO();
 review = dao.showReview(rev_num);
 %>
 
+				
+				<div class="col-lg-6">
+					
+
+			</div>
 				<!-- Preview Image -->
-				<img class="img-fluid rounded" src="images/forest.jpg" alt="" />
+				<img class="img-fluid rounded" src="images/aa.jpg" alt="" />
 				<hr>
 				<!-- Date/Time -->
 				<blockquote class="blockquote">
-				<p class="mb-0"><%=review.getRev_title()%></p>
-				<footer class="blockquote-footer"><%=review.getNickname()%></footer>
+				<h3>제목 : <%=review.getRev_title()%></h3>
+				<blockquote class="blockquote">
+				<h5>닉네임: <%=review.getNickname()%></h5>
 				</blockquote>
 				<hr>
 				<!-- Post Content -->
@@ -130,33 +135,24 @@ review = dao.showReview(rev_num);
 				</blockquote>
 				<hr>
 
+				
 
 				<div class="blog-right-side">
-					<!-- Comments Form -->
-					<div class="card my-4">
-						<h5 class="card-header">댓글 :</h5>
-						<div class="card-body">
-							<form>
-								<div class="form-group">
-									<textarea class="form-control" rows="3"></textarea>
-								</div>
-								<div class="row mb-4">
+					<div class="row mb-4">
 									<div class="col-md-8"></div>
 									<div class="col-md-4">
 										<a class="btn btn-lg btn-secondary btn-block"
-											href="signup.html">댓글작성하기</a>
+											href="signup.html">후기 수정하기</a>
 									</div>
 								</div>
 							</form>
-						</div>
-					</div>
 				</div>
 	</div>
 	<!-- /.row -->
 
 	</div>
 	<!-- /.container -->
-
+</div>
 	<!--footer starts from here-->
 	<footer class="footer">
 		<div class="container bottom_border">

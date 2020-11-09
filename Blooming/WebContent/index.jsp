@@ -66,8 +66,6 @@
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
 					<%}else { %>
-					<li class="nav-item"><a class="nav-link" href="login.html">정보수정</a>
-					</li>
 					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
 					</li>
 					<%} %>
@@ -78,6 +76,7 @@
 	<header class="slider-main">
 		<div id="carouselExampleIndicators"
 			class="carousel slide carousel-fade" data-ride="carousel">
+			
 			<ol class="carousel-indicators">
 				<li data-target="#carouselExampleIndicators" data-slide-to="0"
 					class="active"></li>
