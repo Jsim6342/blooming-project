@@ -140,10 +140,12 @@ review = dao.showReview(rev_num);
 				<div class="blog-right-side">
 					<div class="row mb-4">
 									<div class="col-md-8"></div>
+									<%if(dao.check_Review(rev_num, nickname)) { %>
 									<div class="col-md-4">
 										<a class="btn btn-lg btn-secondary btn-block"
 											href="signup.html">후기 수정하기</a>
 									</div>
+									<%}%>
 								</div>
 							</form>
 				</div>

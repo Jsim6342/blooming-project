@@ -130,4 +130,39 @@ public class ReviewDAO {
 			return review;
 		}
 		
+		//후기번호와 닉네임에 해당되는 게시글일 경우 true반환.
+		public boolean check_Review(int rev_num, String nickname) {
+			
+			boolean check = false;
+			
+			try {
+				
+				dao.getConn();
+				
+		         // --------------------- DB 연결(고정된 문법)
+		         
+		         String sql = "select * from review where rev_num = ? and nickname = ?";
+		         pst = Connect.conn.prepareStatement(sql);
+		         
+		         pst.setInt(1, rev_num);
+		         pst.setString(2, nickname);
+		         
+		         // --------------------- DB에 SQL문 명령준비
+		         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+		         // --------------------- SQL문 실행/ 실행 후 처리
+		         
+		         if(rs.next()) {
+		        	check = true;	 
+		         }else {
+		            check = false;
+		         }
+		         
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+				dao.close();
+			}
+			return check;
+		}
+		
 }
