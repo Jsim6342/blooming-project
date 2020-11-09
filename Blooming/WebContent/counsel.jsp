@@ -1,3 +1,4 @@
+<%@page import="com.DAO.ReservationDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DTO.C_ProfileDTO"%>
 <%@page import="com.DAO.C_ProfileDAO"%>
@@ -149,8 +150,9 @@
 			<!-- 상담사  프로필 출력  -->
 			
  <%
-       C_ProfileDAO dao = new C_ProfileDAO();
-       ArrayList<C_ProfileDTO> profileList = dao.showProfile();   %>
+       C_ProfileDAO pro_dao = new C_ProfileDAO();
+ 	   ReservationDAO res_dao = new ReservationDAO();
+       ArrayList<C_ProfileDTO> profileList = pro_dao.showProfile();   %>
                   
 <% 
        for(int i = 0;i<profileList.size();i++) {
@@ -173,7 +175,25 @@
    	   out.println("<li class='list-group-item'>학력/이력 : "+profileList.get(i).getBackground()+"</li>");
    	   out.println("<li class='list-group-item'>상담소개 : "+profileList.get(i).getIntroduce()+"</li>");
    	   out.println("<ul class='card-footer'>");
-   	   out.println("<a onclick='next(\""+res_date+"\",\""+consultant+"\",\""+max_people+"\",\""+pro_email+"\")' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
+   	   if(nickname==null&&email==null) { //비회원일 때
+   		out.println("<p>로그인이 필요한 서비스 입니다.</p>");
+   	   }else {
+   		   if(nickname!=null) {//회원일 때
+   			   if(res_dao.check_reservation(nickname,pro_email)) {//예약중일때
+   				out.println("<p class='btn btn-primary'>예약완료</p> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
+   			   }else {//비예약중일때
+   			    out.println("<a onclick='next(\""+res_date+"\",\""+consultant+"\",\""+max_people+"\",\""+pro_email+"\")' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>"); 
+   			   }
+   		   }else {//상담사일 때
+   				if(email.equals(pro_email)) {//내 상담일 때
+   					out.println("<a onclick='finish(\""+pro_email+"\")' href='#' class='btn btn-primary'>상담완료</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>"); 
+   				}else {//다른 상담일 때
+   				out.println("<p onclick='next(\""+res_date+"\",\""+consultant+"\",\""+max_people+"\",\""+pro_email+"\")' class='btn btn-primary'>예약하기</p> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
+   				}
+   		   }
+   	   
+   	   }
+   //	res_dao.check_reservation(nickname,pro_email)
    	   out.println("</ul>");
    	   out.println("</ul>");
    	   out.println("</div>");
@@ -251,6 +271,17 @@
 				alert('취소되었습니다.');
 				}
 			}
+		
+		function finish(pro_email){
+			if(confirm("상담을 완료하시겠습니까?"))
+			{
+			 alert('상담이 완료되었습니다.');
+			 location.href = "DeleteCounsel?pro_email="+encodeURIComponent(encodeURIComponent(pro_email),"UTF-8");
+			}else
+			{
+			alert('취소되었습니다.');
+			}
+		}
 		
 	  </script>
 </body>
