@@ -165,14 +165,14 @@ public class C_ProfileDAO {
 			dao.getConn();
 			
 			for(int i = 0;i<reservationList.size();i++) {
-			String consultant = reservationList.get(i).getConsultant();
+			String email = reservationList.get(i).getPro_email();
 			
 	         // --------------------- DB 연결(고정된 문법)
 	         
-	         String sql = "select * from c_profile where pro_name = ?";
+	         String sql = "select * from c_profile where pro_email = ?";
 	         pst = Connect.conn.prepareStatement(sql);
 	         
-	         pst.setString(1, consultant);
+	         pst.setString(1, email);
 	         // --------------------- DB에 SQL문 명령준비
 	         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
 	         // --------------------- SQL문 실행/ 실행 후 처리
