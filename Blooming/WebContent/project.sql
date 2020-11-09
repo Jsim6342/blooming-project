@@ -100,3 +100,8 @@ INSERT INTO C_PROFILE values('consultant@naver.com','상담사','매주 수요일 6시','
 
 테이블 값 제거
 delete from reservation where pro_email='consultant@naver.com'
+
+row_num(), over()을 이용한 순번 매기기
+SELECT * FROM (
+           SELECT a.*,ROW_NUMBER() OVER(ORDER BY rev_num DESC) AS rnum FROM review a
+        ) WHERE rnum >=1 and rnum<=9;

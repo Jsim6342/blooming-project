@@ -105,20 +105,38 @@
 	<!-- 게시글  출력 부분 -->
 	 <%
          ReviewDAO dao = new ReviewDAO();
-         ArrayList<ReviewDTO> reviewList = dao.showReviewList();   %>
+         ArrayList<ReviewDTO> reviewList = dao.showReviewList();   
+         
+         //페이징 기능
+         int count = dao.count_Review(); // 전체행 갯수
+         String tempStart = request.getParameter("page"); 
+         int startPage = 0; // rownum 시작값
+         int onePageCnt = 9; // 한페이지에 출력할 행의 갯수
+         
+         System.out.println("선택숫자"+tempStart);
+         
+         count = (int)Math.ceil((double)count/(double)onePageCnt); // 페이지 수 저장(전체리뷰갯수/한페이지에출력할행갯수)
+         
+         if(tempStart!=null) {
+        	 startPage = (Integer.parseInt(tempStart)-1)*onePageCnt; //선택한 페이지에 맞게 startPage를 설정
+        	 onePageCnt = startPage+9; //선택한 페이지에 맞게 출력범위(9개 출력) 설정
+         }
+         
+         ArrayList<ReviewDTO> reviews = dao.selectReviewList(startPage, onePageCnt); //숫자에 맞게  리스트 반환
+     %>
            
       <div class="row">
       
-      <% for(int i = 0;i<reviewList.size();i++) {  
+      <% for(int i = 0;i<reviews.size();i++) {  //페이징 취소시, reviews를 reviewList로 수정
       
     	  out.println("<div class='col-lg-4 col-sm-6 portfolio-item'>");
     	  out.println("<div class='card h-100'>");
     	  out.println("<a href='commentspost.jsp'><img class='card-img-top' src='images/portfolio-big-01.jpg' alt='' /></a>");
     	  out.println("<div class='card-body'>");
     	  out.println("<h4 class='card-title'>");
-    	  out.println("<a href=commentspost.jsp?rev_num="+reviewList.get(i).getRev_num()+">"+reviewList.get(i).getRev_title()+"</a>");
+    	  out.println("<a href=commentspost.jsp?rev_num="+reviews.get(i).getRev_num()+">"+reviews.get(i).getRev_title()+"</a>");
     	  out.println("</h4>");
-    	  out.println("<p class='card-text'>"+reviewList.get(i).getRev_contents()+"</p>");
+    	  out.println("<p class='card-text'>"+reviews.get(i).getRev_contents()+"</p>");
     	  out.println("</div>");
     	  out.println("</div>");
     	  out.println("</div>");
@@ -130,16 +148,18 @@
 		<div class="pagination_bar">
 			<!-- Pagination -->
 			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-						<span class="sr-only">Previous</span>
-				</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-						class="sr-only">Next</span>
+				<li class="page-item">
+				<a class="page-link" href="#" aria-label="Previous"> 
+				<span aria-hidden="true">&laquo;</span>
+				<span class="sr-only">Previous</span>
+				</a>
+				</li>
+				<% for(int i = 1; i<=count; i++) {%>
+				<li class="page-item"><a class="page-link" href="comments.jsp?page=<%=i%>"><%=i%></a></li>
+				<%} %>
+				<li class="page-item"><a class="page-link" href="#" aria-label="Next"> 
+				<span aria-hidden="true">&raquo;</span> 
+				<span class="sr-only">Next</span>
 				</a></li>
 			</ul>
 			<div class="row mb-4">
