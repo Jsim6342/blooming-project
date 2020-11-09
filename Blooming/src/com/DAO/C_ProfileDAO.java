@@ -165,14 +165,14 @@ public class C_ProfileDAO {
 			dao.getConn();
 			
 			for(int i = 0;i<reservationList.size();i++) {
-			String consultant = reservationList.get(i).getConsultant();
+			String email = reservationList.get(i).getPro_email();
 			
 	         // --------------------- DB 연결(고정된 문법)
 	         
-	         String sql = "select * from c_profile where pro_name = ?";
+	         String sql = "select * from c_profile where pro_email = ?";
 	         pst = Connect.conn.prepareStatement(sql);
 	         
-	         pst.setString(1, consultant);
+	         pst.setString(1, email);
 	         // --------------------- DB에 SQL문 명령준비
 	         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
 	         // --------------------- SQL문 실행/ 실행 후 처리
@@ -203,5 +203,76 @@ public class C_ProfileDAO {
 		
 	}
 	
+	
+	//이메일과 같은 상담인지 체크
+	public boolean check_profile(String email) {
+		
+		boolean check = false;
+		if(email==null) {
+			return false;
+		}
+		
+		    try {
+			
+		    	
+			dao.getConn();
+			
+			
+			
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "select * from c_profile where pro_email = ?";
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, email);
+	         // --------------------- DB에 SQL문 명령준비
+	         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+	         // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	         if(rs.next()) {
+	        	 check = true;  
+	         }else {
+	        	 check = false;  
+	         }
+		    
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return check;
+		
+	}
+	
+	
+	//상담사 프로필 제거 기능(상담완료)
+	public int profile_complete(String email) {
+		
+		
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "delete from c_profile where pro_email = ?";
+			
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			
+			pst.setString(1, email);
+
+			
+			cnt = pst.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		return cnt;
+	}
 	
 }
