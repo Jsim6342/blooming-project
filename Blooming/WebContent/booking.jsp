@@ -1,7 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@page import="com.DTO.MemberDTO"%>
+<%@page import="com.DAO.MemberDAO"%>
+<%@page import="com.DTO.ReservationDTO"%>
+<%@page import="com.DAO.ReservationDAO"%>
+<%@page import="com.DTO.C_ProfileDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.DAO.C_ProfileDAO"%>
+<%@page import="java.net.URLEncoder"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<!-- ��ܹ�, �ϴܹٸ� �ִ� ������ -->
+<!-- 상단바, 하단바만 있는 페이지 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +18,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - ���ܻ�� ������Ȳ</title>
+<title>Blooming - 집단상담 예약현황</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
@@ -28,6 +36,17 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<% //스크립틀릿
+ 
+ 	//session값 email 가져오기
+	String email = (String)session.getAttribute("email");
+	System.out.println("현재 접속한 사람의 이메일: " + email);
+	
+	//session값 nickname 가져오기
+	String nickname = (String)session.getAttribute("nickname");
+	System.out.println("현재 접속한 사람의 닉네임: " + nickname);
+	
+ %>
 	<!-- Navigation -->
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
@@ -51,7 +70,7 @@
 		<div class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h1 class="mt-4 mb-3">
-				���� Ȯ���ϱ� <small>booking</small>
+				예약 확인하기 <small>booking</small>
 			</h1>
 		</div>
 	</div>
@@ -61,7 +80,7 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-				<li class="breadcrumb-item active">���ܻ�� ������Ȳ</li>
+				<li class="breadcrumb-item active">집단상담 예약현황</li>
 			</ol>
 		</div>
 	</div>
@@ -70,33 +89,94 @@
 		<div class="page-hearder col-md-offset-3" style="padding-bottom: 20px">
 		</div>
 		<div class="col-sm-offset-9"></div>
-		<div class="col-md-10 col-md-offset-3">
-			<table class="table table-striped ">
+		<div class="col-md-10 col-md-offset-2">
+
+		<!-- 회원일 경우에 -->
+        <%if(email==null&&nickname!=null) {%> 
+		<table class="table table-striped ">
+		
 				<tr class="text-center">
-					<th>��ȣ</th>
-					<th>ZOOM ��ũ</th>
-					<th>����</th>
-					<th>�����</th>
-					<th>������Ȳ</th>
+					<th>상담사</th>
+					<th>상담사 이메일</th>
+					<th>상담일자</th>
+					<th>남은인원</th>	
 					<th><br></th>
 				</tr>
-				<tr>
-					<td class="col-sm-1">1</td>
-					<td><a href="#">zoom��ũ</a></td>
-					<td>������</td>
-					<td>2020.11.26</td>
-					<td class="col-sm-1">5/5</td>
-					<td><script>
-						function next() {
-							if (confirm("����� ����Ͻðڽ��ϱ�?")) {
-								alert('����� ����ϼ̽��ϴ�. ���ܻ�� ���� �������� �̵��մϴ�.');
-								location.href = "http://localhost:8085/Blooming/counsel.jsp";
-							} else {
-							}
-						}
-					</script> <a onclick="next()" href="#" class="btn btn-primary">������</a></td>
-				</tr>
+				
+		<!--예약현황 테이블 출력  -->
+		<%
+		C_ProfileDAO pro_dao = new C_ProfileDAO();
+		ReservationDAO res_dao = new ReservationDAO();
+		ReservationDTO reservation = new ReservationDTO();
+		
+		ArrayList<ReservationDTO> reservationList = res_dao.return_consultant(nickname);
+		ArrayList<C_ProfileDTO> profileList = pro_dao.res_ShowProfile(reservationList); %>
+		
+		<% for(int i = 0;i<profileList.size();i++) {
+			
+			//next 함수 매개변수 선언
+			 String res_date = profileList.get(i).getPro_date();
+			 String pro_email = profileList.get(i).getPro_email();
+			 int max_people = profileList.get(i).getMax_people();
+			 
+			 out.print("<tr>");
+	         out.println("<td>"+profileList.get(i).getPro_name()+"</td>");
+	         out.println("<td>"+profileList.get(i).getPro_email()+"</td>");
+	         out.println("<td>"+profileList.get(i).getPro_date()+"</td>");
+	         out.println("<td>"+profileList.get(i).getMax_people()+"</td>");
+	         out.print("<td>");
+	         out.print("<a onclick='next(\""+res_date+"\",\""+pro_email+"\",\""+max_people+"\")' href='#' class='btn btn-primary'>상담취소</a>");
+	         out.print("</td>");
+	         out.print("</tr>");
+				} %>
 			</table>
+			
+			
+		  <!-- 상담사일 경우에 -->
+		  <%}else if(email!=null&&nickname==null) { %> 
+		  <table class="table table-striped ">
+		
+				<tr class="text-center">
+					<th>상담일자</th>
+					<th>상담사</th>
+					<th>회원 닉네임</th>
+					<th>회원 이메일</th>	
+					<th><br></th>
+				</tr>
+				
+		<!--예약현황 테이블 출력  -->
+		<%
+		// 1. 상담사 이메일로 부터 profilelist 가져오기. 
+		// 2. profilelist 반복문 돌리면서, 해당되는 회원 닉네임으로 부터 회원 이메일 가져오기()
+		
+		ReservationDAO res_dao = new ReservationDAO();
+		MemberDAO mem_dao = new MemberDAO();
+		MemberDTO member = new MemberDTO();
+		ArrayList<ReservationDTO> reservationList = res_dao.return_reservation(email);
+	    %>
+		
+		
+		
+		<% for(int i = 0;i<reservationList.size();i++) {
+			
+			//nickname에 맞는 회원정보 추출
+			String now_nickname = reservationList.get(i).getNickname();
+			member = mem_dao.return_member(now_nickname);
+			
+			 
+			 out.print("<tr>");
+	         out.println("<td>"+reservationList.get(i).getRes_date()+"</td>");
+	         out.println("<td>"+reservationList.get(i).getConsultant()+"</td>");
+	         out.println("<td>"+reservationList.get(i).getNickname()+"</td>");
+	         out.println("<td>"+member.getEmail()+"</td>");
+	         out.print("<td>");
+	         out.print("<br>");
+	         out.print("</td>");
+	         out.print("</tr>");
+				} %>
+			</table>
+			<%} %>
+			
 		</div>
 	</div>
 
@@ -115,10 +195,23 @@
 						By : SINOZO, 9uack <a href="https://html.design/">html design</a>
 					</p>
 				</div>
+				</div>
+				</div>
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" charset="UTF-8">
+		function next(res_date,pro_email,max_people) {
+		if (confirm("상담을 취소하시겠습니까?")) {
+			alert("상담이 취소되었습니다.");
+			location.href = "ReserveDelete?res_date="+encodeURIComponent(encodeURIComponent(res_date),"UTF-8")+"&pro_email="+encodeURIComponent(encodeURIComponent(pro_email),"UTF-8")+"&max_people="+encodeURIComponent(encodeURIComponent(max_people),"UTF-8");
+			}else{
+			alert("취소되었습니다.");
+		    }
+			}
+</script> 
 </body>
+
 </html>

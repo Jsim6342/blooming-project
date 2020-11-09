@@ -1,3 +1,5 @@
+<%@page import="com.DAO.ReviewDAO"%>
+<%@page import="com.DTO.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -83,46 +85,29 @@
 			<!-- Post Content Column -->
 			<div class="col-lg-20">
 
+<%
+//rev_num 받아오기
+int rev_num = Integer.parseInt(request.getParameter("rev_num").trim());
+
+//rev_num에 맞는 후기 불러오기
+ReviewDTO review = new ReviewDTO();
+ReviewDAO dao = new ReviewDAO();
+review = dao.showReview(rev_num);
+%>
+
 				<!-- Preview Image -->
 				<img class="img-fluid rounded" src="images/forest.jpg" alt="" />
 				<hr>
 				<!-- Date/Time -->
-				<p>Posted on January 1, 2018 at 18:00 PM</p>
+				<blockquote class="blockquote">
+				<p class="mb-0"><%=review.getRev_title()%></p>
+				<footer class="blockquote-footer"><%=review.getNickname()%></footer>
+				</blockquote>
 				<hr>
 				<!-- Post Content -->
-				<p class="lead">Lorem ipsum dolor sit amet, consectetur
-					adipisicing elit. Ducimus, vero, obcaecati, aut, error quam
-					sapiente nemo saepe quibusdam sit excepturi nam quia corporis
-					eligendi eos magni recusandae laborum minus inventore?</p>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut,
-					tenetur natus doloremque laborum quos iste ipsum rerum obcaecati
-					impedit odit illo dolorum ab tempora nihil dicta earum fugiat.
-					Temporibus, voluptatibus.</p>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Eos, doloribus, dolorem iusto blanditiis unde eius illum
-					consequuntur neque dicta incidunt ullam ea hic porro optio ratione
-					repellat perspiciatis. Enim, iure!</p>
-
 				<blockquote class="blockquote">
-					<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-						adipiscing elit. Integer posuere erat a ante.</p>
-					<footer class="blockquote-footer">
-						Someone famous in <cite title="Source Title">Source Title</cite>
-					</footer>
+				<p class="lead"><%=review.getRev_contents()%></p>
 				</blockquote>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora
-					commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem
-					obcaecati?</p>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione
-					tempore quidem voluptates cupiditate voluptas illo saepe quaerat
-					numquam recusandae? Qui, necessitatibus, est!</p>
-
 				<hr>
 
 
