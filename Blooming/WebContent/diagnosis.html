@@ -81,8 +81,15 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">센터찾기</a>
 					</li>
+					<%if(email==null&&nickname==null) {%>
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
+					<%}else { %>
+					<li class="nav-item"><a class="nav-link" href="login.html">정보수정</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
+					</li>
+					<%} %>
 				</ul>
             </div>
         </div>
