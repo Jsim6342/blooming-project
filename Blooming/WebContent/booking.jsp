@@ -70,7 +70,7 @@
 		<div class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h1 class="mt-4 mb-3">
-				예약 확인하기 <small>booking</small>
+				예약 확인하기
 			</h1>
 		</div>
 	</div>
@@ -200,7 +200,8 @@
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/jquery/jquery.min.js"></sc
+	ript>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" charset="UTF-8">
 		function next(res_date,pro_email,max_people) {
