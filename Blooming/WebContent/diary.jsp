@@ -77,7 +77,7 @@
 			</div>
 		</div>
 	</nav>
-
+	
 	<!-- full Title -->
 	<div class="full-title">
 		<div class="container">
