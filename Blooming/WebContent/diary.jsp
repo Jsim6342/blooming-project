@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.DTO.DiaryDTO"%>
+<%@page import="com.DAO.DiaryDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!-- 상단바, 하단바만 있는 페이지 -->
@@ -95,15 +98,78 @@
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 				<li class="breadcrumb-item active">일기</li>
 			</ol>
+		</div>
 	</div>
-	</div>
+
+
+<div class="container">
+		<div class="about-main">
 			
 			
-	
+			<div class="row">
+			
+				<div class="col-lg-6">
+				<h2 class="col-lg-6">나의 나무 키우기</h2>
+			<h class="col-lg-6">당신의 이야기를 들려주세요</h>
+					<img class="img-fluid rounded" src="images/tree1.png" alt="" />
+				</div>
+				<div class="col-lg-6">
+									<!-- <h2>나의 감성 그래프</h2>
+				
+									<img class="img-fluid rounded" src="images/about.jpg" alt="" /> -->
+					
+					<h2>나의 이야기</h2>
+					<p>머신러닝을 기반한 감성분석 시스템으로 당신의 하루의 감성을 분석해드립니다.</p>
+					<ul>
+					<h>날짜 선택 : </h>
+					<input type="date" name='start_date' value='2020-11-10'/>
+					<h> ~ </h>
+					<input type="date" name='end_date' value='2020-11-10'/>
+					<hr>
+					<% 
+					String start_date = request.getParameter("start_date");
+					String end_date = request.getParameter("end_date");
+					
+					System.out.println("startdate: "+start_date);
+					System.out.println("enddate: "+end_date);
+					
+					DiaryDAO di_dao = new DiaryDAO();
+					DiaryDTO diary = new DiaryDTO();
+					ArrayList<DiaryDTO> diaryList = di_dao.show_diaryList(nickname, start_date, end_date);
+					
+					
+					for(int i = 0;i<diaryList.size();i++) {
+					out.println("<li>"+diaryList.get(i).getDi_title()+"</li>");
+					}
+					
+					%>
+						
+						<!-- <li>Phasellus quis erat et enim laoreet posuere ac porttitor
+							ipsum.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li> -->
+						
+					</ul>
+					<hr>
+					<a href="#" class="btn btn-primary">일기 작성하기</a>
+				
+				</div>
 
-
-
-
+			</div>
+			<!-- /.row -->
+		</div>
+		</div>
 
 	<!-- /.container -->
 	<!--footer starts from here-->

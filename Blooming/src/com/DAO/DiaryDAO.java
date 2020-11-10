@@ -17,7 +17,7 @@ public class DiaryDAO {
 	Connect dao = new Connect();
 	
 	//일기 작성(수정필요. 시퀀스 부분, 생성자 부분과 그에 따른 매개변수 설정 부분)
-	public int insertDiary(String nickname, String di_title, String di_contents) {
+	public int insertDiary(String nickname, String di_date,String di_title, String di_contents) {
 		
 		int cnt = 0;
 		
@@ -26,12 +26,13 @@ public class DiaryDAO {
 	         dao.getConn();
 	         // --------------------- DB 연결(고정된 문법)
 	         
-	         String sql = "insert into diary values(시퀀스명.nextval,?,sysdate,?,?)"; //sysdate는 SQL문이 가지고 있는 함수
+	         String sql = "insert into diary values(시퀀스명.nextval,?,?,?,?)"; //sysdate는 SQL문이 가지고 있는 함수
 	         pst = Connect.conn.prepareStatement(sql);
 	         
 	         pst.setString(1, nickname);
-	         pst.setString(2, di_title);
-	         pst.setString(3, di_contents);
+	         pst.setString(2, di_date);
+	         pst.setString(3, di_title);
+	         pst.setString(4, di_contents);
 	         
 	         
 	      // --------------------- DB에 SQL문 명령준비
@@ -49,7 +50,7 @@ public class DiaryDAO {
 }
 	
 	//일기 목록 출력
-	public ArrayList<DiaryDTO> memberSelect(String nickname) {
+	public ArrayList<DiaryDTO> show_diaryList(String nickname, String strat_date, String end_date) {
 		
 		DiaryDTO diary = null;
 		ArrayList<DiaryDTO> diaryList = new ArrayList<>();
@@ -60,9 +61,11 @@ public class DiaryDAO {
 			
 	         // --------------------- DB 연결(고정된 문법)
 	         
-	         String sql = "select * from diary where nickname=?";
+	         String sql = "select * from diary where nickname=? and di_date between ? and ?";
 	         pst = Connect.conn.prepareStatement(sql);
 	         pst.setString(1, nickname);
+	         pst.setString(2, strat_date);
+	         pst.setString(3, end_date);
 	         
 	        
 	         // --------------------- DB에 SQL문 명령준비
