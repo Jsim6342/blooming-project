@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<!-- »ó´Ü¹Ù, ÇÏ´Ü¹Ù¸¸ ÀÖ´Â ÆäÀÌÁö -->
+    pageEncoding="utf-8"%>
+<!-- ìƒë‹¨ë°”, í•˜ë‹¨ë°”ë§Œ ìžˆëŠ” íŽ˜ì´ì§€ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,26 +9,17 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - ÀÏ±â</title>
+<title>Blooming - ì¼ê¸°</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
 <link href="css/all.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="css/style.css" rel="stylesheet">
+
+
 </head>
 <body>
-<% //½ºÅ©¸³Æ²¸´
- 
- 	//session°ª email °¡Á®¿À±â
-	String email = (String)session.getAttribute("email");
-	System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ÀÌ¸ÞÀÏ: " + email);
-	
-	//session°ª nickname °¡Á®¿À±â
-	String nickname = (String)session.getAttribute("nickname");
-	System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ´Ð³×ÀÓ: " + nickname);
-	
- %>
 	<!-- Navigation -->
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
@@ -45,34 +36,28 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="diagnosis.jsp">Áø´ÜÇÏ±â</a>
+					<li class="nav-item"><a class="nav-link" href="diagnosis.html">ì§„ë‹¨í•˜ê¸°</a>
 					</li>
-					<li class="nav-item "><a class="nav-link active" href="diary.jsp">ÀÏ±âÀÛ¼º</a>
+					<li class="nav-item"><a class="nav-link active" href="diary.jsp">ì¼ê¸°ìž‘ì„±</a>
 					</li>
 					<!-- <li class="nav-item">
-                     <a class="nav-link" href="counsel.jsp">Áý´Ü»ó´ã</a>
+                     <a class="nav-link" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´</a>
                   </li> -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Áý´Ü»ó´ã </a>
+							ì§‘ë‹¨ìƒë‹´ </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownBlog">
-							<a class="dropdown-item" href="counsel.jsp">Áý´Ü»ó´ã¿¹¾à</a> <a
-								class="dropdown-item" href="booking.jsp">Áý´Ü»ó´ã ¿¹¾àÇöÈ²</a>
+							<a class="dropdown-item" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´ì˜ˆì•½</a> <a
+								class="dropdown-item" href="booking.jsp">ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™©</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link" href="comments.jsp">±Øº¹ÈÄ±â</a>
+					<li class="nav-item"><a class="nav-link" href="comments.jsp">ê·¹ë³µí›„ê¸°</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="contact.jsp">¼¾ÅÍÃ£±â</a>
+					<li class="nav-item"><a class="nav-link" href="contact.html">ì„¼í„°ì°¾ê¸°</a>
 					</li>
-					<%if(email==null&&nickname==null) {%>
-					<li class="nav-item"><a class="nav-link" href="login.html">·Î±×ÀÎ</a>
+					<li class="nav-item"><a class="nav-link" href="login.html">ë¡œê·¸ì¸</a>
 					</li>
-					<%}else { %>
-					
-					<li class="nav-item"><a class="nav-link" href="LogoutService">·Î±×¾Æ¿ô</a>
-					</li>
-					<%} %>
 				</ul>
 			</div>
 		</div>
@@ -83,7 +68,7 @@
 		<div class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h1 class="mt-4 mb-3">
-				ÀÏ±â <small>diary</small>
+				ì¼ê¸° <small>diary</small>
 			</h1>
 		</div>
 	</div>
@@ -93,12 +78,53 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-				<li class="breadcrumb-item active">ÀÏ±â</li>
+				<li class="breadcrumb-item active">ì¼ê¸°</li>
 			</ol>
-	</div>
-	</div>
-			
-			
+		</div>
+		
+		<!-- ì¼ê¸°ì“°ê¸° -->
+              
+			<div class="row">
+				<div class="col-lg-8 mb-4 contact-left">
+					<!--  -->
+					<form name="" id="" action="ReviewPost" method="post" novalidate>
+						<div class="control-group form-group">
+							<div class="controls"></div>
+						</div>
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>ë‚ ì§œ</label> <input type="date" class="form-control"
+									name="rev_title" id="title" required
+									data-validation-required-message="Please enter your email address.">
+							</div>
+						</div>
+						
+						
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>ì œëª©</label> <input type="text" class="form-control"
+									name="rev_title" id="title" required
+									data-validation-required-message="Please enter your email address.">
+							</div>
+						</div>
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>ë‚´ìš©</label>
+								<textarea rows="20" cols="100" class="form-control"
+									name="rev_contents" id="content" required
+									data-validation-required-message="Please enter your message"
+									maxlength="999" style="resize: none"></textarea>
+							</div>
+						</div>
+						<div id="success"></div>
+						<!-- For success/fail messages -->
+						<button type="submit" class="btn btn-primary"
+							id="sendMessageButton">ìž‘ì„±ì™„ë£Œ</button>
+					</form>
+				</div>
+</div>		
+</div>		
+
 	
 
 
