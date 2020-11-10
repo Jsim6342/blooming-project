@@ -26,7 +26,7 @@ public class DiaryDAO {
 	         dao.getConn();
 	         // --------------------- DB 연결(고정된 문법)
 	         
-	         String sql = "insert into diary values(시퀀스명.nextval,?,?,?,?)"; //sysdate는 SQL문이 가지고 있는 함수
+	         String sql = "insert into diary values(DI_SEQ.nextval,?,?,?,?,1)"; //sysdate는 SQL문이 가지고 있는 함수
 	         pst = Connect.conn.prepareStatement(sql);
 	         
 	         pst.setString(1, nickname);
