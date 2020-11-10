@@ -16,6 +16,33 @@
 <link href="css/all.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="css/style.css" rel="stylesheet">
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', '긍정', '부정'],
+          ['1주차',  10,      90],
+          ['2주차',  20,      80],
+          ['3주차',  30,       70],
+          ['4주차',  60,      40]
+        ]);
+
+        var options = {
+          title: '나의 감정 그래프',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
 </head>
 <body>
 <% //스크립틀릿
@@ -148,29 +175,37 @@
          </div>
          <!-- /.row -->
       </div>
+      <br>
+      <br>
+      	<body>
+      	<h6 style="text-align:center;">당신이 쓴 일기의 긍정, 부정 점수를 분석하여 보여줍니다.</h6>
+      	<h6 style="text-align:center;">긍정 점수를 높여 당신의 나무를 키워보세요!</h6>
+   	 <div id="curve_chart" style="width: 1300px; height: 400px; align:center; text-align:center;"></div>
+  </body>
       </div>
+      <br>
 
    <!-- /.container -->
    <!--footer starts from here-->
-   <footer class="footer">
-      <div class="container bottom_border">
-         <div class="row">
-            
-            <div class="container">
-               <div class="footer-logo">
-                  <a href="#"><img src="images/marigold4.png" alt="" /></a>
-               </div>
-               <!--foote_bottom_ul_amrc ends here-->
-               <p class="copyright text-center">
-                  All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design
-                  By : SINOZO, 9uack <a href="https://html.design/">html design</a>
-               </p>
-               
-            </div>
-   </footer>
+   <!--footer starts from here-->
+	<footer class="footer">
+		<div class="container bottom_border">
+			<div class="row">
+				<div class="container">
+					<div class="footer-logo">
+						<a href="#"><img src="images/marigold4.png" alt="" /></a>
+					</div>
+					<!--foote_bottom_ul_amrc ends here-->
+					<p class="copyright text-center">
+						All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design
+						By : SINOZO, 9uack <a href="https://html.design/">html design</a>
+					</p>
+				</div>
+	</footer>
 
-   <!-- Bootstrap core JavaScript -->
-   <script src="vendor/jquery/jquery.min.js"></script>
-   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
