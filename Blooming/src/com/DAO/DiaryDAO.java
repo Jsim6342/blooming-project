@@ -81,7 +81,7 @@ public class DiaryDAO {
 	        	 String di_date = rs.getString(3);
 	        	 String di_title = rs.getString(4);
 	        	 String di_contents = rs.getString(5);
-	        	 double di_score = rs.getDouble(6);
+	        	 int di_score = rs.getInt(6);
  	        	 
 
  	        	 //VO(DTO): 모듈끼리 데이터를 송/수신할 때 사용하는 새로운 데이터 타입

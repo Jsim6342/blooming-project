@@ -7,7 +7,7 @@ public class DiaryDTO {
 	private String di_date;
 	private String di_title;
 	private String di_contents;
-	private double di_score;
+	private int di_score;
 	
 	
 	
@@ -16,7 +16,7 @@ public class DiaryDTO {
 		super();
 	}
 
-	public DiaryDTO(int di_num, String nickname, String di_date, String di_title, String di_contents, double di_score) {
+	public DiaryDTO(int di_num, String nickname, String di_date, String di_title, String di_contents, int di_score) {
 		super();
 		this.di_num = di_num;
 		this.nickname = nickname;
@@ -66,11 +66,11 @@ public class DiaryDTO {
 		this.di_contents = di_contents;
 	}
 
-	public double getDi_score() {
+	public int getDi_score() {
 		return di_score;
 	}
 
-	public void setDi_score(double di_score) {
+	public void setDi_score(int di_score) {
 		this.di_score = di_score;
 	}
 	

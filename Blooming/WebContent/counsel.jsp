@@ -240,31 +240,7 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- Ajax를 사용하기 위한 Ajax import 부분  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
-	    //Ajax함수(미사용 부분. ajax 생성 시 참고용)
-		function ajaxCall(res_date,consultant,max_people,pro_email) { //ajax 함수 부분
-			$.ajax({
-				//ajax 통신 방식으로 데이터를 전송
-				type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
-				url : "ReserveRequest", //어떤 서버페이지로 이 값을 보낼 것인지
-				data : {"res_date" : res_date , "consultant" : consultant, "max_people" : max_people, "pro_email" : pro_email}, //보낼 데이터 지정
-				dataType : "text",
-				success : function(data) { //서버로 부터 받은 값
-					console.log(data);
-					//var update_people = data;
-					var h = document.getElementById("update_people");
-				    h.innerHTML = "남은인원: "+data;
-					
-				},
-				error : function() {
-
-				}
-			});
-		
-		
-		}
 		
 		function next(res_date,consultant,max_people,pro_email){
 				if(confirm("상담을 예약하시겠습니까?"))
