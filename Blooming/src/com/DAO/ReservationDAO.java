@@ -208,6 +208,71 @@ public class ReservationDAO {
 			return reservationList;
 		}
 		
+		//상담사 이메일, 닉네임 값에 맞는 예약현황값 반환(닉네임에 맞는 예약현황 조회)
+		public boolean check_reservation(String nickname, String pro_email) {
+			
+			boolean check = true;
+			if(nickname==null) {
+				return false;
+			}
+			
+			try {
+				
+				dao.getConn();
+				
+		         // --------------------- DB 연결(고정된 문법)
+		         
+		         String sql = "select * from reservation where nickname = ? and pro_email = ?";
+		         pst = Connect.conn.prepareStatement(sql);
+		         
+		         pst.setString(1, nickname);
+		         pst.setString(2, pro_email);
+		         
+		         // --------------------- DB에 SQL문 명령준비
+		         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+		         // --------------------- SQL문 실행/ 실행 후 처리
+		         
+		         if(rs.next()) {
+		        	 check = true;  
+		         }else {
+		        	 check = false;  
+		         }
+		         
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+				dao.close();
+			}
+			return check;
+		}
+		
+		//상담완료 시 상담사 이메일과 일치하는 예약현황 지우기
+		public int complete_Reservation(String email) {
+			
+			
+			try {
+		        
+		         dao.getConn();
+		         // --------------------- DB 연결(고정된 문법)
+		         
+		         String sql = "delete from reservation where pro_email=?";
+		         pst = Connect.conn.prepareStatement(sql);
+		         
+		         pst.setString(1, email);
+		      
+		      // --------------------- DB에 SQL문 명령준비
+		         
+		         cnt = pst.executeUpdate(); //성공 시 1을 반환
+		      // --------------------- SQL문 실행/ 실행 후 처리
+			
+		        
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		 return cnt;
+		}
 		
 		
 }

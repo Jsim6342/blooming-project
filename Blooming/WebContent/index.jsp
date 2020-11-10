@@ -45,13 +45,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="diagnosis.html">진단하기</a>
+					<li class="nav-item"><a class="nav-link" href="diagnosis.jsp">진단하기</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="diary.jsp">일기작성</a>
 					</li>
-					<!-- <li class="nav-item">
-                     <a class="nav-link" href="counsel.jsp">집단상담</a>
-                  </li> -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,14 +60,12 @@
 						</div></li>
 					<li class="nav-item"><a class="nav-link" href="comments.jsp">극복후기</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">센터찾기</a>
+					<li class="nav-item"><a class="nav-link" href="contact.jsp">센터찾기</a>
 					</li>
 					<%if(email==null&&nickname==null) {%>
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
 					<%}else { %>
-					<li class="nav-item"><a class="nav-link" href="login.html">정보수정</a>
-					</li>
 					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
 					</li>
 					<%} %>
@@ -81,6 +76,7 @@
 	<header class="slider-main">
 		<div id="carouselExampleIndicators"
 			class="carousel slide carousel-fade" data-ride="carousel">
+			
 			<ol class="carousel-indicators">
 				<li data-target="#carouselExampleIndicators" data-slide-to="0"
 					class="active"></li>
@@ -181,7 +177,7 @@
 							<p class="card-text">전문성을 갖춘 진단문항</p>
 						</div>
 						<div class="card-footer">
-							<a href="diagnosis.html" class="btn btn-primary">진단 해보기</a>
+							<a href="diagnosis.jsp" class="btn btn-primary">진단 해보기</a>
 						</div>
 					</div>
 				</div>
@@ -197,7 +193,7 @@
 							</p>
 						</div>
 						<div class="card-footer">
-							<a href="diary.html" class="btn btn-primary">작성 해보기</a>
+							<a href="diary.jsp" class="btn btn-primary">작성 해보기</a>
 						</div>
 					</div>
 				</div>
@@ -213,7 +209,7 @@
 							</p>
 						</div>
 						<div class="card-footer">
-							<a href="counsel.html" class="btn btn-primary">상담예약해보기</a>
+							<a href="counsel.jsp" class="btn btn-primary">상담예약해보기</a>
 						</div>
 					</div>
 				</div>

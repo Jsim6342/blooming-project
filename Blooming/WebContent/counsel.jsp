@@ -1,3 +1,4 @@
+<%@page import="com.DAO.ReservationDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DTO.C_ProfileDTO"%>
 <%@page import="com.DAO.C_ProfileDAO"%>
@@ -20,6 +21,17 @@
 <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+<% //스크립틀릿
+ 
+ 	//session값 email 가져오기
+	String email = (String)session.getAttribute("email");
+	System.out.println("현재 접속한 사람의 이메일: " + email);
+	
+	//session값 nickname 가져오기
+	String nickname = (String)session.getAttribute("nickname");
+	System.out.println("현재 접속한 사람의 닉네임: " + nickname);
+	
+ %>
 	<!-- Navigation -->
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
@@ -36,25 +48,34 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="diagnosis.html">진단하기</a>
+					<li class="nav-item"><a class="nav-link" href="diagnosis.jsp">진단하기</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="diary.jsp">일기작성</a>
 					</li>
+					<!-- <li class="nav-item">
+                     <a class="nav-link" href="counsel.jsp">집단상담</a>
+                  </li> -->
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle active" href="#"
-						id="navbarDropdownBlog" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> 집단상담 </a>
+						class="nav-link dropdown-toggle active" href="#" id="navbarDropdownBlog"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							집단상담 </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownBlog">
 							<a class="dropdown-item" href="counsel.jsp">집단상담예약</a> <a
 								class="dropdown-item" href="booking.jsp">집단상담 예약현황</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link" href="comments.jsp">극복후기</a>
+					<li class="nav-item "><a class="nav-link" href="comments.jsp">극복후기</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">센터찾기</a>
+					<li class="nav-item"><a class="nav-link" href="contact.jsp">센터찾기</a>
 					</li>
+					<%if(email==null&&nickname==null) {%>
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
+					<%}else { %>
+					
+					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
+					</li>
+					<%} %>
 				</ul>
 			</div>
 		</div>
@@ -128,8 +149,9 @@
 			<!-- 상담사  프로필 출력  -->
 			
  <%
-       C_ProfileDAO dao = new C_ProfileDAO();
-       ArrayList<C_ProfileDTO> profileList = dao.showProfile();   %>
+       C_ProfileDAO pro_dao = new C_ProfileDAO();
+ 	   ReservationDAO res_dao = new ReservationDAO();
+       ArrayList<C_ProfileDTO> profileList = pro_dao.showProfile();   %>
                   
 <% 
        for(int i = 0;i<profileList.size();i++) {
@@ -152,7 +174,25 @@
    	   out.println("<li class='list-group-item'>학력/이력 : "+profileList.get(i).getBackground()+"</li>");
    	   out.println("<li class='list-group-item'>상담소개 : "+profileList.get(i).getIntroduce()+"</li>");
    	   out.println("<ul class='card-footer'>");
-   	   out.println("<a onclick='next(\""+res_date+"\",\""+consultant+"\",\""+max_people+"\",\""+pro_email+"\")' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
+   	   if(nickname==null&&email==null) { //비회원일 때
+   		out.println("<p>로그인이 필요한 서비스 입니다.</p>");
+   	   }else {
+   		   if(nickname!=null) {//회원일 때
+   			   if(res_dao.check_reservation(nickname,pro_email)) {//예약중일때
+   				out.println("<p class='btn btn-primary'>예약완료</p> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
+   			   }else {//비예약중일때
+   			    out.println("<a onclick='next(\""+res_date+"\",\""+consultant+"\",\""+max_people+"\",\""+pro_email+"\")' href='#' class='btn btn-primary'>예약하기</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>"); 
+   			   }
+   		   }else {//상담사일 때
+   				if(email.equals(pro_email)) {//내 상담일 때
+   					out.println("<a onclick='finish(\""+pro_email+"\")' href='#' class='btn btn-primary'>상담완료</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>"); 
+   				}else {//다른 상담일 때
+   				out.println("<p onclick='notice1()' class='btn btn-primary'>예약하기</p> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
+   				}
+   		   }
+   	   
+   	   }
+   //	res_dao.check_reservation(nickname,pro_email)
    	   out.println("</ul>");
    	   out.println("</ul>");
    	   out.println("</div>");
@@ -163,11 +203,18 @@
 		</div>
 		<div class="row mb-4">
 			<div class="col-md-8">
-				<p>집단상담 서비스를 진행하시려면 프로필을 등록해주세요.</p>
+			<!-- <p>집단상담 서비스를 진행하시려면 프로필을 등록해주세요.</p> -->
 			</div>
+			<%if(email!=null) { %>
 			<div class="col-md-4">
+			<p>집단상담 서비스를 진행하시려면 프로필을 등록해주세요.</p>
+				<%if(pro_dao.check_profile(email)) { %>
+				<a onclick="notice2()" class="btn btn-lg btn-secondary btn-block" href="#">프로필 등록하기</a>
+				<%}else {%>
 				<a class="btn btn-lg btn-secondary btn-block" href="profile.jsp">프로필 등록하기</a>
+				<% }%>
 			</div>
+			<% }%>
 		</div>
 	</div>
 		</div>
@@ -230,6 +277,24 @@
 				alert('취소되었습니다.');
 				}
 			}
+		
+		function finish(pro_email){
+			if(confirm("상담을 완료하시겠습니까?"))
+			{
+			 alert('상담이 완료되었습니다.');
+			 location.href = "DeleteCounsel?pro_email="+encodeURIComponent(encodeURIComponent(pro_email),"UTF-8");
+			}else
+			{
+			alert('취소되었습니다.');
+			}
+		}
+		
+		function notice1(){
+			alert('상담사는 상담예약을 할 수 없습니다.');
+		}
+		function notice2(){
+			alert('프로필은 1개만 만들 수 있습니다.');
+		}
 		
 	  </script>
 </body>

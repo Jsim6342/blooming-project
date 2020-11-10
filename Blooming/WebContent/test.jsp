@@ -1,7 +1,6 @@
-<%@page import="com.DAO.ReviewDAO"%>
-<%@page import="com.DTO.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<!-- 상단바, 하단바만 있는 페이지 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - 극복후기</title>
+<title>Blooming - 일기</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
@@ -48,7 +47,7 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" href="diagnosis.jsp">진단하기</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="diary.jsp">일기작성</a>
+					<li class="nav-item "><a class="nav-link active" href="diary.jsp">일기작성</a>
 					</li>
 					<!-- <li class="nav-item">
                      <a class="nav-link" href="counsel.jsp">집단상담</a>
@@ -62,9 +61,9 @@
 							<a class="dropdown-item" href="counsel.jsp">집단상담예약</a> <a
 								class="dropdown-item" href="booking.jsp">집단상담 예약현황</a>
 						</div></li>
-					<li class="nav-item "><a class="nav-link active" href="comments.jsp">극복후기</a>
+					<li class="nav-item"><a class="nav-link" href="comments.jsp">극복후기</a>
 					</li>
-					<li class="nav-item "><a class="nav-link" href="contact.jsp">센터찾기</a>
+					<li class="nav-item"><a class="nav-link" href="contact.jsp">센터찾기</a>
 					</li>
 					<%if(email==null&&nickname==null) {%>
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
@@ -74,7 +73,6 @@
 					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
 					</li>
 					<%} %>
-
 				</ul>
 			</div>
 		</div>
@@ -85,7 +83,7 @@
 		<div class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h1 class="mt-4 mb-3">
-				극복후기 <small>post-overcoming review</small>
+				일기 <small>diary</small>
 			</h1>
 		</div>
 	</div>
@@ -95,70 +93,18 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-				<a href="comments.jsp" class="breadcrumb-item active">극복후기 게시판으로
-					돌아가기</a>
+				<li class="breadcrumb-item active">일기</li>
 			</ol>
 		</div>
-
-		<div class="row">
-			<!-- Post Content Column -->
-			<div class="col-lg-20">
-
-<%
-//rev_num 받아오기
-int rev_num = Integer.parseInt(request.getParameter("rev_num").trim());
-
-//rev_num에 맞는 후기 불러오기
-ReviewDTO review = new ReviewDTO();
-ReviewDAO dao = new ReviewDAO();
-review = dao.showReview(rev_num);
-%>
-
-				
-				<div class="col-lg-6">
-					
-
-			</div>
-				<!-- Preview Image -->
-				<img class="img-fluid rounded" src="images/aa.jpg" alt="" />
-				<hr>
-				<!-- Date/Time -->
-				<blockquote class="blockquote">
-				<h3>제목 : <%=review.getRev_title()%></h3>
-				<blockquote class="blockquote">
-				<h5>닉네임: <%=review.getNickname()%></h5>
-				</blockquote>
-				<hr>
-				<!-- Post Content -->
-				<blockquote class="blockquote">
-				<p class="lead"><%=review.getRev_contents()%></p>
-				</blockquote>
-				<hr>
-
-				
-
-				<div class="blog-right-side">
-					<div class="row mb-4">
-									<div class="col-md-8"></div>
-									<%if(dao.check_Review(rev_num, nickname)) { %>
-									<div class="col-md-4">
-										<a class="btn btn-lg btn-secondary btn-block"
-											href="signup.html">후기 수정하기</a>
-									</div>
-									<%}%>
-								</div>
-							</form>
-				</div>
 	</div>
-	<!-- /.row -->
 
-	</div>
+
 	<!-- /.container -->
-</div>
 	<!--footer starts from here-->
 	<footer class="footer">
 		<div class="container bottom_border">
 			<div class="row">
+				
 				<div class="container">
 					<div class="footer-logo">
 						<a href="#"><img src="images/marigold4.png" alt="" /></a>
@@ -168,6 +114,7 @@ review = dao.showReview(rev_num);
 						All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design
 						By : SINOZO, 9uack <a href="https://html.design/">html design</a>
 					</p>
+					
 				</div>
 	</footer>
 
