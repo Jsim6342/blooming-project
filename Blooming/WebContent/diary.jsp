@@ -162,7 +162,7 @@
 						
 					</ul>
 					<hr>
-					<a href="#" class="btn btn-primary">일기 작성하기</a>
+					<a href="diaryWrite.jsp" class="btn btn-primary">일기 작성하기</a>
 				
 				</div>
 

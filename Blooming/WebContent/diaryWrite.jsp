@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
 <!-- 상단바, 하단바만 있는 페이지 -->
 <!DOCTYPE html>
@@ -87,14 +87,14 @@
 			<div class="row">
 				<div class="col-lg-8 mb-4 contact-left">
 					<!--  -->
-					<form name="" id="" action="ReviewPost" method="post" novalidate>
+					<form name="" id="" action="DiaryPost" method="post" novalidate>
 						<div class="control-group form-group">
 							<div class="controls"></div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>날짜</label> <input type="date" class="form-control"
-									name="rev_title" id="title" required
+									name="DI_DATE" id="title" required
 									data-validation-required-message="Please enter your email address.">
 							</div>
 						</div>
@@ -103,7 +103,7 @@
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>제목</label> <input type="text" class="form-control"
-									name="rev_title" id="title" required
+									name="DI_TITLE" id="title" required
 									data-validation-required-message="Please enter your email address.">
 							</div>
 						</div>
@@ -111,7 +111,7 @@
 							<div class="controls">
 								<label>내용</label>
 								<textarea rows="20" cols="100" class="form-control"
-									name="rev_contents" id="content" required
+									name="DI_CONTENTS" id="content" required
 									data-validation-required-message="Please enter your message"
 									maxlength="999" style="resize: none"></textarea>
 							</div>
