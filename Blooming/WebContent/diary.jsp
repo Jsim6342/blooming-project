@@ -13,6 +13,55 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Blooming - 일기</title>
+
+<!-- 해 자동 이미지 바꿈 -->
+<script type="text/javascript">
+      var img = new Array();
+      img[0] = new Image();
+      img[0].src = "images/sun.png";
+      img[1] = new Image();
+      img[1].src = "images/sun_2.png";
+      img[2] = new Image();
+      img[2].src = "images/sun_3.png";
+      var interval = 500;
+      var n = 0;
+      var imgs = new Array("images/sun.png",
+            "images/sun_2.png",
+            "images/sun_3.png");
+      function rotate() {
+         if (navigator.appName == "Netscape" && document.getElementById) {
+            document.getElementById("slide").src = imgs[n];
+         } else
+            document.images.slide.src = imgs[n];
+         (n == (imgs.length - 1)) ? n = 0 : n++;
+         setTimeout("rotate()", interval);
+      }
+</script>
+<!-- 해 자동 이미지 바꿈 -->
+<script type="text/javascript">
+      var img = new Array();
+      img[0] = new Image();
+      img[0].src = "images/sun.png";
+      img[1] = new Image();
+      img[1].src = "images/sun_2.png";
+      img[2] = new Image();
+      img[2].src = "images/sun_3.png";
+      var interval = 500;
+      var n = 0;
+      var imgs = new Array("images/sun.png",
+            "images/sun_2.png",
+            "images/sun_3.png");
+      function rotate() {
+         if (navigator.appName == "Netscape" && document.getElementById) {
+            document.getElementById("slide").src = imgs[n];
+         } else
+            document.images.slide.src = imgs[n];
+         (n == (imgs.length - 1)) ? n = 0 : n++;
+         setTimeout("rotate()", interval);
+      }ㄴ
+
+      </script>
+
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
@@ -48,7 +97,7 @@
     </script>
 
 </head>
-<body>
+<body onload="rotate()">
 <% //스크립틀릿
  
     //session값 email 가져오기
@@ -120,77 +169,78 @@
    </div>
 
 
-	<!-- Page Content -->
-	<div class="container">
-		<div class="breadcrumb-main">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-				<li class="breadcrumb-item active">일기</li>
-			</ol>
-		</div>
-	</div>
+   <!-- Page Content -->
+   <div class="container">
+      <div class="breadcrumb-main">
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+            <li class="breadcrumb-item active">일기</li>
+         </ol>
+      </div>
+   </div>
 
 
 <div class="container">
-		<div class="about-main">
-			
-			
-			<div class="row">
-			
-				<div class="col-lg-6">
-				<h2 class="col-lg-6">나의 나무 키우기</h2>
-			<h class="col-lg-6">당신의 이야기를 들려주세요</h>
-					<img class="img-fluid rounded" src="images/tree1.png" alt="" />
-				</div>
-				<div class="col-lg-6">
-									<!-- <h2>나의 감성 그래프</h2>
-				
-									<img class="img-fluid rounded" src="images/about.jpg" alt="" /> -->
+      <div class="about-main">
+         
+         
+         <div class="row">
+         
+            <div class="col-lg-6">
+            <h2 class="col-lg-6">나의 나무 키우기</h2>
+         <h class="col-lg-6">당신의 이야기를 들려주세요</h>
+          <br> <img src="images/sun.png" id="slide"> 
+               <img class="img-fluid rounded" src="images/tree1.png" alt="" />
+            </div>
+            <div class="col-lg-6">
+                           <!-- <h2>나의 감성 그래프</h2>
+            
+                           <img class="img-fluid rounded" src="images/about.jpg" alt="" /> -->
 
-					
-					<h2>나의 이야기</h2>
-					<p>머신러닝을 기반한 감성분석 시스템으로 당신의 하루의 감성을 분석해드립니다.</p>
-					
-					<h>날짜 선택 : </h>
-					<input type="date" name='start_date' value='2020-11-10'/>
-					<h> ~ </h>
-					<input type="date" name='end_date' value='2020-11-10'/>
-					<h><button id="search_btn" class="btn btn-primary">조회</button></h>
-					<hr>
-					<ul id="diarylist">
-					<li>조회를 눌러주세요.</li>
-					
-						<!-- <li>Phasellus quis erat et enim laoreet posuere ac porttitor
-							ipsum.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
-						<li>Quisque ac eros non ex hendrerit vehicula.</li>
-						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
-						<li>Quisque ac eros non ex hendrerit vehicula.</li>
-						<li>Quisque ac eros non ex hendrerit vehicula.</li>
-						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
-						<li>Quisque ac eros non ex hendrerit vehicula.</li>
-						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
-						<li>Quisque ac eros non ex hendrerit vehicula.</li>
-						<li>Quisque ac eros non ex hendrerit vehicula.</li>
-						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
-						<li>Quisque ac eros non ex hendrerit vehicula.</li> -->
-						
-					</ul>
-					<hr>
-					<a href="diaryWrite.jsp" class="btn btn-primary">일기 작성하기</a>
-				
-				</div>
+               
+               <h2>나의 이야기</h2>
+               <p>머신러닝을 기반한 감성분석 시스템으로 당신의 하루의 감성을 분석해드립니다.</p>
+               
+               <h>날짜 선택 : </h>
+               <input type="date" name='start_date' value='2020-11-10'/>
+               <h> ~ </h>
+               <input type="date" name='end_date' value='2020-11-10'/>
+               <h><button id="search_btn" class="btn btn-primary">조회</button></h>
+               <hr>
+               <ul id="diarylist">
+               <li>조회를 눌러주세요.</li>
+               
+                  <!-- <li>Phasellus quis erat et enim laoreet posuere ac porttitor
+                     ipsum.</li>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
+                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
+                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
+                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
+                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
+                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
+                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
+                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
+                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
+                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
+                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
+                  <li>Quisque ac eros non ex hendrerit vehicula.</li> -->
+                  
+               </ul>
+               <hr>
+               <a href="diaryWrite.jsp" class="btn btn-primary">일기 작성하기</a>
+            
+            </div>
 
          </div>
          <!-- /.row -->
       </div>
       <br>
       <br>
-      	<body>
-      	<h6 style="text-align:center;">당신이 쓴 일기의 긍정, 부정 점수를 분석하여 보여줍니다.</h6>
-      	<h6 style="text-align:center;">당신의 나무를 키워보세요!</h6>
-   	 <div id="curve_chart" style="width: 1300px; height: 400px;"></div>
+         <body>
+         <h6 style="text-align:center;">당신이 쓴 일기의 긍정, 부정 점수를 분석하여 보여줍니다.</h6>
+         <h6 style="text-align:center;">당신의 나무를 키워보세요!</h6>
+       <div id="curve_chart" style="width: 1300px; height: 400px;"></div>
   </body>
       </div>
       <br>
@@ -199,62 +249,62 @@
    <!--footer starts from here-->
    <!--footer starts from here-->
 
-	<footer class="footer">
-		<div class="container bottom_border">
-			<div class="row">
-				<div class="container">
-					<div class="footer-logo">
-						<a href="#"><img src="images/marigold4.png" alt="" /></a>
-					</div>
-					<!--foote_bottom_ul_amrc ends here-->
-					<p class="copyright text-center">
-						All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design
-						By : SINOZO, 9uack <a href="https://html.design/">html design</a>
-					</p>
-				</div>
-	</footer>
+   <footer class="footer">
+      <div class="container bottom_border">
+         <div class="row">
+            <div class="container">
+               <div class="footer-logo">
+                  <a href="#"><img src="images/marigold4.png" alt="" /></a>
+               </div>
+               <!--foote_bottom_ul_amrc ends here-->
+               <p class="copyright text-center">
+                  All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design
+                  By : SINOZO, 9uack <a href="https://html.design/">html design</a>
+               </p>
+            </div>
+   </footer>
 
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- Ajax를 사용하기 위한 Ajax import 부분  -->
+   <!-- Bootstrap core JavaScript -->
+   <script src="vendor/jquery/jquery.min.js"></script>
+   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <!-- Ajax를 사용하기 위한 Ajax import 부분  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-	<script type="text/javascript">
-	
-	$('#search_btn').on('click',function(){
-		
-		let start_date = $('input[name="start_date"]').val();
-		let end_date = $('input[name="end_date"]').val();
-		
-		
-		 //Ajax함수(미사용 부분. ajax 생성 시 참고용)
-			$.ajax({
-				//ajax 통신 방식으로 데이터를 전송
-				type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
-				url : "DiaryShow", //어떤 서버페이지로 이 값을 보낼 것인지
-				data : {"start_date" : start_date , "end_date" : end_date}, //보낼 데이터 지정
-				dataType : "json",
-				success : function(diaryList) { //서버로 부터 받은 값
-					
-				console.log(diaryList);
-				
-				let html ="";
-				
-				for(let i=0; i<diaryList.length; i++) {
-					let diaryTitle = diaryList[i].di_title; //일기 제목 저장
-					html += '<li>'+diaryTitle+'</li>';
-				}
-				
-				$('#diarylist').html(html); //.html: 해당 태그에 값을 저장
-				
-				},
-				error : function() {
-					alert("ajax 통신 실패");
-				}
-			});
-	});
-	
-	</script>
+   
+   <script type="text/javascript">
+   
+   $('#search_btn').on('click',function(){
+      
+      let start_date = $('input[name="start_date"]').val();
+      let end_date = $('input[name="end_date"]').val();
+      
+      
+       //Ajax함수(미사용 부분. ajax 생성 시 참고용)
+         $.ajax({
+            //ajax 통신 방식으로 데이터를 전송
+            type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
+            url : "DiaryShow", //어떤 서버페이지로 이 값을 보낼 것인지
+            data : {"start_date" : start_date , "end_date" : end_date}, //보낼 데이터 지정
+            dataType : "json",
+            success : function(diaryList) { //서버로 부터 받은 값
+               
+            console.log(diaryList);
+            
+            let html ="";
+            
+            for(let i=0; i<diaryList.length; i++) {
+               let diaryTitle = diaryList[i].di_title; //일기 제목 저장
+               html += '<li>'+diaryTitle+'</li>';
+            }
+            
+            $('#diarylist').html(html); //.html: 해당 태그에 값을 저장
+            
+            },
+            error : function() {
+               alert("ajax 통신 실패");
+            }
+         });
+   });
+   
+   </script>
 </body>
 </html>
