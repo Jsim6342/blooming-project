@@ -24,23 +24,26 @@ public class DiaryPost extends HttpServlet {
 	     HttpSession session = request.getSession(); //Session영역을 사용하기 위한 객체생성
 	     String nickname = (String)session.getAttribute("nickname");
 		 
-		 //후기 작성 페이지 가져오기
+		 //일기 작성 페이지 가져오기
 	     String DI_DATE = request.getParameter("DI_DATE");
 		 String DI_TITLE = request.getParameter("DI_TITLE");
 		 String DI_CONTENTS = request.getParameter("DI_CONTENTS");
+		 int DI_SCORE = Integer.parseInt(request.getParameter("DI_SCORE"));
+		 
 	   	 
 		 System.out.println(DI_DATE);
 		 System.out.println(DI_TITLE);
 		 System.out.println(DI_CONTENTS);
+		 System.out.println(DI_SCORE); 
 		   
-		   
-		   //reviewDAO 객체생성
+		   //DiaryDAO 객체생성
 		   DiaryDAO dao = new DiaryDAO();
-		   int cnt = dao.insertDiary(nickname, DI_DATE, DI_TITLE, DI_CONTENTS); //review_post 메소드. 성공 시 1 반환
+		   int cnt = dao.insertDiary(nickname, DI_DATE, DI_TITLE, DI_CONTENTS, DI_SCORE); //insertDiary메소드. 성공 시 1 반환
 		   
-		   //후기 등록 성공 시 comments.jsp로 이동
+		   //후기 등록 성공 시 diary.jsp로 이동
 		   if(cnt > 0) {
-		   response.sendRedirect("diary.jsp");
+			 response.sendRedirect("diary.jsp");  
+		   //response.sendRedirect("http://127.0.0.1:5000/DiaryPost1?DI_TITLE="+DI_TITLE+"&DI_CONTENTS="+DI_CONTENTS);
 		   }
 		
 		
