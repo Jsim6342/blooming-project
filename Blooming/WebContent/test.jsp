@@ -101,19 +101,19 @@
 
 <div class="container">
 		<div class="about-main">
-			<h2 class="col-lg-6">나의 나무 키우기</h2>
-			<p class="col-lg-6">당신의 이야기를 들려주세요</p>
+			
 			
 			<div class="row">
 			
 				<div class="col-lg-6">
+				<h2 class="col-lg-6">나의 나무 키우기</h2>
+			<h class="col-lg-6">당신의 이야기를 들려주세요</h>
 					<img class="img-fluid rounded" src="images/tree1.png" alt="" />
 				</div>
 				<div class="col-lg-6">
 									<!-- <h2>나의 감성 그래프</h2>
 				
 									<img class="img-fluid rounded" src="images/about.jpg" alt="" /> -->
-				<p></p>
 					<h2>나의 이야기</h2>
 					<p>머신러닝을 기반한 감성분석 시스템으로 당신의 하루의 감성을 분석해드립니다.</p>
 					<ul>
@@ -127,6 +127,14 @@
 							ipsum.</li>
 						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
 						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
+						<li>Quisque ac eros non ex hendrerit vehicula.</li>
 						<li>Quisque ac eros non ex hendrerit vehicula.</li>
 						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
 						<li>Quisque ac eros non ex hendrerit vehicula.</li>
