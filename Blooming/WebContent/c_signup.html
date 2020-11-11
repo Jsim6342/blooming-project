@@ -54,8 +54,9 @@
 
 					<div class="wrap-input100 validate-input m-t-65 m-b-35"
 						data-validate="Enter email">
-						<input class="input100" type="text" name="con_email"
+						<input class="input100" onblur="ajaxCall()" id="EmailCheck" type="text" name="con_email"
 							placeholder="이메일">
+							<p id="p1"></p>
 						<!-- <span class="focus-input100" data-placeholder="이메일"></span> -->
 					</div>
 
@@ -154,5 +155,40 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+		function ajaxCall() { //ajax 함수 부분
+			var emailCheck = document.getElementById("EmailCheck"); //id속성을 바탕으로 값 가져오기
+			//alert(emailCheck.value);	//태그 값을 불러오는 함수는 .value이다. 그냥 txt1은 태그를 의미
+		
+			$.ajax({
+				//ajax 통신 방식으로 데이터를 전송
+				type : "get", //서버로 어떤 방식으로 호출할 것인지. get or post
+				url : "EmailCheck", //어떤 서버페이지로 이 값을 보낼 것인지
+				data : {"email" : emailCheck.value}, //보낼 데이터 지정
+				dataType : "text",
+				success : function(data) { //서버로 부터 받은 값
+					var p1 = document.getElementById("p1");
+					
+					if(data=="true") { //반드시 true를 문자열로 덮어주어야 한다. (가져올 때 문자열로 가져옴)
+						
+						p1.style.cssText = "color:red"; //p1태그에 css문법을 사용해서 스타일을 적용하겠다. (자바스크립트 내에서 스타일 적용가능)
+						p1.innerHTML = "사용할 수 없는 아이디입니다." //일반 태그에 값 입력할 때: innerHTML
+						
+					}else {
+						
+						p1.style.cssText = "color:blue";
+						p1.innerHTML = "사용할 수 있는 아이디입니다." //일반 태그에 값 입력할 때: innerHTML
+					}
+				},
+				error : function() {
+
+				}
+			});
+
+		}
+	</script>
 </body>
 </html>

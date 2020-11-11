@@ -113,4 +113,38 @@ public class ConsultantDAO {
 		}
 		return consultant;
 	}
+
+	public boolean consultant_email_check(String email) {
+		
+		
+		boolean check = false;
+		
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from consultant where con_email = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			pst.setString(1, email);
+			
+			
+			rs = pst.executeQuery();
+			
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+				check = true;
+			}else {
+				check = false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		
+		return check;
+	}
 }
