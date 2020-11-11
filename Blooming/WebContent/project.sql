@@ -86,7 +86,7 @@ CYCLE
 SELECT * FROM USER_OBJECTS WHERE OBJECT_TYPE='TABLE'
 
 테이블 제거
-drop table diary
+drop table review
 
 테이블 확인
 select * from MEMBER

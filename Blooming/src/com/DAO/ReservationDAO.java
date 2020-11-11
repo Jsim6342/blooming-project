@@ -92,7 +92,7 @@ public class ReservationDAO {
 		}
 	
 		//예약 현황 지우기
-		public int delete_Reservation(String nickname, String res_date) {
+		public int delete_Reservation(String nickname, String res_date, String pro_email) {
 			
 			
 			try {
@@ -100,11 +100,12 @@ public class ReservationDAO {
 		         dao.getConn();
 		         // --------------------- DB 연결(고정된 문법)
 		         
-		         String sql = "delete from reservation where nickname=? and res_date=?";
+		         String sql = "delete from reservation where nickname=? and res_date=? and pro_email=?";
 		         pst = Connect.conn.prepareStatement(sql);
 		         
 		         pst.setString(1, nickname);
 		         pst.setString(2, res_date);
+		         pst.setString(3, pro_email);
 		      
 		      // --------------------- DB에 SQL문 명령준비
 		         
