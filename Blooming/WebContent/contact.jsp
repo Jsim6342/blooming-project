@@ -176,18 +176,21 @@
 			<!-- Contact Details Column -->
 			<div class="col-lg-4 mb-4 contact-right">
 				<h3>센터 정보</h3>
-				<p>
+				<p id="addr">
 					광주 동구 남문로 734 103동 206호 <br>
 				</p>
-				<p>
-					<abbr title="Phone">P</abbr>: 062-512-0039
+				<p id="addr">
+					광주 동구 남문로 734 103동 206호 <br>
 				</p>
-				<p>
-					<abbr title="Email">E</abbr>: <a href="mailto:name@example.com">pimang95@naver.com
+				<p id="tel">
+					<abbr title="Phone">전화번호</abbr>: 062-512-0039
+				</p>
+				<p id="email">
+					<abbr title="Email">이메일</abbr>: <a href="mailto:name@example.com">pimang95@naver.com
 					</a>
 				</p>
-				<p>
-					<abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
+				<p id="hours">
+					<abbr title="Hours">영업시간</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
 				</p>
 			</div>
 		</div>
