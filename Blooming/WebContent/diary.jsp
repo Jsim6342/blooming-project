@@ -168,7 +168,12 @@
             <h2 class="col-lg-6">나의 나무 키우기</h2>
          <h class="col-lg-6">당신의 이야기를 들려주세요</h>
           <br> <img src="images/sun.png" id="slide"> 
-               <img class="img-fluid rounded" src="images/tree1.png" alt="" />
+              <img class="img-fluid rounded " src="images/tree1.gif" alt="" />
+              
+<!--               <img class="img-fluid rounded " src="images/tree2.gif" alt="" /> -->              
+ 
+<!--               <img class="img-fluid rounded " src="images/tree3.gif" alt="" /> -->               
+               		
             </div>
             <div class="col-lg-6">
                            <!-- <h2>나의 감성 그래프</h2>
@@ -188,21 +193,7 @@
                <ul id="diarylist">
                <li>조회를 눌러주세요.</li>
                
-                  <!-- <li>Phasellus quis erat et enim laoreet posuere ac porttitor
-                     ipsum.</li>
-                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
-                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
-                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
-                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
-                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
-                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
-                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
-                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
-                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
-                  <li>Quisque ac eros non ex hendrerit vehicula.</li>
-                  <li>Duis porttitor odio pellentesque mollis vulputate.</li>
-                  <li>Quisque ac eros non ex hendrerit vehicula.</li> -->
+                 
                   
                </ul>
                <hr>
@@ -282,6 +273,8 @@
             }
          });
    });
+   
+	}
    
    </script>
 </body>

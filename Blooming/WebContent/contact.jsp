@@ -120,7 +120,7 @@
 					// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 					var positions = [
 					    {
-					        content: '<div>심리건강연구소</div>', 
+					        content: '<div>심리건강연구소</div>',
 					        latlng: new kakao.maps.LatLng(35.137475, 126.925039)
 					    },
 					    {
