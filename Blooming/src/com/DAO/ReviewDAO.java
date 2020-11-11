@@ -209,7 +209,7 @@ public class ReviewDAO {
 				
 		         // --------------------- DB 연결(고정된 문법)
 		         
-		         String sql = "SELECT * FROM (SELECT a.*,ROW_NUMBER() OVER(ORDER BY rev_num DESC) AS rnum FROM review a) WHERE rnum >=? and rnum<=?";
+		         String sql = "SELECT * FROM (SELECT a.*,ROW_NUMBER() OVER(ORDER BY rev_num DESC) AS rnum FROM review a) WHERE rnum >? and rnum<=?";
 		         pst = Connect.conn.prepareStatement(sql);
 		         pst.setInt(1, start);
 		         pst.setInt(2, pageCnt);
