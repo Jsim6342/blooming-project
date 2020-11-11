@@ -102,7 +102,7 @@
 			<div class="row">
 				<div class="col-lg-8 mb-4 contact-left">
 					<!--  -->
-					<form name="" id="" action="ReviewPost" method="post" novalidate>
+					<form name="ReviewForm" id="" action="ReviewPost" method="post" novalidate>
 						<div class="control-group form-group">
 							<div class="controls"></div>
 						</div>
@@ -159,5 +159,23 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+	$('form#ReviewForm').submit(function(){
+			  let titleC = $('input[name="rev_title"]').val();
+		      let contentC = $('input[name="rev_contents"]').val();
+		      
+		      
+		      
+		      
+		       if(titleC==='' || contentC==='') {
+		    	  alert("모든 항목을 채워주세요.");
+		    	  return false;
+		      } 		      
+		      
+		});
+	</script>
 </body>
 </html>

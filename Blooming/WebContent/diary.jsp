@@ -206,8 +206,11 @@
                   
                </ul>
                <hr>
-               <a href="diaryWrite.jsp" class="btn btn-primary">일기 작성하기</a>
-            
+               <%if(email==null&&nickname==null) {%>
+               <a onclick="notice2()" href="#" class="btn btn-primary">일기 작성하기</a>
+            	<%}else {%>
+            	<a href="diaryWrite.jsp" class="btn btn-primary">일기 작성하기</a>
+            	<% }%>
             </div>
 
          </div>
@@ -282,6 +285,10 @@
             }
          });
    });
+   
+   function notice2(){
+		alert('회원만 이용 가능합니다. 로그인을 해주세요!');
+	}
    
    </script>
 </body>

@@ -189,6 +189,23 @@
 			});
 
 		}
+		
+		$('form.login100-form').submit(function(){
+			  let emailC = $('input[name="con_email"]').val();
+		      let pwC = $('input[name="con_pw"]').val();
+		      let nameC = $('input[name="con_name"]').val();
+		      let telC = $('input[name="con_tel"]').val();
+		      let licenseC = $('input[name="license"]').val();
+		      let locationC = $('input[name="location"]').val();
+		      
+		      
+		      
+		       if(emailC==='' || pwC==='' || nameC==='' || telC===''|| licenseC===''|| locationC==='') {
+		    	  alert("모든 항목을 채워주세요.");
+		    	  return false;
+		      } 		      
+		      
+		});
 	</script>
 </body>
 </html>
