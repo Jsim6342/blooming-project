@@ -104,7 +104,7 @@
 			<div class="row">
 				<div class="col-lg-8 mb-4 contact-left">
 					<!--  -->
-					<form name="" id="" action="http://192.168.50.115:5000/DiaryPost1" method="post" novalidate>
+					<form name="" id="DiaryForm" action="http://192.168.50.115:5000/DiaryPost1" method="post" novalidate>
 						<div class="control-group form-group">
 							<div class="controls"></div>
 						</div>
@@ -170,5 +170,23 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+	$('form#DiaryForm').submit(function(){
+			  let dateC = $('input[name="DI_DATE"]').val();
+		      let titleC = $('input[name="DI_TITLE"]').val();
+		      let contentC = $('input[name="DI_CONTENTS"]').val();
+		      
+		      
+		      
+		      
+		       if(dateC==='' || titleC==='' || contentC==='') {
+		    	  alert("모든 항목을 채워주세요.");
+		    	  return false;
+		      } 		      
+		      
+		});
+	</script>
 </body>
 </html>

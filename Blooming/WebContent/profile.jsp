@@ -60,7 +60,7 @@
 					</div> -->
 					
 					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter pro_date">
-						<input class="input100" type="text" name="pro_date" placeholder= "상담진행 희망일시 ex)월요일 오후 7시">
+						<input class="input100" type="text" name="pro_date" placeholder= "상담진행 희망일시 ex)2020-11-11 오후 7시">
 						<!-- <span class="focus-input100" data-placeholder="Username"></span> -->
 					</div>
 					<div class="wrap-input100 validate-input m-t-45 m-b-35" data-validate = "Enter max_people">

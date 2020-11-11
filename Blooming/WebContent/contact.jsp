@@ -125,7 +125,6 @@
 					var positions = [
 					    {
 					        content: '<div>심리건강연구소</div>', 
-
 					        latlng: new kakao.maps.LatLng(35.137475, 126.925039)
 					    },
 					    {

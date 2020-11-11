@@ -165,7 +165,11 @@
 			<div class="row mb-4">
 				<div class="col-md-8"></div>
 				<div class="col-md-4">
+				<%if(email==null&&nickname==null) {%>
+					<a onclick="notice2()" class="btn btn-lg btn-secondary btn-block" href="#">후기작성</a>
+					<%}else {%>
 					<a class="btn btn-lg btn-secondary btn-block" href="post.jsp">후기작성</a>
+					<% }%>
 				</div>
 			</div>
 		</div>
@@ -200,5 +204,15 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+   <script type="text/javascript">
+   
+   
+	function notice2(){
+		alert('회원만 이용 가능합니다. 로그인을 해주세요!');
+
+	}
+	</script>
 </body>
 </html>
