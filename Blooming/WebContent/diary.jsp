@@ -38,29 +38,7 @@
       }
 </script>
 <!-- 해 자동 이미지 바꿈 -->
-<script type="text/javascript">
-      var img = new Array();
-      img[0] = new Image();
-      img[0].src = "images/sun.png";
-      img[1] = new Image();
-      img[1].src = "images/sun_2.png";
-      img[2] = new Image();
-      img[2].src = "images/sun_3.png";
-      var interval = 500;
-      var n = 0;
-      var imgs = new Array("images/sun.png",
-            "images/sun_2.png",
-            "images/sun_3.png");
-      function rotate() {
-         if (navigator.appName == "Netscape" && document.getElementById) {
-            document.getElementById("slide").src = imgs[n];
-         } else
-            document.images.slide.src = imgs[n];
-         (n == (imgs.length - 1)) ? n = 0 : n++;
-         setTimeout("rotate()", interval);
-      }ㄴ
 
-      </script>
 
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
