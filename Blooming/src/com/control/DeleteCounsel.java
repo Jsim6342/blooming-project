@@ -30,16 +30,16 @@ public class DeleteCounsel extends HttpServlet {
 		  C_ProfileDAO pro_dao = new C_ProfileDAO();
 		  int cnt1 = pro_dao.profile_complete(pro_email);
 		 
-		 //Reservation에 pro_email과 일치하는 행 모두 delete
+		  //Reservation에 pro_email과 일치하는 행 모두 delete
 		   //ReservationDAO 객체생성
 		   ReservationDAO res_dao = new ReservationDAO();
 		   int cnt2 = res_dao.complete_Reservation(pro_email); //review_post 메소드. 성공 시 1 반환
 		   
 		   //예약 등록 성공 시
-		   if(cnt1 > 0&&cnt2 > 0) {
-		;
-		   response.sendRedirect("counsel.jsp");
-		   
+		   if(cnt1>0) {
+	
+			   response.sendRedirect("counsel.jsp");
+
 		   }
 		
 		
