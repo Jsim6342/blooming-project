@@ -168,8 +168,27 @@
             <h2 class="col-lg-6">나의 나무 키우기</h2>
          <h class="col-lg-6">당신의 이야기를 들려주세요</h>
           <br> <img src="images/sun.png" id="slide"> 
-              <img class="img-fluid rounded " src="images/tree1.gif" alt="" />
-              
+          <%
+          DiaryDAO dao = new DiaryDAO();
+          int score_sum = dao.diaryScore(nickname);
+          
+          if(score_sum>=0 && score_sum <=1) {
+          %>
+              <img id = "treeimage" class="img-fluid rounded " src="images/tree1.gif" alt="" />
+          <%} else if(score_sum>=2 && score_sum<=4) { %>
+              <img id = "treeimage" class="img-fluid rounded " src="images/tree2.gif" alt="" />
+          <%} else if(score_sum>=5 && score_sum<=8) {%>
+           		<img id = "treeimage" class="img-fluid rounded " src="images/tree3.gif" alt="" />
+           <%} else if(score_sum>=9 && score_sum<=13) {%>
+           <img id = "treeimage" class="img-fluid rounded " src="images/tree4.png" alt="" />
+          	<%} else if(score_sum>=14 && score_sum<=19) {%>
+          	<img id = "treeimage" class="img-fluid rounded " src="images/tree5.png" alt="" />
+          	<%} else if(score_sum>=20) {%>
+          	<img id = "treeimage" class="img-fluid rounded " src="images/tree6.png" alt="" />
+          	<%} else { %>
+          	<!-- sum이 음수인 경우 : 이미지 수정필요 -->
+          	<img id = "treeimage" class="img-fluid rounded " src="images/tree1.gif" alt="" />
+          	<%} %>
 <!--               <img class="img-fluid rounded " src="images/tree2.gif" alt="" /> -->              
  
 <!--               <img class="img-fluid rounded " src="images/tree3.gif" alt="" /> -->               
@@ -246,9 +265,8 @@
    
    $('#search_btn').on('click',function(){
       
-      let start_date = $('input[name="start_date"]').val();
-      let end_date = $('input[name="end_date"]').val();
-      
+	   let start_date = $('input[name="start_date"]').val();
+	   let end_date = $('input[name="end_date"]').val();
       
        //Ajax함수(미사용 부분. ajax 생성 시 참고용)
          $.ajax({
@@ -283,6 +301,29 @@
 
 	}
    
+   <%-- $('#treeimage').on('ready',function(){
+	      
+	     let name = '<%=nickname%>';
+	      
+	      
+	       //Ajax함수(미사용 부분. ajax 생성 시 참고용)
+	         $.ajax({
+	            //ajax 통신 방식으로 데이터를 전송
+	            type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
+	            url : "ScoreCheck", //어떤 서버페이지로 이 값을 보낼 것인지
+	            data : {"nickname" : name}, //보낼 데이터 지정
+	            dataType : "text",
+	            success : function(data) { //서버로 부터 받은 값
+	            console.log(data);
+	            
+	            
+	            
+	            },
+	            error : function() {
+	               alert("ajax 통신 실패");
+	            }
+	         });
+	   }); --%>
    </script>
 </body>
 </html>

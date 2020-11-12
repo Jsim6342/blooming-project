@@ -94,6 +94,7 @@ select * from CONSULTANT
 select * from REVIEW
 select * from C_PROFILE
 select * from RESERVATION
+select * from DIARY
 
 테이블 값 삽입
 INSERT INTO C_PROFILE values('consultant@naver.com','상담사','매주 수요일 6시','서울대 심리학과 졸업','상담 잘해요',20)
