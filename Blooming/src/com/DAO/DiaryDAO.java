@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.DTO.DiaryDTO;
+import com.DTO.ReviewDTO;
 
 public class DiaryDAO {
 
@@ -99,6 +100,49 @@ public class DiaryDAO {
 		return diaryList;
 	}
 	
+	
+	public DiaryDTO showDiary(int di_num) {
+		
+		DiaryDTO diaryshow = null;
+		
+		try {
+			
+			dao.getConn();
+			
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "select * from diary where di_num = ?";
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setInt(1, di_num);
+	         
+	         // --------------------- DB에 SQL문 명령준비
+	         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+	         // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	         if(rs.next()) {
+	        	 
+	        	//전체 후기 데이터를 출력
+	        	 int di_nums = rs.getInt(1);
+	        	 String nickname = rs.getString(2);
+	        	 String di_date = rs.getString(3);
+	        	 String di_title = rs.getString(4);
+	        	 String di_contents = rs.getString(5);
+	        	 int di_score = rs.getInt(6);
+	        	 
+
+ 	        	 //ReviewDTO 객체를 1개씩 DB에서 받은 후, ArrayList인 reviewList에 저장
+	        	 diaryshow = new DiaryDTO(di_nums, nickname, di_date, di_title, di_contents, di_score);
+ 	        	 
+	         }
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return diaryshow;
+	}
 
 }
 

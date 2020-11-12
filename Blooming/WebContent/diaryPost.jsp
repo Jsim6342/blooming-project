@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="utf-8"%>
+<%@page import="com.DAO.DiaryDAO"%>
+<%@page import="com.DTO.DiaryDTO"%>
 <!-- 상단바, 하단바만 있는 페이지 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +19,17 @@
    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+<% //스크립틀릿
+ 
+ 	//session값 email 가져오기
+	String email = (String)session.getAttribute("email");
+	System.out.println("현재 접속한 사람의 이메일: " + email);
+	
+	//session값 nickname 가져오기
+	String nickname = (String)session.getAttribute("nickname");
+	System.out.println("현재 접속한 사람의 닉네임: " + nickname);
+	
+ %>
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
         <div class="container">
@@ -43,9 +56,14 @@
                   <li class="nav-item">
                      <a class="nav-link" href="contact.html">센터찾기</a>
                   </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="login.html">로그인</a>
-                  </li>
+                  <%if(email==null&&nickname==null) {%>
+					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
+					</li>
+					<%}else { %>
+					
+					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
+					</li>
+					<%} %>
                   <!-- <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      Portfolio
@@ -104,12 +122,25 @@
             <li class="breadcrumb-item active">일기</li>
          </ol>
       </div>
+ <%
+//rev_num 받아오기
+int di_num = Integer.parseInt(request.getParameter("di_num").trim());
+
+//rev_num에 맞는 후기 불러오기
+DiaryDTO diary = new DiaryDTO();
+DiaryDAO dao = new DiaryDAO();
+diary = dao.showDiary(di_num);
+%>
+      
        <div>
      <div class="about-main">
 			<div class="row">
 				<div class="col-lg-6">
-					<h2>일기 제목, 날짜 등등..</h2>
-					<p>일기내용~ <br>오늘은 밥을 먹었다.</p>
+					<h2><%=diary.getDi_title()%></h2>
+					<br>
+					<h4><%=diary.getDi_date()%></h4>
+					<br>
+					<p><%=diary.getDi_contents()%></p>
 				</div>
 				<div class="col-lg-6">
 					<img class="img-fluid rounded" src="images/result1.jpg" alt="" />
