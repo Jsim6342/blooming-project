@@ -144,5 +144,47 @@ public class DiaryDAO {
 		return diaryshow;
 	}
 
+	
+	public int diaryScore(String nickname) {
+		
+		
+		int sum = 0; // 긍/부정 점수의 합계를 더할 변수
+		
+		try {
+			
+			dao.getConn();
+			
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "select * from diary where nickname=?";
+	         pst = Connect.conn.prepareStatement(sql);
+	         pst.setString(1, nickname);
+	         
+	        
+	         // --------------------- DB에 SQL문 명령준비
+	         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+	         // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	         while(rs.next()) {
+	        	 
+	        	//
+	        	 
+	        	 int di_score = rs.getInt(6);
+	        	 
+	        	 if(sum==-1 && di_score < 0) {
+	        		 sum = -1;
+	        	 }else {
+	        	 sum = sum + di_score;
+	        	 }
+
+	         }
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return sum;
+	}
 }
 
