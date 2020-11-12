@@ -175,7 +175,7 @@
    	   out.println("<li class='list-group-item'>상담소개 : "+profileList.get(i).getIntroduce()+"</li>");
    	   out.println("<ul class='card-footer'>");
    	   if(nickname==null&&email==null) { //비회원일 때
-   		out.println("<p>로그인이 필요한 서비스 입니다.</p>");
+   		out.println("<p>상담예약은 로그인이 필요한 서비스 입니다.</p>");
    	   }else {
    		   if(nickname!=null) {//회원일 때
    			   if(res_dao.check_reservation(nickname,pro_email)) {//예약중일때

@@ -152,12 +152,15 @@
 					    var infowindow = new kakao.maps.InfoWindow({
 					        content: positions[i].content // 인포윈도우에 표시할 내용
 					    });
-					
+					    
+
 					    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 					    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
 					    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 					    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 					    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+					    
+					    var index_num = i;
 					    
 					}
 					
@@ -165,6 +168,16 @@
 					function makeOverListener(map, marker, infowindow) {
 					    return function() {
 					        infowindow.open(map, marker);
+					            
+					        var string = positions[index_num].content; // 포지션이라는 제이슨 리스트에서 제이슨 구조의 content내용의 태그 내용을 입력
+					        var array = string.split(">");
+					        var array1 = array[1].split("<");
+					        var center_name = array1[0];
+					        console.log(center_name);
+					        
+					        ajaxCall(center_name);
+  
+					        
 					    };
 					}
 					
@@ -192,23 +205,8 @@
 			</div>
 			
 			<div class="col-lg-4 mb-4 contact-right">
-						<h3 id="title">센터 정보</h3>
-						<br>
-						<h5 style="color:#4eae3a" id="name">
-							심리건강연구소 
-						</h5><br>
-						<h6 id="addr">
-							주소 : 광주 동구 남문로 734 103동 206호 
-						</h6><br>
-						<h6 id="tel">
-							전화번호 : 062-512-0039
-						</h6><br>
-						<h6 id="email">
-							이메일 : pimang95@naver.com
-						</h6><br>
-						<h6 id="hours">
-							영업시간 : 정보없음
-						</h6>
+						<h3 id="center_info">센터 정보</h3>
+						
 			</div>
 			
 			<!-- 나머지 3가지 센터들 정보, 마우스 클릭할때마다 변경되도록 해야함ㅠ-->
@@ -300,5 +298,43 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Ajax를 사용하기 위한 Ajax import 부분  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+   <script type="text/javascript">
+   
+   function ajaxCall(center_name){
+      
+      
+       //Ajax함수(미사용 부분. ajax 생성 시 참고용)
+         $.ajax({
+            //ajax 통신 방식으로 데이터를 전송
+            type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
+            url : "CenterCheck", //어떤 서버페이지로 이 값을 보낼 것인지
+            data : {"center_name" : center_name}, //보낼 데이터 지정
+            dataType : "json",
+            success : function(center) { //서버로 부터 받은 값
+               
+            
+            let html ="<br><h5 id='center_name' style='color:#4eae3a' id='name'>";
+            html += center.center_name;
+            html += "</h5><br>";
+            
+              
+            html += "<h6 id='center_info'>주소: "+center.center_addr+"</h6><br>";
+            html += "<h6 id='center_info'>전화번호: "+center.center_tel+"</h6><br>";
+            html += "<h6 id='center_info'>이메일: "+center.center_email+"</h6><br>";
+            html += "<h6 id='center_info'>영업시간: "+center.center_time+"</h6><br>";
+            
+            
+            $('#center_info').html(html); //.html: 해당 태그에 값을 저장
+            
+            },
+            error : function() {
+               alert("ajax 통신 실패");
+            }
+         });
+   }
+         </script>
 </body>
 </html>

@@ -141,21 +141,17 @@
 				</div>
 				<div class="col-lg-6">
 					<h2>Marigold : 반드시 오고야 말 행복</h2>
-					<p>Futura, consectetur adipiscing elit, sed do eiusmod tempor
-						incididunt ut labore et dolore magna aliqua.</p>
-					<h5>Our smart approach</h5>
+					<p>blooming은 우울의 blue와 꽃이 피는 blossom을 합친 의미로 우울한 기분에서 벗어나 <br>꽃이 피는 존재가 되자는 의미를 가지고 있습니다.</p>
+					<h5>블루밍이 제공하는 서비스</h5>
 					<ul>
-						<li>Sed at tellus eu quam posuere mattis.</li>
-						<li>Phasellus quis erat et enim laoreet posuere ac porttitor
-							ipsum.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
-						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>진단하기 : 벡우울척도를 활용한 간단한 우울 자가진단</li>
+						<li>일기작성 : 간단한 일기 작성을 통한 내 감정변화의 시각화</li>
+						<li>집단상담 : 직접 센터에 방문하지 않고도 익명으로 전문가와의 상담</li>
+						<li>극복후기 : 다양한 사람들의 경험담 </li>
+						<li>센터찾기 : 국가에서 공인하는 전문상담센터 위치 및 정보제공</li>
 					</ul>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Corporis, omnis doloremque non cum id reprehenderit, quisquam
-						totam aspernatur tempora minima unde aliquid ea culpa sunt.
-						Reiciendis quia dolorum ducimus unde.</p>
+					<p>혹시 우울한 감정 때문에 답답하지만 드러내기가 무서워서 숨어계시나요?<br>블루밍은 익명성을 보장하여 누구나 겪을 수 있는 우울한 감정이나 우울증에 대하여<br>이야기하고
+					감정변화의 동기부여를 도와주는 웹서비스입니다.</p>
 				</div>
 
 			</div>
@@ -170,10 +166,10 @@
 					<div class="card h-100">
 						<h4 class="card-header">진단 서비스</h4>
 						<div class="card-img">
-							<img class="img-fluid" src="images/f1.png" alt="" />
+							<img class="img-fluid" src="images/1111.png" alt="" />
 						</div>
 						<div class="card-body">
-							<p class="card-text">전문성을 갖춘 진단문항</p>
+							<p class="card-text">백우울척도를 통한 간단한 우울증 자가진단</p>
 						</div>
 						<div class="card-footer">
 							<a href="diagnosis.jsp" class="btn btn-primary">진단 해보기</a>
@@ -200,7 +196,7 @@
 					<div class="card h-100">
 						<h4 class="card-header">상담 서비스</h4>
 						<div class="card-img">
-							<img class="img-fluid" src="images/f3.png" alt="" />
+							<img class="img-fluid" src="images/f33.png" alt="" />
 						</div>
 						<div class="card-body">
 							<p class="card-text">
