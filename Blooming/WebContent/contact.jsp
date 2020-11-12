@@ -101,9 +101,13 @@
 
 		<!-- Content Row -->
 		<div class="row">
+		<!-- Contact Details Column -->
+		
 			<!-- Map Column -->
 			<div class="col-lg-8 mb-4">
 				<!-- Kakao Map -->
+				
+							
 				
 				<div id="map" style="width:100%;height:350px;"></div>
 
@@ -120,7 +124,7 @@
 					// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 					var positions = [
 					    {
-					        content: '<div>심리건강연구소</div>',
+					        content: '<div>심리건강연구소</div>', 
 					        latlng: new kakao.maps.LatLng(35.137475, 126.925039)
 					    },
 					    {
@@ -154,6 +158,7 @@
 					    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 					    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 					    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+					    
 					}
 					
 					// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
@@ -170,29 +175,104 @@
 					    };
 					}
 					
-					
+					/* // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+					  var info1 = 
+
+					  // 인포윈도우를 생성합니다
+					  var info1 = new kakao.maps.Info({
+					      content : iwContent,
+					      removable : iwRemoveable
+					  });
+
+					  // 마커에 클릭이벤트를 등록합니다
+					  kakao.maps.event.addListener(positions[0], 'click', function() {
+					  }); */
+					  
 					</script>
 			</div>
-			<!-- Contact Details Column -->
+			
 			<div class="col-lg-4 mb-4 contact-right">
-				<h3>센터 정보</h3>
-				<p id="addr">
-					광주 동구 남문로 734 103동 206호 <br>
-				</p>
-				<p id="addr">
-					광주 동구 남문로 734 103동 206호 <br>
-				</p>
-				<p id="tel">
-					<abbr title="Phone">전화번호</abbr>: 062-512-0039
-				</p>
-				<p id="email">
-					<abbr title="Email">이메일</abbr>: <a href="mailto:name@example.com">pimang95@naver.com
-					</a>
-				</p>
-				<p id="hours">
-					<abbr title="Hours">영업시간</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
-				</p>
+						<h3 id="title">센터 정보</h3>
+						<br>
+						<h5 style="color:#4eae3a" id="name">
+							심리건강연구소 
+						</h5><br>
+						<h6 id="addr">
+							주소 : 광주 동구 남문로 734 103동 206호 
+						</h6><br>
+						<h6 id="tel">
+							전화번호 : 062-512-0039
+						</h6><br>
+						<h6 id="email">
+							이메일 : pimang95@naver.com
+						</h6><br>
+						<h6 id="hours">
+							영업시간 : 정보없음
+						</h6>
 			</div>
+			
+			<!-- 나머지 3가지 센터들 정보, 마우스 클릭할때마다 변경되도록 해야함ㅠ-->
+			<!-- <div class="col-lg-4 mb-4 contact-right">
+						<h3 id="name">센터 정보</h3>
+						<br>
+						<h5 style="color:#4eae3a" id="name">
+							전심연합심리상담센터 
+						</h5><br>
+						<h6 id="addr">
+							주소 : 광주 북구 일곡마을로152번길 3-2 1층
+						</h6><br>
+						<h6 id="tel">
+							전화번호 : 062-470-4774
+						</h6><br>
+						<h6 id="email">
+							이메일 : ph07pen@gmail.com
+						</h6><br>
+						<h6 id="hours">
+							영업시간 : 월~금 10:00 ~ 18:00
+						</h6>
+					</div>
+					
+			<div class="col-lg-4 mb-4 contact-right">
+						<h3 id="name">센터 정보</h3>
+						<br>
+						<h5 style="color:#4eae3a" id="name">
+							박앤정 임상심리클리닉 
+						</h5><br>
+						<h6 id="addr">
+							주소 : 광주 북구 서암대로 113-2 2층
+						</h6><br>
+						<h6 id="tel">
+							전화번호 : 062-514-8800
+						</h6><br>
+						<h6 id="email">
+							이메일 : jung9386@hanmail.net
+						</h6><br>
+						<h6 id="hours">
+							영업시간 : 정보없음
+						</h6>
+					</div>
+					
+					
+			<div class="col-lg-4 mb-4 contact-right">
+						<h3 id="name">센터 정보</h3>
+						<br>
+						<h5 style="color:#4eae3a" id="name">
+							최영미 마음상담센터 
+						</h5><br>
+						<h6 id="addr">
+							주소 : 광주 북구 동문대로 111 
+						</h6><br>
+						<h6 id="tel">
+							전화번호 : 062-263-7942
+						</h6><br>
+						<h6 id="email">
+							이메일 : 정보없음
+						</h6><br>
+						<h6 id="hours">
+							영업시간 : 정보없음
+						</h6>
+					</div> -->				
+			
 		</div>
 		<!-- /.row -->
 
