@@ -80,7 +80,7 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-				<li class="breadcrumb-item active">집단상담 예약현황</li>
+				<a href="counsel.jsp" class="breadcrumb-item active">집단상담 예약으로 돌아가기</a>
 			</ol>
 		</div>
 	</div>
