@@ -100,7 +100,7 @@ public class DiaryDAO {
 		return diaryList;
 	}
 	
-	
+	//해당 일기 1개의 값만 가져오는 함수(일기 클릭하면 일기 보여주는 페이지 들어가는거)
 	public DiaryDTO showDiary(int di_num) {
 		
 		DiaryDTO diaryshow = null;
@@ -144,7 +144,7 @@ public class DiaryDAO {
 		return diaryshow;
 	}
 
-	
+	//일기 긍/부정 점수를 합하는 함수
 	public int diaryScore(String nickname) {
 		
 		
@@ -185,6 +185,52 @@ public class DiaryDAO {
 			dao.close();
 		}
 		return sum;
+	}
+
+	//일기 그래프를 그리기 위한 함수
+	public ArrayList<DiaryDTO> showDiaryDateScore(String nickname) {
+		
+		DiaryDTO diary = null;
+		ArrayList<DiaryDTO> diaryList = new ArrayList<>();
+		
+		try {
+			
+			dao.getConn();
+			
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "select * from diary where nickname=? order by di_date";
+	         pst = Connect.conn.prepareStatement(sql);
+	         pst.setString(1, nickname);
+	         
+	        
+	         // --------------------- DB에 SQL문 명령준비
+	         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+	         // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	         while(rs.next()) {
+	        	 
+	        	//전체 일기 데이터를 출력
+	        	 int di_num = rs.getInt(1);
+	        	 String di_nickname = rs.getString(2);
+	        	 String di_date = rs.getString(3);
+	        	 String di_title = rs.getString(4);
+	        	 String di_contents = rs.getString(5);
+	        	 int di_score = rs.getInt(6);
+ 	        	 
+
+ 	        	 //VO(DTO): 모듈끼리 데이터를 송/수신할 때 사용하는 새로운 데이터 타입
+	        	 diary = new DiaryDTO(di_num, di_nickname, di_date, di_title, di_contents,di_score);
+	        	 diaryList.add(diary);
+	         
+	         }
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return diaryList;
 	}
 }
 

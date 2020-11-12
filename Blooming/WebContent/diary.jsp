@@ -51,14 +51,42 @@
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
+<% 
+DiaryDAO dao = new DiaryDAO();
+ //스크립틀릿
 
+//session값 email 가져오기
+String email = (String)session.getAttribute("email");
+System.out.println("현재 접속한 사람의 이메일: " + email);
+
+//session값 nickname 가져오기
+String nickname = (String)session.getAttribute("nickname");
+System.out.println("현재 접속한 사람의 닉네임: " + nickname);
+ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
+
+%>
+      
+      
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['날짜', '점수'],
-          ['1주차',  0],
-          ['2주차',  1],
-          ['3주차',  0],
-          ['4주차',  1]
+          <%for(int i = 0;i<diaryList.size();i++) { 
+        	    String di_date = diaryList.get(i).getDi_date();
+          		int di_score = diaryList.get(i).getDi_score();
+          		System.out.println(di_date);
+          		System.out.println(di_score);
+          		//out.println("['\""+di_date+"\"',"+di_score+"],");
+          		if(i==diaryList.size()-1) { %>
+          		 ['<%=di_date%>',<%=di_score%>]
+          		<%}else {%>
+          		 ['<%=di_date%>',<%=di_score%>],
+          		<%}
+          		
+          }%>
+          <%-- ['<%=di_date%>',<%=di_score%>] --%>
+          /* ['1주차', -1],
+          ['2주차',1],
+          ['3주차',0] */
         ]);
 
         var options = {
@@ -76,7 +104,7 @@
 
 </head>
 <body onload="rotate()">
-<% //스크립틀릿
+<%-- <% //스크립틀릿
  
     //session값 email 가져오기
    String email = (String)session.getAttribute("email");
@@ -85,8 +113,8 @@
    //session값 nickname 가져오기
    String nickname = (String)session.getAttribute("nickname");
    System.out.println("현재 접속한 사람의 닉네임: " + nickname);
-   
- %>
+   ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
+ %> --%>
    <!-- Navigation -->
    <nav
       class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
@@ -169,7 +197,7 @@
          <h class="col-lg-6">당신의 이야기를 들려주세요</h>
           <br> <img src="images/sun.png" id="slide"> 
           <%
-          DiaryDAO dao = new DiaryDAO();
+          
           int score_sum = dao.diaryScore(nickname);
           
           if(score_sum>=0 && score_sum <=1) {
@@ -204,9 +232,9 @@
                <p>머신러닝을 기반한 감성분석 시스템으로 당신의 하루의 감성을 분석해드립니다.</p>
                
                <h>날짜 선택 : </h>
-               <input type="date" name='start_date' value='2020-11-10'/>
+               <input type="date" name='start_date' value='2020-11-10' date = 'yyyy-MM-dd'/>
                <h> ~ </h>
-               <input type="date" name='end_date' value='2020-11-10'/>
+               <input type="date" name='end_date' value='2020-11-10' date = 'yyyy-MM-dd'/>
                <h><button id="search_btn" class="btn btn-primary">조회</button></h>
                <hr>
                <ul id="diarylist">
