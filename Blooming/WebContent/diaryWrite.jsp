@@ -104,7 +104,7 @@
 			<div class="row">
 				<div class="col-lg-8 mb-4 contact-left">
 					<!--  -->
-					<form name="" id="DiaryForm" action="http://192.168.50.115:5000/DiaryPost1" method="post" novalidate>
+					<form name="" id="DiaryForm" action="http://192.168.50.22:5000/DiaryPost1" method="post" novalidate>
 						<div class="control-group form-group">
 							<div class="controls"></div>
 						</div>

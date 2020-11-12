@@ -265,7 +265,7 @@
             
             for(let i=0; i<diaryList.length; i++) {
                let diaryTitle = diaryList[i].di_title; //일기 제목 저장
-               html += '<li>'+diaryTitle+'</li>';
+               html += "<li><a href=diaryPost.jsp?di_num=" + diaryList[i].di_num + ">"+diaryTitle+'</li>';
             }
             
             $('#diarylist').html(html); //.html: 해당 태그에 값을 저장
