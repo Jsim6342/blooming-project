@@ -33,9 +33,8 @@
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="index.jsp"> <img
-				src="images/marigold4.png" width="180px" ; height="53px"
-				; alt="logo" />
+			<a class="navbar-brand" href="index.jsp"> 
+			<img src="images/marigold4.png" width="180px" ; height="53px"; alt="logo"/>
 			</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
