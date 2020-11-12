@@ -131,12 +131,13 @@
       
     	  out.println("<div class='col-lg-4 col-sm-6 portfolio-item'>");
     	  out.println("<div class='card h-100'>");
-    	  out.println("<a href='commentspost.jsp'><img class='card-img-top' src='images/portfolio-big-01.jpg' alt='' /></a>");
+    	  out.println("<a href='commentspost.jsp'><img class='card-img-top' src='images/123456.png' alt='' /></a>");
     	  out.println("<div class='card-body'>");
     	  out.println("<h4 class='card-title'>");
-    	  out.println("<a href=commentspost.jsp?rev_num="+reviews.get(i).getRev_num()+">"+reviews.get(i).getRev_title()+"</a>");
+    	  out.println("<h4 href=commentspost.jsp?rev_num="+reviews.get(i).getRev_num()+">"+reviews.get(i).getRev_title()+"<h4>");
+    	  out.println("<hr>");
     	  out.println("</h4>");
-    	  out.println("<p class='card-text'>"+reviews.get(i).getRev_contents()+"</p>");
+    	  out.println("<p class='card-text' style='text-overflow: ellipsis; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 300px;height: 20px;'>"+reviews.get(i).getRev_contents()+"</p>");
     	  out.println("</div>");
     	  out.println("</div>");
     	  out.println("</div>");
