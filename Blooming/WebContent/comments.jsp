@@ -131,7 +131,7 @@
       
     	  out.println("<div class='col-lg-4 col-sm-6 portfolio-item'>");
     	  out.println("<div class='card h-100'>");
-    	  out.println("<a href=commentspost.jsp?rev_num="+reviews.get(i).getRev_num()+"><img class='card-img-top' src='images/1234567.png' alt='' /></a>");
+    	  out.println("<a href=commentspost.jsp?rev_num="+reviews.get(i).getRev_num()+"><img class='card-img-top' src='images/12345678.png' alt='' /></a>");
     	  out.println("<div class='card-body'>");
     	  out.println("<h4 class='card-title'>");
     	  out.println("<a href=commentspost.jsp?rev_num="+reviews.get(i).getRev_num()+">"+reviews.get(i).getRev_title()+"<a>");
