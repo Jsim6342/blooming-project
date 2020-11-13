@@ -111,7 +111,7 @@
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>날짜</label> <input type="date" class="form-control"
-									name="DI_DATE" id="title" required
+									name="DI_DATE" id="title" required 
 									data-validation-required-message="Please enter your email address.">
 							</div>
 						</div>
