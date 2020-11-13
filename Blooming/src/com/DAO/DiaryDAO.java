@@ -111,7 +111,7 @@ public class DiaryDAO {
 			
 	         // --------------------- DB 연결(고정된 문법)
 	         
-	         String sql = "select * from diary where di_num = ?";
+	         String sql = "select di_num,nickname,TO_CHAR(di_date,'YYYY-MM-DD'),di_title,di_contents,di_score from diary where di_num = ?";
 	         pst = Connect.conn.prepareStatement(sql);
 	         
 	         pst.setInt(1, di_num);
