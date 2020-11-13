@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@page import="com.DAO.DiaryDAO"%>
 <%@page import="com.DTO.DiaryDTO"%>
 <!-- 상단바, 하단바만 있는 페이지 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,19 +42,19 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                     <a class="nav-link" href="diagnosis.html">진단하기</a>
+                     <a class="nav-link" href="diagnosis.jsp">진단하기</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" href="diary.html">일기작성</a>
+                     <a class="nav-link active" href="diary.jsp">일기작성</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="counsel.html">집단상담</a>
+                     <a class="nav-link" href="counsel.jsp">집단상담</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="comments.jsp">극복후기</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="contact.html">센터찾기</a>
+                     <a class="nav-link" href="contact.jsp">센터찾기</a>
                   </li>
                   <%if(email==null&&nickname==null) {%>
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>

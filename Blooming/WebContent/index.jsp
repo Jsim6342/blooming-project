@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -150,7 +150,7 @@
 						<li>극복후기 : 다양한 사람들의 경험담 </li>
 						<li>센터찾기 : 국가에서 공인하는 전문상담센터 위치 및 정보제공</li>
 					</ul>
-					<p>혹시 우울한 감정 때문에 답답하지만 드러내기가 무서워 숨어계시나요?@<br>블루밍은 익명성을 보장하여 누구나 겪을 수 있는 우울한 감정이나 우울증에 대하여<br>이야기하고
+					<p>혹시 우울한 감정 때문에 답답하지만 드러내기가 무서워 숨어계시나요?<br>블루밍은 익명성을 보장하여 누구나 겪을 수 있는 우울한 감정이나 우울증에 대하여<br>이야기하고
 					감정변화의 동기부여를 도와주는 웹서비스입니다.</p>
 				</div>
 
@@ -233,7 +233,7 @@
 						Reiciendis quia dolorum ducimus unde.</p>
 				</div>
 				<div class="col-lg-6">
-					<img class="img-fluid rounded" src="images/about-img.jpg" alt="" />
+					<img class="img-fluid rounded" src="images/team.png" alt="" />
 				</div>
 			</div>
 			<!-- /.row -->

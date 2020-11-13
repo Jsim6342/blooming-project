@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!-- 상단바, 하단바만 있는 페이지 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 
    <meta charset="utf-8">
