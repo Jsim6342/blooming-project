@@ -215,7 +215,7 @@
 		<div class="about-main">
 			<div class="row">
 				<div class="col-lg-6">
-					<h2>우울증이란 누구나 나타나는 마음의 감기입니다.</h2>
+					<h2>우울증은 누구에게나 나타나는 마음의 감기입니다.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 						do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					<h5>Our smart approach</h5>
