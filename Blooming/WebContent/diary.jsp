@@ -70,7 +70,15 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['날짜', '점수'],
-          <%for(int i = 0;i<diaryList.size();i++) { 
+          <%
+          if(nickname==null&&email==null) {%>
+        	  ['1주차',0],
+        	  ['2주차',1],
+        	  ['3주차',1],
+        	  ['4주차',0],
+        	  ['5주차',1]
+          <%}else {
+          for(int i = 0;i<diaryList.size();i++) { 
         	    String di_date = diaryList.get(i).getDi_date();
           		int di_score = diaryList.get(i).getDi_score();
           		System.out.println(di_date);
@@ -82,13 +90,15 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
           		 ['<%=di_date%>',<%=di_score%>],
           		<%}
           		
+          }
           }%>
           <%-- ['<%=di_date%>',<%=di_score%>] --%>
           /* ['1주차', -1],
           ['2주차',1],
           ['3주차',0] */
-        ]);
-
+        
+          ]);
+      
         var options = {
           title: '나의 감정 그래프',
           curveType: 'function',
