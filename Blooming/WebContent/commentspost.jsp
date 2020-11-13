@@ -1,16 +1,16 @@
 <%@page import="com.DAO.ReviewDAO"%>
 <%@page import="com.DTO.ReviewDTO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - ±Øº¹ÈÄ±â</title>
+<title>Blooming - ê·¹ë³µí›„ê¸°</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
@@ -19,15 +19,15 @@
 <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-<% //½ºÅ©¸³Æ²¸´
+<% //ìŠ¤í¬ë¦½í‹€ë¦¿
  
- 	//session°ª email °¡Á®¿À±â
+ 	//sessionê°’ email ê°€ì ¸ì˜¤ê¸°
 	String email = (String)session.getAttribute("email");
-	System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ÀÌ¸ÞÀÏ: " + email);
+	System.out.println("í˜„ìž¬ ì ‘ì†í•œ ì‚¬ëžŒì˜ ì´ë©”ì¼: " + email);
 	
-	//session°ª nickname °¡Á®¿À±â
+	//sessionê°’ nickname ê°€ì ¸ì˜¤ê¸°
 	String nickname = (String)session.getAttribute("nickname");
-	System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ´Ð³×ÀÓ: " + nickname);
+	System.out.println("í˜„ìž¬ ì ‘ì†í•œ ì‚¬ëžŒì˜ ë‹‰ë„¤ìž„: " + nickname);
 	
  %>
 	<!-- Navigation -->
@@ -46,32 +46,32 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="diagnosis.jsp">Áø´ÜÇÏ±â</a>
+					<li class="nav-item"><a class="nav-link" href="diagnosis.jsp">ì§„ë‹¨í•˜ê¸°</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="diary.jsp">ÀÏ±âÀÛ¼º</a>
+					<li class="nav-item"><a class="nav-link" href="diary.jsp">ì¼ê¸°ìž‘ì„±</a>
 					</li>
 					<!-- <li class="nav-item">
-                     <a class="nav-link" href="counsel.jsp">Áý´Ü»ó´ã</a>
+                     <a class="nav-link" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´</a>
                   </li> -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Áý´Ü»ó´ã </a>
+							ì§‘ë‹¨ìƒë‹´ </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownBlog">
-							<a class="dropdown-item" href="counsel.jsp">Áý´Ü»ó´ã¿¹¾à</a> <a
-								class="dropdown-item" href="booking.jsp">Áý´Ü»ó´ã ¿¹¾àÇöÈ²</a>
+							<a class="dropdown-item" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´ì˜ˆì•½</a> <a
+								class="dropdown-item" href="booking.jsp">ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™©</a>
 						</div></li>
-					<li class="nav-item "><a class="nav-link active" href="comments.jsp">±Øº¹ÈÄ±â</a>
+					<li class="nav-item "><a class="nav-link active" href="comments.jsp">ê·¹ë³µí›„ê¸°</a>
 					</li>
-					<li class="nav-item "><a class="nav-link" href="contact.jsp">¼¾ÅÍÃ£±â</a>
+					<li class="nav-item "><a class="nav-link" href="contact.jsp">ì„¼í„°ì°¾ê¸°</a>
 					</li>
 					<%if(email==null&&nickname==null) {%>
-					<li class="nav-item"><a class="nav-link" href="login.html">·Î±×ÀÎ</a>
+					<li class="nav-item"><a class="nav-link" href="login.html">ë¡œê·¸ì¸</a>
 					</li>
 					<%}else { %>
 					
-					<li class="nav-item"><a class="nav-link" href="LogoutService">·Î±×¾Æ¿ô</a>
+					<li class="nav-item"><a class="nav-link" href="LogoutService">ë¡œê·¸ì•„ì›ƒ</a>
 					</li>
 					<%} %>
 
@@ -85,7 +85,7 @@
 		<div class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h1 class="mt-4 mb-3">
-				±Øº¹ÈÄ±â <small>post-overcoming review</small>
+				ê·¹ë³µí›„ê¸° <small>post-overcoming review</small>
 			</h1>
 		</div>
 	</div>
@@ -95,8 +95,7 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-				<a href="comments.jsp" class="breadcrumb-item active">±Øº¹ÈÄ±â °Ô½ÃÆÇÀ¸·Î
-					µ¹¾Æ°¡±â</a>
+				<a href="comments.jsp" class="breadcrumb-item active" id="cp">ê·¹ë³µí›„ê¸° ê²Œì‹œíŒìœ¼ë¡œëŒì•„ê°€ê¸°</a>
 			</ol>
 		</div>
 
@@ -105,10 +104,10 @@
 			<div class="col-lg-20">
 
 <%
-//rev_num ¹Þ¾Æ¿À±â
+//rev_num ë°›ì•„ì˜¤ê¸°
 int rev_num = Integer.parseInt(request.getParameter("rev_num").trim());
 
-//rev_num¿¡ ¸Â´Â ÈÄ±â ºÒ·¯¿À±â
+//rev_numì— ë§žëŠ” í›„ê¸° ë¶ˆëŸ¬ì˜¤ê¸°
 ReviewDTO review = new ReviewDTO();
 ReviewDAO dao = new ReviewDAO();
 review = dao.showReview(rev_num);
@@ -124,9 +123,9 @@ review = dao.showReview(rev_num);
 				<hr>
 				<!-- Date/Time -->
 				<blockquote class="blockquote">
-				<h3>Á¦¸ñ : <%=review.getRev_title()%></h3>
+				<h3>ì œëª© : <%=review.getRev_title()%></h3>
 				<blockquote class="blockquote">
-				<h5>´Ð³×ÀÓ: <%=review.getNickname()%></h5>
+				<h5>ë‹‰ë„¤ìž„: <%=review.getNickname()%></h5>
 				</blockquote>
 				<hr>
 				<!-- Post Content -->
@@ -143,7 +142,7 @@ review = dao.showReview(rev_num);
 									<%if(dao.check_Review(rev_num, nickname)) { %>
 									<div class="col-md-4">
 										<a class="btn btn-lg btn-secondary btn-block"
-											href="signup.html">ÈÄ±â ¼öÁ¤ÇÏ±â</a>
+											href="signup.html">í›„ê¸° ìˆ˜ì •í•˜ê¸°</a>
 									</div>
 									<%}%>
 								</div>

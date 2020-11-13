@@ -1,20 +1,20 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DTO.DiaryDTO"%>
 <%@page import="com.DAO.DiaryDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
-<!-- »ó´Ü¹Ù, ÇÏ´Ü¹Ù¸¸ ÀÖ´Â ÆäÀÌÁö -->
+<%@ page language="java" contentType="text/html; charset=utf-8"
+   pageEncoding="utf-8"%>
+<!-- ìƒë‹¨ë°”, í•˜ë‹¨ë°”ë§Œ ìˆëŠ” í˜ì´ì§€ -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - ÀÏ±â</title>
+<title>Blooming - ì¼ê¸°</title>
 
-<!-- ÇØ ÀÚµ¿ ÀÌ¹ÌÁö ¹Ù²Ş -->
+<!-- í•´ ìë™ ì´ë¯¸ì§€ ë°”ê¿ˆ -->
 <script type="text/javascript">
       var img = new Array();
       img[0] = new Image();
@@ -37,7 +37,7 @@
          setTimeout("rotate()", interval);
       }
 </script>
-<!-- ÇØ ÀÚµ¿ ÀÌ¹ÌÁö ¹Ù²Ş -->
+<!-- í•´ ìë™ ì´ë¯¸ì§€ ë°”ê¿ˆ -->
 
 
 <!-- Bootstrap core CSS -->
@@ -53,15 +53,15 @@
       google.charts.setOnLoadCallback(drawChart);
 <% 
 DiaryDAO dao = new DiaryDAO();
- //½ºÅ©¸³Æ²¸´
+ //ìŠ¤í¬ë¦½í‹€ë¦¿
 
-//session°ª email °¡Á®¿À±â
+//sessionê°’ email ê°€ì ¸ì˜¤ê¸°
 String email = (String)session.getAttribute("email");
-System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ÀÌ¸ŞÀÏ: " + email);
+System.out.println("í˜„ì¬ ì ‘ì†í•œ ì‚¬ëŒì˜ ì´ë©”ì¼: " + email);
 
-//session°ª nickname °¡Á®¿À±â
+//sessionê°’ nickname ê°€ì ¸ì˜¤ê¸°
 String nickname = (String)session.getAttribute("nickname");
-System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ´Ğ³×ÀÓ: " + nickname);
+System.out.println("í˜„ì¬ ì ‘ì†í•œ ì‚¬ëŒì˜ ë‹‰ë„¤ì„: " + nickname);
 ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
 
 %>
@@ -69,28 +69,47 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
       
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['³¯Â¥', 'Á¡¼ö'],
-          <%for(int i = 0;i<diaryList.size();i++) { 
+          ['ë‚ ì§œ', 'ì ìˆ˜'],
+          <%
+          if(nickname==null&&email==null) {%>
+        	  ['1ì£¼ì°¨',0],
+        	  ['2ì£¼ì°¨',1],
+        	  ['3ì£¼ì°¨',1],
+        	  ['4ì£¼ì°¨',0],
+        	  ['5ì£¼ì°¨',1]
+          <%}else {
+          for(int i = 0;i<diaryList.size();i++) { 
         	    String di_date = diaryList.get(i).getDi_date();
           		int di_score = diaryList.get(i).getDi_score();
           		System.out.println(di_date);
           		System.out.println(di_score);
           		//out.println("['\""+di_date+"\"',"+di_score+"],");
           		if(i==diaryList.size()-1) { %>
-          		 ['<%=di_date%>',<%=di_score%>]
+          		 <%if(di_score==1) {%>
+          		 ['<%=di_date%>ğŸ˜Š',<%=di_score%>]
+          		 <%}else {%>
+          		 ['<%=di_date%>ğŸ˜—',<%=di_score%>]
+          		<%}%>
           		<%}else {%>
-          		 ['<%=di_date%>',<%=di_score%>],
+          		 <%if(di_score==1) {%>
+         		 ['<%=di_date%>ğŸ˜Š',<%=di_score%>],
+         		 <%}else {%>
+         		 ['<%=di_date%>ğŸ˜—',<%=di_score%>],
           		<%}
-          		
-          }%>
+                 }
+                 }
+                 }
+                 %>
+            
           <%-- ['<%=di_date%>',<%=di_score%>] --%>
-          /* ['1ÁÖÂ÷', -1],
-          ['2ÁÖÂ÷',1],
-          ['3ÁÖÂ÷',0] */
-        ]);
-
+          /* ['1ì£¼ì°¨', -1],
+          ['2ì£¼ì°¨',1],
+          ['3ì£¼ì°¨',0] */
+        
+          ]);
+      
         var options = {
-          title: '³ªÀÇ °¨Á¤ ±×·¡ÇÁ',
+          title: 'ë‚˜ì˜ ê°ì • ê·¸ë˜í”„',
           curveType: 'function',
           legend: { position: 'bottom' }
         
@@ -104,15 +123,15 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
 
 </head>
 <body onload="rotate()">
-<%-- <% //½ºÅ©¸³Æ²¸´
+<%-- <% //ìŠ¤í¬ë¦½í‹€ë¦¿
  
-    //session°ª email °¡Á®¿À±â
+    //sessionê°’ email ê°€ì ¸ì˜¤ê¸°
    String email = (String)session.getAttribute("email");
-   System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ÀÌ¸ŞÀÏ: " + email);
+   System.out.println("í˜„ì¬ ì ‘ì†í•œ ì‚¬ëŒì˜ ì´ë©”ì¼: " + email);
    
-   //session°ª nickname °¡Á®¿À±â
+   //sessionê°’ nickname ê°€ì ¸ì˜¤ê¸°
    String nickname = (String)session.getAttribute("nickname");
-   System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ´Ğ³×ÀÓ: " + nickname);
+   System.out.println("í˜„ì¬ ì ‘ì†í•œ ì‚¬ëŒì˜ ë‹‰ë„¤ì„: " + nickname);
    ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
  %> --%>
    <!-- Navigation -->
@@ -131,32 +150,32 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
          </button>
          <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-               <li class="nav-item"><a class="nav-link" href="diagnosis.jsp">Áø´ÜÇÏ±â</a>
+               <li class="nav-item"><a class="nav-link" href="diagnosis.jsp">ì§„ë‹¨í•˜ê¸°</a>
                </li>
-               <li class="nav-item "><a class="nav-link active" href="diary.jsp">ÀÏ±âÀÛ¼º</a>
+               <li class="nav-item "><a class="nav-link active" href="diary.jsp">ì¼ê¸°ì‘ì„±</a>
                </li>
                <!-- <li class="nav-item">
-                     <a class="nav-link" href="counsel.jsp">Áı´Ü»ó´ã</a>
+                     <a class="nav-link" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´</a>
                   </li> -->
                <li class="nav-item dropdown"><a
                   class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Áı´Ü»ó´ã </a>
+                     ì§‘ë‹¨ìƒë‹´ </a>
                   <div class="dropdown-menu dropdown-menu-right"
                      aria-labelledby="navbarDropdownBlog">
-                     <a class="dropdown-item" href="counsel.jsp">Áı´Ü»ó´ã¿¹¾à</a> <a
-                        class="dropdown-item" href="booking.jsp">Áı´Ü»ó´ã ¿¹¾àÇöÈ²</a>
+                     <a class="dropdown-item" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´ì˜ˆì•½</a> <a
+                        class="dropdown-item" href="booking.jsp">ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™©</a>
                   </div></li>
-               <li class="nav-item"><a class="nav-link" href="comments.jsp">±Øº¹ÈÄ±â</a>
+               <li class="nav-item"><a class="nav-link" href="comments.jsp">ê·¹ë³µí›„ê¸°</a>
                </li>
-               <li class="nav-item"><a class="nav-link" href="contact.jsp">¼¾ÅÍÃ£±â</a>
+               <li class="nav-item"><a class="nav-link" href="contact.jsp">ì„¼í„°ì°¾ê¸°</a>
                </li>
                <%if(email==null&&nickname==null) {%>
-               <li class="nav-item"><a class="nav-link" href="login.html">·Î±×ÀÎ</a>
+               <li class="nav-item"><a class="nav-link" href="login.html">ë¡œê·¸ì¸</a>
                </li>
                <%}else { %>
                
-               <li class="nav-item"><a class="nav-link" href="LogoutService">·Î±×¾Æ¿ô</a>
+               <li class="nav-item"><a class="nav-link" href="LogoutService">ë¡œê·¸ì•„ì›ƒ</a>
                </li>
                <%} %>
             </ul>
@@ -169,7 +188,7 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
       <div class="container">
          <!-- Page Heading/Breadcrumbs -->
          <h1 class="mt-4 mb-3">
-            ÀÏ±â <small>diary</small>
+            ì¼ê¸° <small>diary</small>
          </h1>
       </div>
    </div>
@@ -180,7 +199,7 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
       <div class="breadcrumb-main">
          <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-            <li class="breadcrumb-item active">ÀÏ±â</li>
+            <li class="breadcrumb-item active">ì¼ê¸°</li>
          </ol>
       </div>
    </div>
@@ -193,8 +212,8 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
          <div class="row">
          
             <div class="col-lg-6">
-            <h2 class="col-lg-6">³ªÀÇ ³ª¹« Å°¿ì±â</h2>
-         <h class="col-lg-6">´ç½ÅÀÇ ÀÌ¾ß±â¸¦ µé·ÁÁÖ¼¼¿ä</h>
+            <h2 class="col-lg-6">ë‚˜ì˜ ë‚˜ë¬´ í‚¤ìš°ê¸°</h2>
+         <h class="col-lg-6">ë‹¹ì‹ ì˜ ì´ì•¼ê¸°ë¥¼ ë“¤ë ¤ì£¼ì„¸ìš”</h>
           <br> <img src="images/sun.png" id="slide"> 
           <%
           
@@ -214,7 +233,7 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
           	<%} else if(score_sum>=20) {%>
           	<img id = "treeimage" class="img-fluid rounded " src="images/tree6.png" alt="" />
           	<%} else { %>
-          	<!-- sumÀÌ À½¼öÀÎ °æ¿ì : ÀÌ¹ÌÁö ¼öÁ¤ÇÊ¿ä -->
+          	<!-- sumì´ ìŒìˆ˜ì¸ ê²½ìš° : ì´ë¯¸ì§€ ìˆ˜ì •í•„ìš” -->
           	<img id = "treeimage" class="img-fluid rounded " src="images/tree1.gif" alt="" />
           	<%} %>
 <!--               <img class="img-fluid rounded " src="images/tree2.gif" alt="" /> -->              
@@ -223,31 +242,31 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
                		
             </div>
             <div class="col-lg-6">
-                           <!-- <h2>³ªÀÇ °¨¼º ±×·¡ÇÁ</h2>
+                           <!-- <h2>ë‚˜ì˜ ê°ì„± ê·¸ë˜í”„</h2>
             
                            <img class="img-fluid rounded" src="images/about.jpg" alt="" /> -->
 
                
-               <h2>³ªÀÇ ÀÌ¾ß±â</h2>
-               <p>¸Ó½Å·¯´×À» ±â¹İÇÑ °¨¼ººĞ¼® ½Ã½ºÅÛÀ¸·Î ´ç½ÅÀÇ ÇÏ·çÀÇ °¨¼ºÀ» ºĞ¼®ÇØµå¸³´Ï´Ù.</p>
+               <h2>ë‚˜ì˜ ì´ì•¼ê¸°</h2>
+               <p>ë¨¸ì‹ ëŸ¬ë‹ì„ ê¸°ë°˜í•œ ê°ì„±ë¶„ì„ ì‹œìŠ¤í…œìœ¼ë¡œ ë‹¹ì‹ ì˜ í•˜ë£¨ì˜ ê°ì„±ì„ ë¶„ì„í•´ë“œë¦½ë‹ˆë‹¤.</p>
                
-               <h>³¯Â¥ ¼±ÅÃ : </h>
+               <h>ë‚ ì§œ ì„ íƒ : </h>
                <input type="date" name='start_date' value='2020-11-10' date = 'yyyy-MM-dd'/>
                <h> ~ </h>
                <input type="date" name='end_date' value='2020-11-10' date = 'yyyy-MM-dd'/>
-               <h><button id="search_btn" class="btn btn-primary">Á¶È¸</button></h>
+               <h><button id="search_btn" class="btn btn-primary">ì¡°íšŒ</button></h>
                <hr>
                <ul id="diarylist">
-               <li>Á¶È¸¸¦ ´­·¯ÁÖ¼¼¿ä.</li>
+               <li>ì¡°íšŒë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.</li>
                
                  
                   
                </ul>
                <hr>
                <%if(email==null&&nickname==null) {%>
-               <a onclick="notice2()" href="#" class="btn btn-primary">ÀÏ±â ÀÛ¼ºÇÏ±â</a>
+               <a onclick="notice2()" href="#" class="btn btn-primary">ì¼ê¸° ì‘ì„±í•˜ê¸°</a>
             	<%}else {%>
-            	<a href="diaryWrite.jsp" class="btn btn-primary">ÀÏ±â ÀÛ¼ºÇÏ±â</a>
+            	<a href="diaryWrite.jsp" class="btn btn-primary">ì¼ê¸° ì‘ì„±í•˜ê¸°</a>
             	<% }%>
             </div>
 
@@ -257,8 +276,8 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
       <br>
       <br>
          <body>
-         <h6 style="text-align:center;">´ç½ÅÀÌ ¾´ ÀÏ±âÀÇ ±àÁ¤, ºÎÁ¤ Á¡¼ö¸¦ ºĞ¼®ÇÏ¿© º¸¿©Áİ´Ï´Ù.</h6>
-         <h6 style="text-align:center;">´ç½ÅÀÇ ³ª¹«¸¦ Å°¿öº¸¼¼¿ä!</h6>
+         <h6 style="text-align:center;">ë‹¹ì‹ ì´ ì“´ ì¼ê¸°ì˜ ê¸ì •, ë¶€ì • ì ìˆ˜ë¥¼ ë¶„ì„í•˜ì—¬ ë³´ì—¬ì¤ë‹ˆë‹¤.</h6>
+         <h6 style="text-align:center;">ë‹¹ì‹ ì˜ ë‚˜ë¬´ë¥¼ í‚¤ì›Œë³´ì„¸ìš”!</h6>
        <div id="curve_chart" style="width: 1300px; height: 400px;"></div>
   </body>
       </div>
@@ -286,7 +305,7 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
    <!-- Bootstrap core JavaScript -->
    <script src="vendor/jquery/jquery.min.js"></script>
    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   <!-- Ajax¸¦ »ç¿ëÇÏ±â À§ÇÑ Ajax import ºÎºĞ  -->
+   <!-- Ajaxë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ Ajax import ë¶€ë¶„  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    
    <script type="text/javascript">
@@ -296,36 +315,36 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
 	   let start_date = $('input[name="start_date"]').val();
 	   let end_date = $('input[name="end_date"]').val();
       
-       //AjaxÇÔ¼ö(¹Ì»ç¿ë ºÎºĞ. ajax »ı¼º ½Ã Âü°í¿ë)
+       //Ajaxí•¨ìˆ˜(ë¯¸ì‚¬ìš© ë¶€ë¶„. ajax ìƒì„± ì‹œ ì°¸ê³ ìš©)
          $.ajax({
-            //ajax Åë½Å ¹æ½ÄÀ¸·Î µ¥ÀÌÅÍ¸¦ Àü¼Û
-            type : "post", //¼­¹ö·Î ¾î¶² ¹æ½ÄÀ¸·Î È£ÃâÇÒ °ÍÀÎÁö. get or post
-            url : "DiaryShow", //¾î¶² ¼­¹öÆäÀÌÁö·Î ÀÌ °ªÀ» º¸³¾ °ÍÀÎÁö
-            data : {"start_date" : start_date , "end_date" : end_date}, //º¸³¾ µ¥ÀÌÅÍ ÁöÁ¤
+            //ajax í†µì‹  ë°©ì‹ìœ¼ë¡œ ë°ì´í„°ë¥¼ ì „ì†¡
+            type : "post", //ì„œë²„ë¡œ ì–´ë–¤ ë°©ì‹ìœ¼ë¡œ í˜¸ì¶œí•  ê²ƒì¸ì§€. get or post
+            url : "DiaryShow", //ì–´ë–¤ ì„œë²„í˜ì´ì§€ë¡œ ì´ ê°’ì„ ë³´ë‚¼ ê²ƒì¸ì§€
+            data : {"start_date" : start_date , "end_date" : end_date}, //ë³´ë‚¼ ë°ì´í„° ì§€ì •
             dataType : "json",
-            success : function(diaryList) { //¼­¹ö·Î ºÎÅÍ ¹ŞÀº °ª
+            success : function(diaryList) { //ì„œë²„ë¡œ ë¶€í„° ë°›ì€ ê°’
                
             console.log(diaryList);
             
             let html ="";
             
             for(let i=0; i<diaryList.length; i++) {
-               let diaryTitle = diaryList[i].di_title; //ÀÏ±â Á¦¸ñ ÀúÀå
+               let diaryTitle = diaryList[i].di_title; //ì¼ê¸° ì œëª© ì €ì¥
                html += "<li><a href=diaryPost.jsp?di_num=" + diaryList[i].di_num + ">"+diaryTitle+'</li>';
             }
             
-            $('#diarylist').html(html); //.html: ÇØ´ç ÅÂ±×¿¡ °ªÀ» ÀúÀå
+            $('#diarylist').html(html); //.html: í•´ë‹¹ íƒœê·¸ì— ê°’ì„ ì €ì¥
             
             },
             error : function() {
-               alert("ajax Åë½Å ½ÇÆĞ");
+               alert("ajax í†µì‹  ì‹¤íŒ¨");
             }
          });
    });
    
 
    function notice2(){
-		alert('È¸¿ø¸¸ ÀÌ¿ë °¡´ÉÇÕ´Ï´Ù. ·Î±×ÀÎÀ» ÇØÁÖ¼¼¿ä!');
+		alert('íšŒì›ë§Œ ì´ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤. ë¡œê·¸ì¸ì„ í•´ì£¼ì„¸ìš”!');
 
 	}
    
@@ -334,21 +353,21 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
 	     let name = '<%=nickname%>';
 	      
 	      
-	       //AjaxÇÔ¼ö(¹Ì»ç¿ë ºÎºĞ. ajax »ı¼º ½Ã Âü°í¿ë)
+	       //Ajaxí•¨ìˆ˜(ë¯¸ì‚¬ìš© ë¶€ë¶„. ajax ìƒì„± ì‹œ ì°¸ê³ ìš©)
 	         $.ajax({
-	            //ajax Åë½Å ¹æ½ÄÀ¸·Î µ¥ÀÌÅÍ¸¦ Àü¼Û
-	            type : "post", //¼­¹ö·Î ¾î¶² ¹æ½ÄÀ¸·Î È£ÃâÇÒ °ÍÀÎÁö. get or post
-	            url : "ScoreCheck", //¾î¶² ¼­¹öÆäÀÌÁö·Î ÀÌ °ªÀ» º¸³¾ °ÍÀÎÁö
-	            data : {"nickname" : name}, //º¸³¾ µ¥ÀÌÅÍ ÁöÁ¤
+	            //ajax í†µì‹  ë°©ì‹ìœ¼ë¡œ ë°ì´í„°ë¥¼ ì „ì†¡
+	            type : "post", //ì„œë²„ë¡œ ì–´ë–¤ ë°©ì‹ìœ¼ë¡œ í˜¸ì¶œí•  ê²ƒì¸ì§€. get or post
+	            url : "ScoreCheck", //ì–´ë–¤ ì„œë²„í˜ì´ì§€ë¡œ ì´ ê°’ì„ ë³´ë‚¼ ê²ƒì¸ì§€
+	            data : {"nickname" : name}, //ë³´ë‚¼ ë°ì´í„° ì§€ì •
 	            dataType : "text",
-	            success : function(data) { //¼­¹ö·Î ºÎÅÍ ¹ŞÀº °ª
+	            success : function(data) { //ì„œë²„ë¡œ ë¶€í„° ë°›ì€ ê°’
 	            console.log(data);
 	            
 	            
 	            
 	            },
 	            error : function() {
-	               alert("ajax Åë½Å ½ÇÆĞ");
+	               alert("ajax í†µì‹  ì‹¤íŒ¨");
 	            }
 	         });
 	   }); --%>

@@ -1,17 +1,17 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DTO.ReviewDTO"%>
 <%@page import="com.DAO.ReviewDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - ±Øº¹ÈÄ±â</title>
+<title>Blooming - ê·¹ë³µí›„ê¸°</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
@@ -20,15 +20,15 @@
 <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-<% //½ºÅ©¸³Æ²¸´
+<% //ìŠ¤í¬ë¦½í‹€ë¦¿
  
- 	//session°ª email °¡Á®¿À±â
+ 	//sessionê°’ email ê°€ì ¸ì˜¤ê¸°
 	String email = (String)session.getAttribute("email");
-	System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ÀÌ¸ŞÀÏ: " + email);
+	System.out.println("í˜„ì¬ ì ‘ì†í•œ ì‚¬ëŒì˜ ì´ë©”ì¼: " + email);
 	
-	//session°ª nickname °¡Á®¿À±â
+	//sessionê°’ nickname ê°€ì ¸ì˜¤ê¸°
 	String nickname = (String)session.getAttribute("nickname");
-	System.out.println("ÇöÀç Á¢¼ÓÇÑ »ç¶÷ÀÇ ´Ğ³×ÀÓ: " + nickname);
+	System.out.println("í˜„ì¬ ì ‘ì†í•œ ì‚¬ëŒì˜ ë‹‰ë„¤ì„: " + nickname);
 	
  %>
 
@@ -48,32 +48,32 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="diagnosis.jsp">Áø´ÜÇÏ±â</a>
+					<li class="nav-item"><a class="nav-link" href="diagnosis.jsp">ì§„ë‹¨í•˜ê¸°</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="diary.jsp">ÀÏ±âÀÛ¼º</a>
+					<li class="nav-item"><a class="nav-link" href="diary.jsp">ì¼ê¸°ì‘ì„±</a>
 					</li>
 					<!-- <li class="nav-item">
-                     <a class="nav-link" href="counsel.jsp">Áı´Ü»ó´ã</a>
+                     <a class="nav-link" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´</a>
                   </li> -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Áı´Ü»ó´ã </a>
+							ì§‘ë‹¨ìƒë‹´ </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownBlog">
-							<a class="dropdown-item" href="counsel.jsp">Áı´Ü»ó´ã¿¹¾à</a> <a
-								class="dropdown-item" href="booking.jsp">Áı´Ü»ó´ã ¿¹¾àÇöÈ²</a>
+							<a class="dropdown-item" href="counsel.jsp">ì§‘ë‹¨ìƒë‹´ì˜ˆì•½</a> <a
+								class="dropdown-item" href="booking.jsp">ì§‘ë‹¨ìƒë‹´ ì˜ˆì•½í˜„í™©</a>
 						</div></li>
-					<li class="nav-item "><a class="nav-link active" href="comments.jsp">±Øº¹ÈÄ±â</a>
+					<li class="nav-item "><a class="nav-link active" href="comments.jsp">ê·¹ë³µí›„ê¸°</a>
 					</li>
-					<li class="nav-item "><a class="nav-link" href="contact.jsp">¼¾ÅÍÃ£±â</a>
+					<li class="nav-item "><a class="nav-link" href="contact.jsp">ì„¼í„°ì°¾ê¸°</a>
 					</li>
 					<%if(email==null&&nickname==null) {%>
-					<li class="nav-item"><a class="nav-link" href="login.html">·Î±×ÀÎ</a>
+					<li class="nav-item"><a class="nav-link" href="login.html">ë¡œê·¸ì¸</a>
 					</li>
 					<%}else { %>
 					
-					<li class="nav-item"><a class="nav-link" href="LogoutService">·Î±×¾Æ¿ô</a>
+					<li class="nav-item"><a class="nav-link" href="LogoutService">ë¡œê·¸ì•„ì›ƒ</a>
 					</li>
 					<%} %>
 
@@ -87,7 +87,7 @@
 		<div class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h1 class="mt-4 mb-3">
-				±Øº¹ÈÄ±â <small>post-overcoming review</small>
+				ê·¹ë³µí›„ê¸° <small>post-overcoming review</small>
 			</h1>
 		</div>
 	</div>
@@ -97,41 +97,41 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-				<li class="breadcrumb-item active">±Øº¹ÈÄ±â</li>
+				<li class="breadcrumb-item active">ê·¹ë³µí›„ê¸°</li>
 			</ol>
 		</div>
 
 	
-	<!-- °Ô½Ã±Û  Ãâ·Â ºÎºĞ -->
+	<!-- ê²Œì‹œê¸€  ì¶œë ¥ ë¶€ë¶„ -->
 	 <%
          ReviewDAO dao = new ReviewDAO();
          ArrayList<ReviewDTO> reviewList = dao.showReviewList();   
          
-         //ÆäÀÌÂ¡ ±â´É
-         int count = dao.count_Review(); // ÀüÃ¼Çà °¹¼ö
+         //í˜ì´ì§• ê¸°ëŠ¥
+         int count = dao.count_Review(); // ì „ì²´í–‰ ê°¯ìˆ˜
          String tempStart = request.getParameter("page"); 
-         int startPage = 0; // rownum ½ÃÀÛ°ª
-         int onePageCnt = 9; // ÇÑÆäÀÌÁö¿¡ Ãâ·ÂÇÒ ÇàÀÇ °¹¼ö
+         int startPage = 0; // rownum ì‹œì‘ê°’
+         int onePageCnt = 9; // í•œí˜ì´ì§€ì— ì¶œë ¥í•  í–‰ì˜ ê°¯ìˆ˜
          
-         System.out.println("¼±ÅÃ¼ıÀÚ"+tempStart);
+         System.out.println("ì„ íƒìˆ«ì"+tempStart);
          
-         count = (int)Math.ceil((double)count/(double)onePageCnt); // ÆäÀÌÁö ¼ö ÀúÀå(ÀüÃ¼¸®ºä°¹¼ö/ÇÑÆäÀÌÁö¿¡Ãâ·ÂÇÒÇà°¹¼ö)
+         count = (int)Math.ceil((double)count/(double)onePageCnt); // í˜ì´ì§€ ìˆ˜ ì €ì¥(ì „ì²´ë¦¬ë·°ê°¯ìˆ˜/í•œí˜ì´ì§€ì—ì¶œë ¥í• í–‰ê°¯ìˆ˜)
          
          if(tempStart!=null) {
-        	 startPage = (Integer.parseInt(tempStart)-1)*onePageCnt; //¼±ÅÃÇÑ ÆäÀÌÁö¿¡ ¸Â°Ô startPage¸¦ ¼³Á¤
-        	 onePageCnt = startPage+9; //¼±ÅÃÇÑ ÆäÀÌÁö¿¡ ¸Â°Ô Ãâ·Â¹üÀ§(9°³ Ãâ·Â) ¼³Á¤
+        	 startPage = (Integer.parseInt(tempStart)-1)*onePageCnt; //ì„ íƒí•œ í˜ì´ì§€ì— ë§ê²Œ startPageë¥¼ ì„¤ì •
+        	 onePageCnt = startPage+9; //ì„ íƒí•œ í˜ì´ì§€ì— ë§ê²Œ ì¶œë ¥ë²”ìœ„(9ê°œ ì¶œë ¥) ì„¤ì •
          }
          
-         ArrayList<ReviewDTO> reviews = dao.selectReviewList(startPage, onePageCnt); //¼ıÀÚ¿¡ ¸Â°Ô  ¸®½ºÆ® ¹İÈ¯
+         ArrayList<ReviewDTO> reviews = dao.selectReviewList(startPage, onePageCnt); //ìˆ«ìì— ë§ê²Œ  ë¦¬ìŠ¤íŠ¸ ë°˜í™˜
      %>
            
       <div class="row">
       
-      <% for(int i = 0;i<reviews.size();i++) {  //ÆäÀÌÂ¡ Ãë¼Ò½Ã, reviews¸¦ reviewList·Î ¼öÁ¤
+      <% for(int i = 0;i<reviews.size();i++) {  //í˜ì´ì§• ì·¨ì†Œì‹œ, reviewsë¥¼ reviewListë¡œ ìˆ˜ì •
       
     	  out.println("<div class='col-lg-4 col-sm-6 portfolio-item'>");
     	  out.println("<div class='card h-100'>");
-    	  out.println("<a href=commentspost.jsp?rev_num="+reviews.get(i).getRev_num()+"><img class='card-img-top' src='images/1234567.png' alt='' /></a>");
+    	  out.println("<a href=commentspost.jsp?rev_num="+reviews.get(i).getRev_num()+"><img class='card-img-top' src='images/12345678.png' alt='' /></a>");
     	  out.println("<div class='card-body'>");
     	  out.println("<h4 class='card-title'>");
     	  out.println("<a href=commentspost.jsp?rev_num="+reviews.get(i).getRev_num()+">"+reviews.get(i).getRev_title()+"<a>");
@@ -167,9 +167,9 @@
 				<div class="col-md-8"></div>
 				<div class="col-md-4">
 				<%if(email==null&&nickname==null) {%>
-					<a onclick="notice2()" class="btn btn-lg btn-secondary btn-block" href="#">ÈÄ±âÀÛ¼º</a>
+					<a onclick="notice2()" class="btn btn-lg btn-secondary btn-block" href="#">í›„ê¸°ì‘ì„±</a>
 					<%}else {%>
-					<a class="btn btn-lg btn-secondary btn-block" href="post.jsp">ÈÄ±âÀÛ¼º</a>
+					<a class="btn btn-lg btn-secondary btn-block" href="post.jsp">í›„ê¸°ì‘ì„±</a>
 					<% }%>
 				</div>
 			</div>
@@ -191,7 +191,7 @@
 						All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design
 						By : SINOZO, 9uack <a href="https://html.design/">html design</a>
 					</p>
-					<!-- ¸Ç ¾Æ·¡ footer SNSÆäÀÌÁö ÀÌµ¿ ulÅÂ±× -->
+					<!-- ë§¨ ì•„ë˜ footer SNSí˜ì´ì§€ ì´ë™ ulíƒœê·¸ -->
 					<!-- <ul class="social_footer_ul">
 				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -211,7 +211,7 @@
    
    
 	function notice2(){
-		alert('È¸¿ø¸¸ ÀÌ¿ë °¡´ÉÇÕ´Ï´Ù. ·Î±×ÀÎÀ» ÇØÁÖ¼¼¿ä!');
+		alert('íšŒì›ë§Œ ì´ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤. ë¡œê·¸ì¸ì„ í•´ì£¼ì„¸ìš”!');
 
 	}
 	</script>
