@@ -27,7 +27,7 @@ public class DiaryDAO {
 	         dao.getConn();
 	         // --------------------- DB 연결(고정된 문법)
 	         
-	         String sql = "insert into diary values(DI_SEQ.nextval,?,?,?,?,?)"; //sysdate는 SQL문이 가지고 있는 함수
+	         String sql = "insert into diary values(DI_SEQ.nextval,?,TO_DATE(?,'YY-MM-DD'),?,?,?)"; //sysdate는 SQL문이 가지고 있는 함수
 
 	         pst = Connect.conn.prepareStatement(sql);
 	         
@@ -199,7 +199,7 @@ public class DiaryDAO {
 			
 	         // --------------------- DB 연결(고정된 문법)
 	         
-	         String sql = "select * from diary where nickname=? order by di_date";
+	         String sql = "select di_num,nickname,TO_CHAR(di_date,'YY-MM-DD'),di_title,di_contents,di_score from diary where nickname=? order by di_date";
 	         pst = Connect.conn.prepareStatement(sql);
 	         pst.setString(1, nickname);
 	         
