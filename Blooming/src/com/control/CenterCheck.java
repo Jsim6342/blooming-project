@@ -44,6 +44,8 @@ public class CenterCheck extends HttpServlet {
 		 centerList.add(center3);
 		 centerList.add(center4);
 		 
+		 System.out.println(centerList.get(2).getCenter_name());
+		 
 		 for(int i=0;i<centerList.size();i++) {
 			 if(center_name.equals(centerList.get(i).getCenter_name())) {
 				   

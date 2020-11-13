@@ -132,7 +132,7 @@
 					        latlng: new kakao.maps.LatLng(35.210439, 126.891318)
 					    },
 					    {
-					        content: '<div>박앤정 임삼심리클리닉</div>', 
+					        content: '<div>박앤정 임상심리클리닉</div>', 
 					        latlng: new kakao.maps.LatLng(35.171684, 126.897020)
 					    },
 					    {
@@ -157,19 +157,18 @@
 					    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 					    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
 					    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-					    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+					    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow, i));
 					    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-					    
-					    var index_num = i;
-					    
+   				    
 					}
 					
 					// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-					function makeOverListener(map, marker, infowindow) {
+					function makeOverListener(map, marker, infowindow, i) {
 					    return function() {
+					    	
 					        infowindow.open(map, marker);
 					            
-					        var string = positions[index_num].content; // 포지션이라는 제이슨 리스트에서 제이슨 구조의 content내용의 태그 내용을 입력
+					        var string = positions[i].content; // 포지션이라는 제이슨 리스트에서 제이슨 구조의 content내용의 태그 내용을 입력
 					        var array = string.split(">");
 					        var array1 = array[1].split("<");
 					        var center_name = array1[0];
@@ -205,7 +204,9 @@
 			</div>
 			
 			<div class="col-lg-4 mb-4 contact-right">
-						<h3 id="center_info">센터 정보</h3>
+						<h3>센터 정보</h3>
+						<hr>
+						<h6 id="center_info">마커에 마우스를 대면 센터 정보가 출력됩니다.</h6>
 						
 			</div>
 			
@@ -314,7 +315,8 @@
             data : {"center_name" : center_name}, //보낼 데이터 지정
             dataType : "json",
             success : function(center) { //서버로 부터 받은 값
-               
+            
+            console.log(center);
             
             let html ="<br><h5 id='center_name' style='color:#4eae3a' id='name'>";
             html += center.center_name;
