@@ -98,51 +98,94 @@
 				<li class="breadcrumb-item active">일기</li>
 			</ol>
 		</div>
-		
-		<!-- 일기쓰기 -->
-              
-			<div class="row">
-				<div class="col-lg-8 mb-4 contact-left">
-					<!--  -->
-					<form name="" id="DiaryForm" action="http://192.168.50.22:5000/DiaryPost1" method="post" novalidate>
-						<div class="control-group form-group">
-							<div class="controls"></div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>날짜</label> <input type="date" class="form-control"
-									name="DI_DATE" id="title" required 
-									data-validation-required-message="Please enter your email address.">
-							</div>
-						</div>
-						
-						
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>제목</label> <input type="text" class="form-control"
-									name="DI_TITLE" id="title" required
-									data-validation-required-message="Please enter your email address.">
-							</div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>내용</label>
-								<textarea rows="20" cols="100" class="form-control"
-									name="DI_CONTENTS" id="content" required
-									data-validation-required-message="Please enter your message"
-									maxlength="999" style="resize: none"></textarea>
-							</div>
-						</div>
-						<div id="success"></div>
-						<!-- For success/fail messages -->
-						<button type="submit" class="btn btn-primary"
-							id="sendMessageButton">작성완료</button>
-					</form>
-				</div>
-</div>		
-</div>		
 
-	
+		<!-- 일기쓰기 -->
+
+		<div class="row">
+			<div class="col-lg-8 mb-4 contact-left">
+				<!--  -->
+				<form name="" id="DiaryForm"
+					action="http://192.168.50.22:5000/DiaryPost1" method="post"
+					novalidate>
+					<div class="control-group form-group">
+						<div class="controls"></div>
+					</div>
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>날짜</label> <input type="date" class="form-control"
+								name="DI_DATE" id="title" required
+								data-validation-required-message="Please enter your email address.">
+						</div>
+					</div>
+
+
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>제목</label> <input type="text" class="form-control"
+								name="DI_TITLE" id="title" required
+								data-validation-required-message="Please enter your email address.">
+						</div>
+					</div>
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>내용</label>
+							<textarea rows="20" cols="100" class="form-control"
+								name="DI_CONTENTS" id="content" required
+								data-validation-required-message="Please enter your message"
+								maxlength="999" style="resize: none"></textarea>
+						</div>
+					</div>
+					<div id="success"></div>
+					<!-- For success/fail messages -->
+					<button type="submit" class="btn btn-primary"
+						id="sendMessageButton">작성완료</button>
+				</form>
+			</div>
+
+			<!-- Sidebar Widgets Column -->
+			<div class="col-md-4 blog-right-side">
+
+				<!-- Side Widget -->
+				<div class="card my-4">
+					<h5 class="card-header">우울감에 대하여</h5>
+					<div class="card-body">우울증의 가장 힘든 점은 남들 앞에서 정상적인 척해야 하는것과 남들이 내게 정상인인 척 하길 바라는 것. 그리고 누구에게 털어놓지 못하는 점입니다. 우울감은 단지 날씨와 같습니다.</div>
+				</div>
+				<div class="card my-4">
+					<h5 class="card-header">오늘의 과제</h5>
+					<div class="card-body"></div>
+				</div>
+
+				<!-- Categories Widget -->
+				<div class="card my-4">
+					<h5 class="card-header">추천</h5>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-6">
+								<ul class="list-unstyled mb-0">
+									<li><a href="https://youtu.be/_f-yw10lfgI">알파웨이브를 <br>통한 힐링음악</a></li>
+									<li><a href="https://youtu.be/m7GOmncIU5A">지친 마음을 <br>달래주는 음악</a></li>
+									<li><a href="#">Freebies</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-6">
+								<ul class="list-unstyled mb-0">
+									<li><a href="#">JavaScript</a></li>
+									<li><a href="#">CSS</a></li>
+									<li><a href="#">Tutorials</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+		</div>
+	</div>
+
+
 
 
 
@@ -182,7 +225,7 @@
 		      
 		      
 		       if(dateC==='' || titleC==='' || contentC==='') {
-		    	  alert("모든 항목을 채워주세요.");
+		    	  alert("모든 내용을 작성해주세요.");
 		    	  return false;
 		      } 		      
 		      
