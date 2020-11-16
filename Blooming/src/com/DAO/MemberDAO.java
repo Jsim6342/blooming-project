@@ -199,9 +199,9 @@ public class MemberDAO {
 	}
 
 	//아이디 찾기 기능
-	public MemberDTO search_email(String tel) {
+	public String search_email(String tel) {
 		
-		MemberDTO member = new MemberDTO();
+		String email ="";
 		
 		try {
 			
@@ -217,12 +217,7 @@ public class MemberDAO {
 			
 			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
 				//전체 맴버 데이터를 출력
-	        	 String nicknames = rs.getString(1);
-	        	 String email = rs.getString(2);
-	        	 String pw = rs.getString(3);
-	        	 String get_tel = rs.getString(4);
-	        	 
-	        	 member = new MemberDTO(nicknames, email, pw, get_tel); 
+	        	 email = rs.getString(1);
 			}
 			
 		} catch (SQLException e) {
@@ -233,14 +228,14 @@ public class MemberDAO {
 			dao.close();
 		}
 		
-		return member;
+		return email;
 	}
 	
 	
 	//비밀번호 찾기 기능
-	public MemberDTO search_pw(String email, String tel) {
+	public String search_pw(String email, String tel) {
 		
-		MemberDTO member = new MemberDTO();
+		String get_email ="";
 		
 		try {
 			
@@ -257,12 +252,9 @@ public class MemberDAO {
 			
 			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
 				//전체 맴버 데이터를 출력
-	        	 String nicknames = rs.getString(1);
-	        	 String get_email = rs.getString(2);
-	        	 String pw = rs.getString(3);
-	        	 String get_tel = rs.getString(4);
-	        	 
-	        	 member = new MemberDTO(nicknames, get_email, pw, get_tel); 
+	        	
+				get_email = rs.getString(1);
+
 			}
 			
 		} catch (SQLException e) {
@@ -273,7 +265,37 @@ public class MemberDAO {
 			dao.close();
 		}
 		
-		return member;
+		return get_email;
 	}
+	
+	//비밀번호 업데이트
+	public int update_pw(String email, String pw) {
+
+		
+		
+		try {
+			
+			 dao.getConn();
+			 
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "update member set pw=? where email = ?"; 
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, pw);
+	         pst.setString(2, email);
+
+	         cnt = pst.executeUpdate(); //성공 시 1을 반환
+	      // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	      // --------------------- DB에 SQL문 명령준비	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return cnt;
+	}
+	
 	
 }

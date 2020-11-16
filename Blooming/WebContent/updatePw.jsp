@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-   pageEncoding="utf-8"%>
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-   <title>Blooming - PW 찾기</title>
+   <title>Blooming - 비밀번호 변경</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- Bootstrap core CSS -->
@@ -39,46 +39,42 @@
    
    <div class="limiter">
       <div class="container-login100">
-         <div class="wrap-login100 p-t-0 p-b-0">
-            <form class="login100-form validate-form">
-               <span class="login100-form-title p-b-100">
-                  PW 찾기
+         <div class="wrap-login100 p-t-0 p-b-10">
+            <form class="login100-form validate-form" action = "MemberSignup" method = "post" >
+               <span class="login100-form-title p-b-70">
+                  	비밀번호 변경
                </span>
                <a class="login100-form-avatar" href="index.jsp">
                   <img src="images/marigold.png"  alt="AVATAR">
                </a>
-
-               <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter email">
-                  <input class="input100" type="email" name="pw_email" placeholder= "가입하신 Email을 입력해주세요.">
-                  <!-- <span class="focus-input100" data-placeholder="Username"></span> -->
+				
+				<% 
+               String email = request.getParameter("email");
+		 	   System.out.println("받아온이메일값:"+email);
+               %>
+				
+               <div class="wrap-input100 validate-input m-b-45" data-validate = "Enter password">
+                  <input class="input100" type="password" name="input_pw" placeholder="변경할 비밀번호 입력">
                </div>
-
-               <div class="wrap-input100 validate-input m-b-50" data-validate="Enter Tel">
-                  <input class="input100" type="password" name="pw_tel" placeholder= "가입하신 전화번호를 입력해주세요.">
-                  <!-- <span class="focus-input100" data-placeholder="Password"></span> -->
-               </div>
-
+               
                <div class="container-login100-form-btn">
-                  <input id="search_pw" type="button" value = "비밀번호 찾기" class="login100-form-btn">
-               </div>
+				   <input id="submit_button" type="button" value = "비밀번호 변경" class="login100-form-btn">
+			   </div>
+
+
+      
 
                <ul class="login-more p-t-60">
-                  <ul class="login-more p-t-60">
-						<li class="m-b-8">
-							
-
-							<a href="searchEmail.jsp" class="txt2">
-								아이디 찾기 / 
-							</a>
-							<a href="searchPw.jsp" class="txt2">
-								비밀번호 찾기
-							</a>
-						</li>
+                  <li class="m-b-8">
+                     <a href="searchEmail.jsp" class="txt2">
+                        아이디 찾기 / 
+                     </a>
+                     <a href="searchPw.jsp" class="txt2">
+                        비밀번호 찾기
+                     </a>
+                  </li>
 
                   <li>
-                     <!-- <span class="txt1">
-                        회원이 아니신가요?
-                     </span> -->
                      
                      <a href="signup.html" class="txt2">
                         일반 회원가입 / 
@@ -215,35 +211,34 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Ajax를 사용하기 위한 Ajax import 부분 -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
 <script type="text/javascript">
 
-$('#search_pw').on('click',function(){
+$('#submit_button').on('click',function(){
     
 	   var check = "";
-	   let email = $('input[name="pw_email"]').val();
-	   let tel = $('input[name="pw_tel"]').val();
 	   
-	   if(email==="") {
-		   alert("이메일을 입력해주세요.");
-	   }else if(tel===""){
-		   alert("전화번호를 입력해주세요.");
+	   let email ="<%=request.getParameter("email")%>";
+	   let pw = $('input[name="input_pw"]').val();
+	   
+	   if(pw==="") {
+		   alert("비밀번호를 입력해주세요.");
 	   }else{
 		   
 		 //Ajax함수
 		    $.ajax({
 		         //ajax 통신 방식으로 데이터를 전송
 		         type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
-		         url : "SearchPw", //어떤 서버페이지로 이 값을 보낼 것인지
-		         data : {"email" : email, "tel" : tel}, //보낼 데이터 지정
+		         url : "UpdatePw", //어떤 서버페이지로 이 값을 보낼 것인지
+		         data : {"email" : email, "pw" : pw}, //보낼 데이터 지정
 		         dataType : "text",
-		         success : function(data) { //서버로 부터 받은 값
-		         
-		         check = data;
-		         	if(check==="False") {
-		         		alert("일치하는 회원정보가 존재하지 않습니다.");
-		         	}else {
-		         	    location.href = "SearchPw?email="+encodeURIComponent(encodeURIComponent(email),"UTF-8")+"&tel="+encodeURIComponent(encodeURIComponent(tel),"UTF-8");
-		         	}
+		         success : function(data) { //서버로 부터 받은 값   
+		       
+		        	 alert("비밀번호가 변경되었습니다.");
+		         	 location.href = "UpdatePw?email="+encodeURIComponent(encodeURIComponent(email),"UTF-8")+"&pw="+encodeURIComponent(encodeURIComponent(pw),"UTF-8");
+  		
 		         },
 		         error : function() {
 		            alert("ajax 통신 실패");

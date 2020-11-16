@@ -40,7 +40,7 @@
    <div class="limiter">
       <div class="container-login100">
          <div class="wrap-login100 p-t-0 p-b-0">
-            <form class="login100-form validate-form" action="LoginService" method="post">
+            <form class="login100-form validate-form">
                <span class="login100-form-title p-b-100">
                   ID 찾기
                </span>
@@ -55,7 +55,7 @@
                </div>
 
                <div class="container-login100-form-btn">
-                  <input type="submit" value = "아이디 찾기" class="login100-form-btn">
+                  <input id="input_tel" type="button" value ="아이디 찾기" class="login100-form-btn">
                </div>
 
                <ul class="login-more p-t-60">
@@ -128,5 +128,43 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+
+$('#input_tel').on('click',function(){
+    
+	   var check = "";
+	   let tel = $('input[name="id_tel"]').val();
+	   
+	   if(tel==="") {
+		   alert("전화번호를 입력해주세요.");
+	   }else {
+		   
+		 //Ajax함수
+		    $.ajax({
+		         //ajax 통신 방식으로 데이터를 전송
+		         type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
+		         url : "SearchEmail", //어떤 서버페이지로 이 값을 보낼 것인지
+		         data : {"tel" : tel}, //보낼 데이터 지정
+		         dataType : "text",
+		         success : function(data) { //서버로 부터 받은 값
+		         
+		         check = data;
+		         	if(check==="False") {
+		         		alert("일치하는 회원정보가 존재하지 않습니다.");
+		         	}else {
+		         	    location.href = "SearchEmail?tel="+encodeURIComponent(encodeURIComponent(tel),"UTF-8");
+		         	}
+		         },
+		         error : function() {
+		            alert("ajax 통신 실패");
+		         }
+		      });
+		   
+	   }
+   
+    
+});
+
+</script>
 </body>
 </html>

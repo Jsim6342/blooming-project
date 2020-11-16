@@ -1,6 +1,8 @@
 package com.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,87 +25,44 @@ public class SearchEmail extends HttpServlet {
 	      request.setCharacterEncoding("UTF-8");
 	      
 	      //사용자가 입력한 값을 가져오기
-	      String tel = request.getParameter("tel");
-	      String email = request.getParameter("email");
+	      String incode_tel = request.getParameter("tel");
+		  String tel = java.net.URLDecoder.decode(incode_tel,"UTF-8");
 	      
 	            
 	      System.out.println(tel);
-	      System.out.println(email);
-	      
-	      MemberDTO member = new MemberDTO();
-	      ConsultantDTO consultant = new ConsultantDTO();
 	      
 	      
-	      if(!tel.equals(null)&&email.equals(null)) { //tel을 통해 아이디 찾기 기능
-	    	//DB와 연동해서 사용자가 입력한 tel값에 맞는 email값 확인
-		      //member table 조회
-		      MemberDAO dao_mem = new MemberDAO();
-		      member = dao_mem.search_email(tel);
+	      String email = "";
+	      String con_email = "";
+	      
+	      //tel을 통해 아이디 찾기 기능
+	      //DB와 연동해서 사용자가 입력한 tel값에 맞는 email값 확인
+		  //member table 조회
+		   MemberDAO dao_mem = new MemberDAO();
+		   email = dao_mem.search_email(tel);
 		      
-		    //consultant table 조회
-		      ConsultantDAO dao_con = new ConsultantDAO();
-		      consultant = dao_con.search_email(tel);
-		      
-		      
-	      }
-	      
-	      
-	      if(!tel.equals(null)&&!email.equals(null)) {
-	    	//DB와 연동해서 사용자가 입력한  email,tel값에 맞는 pw값 확인
-		      //member table 조회
-		      MemberDAO dao_mem = new MemberDAO();
-		      member = dao_mem.search_pw(email, tel);
-		      
-		    //consultant table 조회
-		      ConsultantDAO dao_con = new ConsultantDAO();
-		      consultant = dao_con.search_pw(email, tel);
-	      }
-	      
-	      
-	      if(member==null&&consultant==null) { //일치하는 아이디가 없는 경우
-	    	  
-	      }else if(member!=null) { //회원일 경우
-	    	  if(email.equals(null)) { //아이디 찾기
-	    		  
-	    	  }else { //비밀번호 찾기
-	    		  
-	    	  }
-	      }else if(consultant!=null) {// 상담사일 경우
-	    	  
-	      }else {
-	    	  if(email.equals(null)) { //아이디 찾기
-	    		  
-	    	  }else { //비밀번호 찾기
-	    		  
-	    	  }  
-	      }
-	      
-	      
-	      
-	      //로그인 성공/실패 했을 때 페이지 이동
-	      if(consultant != null && !consultant.equals(null)) {
-	                         
-	      //Session영역에 값 저장
-	       HttpSession session = request.getSession(); //Session영역을 사용하기 위한 객체생성
-	       session.setAttribute("email", consultant.getCon_email()); //Session영역에 email이름표로 로그인에 성공한 사람의 email값 저장
-	                     
-	      //메인으로 이동        
-	       response.sendRedirect("index.jsp");
-	       }else if(member != null && !member.equals(null)){
-	          
-	      //Session영역에 값 저장
-	      HttpSession session = request.getSession(); //Session영역을 사용하기 위한 객체생성
-	      session.setAttribute("nickname", member.getNickname()); //Session영역에 email이름표로 로그인에 성공한 사람의 email값 저장
-	         
-	      //메인으로 이동
-	      response.sendRedirect("index.jsp");
-	          
-	    
-	       }else {
-	             System.out.println("이메일과 비밀번호를 확인해주세요."); 
-	       }
-	      
-	   
+		  //consultant table 조회
+		   ConsultantDAO dao_con = new ConsultantDAO();
+		   con_email = dao_con.search_email(tel);
+		    
+		   System.out.println(email);
+		   System.out.println(con_email);
+		   
+		   if(email.equals("")&&con_email.equals("")) { //전화번호와 일치하는 아이디가 없는 경우
+			   System.out.println("전화번호를 확인해주세요.");
+	             String check = "False";
+	    		 PrintWriter out = response.getWriter();
+	    		 out.print(check);
+		   }else if(!email.equals("")) { //회원일 경우   
+			   response.sendRedirect("showEmail.jsp?email="+email); //아이디 출력 페이지	   
+		   }else if(!con_email.equals("")) {// 상담사일 경우   
+			   response.sendRedirect("showEmail.jsp?email="+con_email); //아이디 출력 페이지
+		   }else {
+			   System.out.println("오류입니다.");
+		      }
+			   
+			   
+
 	                  
 		
 		

@@ -14,6 +14,7 @@ public class ConsultantDAO {
 	//주로 많이 전역적으로 사용하는 것들을 멤버변수로 빼놓는다. 
 		PreparedStatement pst = null;
 		ResultSet rs = null;
+		int cnt = 0;
 	
 	Connect dao = new Connect();
 	
@@ -149,11 +150,11 @@ public class ConsultantDAO {
 	}
 	
 	//상담사 이메일 찾기
-	public ConsultantDTO search_email(String tel) {
+	public String search_email(String tel) {
 		
+		String email = "";
 		
-		ConsultantDTO consultant = new ConsultantDTO();
-		
+
 		try {
 			
 			//DB연결 기능
@@ -167,14 +168,9 @@ public class ConsultantDAO {
 			rs = pst.executeQuery();
 			
 			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
-				String con_email = rs.getString(1);
-	        	String con_pw = rs.getString(2);
-	        	String con_name = rs.getString(3);
-	        	String con_tel = rs.getString(4);
-	        	String license = rs.getString(5);
-	        	String location = rs.getString(6);
-	        	 
-	        	consultant = new ConsultantDTO(con_email, con_pw, con_name, con_tel, license, location); 
+				
+				email = rs.getString(1);
+
 			}
 			
 		} catch (SQLException e) {
@@ -185,14 +181,14 @@ public class ConsultantDAO {
 			dao.close();
 		}
 		
-		return consultant;
+		return email;
 	}
 	
 	//상담사 비밀번호 찾기
-	public ConsultantDTO search_pw(String email, String tel) {
+	public String search_pw(String email, String tel) {
 		
 		
-		ConsultantDTO consultant = new ConsultantDTO();
+		String get_email = "";
 		
 		try {
 			
@@ -208,14 +204,8 @@ public class ConsultantDAO {
 			rs = pst.executeQuery();
 			
 			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
-				String con_email = rs.getString(1);
-	        	String con_pw = rs.getString(2);
-	        	String con_name = rs.getString(3);
-	        	String con_tel = rs.getString(4);
-	        	String license = rs.getString(5);
-	        	String location = rs.getString(6);
-	        	 
-	        	consultant = new ConsultantDTO(con_email, con_pw, con_name, con_tel, license, location); 
+				get_email = rs.getString(1);
+     
 			}
 			
 		} catch (SQLException e) {
@@ -226,8 +216,37 @@ public class ConsultantDAO {
 			dao.close();
 		}
 		
-		return consultant;
+		return get_email;
 	}
+	
+	//비밀번호 업데이트
+	public int update_pw(String email, String pw) {
+
+		
+		try {
+			
+			 dao.getConn();
+			 
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "update consultant set con_pw=? where con_email = ?"; 
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, pw);
+	         pst.setString(2, email);
+
+	         cnt = pst.executeUpdate(); //성공 시 1을 반환
+	      // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	      // --------------------- DB에 SQL문 명령준비	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return cnt;
+	}
+	
 	
 	
 }

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-   pageEncoding="utf-8"%>
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-   <title>Blooming - PW 찾기</title>
+   <title>Blooming - 아이디 조회</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- Bootstrap core CSS -->
@@ -39,46 +39,39 @@
    
    <div class="limiter">
       <div class="container-login100">
-         <div class="wrap-login100 p-t-0 p-b-0">
-            <form class="login100-form validate-form">
-               <span class="login100-form-title p-b-100">
-                  PW 찾기
+         <div class="wrap-login100 p-t-0 p-b-10">
+            <form class="login100-form validate-form" action = "MemberSignup" method = "post" >
+               <span class="login100-form-title p-b-70">
+                  	아이디 조회
                </span>
                <a class="login100-form-avatar" href="index.jsp">
                   <img src="images/marigold.png"  alt="AVATAR">
                </a>
-
-               <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter email">
-                  <input class="input100" type="email" name="pw_email" placeholder= "가입하신 Email을 입력해주세요.">
-                  <!-- <span class="focus-input100" data-placeholder="Username"></span> -->
+				
+               <div class="wrap-input100 validate-input m-t-55 m-b-35" data-validate = "Enter email">
+               
+               <% 
+               String email = request.getParameter("email");
+		   	   out.print("<p class='input100'>"+email+"</p>");
+		 	   out.print("<p id='p1'></p>");
+		 	   
+               %>
+<!--                   <p class="input100" name="">이메일</p>
+                  <p id="p1"></p> -->
                </div>
-
-               <div class="wrap-input100 validate-input m-b-50" data-validate="Enter Tel">
-                  <input class="input100" type="password" name="pw_tel" placeholder= "가입하신 전화번호를 입력해주세요.">
-                  <!-- <span class="focus-input100" data-placeholder="Password"></span> -->
-               </div>
-
-               <div class="container-login100-form-btn">
-                  <input id="search_pw" type="button" value = "비밀번호 찾기" class="login100-form-btn">
-               </div>
+               
 
                <ul class="login-more p-t-60">
-                  <ul class="login-more p-t-60">
-						<li class="m-b-8">
-							
-
-							<a href="searchEmail.jsp" class="txt2">
-								아이디 찾기 / 
-							</a>
-							<a href="searchPw.jsp" class="txt2">
-								비밀번호 찾기
-							</a>
-						</li>
+                  <li class="m-b-8">
+                     <a href="searchEmail.jsp" class="txt2">
+                        아이디 찾기 / 
+                     </a>
+                     <a href="searchPw.jsp" class="txt2">
+                        비밀번호 찾기
+                     </a>
+                  </li>
 
                   <li>
-                     <!-- <span class="txt1">
-                        회원이 아니신가요?
-                     </span> -->
                      
                      <a href="signup.html" class="txt2">
                         일반 회원가입 / 
@@ -215,46 +208,89 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript">
-
-$('#search_pw').on('click',function(){
-    
-	   var check = "";
-	   let email = $('input[name="pw_email"]').val();
-	   let tel = $('input[name="pw_tel"]').val();
-	   
-	   if(email==="") {
-		   alert("이메일을 입력해주세요.");
-	   }else if(tel===""){
-		   alert("전화번호를 입력해주세요.");
-	   }else{
-		   
-		 //Ajax함수
-		    $.ajax({
-		         //ajax 통신 방식으로 데이터를 전송
-		         type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
-		         url : "SearchPw", //어떤 서버페이지로 이 값을 보낼 것인지
-		         data : {"email" : email, "tel" : tel}, //보낼 데이터 지정
-		         dataType : "text",
-		         success : function(data) { //서버로 부터 받은 값
-		         
-		         check = data;
-		         	if(check==="False") {
-		         		alert("일치하는 회원정보가 존재하지 않습니다.");
-		         	}else {
-		         	    location.href = "SearchPw?email="+encodeURIComponent(encodeURIComponent(email),"UTF-8")+"&tel="+encodeURIComponent(encodeURIComponent(tel),"UTF-8");
-		         	}
-		         },
-		         error : function() {
-		            alert("ajax 통신 실패");
-		         }
-		      });
-		   
-	   }
+<!-- Ajax를 사용하기 위한 Ajax import 부분 -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    
-    
-});
+   <script type="text/javascript">
+      function ajaxCall() { //ajax 함수 부분
+         var emailCheck = document.getElementById("EmailCheck"); //id속성을 바탕으로 값 가져오기
+         //alert(emailCheck.value);   //태그 값을 불러오는 함수는 .value이다. 그냥 txt1은 태그를 의미
+      
+         $.ajax({
+            //ajax 통신 방식으로 데이터를 전송
+            type : "get", //서버로 어떤 방식으로 호출할 것인지. get or post
+            url : "EmailCheck", //어떤 서버페이지로 이 값을 보낼 것인지
+            data : {"email" : emailCheck.value}, //보낼 데이터 지정
+            dataType : "text",
+            success : function(data) { //서버로 부터 받은 값
+               var p1 = document.getElementById("p1");
+               
+               if(data=="true") { //반드시 true를 문자열로 덮어주어야 한다. (가져올 때 문자열로 가져옴)
+                  
+                  p1.style.cssText = "color:red"; //p1태그에 css문법을 사용해서 스타일을 적용하겠다. (자바스크립트 내에서 스타일 적용가능)
+                  p1.innerHTML = "이미 사용중인 아이디입니다." //일반 태그에 값 입력할 때: innerHTML
+                  
+               }else {
+                  
+                  p1.style.cssText = "color:blue";
+                  p1.innerHTML = "사용할 수 있는 아이디입니다." //일반 태그에 값 입력할 때: innerHTML
+               }
+            },
+            error : function() {
 
-</script>
+            }
+         });
+
+      }
+      
+      function ajax2Call() { //ajax 함수 부분
+         var nicknameCheck = document.getElementById("NicknameCheck"); //id속성을 바탕으로 값 가져오기
+         //alert(emailCheck.value);   //태그 값을 불러오는 함수는 .value이다. 그냥 txt1은 태그를 의미
+      
+         $.ajax({
+            //ajax 통신 방식으로 데이터를 전송
+            type : "get", //서버로 어떤 방식으로 호출할 것인지. get or post
+            url : "NicknameCheck", //어떤 서버페이지로 이 값을 보낼 것인지
+            data : {"nickname" : nicknameCheck.value}, //보낼 데이터 지정
+            dataType : "text",
+            success : function(data) { //서버로 부터 받은 값
+               var p1 = document.getElementById("p2");
+               
+               if(data=="true") { //반드시 true를 문자열로 덮어주어야 한다. (가져올 때 문자열로 가져옴)
+                  
+                  p1.style.cssText = "color:red"; //p1태그에 css문법을 사용해서 스타일을 적용하겠다. (자바스크립트 내에서 스타일 적용가능)
+                  p1.innerHTML = "이미 사용중인 닉네임입니다." //일반 태그에 값 입력할 때: innerHTML
+                  
+               }else {
+                  
+                  p1.style.cssText = "color:blue";
+                  p1.innerHTML = "사용할 수 있는 닉네임입니다." //일반 태그에 값 입력할 때: innerHTML
+               }
+            },
+            error : function() {
+
+            }
+         });
+
+      }
+      
+
+      
+       $('form.login100-form').submit(function(){
+           let emailC = $('#EmailCheck').val();
+            let pwC = $('#PwCheck').val();
+            let telC = $('#TelCheck').val();
+            let nicknameC = $('#NicknameCheck').val();
+            
+            
+            
+             if(emailC==='' || pwC==='' || telC==='' || nicknameC==='') {
+               alert("모든 항목을 채워주세요.");
+               return false;
+            }             
+            
+      }); 
+      
+   </script>
 </body>
 </html>
