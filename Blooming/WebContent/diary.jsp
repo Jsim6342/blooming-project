@@ -101,10 +101,6 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
                  }
                  %>
             
-          <%-- ['<%=di_date%>',<%=di_score%>] --%>
-          /* ['1주차', -1],
-          ['2주차',1],
-          ['3주차',0] */
         
           ]);
       

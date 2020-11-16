@@ -185,7 +185,7 @@
    			   }
    		   }else {//상담사일 때
    				if(email.equals(pro_email)) {//내 상담일 때
-   					out.println("<a onclick='finish(\""+pro_email+"\")' href='counsel.jsp' class='btn btn-primary'>상담완료</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>"); 
+   					out.println("<a onclick='finish(\""+pro_email+"\")' id='com' class='btn btn-primary'>상담완료</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>"); 
    				}else {//다른 상담일 때
    				out.println("<p onclick='notice1()' class='btn btn-primary'>예약하기</p> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
    				}
@@ -257,8 +257,10 @@
 		function finish(pro_email){
 			if(confirm("상담을 완료하시겠습니까?"))
 			{
+				console.log(encodeURIComponent(encodeURIComponent(pro_email)));
 			 alert('상담이 완료되었습니다.');
 			 location.href = "DeleteCounsel?pro_email="+encodeURIComponent(encodeURIComponent(pro_email),"UTF-8");
+			 
 			}else
 			{
 			alert('취소되었습니다.');
