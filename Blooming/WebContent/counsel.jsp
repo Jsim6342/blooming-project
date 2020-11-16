@@ -257,7 +257,7 @@
 		function finish(pro_email){
 			if(confirm("상담을 완료하시겠습니까?"))
 			{
-				console.log(encodeURIComponent(encodeURIComponent(pro_email)));
+
 			 alert('상담이 완료되었습니다.');
 			 location.href = "DeleteCounsel?pro_email="+encodeURIComponent(encodeURIComponent(pro_email),"UTF-8");
 			 

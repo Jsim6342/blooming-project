@@ -38,7 +38,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-0 p-b-0">
-				<form class="login100-form validate-form" action="LoginService" method="post">
+				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-100">
 						Login
 					</span>
@@ -57,17 +57,16 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<input type="submit" value = "Login" class="login100-form-btn">
+						<input id="submit_button" type="button" value = "Login" class="login100-form-btn">
 					</div>
 
 					<ul class="login-more p-t-60">
 						<li class="m-b-8">
-							<span class="txt1">
-								Forgot
-							</span>
-
-							<a href="#" class="txt2">
-								Username / Password?
+							<a href="searchEmail.jsp" class="txt2">
+								아이디 찾기 / 
+							</a>
+							<a href="searchPw.jsp" class="txt2">
+								비밀번호 찾기
 							</a>
 						</li>
 
@@ -113,82 +112,7 @@
     <footer class="footer">
         <div class="container bottom_border">
             <div class="row">
-               <!-- <div class="col-lg-3 col-md-6 col-sm-6 col">
-					<h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
-					headin5_amrc
-					<p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-					<p><i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
-					<p><i class="fa fa-phone"></i> +91-9999878398 </p>
-					<p><i class="fa fa fa-envelope"></i> info@example.com </p>
-               </div>
-               <div class="col-lg-3 col-md-6 col-sm-6 col">
-					<h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
-					headin5_amrc ends here
-					<ul class="footer_ul2_amrc">
-						<li>
-							<a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
-							<p>Lorem Ipsum is simply dummy printing...<a href="#">https://www.lipsum.com/</a></p>
-						</li>
-						<li>
-							<a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
-							<p>Lorem Ipsum is simply dummy printing...<a href="#">https://www.lipsum.com/</a></p>
-						</li>
-						<li>
-							<a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
-							<p>Lorem Ipsum is simply dummy printing...<a href="#">https://www.lipsum.com/</a></p>
-						</li>
-					</ul>
-					footer_ul2_amrc ends here
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
-					headin5_amrc
-					<ul class="footer_ul_amrc">
-						<li><a href="#">Default Version</a></li>
-						<li><a href="#">Boxed Version</a></li>
-						<li><a href="#">Our Team </a></li>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Our Services</a></li>
-						<li><a href="#">Get In Touch</a></li>
-					</ul>
-					footer_ul_amrc ends here
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-6 ">
-					<h5 class="headin5_amrc col_white_amrc pt2">Recent posts</h5>
-					headin5_amrc
-					<ul class="footer_ul_amrc">
-						<li class="media">
-							<div class="media-left">
-								<img class="img-fluid" src="images/post-img-01.jpg" alt="" />
-							</div>
-							<div class="media-body">
-								<p>How to find best dog food?</p>
-								<span>22 Sep 2018</span>
-							</div>
-						</li>
-						<li class="media">
-							<div class="media-left">
-								<img class="img-fluid" src="images/post-img-02.jpg" alt="" />
-							</div>
-							<div class="media-body">
-								<p>How to find best dog food?</p>
-								<span>34 Sep 2018</span>
-							</div>
-						</li>
-						<li class="media">
-							<div class="media-left">
-								<img class="img-fluid" src="images/post-img-03.jpg" alt="" />
-							</div>
-							<div class="media-body">
-								<p>How to find best dog food?</p>
-								<span>30 Sep 2018</span>
-							</div>
-						</li>
-					</ul>
-					footer_ul_amrc ends here
-				</div>
-			</div>
-		</div> -->
+               
         <div class="container">
             <div class="footer-logo">
 				<a href="#"><img src="images/marigold4.png" alt="" /></a>
@@ -197,19 +121,55 @@
             <p class="copyright text-center">All Rights Reserved. &copy; 2020 <a href="#">Blooming</a> Design By : SINOZO, 9uack
 				<a href="https://html.design/">html design</a>
             </p>
-            <!-- 맨 아래 footer SNS페이지 이동 ul태그 -->
-            <!-- <ul class="social_footer_ul">
-				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-				<li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul> -->
-            <!--social_footer_ul ends here-->
+           
         </div>
     </footer>
 	  
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+
+$('#submit_button').on('click',function(){
+    
+	   var check = "";
+	   let Email = $('input[name="email"]').val();
+	   let Pw = $('input[name="pw"]').val();
+	   
+	   
+	   if(Email==="") {
+		   alert("이메일을 입력해주세요");
+	   }else if(Pw==="") {
+		   alert("비밀번호를 입력해주세요");
+	   }else {
+		   
+		 //Ajax함수
+		    $.ajax({
+		         //ajax 통신 방식으로 데이터를 전송
+		         type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
+		         url : "LoginService", //어떤 서버페이지로 이 값을 보낼 것인지
+		         data : {"email" : Email , "pw" : Pw}, //보낼 데이터 지정
+		         dataType : "text",
+		         success : function(data) { //서버로 부터 받은 값
+		         
+		         check = data;
+		         	if(check==="False") {
+		         		alert("이메일 또는 비밀번호가 틀렸습니다.");
+		         	}else {
+		         	    location.href = "LoginService?email="+encodeURIComponent(encodeURIComponent(Email),"UTF-8")+"&pw="+encodeURIComponent(encodeURIComponent(Pw),"UTF-8");
+		         	}
+		         },
+		         error : function() {
+		            alert("ajax 통신 실패");
+		         }
+		      });
+		   
+	   }
+   
+    
+});
+
+</script>
+
 </body>
 </html>

@@ -147,4 +147,87 @@ public class ConsultantDAO {
 		
 		return check;
 	}
+	
+	//상담사 이메일 찾기
+	public ConsultantDTO search_email(String tel) {
+		
+		
+		ConsultantDTO consultant = new ConsultantDTO();
+		
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from consultant where con_tel = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			pst.setString(1, tel);
+			
+			
+			rs = pst.executeQuery();
+			
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+				String con_email = rs.getString(1);
+	        	String con_pw = rs.getString(2);
+	        	String con_name = rs.getString(3);
+	        	String con_tel = rs.getString(4);
+	        	String license = rs.getString(5);
+	        	String location = rs.getString(6);
+	        	 
+	        	consultant = new ConsultantDTO(con_email, con_pw, con_name, con_tel, license, location); 
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		
+		return consultant;
+	}
+	
+	//상담사 비밀번호 찾기
+	public ConsultantDTO search_pw(String email, String tel) {
+		
+		
+		ConsultantDTO consultant = new ConsultantDTO();
+		
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from consultant where con_email = ? and con_tel = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			pst.setString(1, email);
+			pst.setString(2, tel);
+			
+			
+			rs = pst.executeQuery();
+			
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+				String con_email = rs.getString(1);
+	        	String con_pw = rs.getString(2);
+	        	String con_name = rs.getString(3);
+	        	String con_tel = rs.getString(4);
+	        	String license = rs.getString(5);
+	        	String location = rs.getString(6);
+	        	 
+	        	consultant = new ConsultantDTO(con_email, con_pw, con_name, con_tel, license, location); 
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		
+		return consultant;
+	}
+	
+	
 }
