@@ -59,15 +59,16 @@
                </div>
 
                <ul class="login-more p-t-60">
-                  <li class="m-b-8">
-                     <span class="txt1">
-                        Forgot
-                     </span>
+						<li class="m-b-8">
+							
 
-                     <a href="#" class="txt2">
-                        Username / Password?
-                     </a>
-                  </li>
+							<a href="searchEmail.jsp" class="txt2">
+								아이디 찾기 / 
+							</a>
+							<a href="searchPw.jsp" class="txt2">
+								비밀번호 찾기
+							</a>
+						</li>
 
                   <li>
                      <!-- <span class="txt1">

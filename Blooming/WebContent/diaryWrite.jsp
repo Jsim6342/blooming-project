@@ -157,39 +157,33 @@
 
 				<!-- Categories Widget -->
 				<div class="card my-4">
-					<h5 class="card-header">추천</h5>
+					<h5 class="card-header">추천 영상</h5>
 					<div class="card-body">
 						<div class="row">
 							<div class="col-lg-6">
 								<ul class="list-unstyled mb-0">
-									<li><a href="https://youtu.be/_f-yw10lfgI">알파웨이브를 <br>통한 힐링음악</a></li>
-									<li><a href="https://youtu.be/m7GOmncIU5A">지친 마음을 <br>달래주는 음악</a></li>
-									<li><a href="https://youtu.be/jME5_dk3mkQ">몸이 보내는 <br>우울증 신호</a></li>
+									<li><a href="https://youtu.be/m7GOmncIU5A" target="_blank">지친 마음을 <br>달래주는 음악</a></li>
+									<hr>
+									<li><a href="https://youtu.be/_f-yw10lfgI" target="_blank">알파웨이브를 <br>통한 힐링음악</a></li>
+									<hr>
+									<li><a href="https://youtu.be/jME5_dk3mkQ" target="_blank">몸이 보내는 <br>우울증 신호</a></li>
 								</ul>
 							</div>
 							<div class="col-lg-6">
 								<ul class="list-unstyled mb-0">
-									<li><a href="https://youtu.be/nYCO7PeR6go">가장 보통의 존재,<br>나의 우울증 이야기</a></li>
-									<li><a href="https://youtu.be/9H5_3gaReCg">다큐 - 시선<br>우울증이 어때서요?</a></li>
-									<li><a href="https://youtu.be/JiKJAQ0pT-w">우울증을 극복하는<br>3가지 방법</a></li>
+									<li><a href="https://youtu.be/nYCO7PeR6go" target="_blank">가장 보통의 존재,<br>나의 우울증 이야기</a></li>
+									<hr>
+									<li><a href="https://youtu.be/9H5_3gaReCg" target="_blank">다큐 - 시선<br>우울증이 어때서요?</a></li>
+									<hr>
+									<li><a href="https://youtu.be/l554AcoIL-A" target="_blank">어쩌다 어른<br>우울증 편</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-
-
-
 			</div>
-
 		</div>
 	</div>
-
-
-
-
-
-
 
 	<!-- /.container -->
 	<!--footer starts from here-->
