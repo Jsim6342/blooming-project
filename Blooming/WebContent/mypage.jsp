@@ -1,3 +1,7 @@
+<%@page import="com.DAO.MemberDAO"%>
+<%@page import="com.DTO.MemberDTO"%>
+<%@page import="com.DAO.ConsultantDAO"%>
+<%@page import="com.DTO.ConsultantDTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -40,17 +44,97 @@
    <div class="limiter">
       <div class="container-login100">
          <div class="wrap-login100 p-t-0 p-b-10">
-            <form class="login100-form validate-form" action = "MemberSignup" method = "post" >
+            <form class="login100-form validate-form">
                <span class="login100-form-title p-b-70">
                   My Page
                </span>
                <a class="login100-form-avatar" href="index.jsp">
                   <img src="images/marigold.png"  alt="AVATAR">
                </a>
+				
+				<% //스크립틀릿
+ 
+ 				//session값 email 가져오기
+				String email = (String)session.getAttribute("email");
+				System.out.println("현재 접속한 사람의 이메일: " + email);
+	
+				//session값 nickname 가져오기
+				String nickname = (String)session.getAttribute("nickname");
+				System.out.println("현재 접속한 사람의 닉네임: " + nickname);
+	
+				if(email.equals(null)) { // 회원일 경우
+					
+					MemberDTO member = new MemberDTO();
+					MemberDAO mem_dao = new MemberDAO();
+					member = mem_dao.return_member(nickname);
+					
+					out.print("<div class='wrap-input100 validate-input m-t-55 m-b-35' data-validate = 'Enter email'>");
+					out.print("<p class='input100' name='show_email'>"+member.getEmail()+"</p>");
+					out.print("</div>");
+					out.print("<div class='wrap-input100 validate-input m-b-45'>");
+					out.print("<p class='input100'>"+member.getNickname()+"</p>");
+					out.print("</div>");
+					out.print("<div class='wrap-input100 validate-input m-b-45'>");
+					out.print("<p class='input100'>"+member.getTel()+"</p>");
+					out.print("</div>");
+					out.print("<div class='wrap-input100 validate-input m-b-45'>");
+					out.print("<input class='input100' type='password' name='input_pw' placeholder='변경할 비밀번호 입력'>");
+					out.print("</div>");
+					out.print("<div class='container-login100-form-btn'>");
+					out.print("<input type='button'  value = '비밀번호 수정하기' id = 'update_pw' class='login100-form-btn'>");
+					out.print("</div>");
+					out.print("<br>");
+					out.print("<hr>");
+					out.print("<br>");
+					out.print("<div class='container-login100-form-btn'>");
+					out.print("<input type='button' onclick='mem_check()'  value = '회원탈퇴' id = 'delete_mem' class='login100-form-btn' >");
+					out.print("</div>");
 
-               <div class="wrap-input100 validate-input m-t-55 m-b-35" data-validate = "Enter email">
+					
+					
+				}else if(nickname.equals(null)) { // 상담사일 경우
+					
+					ConsultantDTO consultant = new ConsultantDTO();
+					ConsultantDAO con_dao = new ConsultantDAO();
+					consultant = con_dao.return_name_location(email);
+					
+					out.print("<div class='wrap-input100 validate-input m-t-55 m-b-35' data-validate = 'Enter email'>");
+					out.print("<p class='input100' name='show_email'>"+consultant.getCon_email()+"</p>");
+					out.print("</div>");
+					out.print("<div class='wrap-input100 validate-input m-b-45'>");
+					out.print("<p class='input100'>"+consultant.getCon_name()+"</p>");
+					out.print("</div>");
+					out.print("<div class='wrap-input100 validate-input m-b-45'>");
+					out.print("<p class='input100'>"+consultant.getCon_tel()+"</p>");
+					out.print("</div>");
+					out.print("<div class='wrap-input100 validate-input m-b-45'>");
+					out.print("<p class='input100'>"+consultant.getLocation()+"</p>");
+					out.print("</div>");
+					out.print("<div class='wrap-input100 validate-input m-b-45'>");
+					out.print("<p class='input100'>"+consultant.getLicense()+"</p>");
+					out.print("</div>");
+					out.print("<div class='wrap-input100 validate-input m-b-45'>");
+					out.print("<input class='input100' type='password' name='input_pw' placeholder='변경할 비밀번호 입력'>");
+					out.print("</div>");
+					out.print("<div class='container-login100-form-btn'>");
+					out.print("<input type='button'  value = '비밀번호 수정하기' id = 'update_pw' class='login100-form-btn'>");
+					out.print("</div>");
+					out.print("<br>");
+					out.print("<hr>");
+					out.print("<br>");
+					out.print("<div class='container-login100-form-btn'>");
+					out.print("<input type='button' onclick='con_check()' value = '회원탈퇴' id = 'delete_con' class='login100-form-btn' >");
+					out.print("</div>");
+					
+				}else {
+					System.out.println("로그인 정보 없음");
+				}
+				
+
+ 				%>
+				
+<             <!--  <div class="wrap-input100 validate-input m-t-55 m-b-35" data-validate = "Enter email">
                   <p class="input100" name="">이메일</p>
-                  <p id="p1"></p>
                </div>
                
                <div class="wrap-input100 validate-input m-b-45" data-validate = "Enter tel">
@@ -63,31 +147,18 @@
                </div>
                <div class="wrap-input100 validate-input m-b-45" data-validate = "Enter password">
                   <input class="input100" type="password" name="" id = "" placeholder="변경할 비밀번호 입력">
-               </div>
+               </div> 
                <div class="container-login100-form-btn">
-                  <input type="submit"  value = "가입하기" id = "signup_btn" class="login100-form-btn" >
-               </div>
+                  <input type="button"  value = "비밀번호 수정하기" id = "update_pw" class="login100-form-btn" >
+               </div> 
+               <br>
+               <hr>
+               <br>
+               <div class="container-login100-form-btn">
+                  <input type="submit"  value = "회원탈퇴" id = "delete_" class="login100-form-btn" >
+               </div> -->
 
-               <ul class="login-more p-t-60">
-                  <li class="m-b-8">
-                     <a href="searchEmail.jsp" class="txt2">
-                        아이디 찾기 / 
-                     </a>
-                     <a href="searchPw.jsp" class="txt2">
-                        비밀번호 찾기
-                     </a>
-                  </li>
-
-                  <li>
-                     
-                     <a href="signup.html" class="txt2">
-                        일반 회원가입 / 
-                     </a>
-                     <a href="c_signup.html" class="txt2">
-                        전문가 회원가입
-                     </a>
-                  </li>
-               </ul>
+           
             </form>
          </div>
       </div>
@@ -218,86 +289,89 @@
 <!-- Ajax를 사용하기 위한 Ajax import 부분 -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    
-   <script type="text/javascript">
-      function ajaxCall() { //ajax 함수 부분
-         var emailCheck = document.getElementById("EmailCheck"); //id속성을 바탕으로 값 가져오기
-         //alert(emailCheck.value);   //태그 값을 불러오는 함수는 .value이다. 그냥 txt1은 태그를 의미
-      
-         $.ajax({
-            //ajax 통신 방식으로 데이터를 전송
-            type : "get", //서버로 어떤 방식으로 호출할 것인지. get or post
-            url : "EmailCheck", //어떤 서버페이지로 이 값을 보낼 것인지
-            data : {"email" : emailCheck.value}, //보낼 데이터 지정
-            dataType : "text",
-            success : function(data) { //서버로 부터 받은 값
-               var p1 = document.getElementById("p1");
-               
-               if(data=="true") { //반드시 true를 문자열로 덮어주어야 한다. (가져올 때 문자열로 가져옴)
-                  
-                  p1.style.cssText = "color:red"; //p1태그에 css문법을 사용해서 스타일을 적용하겠다. (자바스크립트 내에서 스타일 적용가능)
-                  p1.innerHTML = "이미 사용중인 아이디입니다." //일반 태그에 값 입력할 때: innerHTML
-                  
-               }else {
-                  
-                  p1.style.cssText = "color:blue";
-                  p1.innerHTML = "사용할 수 있는 아이디입니다." //일반 태그에 값 입력할 때: innerHTML
-               }
-            },
-            error : function() {
+<script type="text/javascript">
 
-            }
-         });
+<%if(email.equals(null)) { //회원이면
+ MemberDTO member = new MemberDTO();
+ MemberDAO mem_dao = new MemberDAO();
+ member = mem_dao.return_member(nickname); 
+ %> let now_pw = "<%=member.getPw() %>";  <%
+}else { //상담사면
+ ConsultantDTO consultant = new ConsultantDTO();
+ ConsultantDAO con_dao = new ConsultantDAO();
+ consultant = con_dao.return_name_location(email);
+ %> let now_pw = "<%=consultant.getCon_pw() %>";  <%
+ }%> 
+	   
 
-      }
-      
-      function ajax2Call() { //ajax 함수 부분
-         var nicknameCheck = document.getElementById("NicknameCheck"); //id속성을 바탕으로 값 가져오기
-         //alert(emailCheck.value);   //태그 값을 불러오는 함수는 .value이다. 그냥 txt1은 태그를 의미
-      
-         $.ajax({
-            //ajax 통신 방식으로 데이터를 전송
-            type : "get", //서버로 어떤 방식으로 호출할 것인지. get or post
-            url : "NicknameCheck", //어떤 서버페이지로 이 값을 보낼 것인지
-            data : {"nickname" : nicknameCheck.value}, //보낼 데이터 지정
-            dataType : "text",
-            success : function(data) { //서버로 부터 받은 값
-               var p1 = document.getElementById("p2");
-               
-               if(data=="true") { //반드시 true를 문자열로 덮어주어야 한다. (가져올 때 문자열로 가져옴)
-                  
-                  p1.style.cssText = "color:red"; //p1태그에 css문법을 사용해서 스타일을 적용하겠다. (자바스크립트 내에서 스타일 적용가능)
-                  p1.innerHTML = "이미 사용중인 닉네임입니다." //일반 태그에 값 입력할 때: innerHTML
-                  
-               }else {
-                  
-                  p1.style.cssText = "color:blue";
-                  p1.innerHTML = "사용할 수 있는 닉네임입니다." //일반 태그에 값 입력할 때: innerHTML
-               }
-            },
-            error : function() {
 
-            }
-         });
+$('#update_pw').on('click',function(){
+    
+	   let email = $('input[name="show_email"]').val();
+	   let pw = $('input[name="input_pw"]').val();
+	   
 
-      }
-      
+	   
+	   if(pw==="") {
+		   alert("수정할 비밀번호를 입력해주세요.");
+	   }else{
+		   
+		 //Ajax함수
+		    $.ajax({
+		         //ajax 통신 방식으로 데이터를 전송
+		         type : "post", //서버로 어떤 방식으로 호출할 것인지. get or post
+		         url : "UpdatePw", //어떤 서버페이지로 이 값을 보낼 것인지
+		         data : {"email" : email, "pw" : pw}, //보낼 데이터 지정
+		         dataType : "text",
+		         success : function(data) { //서버로 부터 받은 값
+		         
+		        	 alert("비밀번호가 변경되었습니다.");
+		         	 location.href = "UpdatePw?email="+encodeURIComponent(encodeURIComponent(email),"UTF-8")+"&pw="+encodeURIComponent(encodeURIComponent(pw),"UTF-8");
+		         
+		         },
+		         error : function() {
+		            alert("ajax 통신 실패");
+		         }
+		      });   
+	   }
+ 
+});
 
-      
-       $('form.login100-form').submit(function(){
-           let emailC = $('#EmailCheck').val();
-            let pwC = $('#PwCheck').val();
-            let telC = $('#TelCheck').val();
-            let nicknameC = $('#NicknameCheck').val();
-            
-            
-            
-             if(emailC==='' || pwC==='' || telC==='' || nicknameC==='') {
-               alert("모든 항목을 채워주세요.");
-               return false;
-            }             
-            
-      }); 
-      
-   </script>
+
+function con_check(){
+		if(confirm("정말로 탈퇴하시겠습니까?"))
+		{
+			
+		 var pw = prompt('비밀번호를 입력해주세요.');
+		 	if(pw==now_pw) {
+		 		location.href = "Delete_Con?email="+encodeURIComponent(encodeURIComponent(email),"UTF-8");
+		 	}else {
+		 		alert("비밀번호가 일치하지 않습니다.");
+		 	}
+		 
+		}else
+		{
+		alert('취소되었습니다.');
+		}
+	}
+	
+function mem_check(){
+	if(confirm("정말로 탈퇴하시겠습니까?"))
+	{
+		
+	 var pw = prompt('비밀번호를 입력해주세요.');
+	 	if(pw==now_pw) {
+	 		location.href = "Delete_Mem?email="+encodeURIComponent(encodeURIComponent(email),"UTF-8");
+	 	}else {
+	 		alert("비밀번호가 일치하지 않습니다.");
+	 	}
+	 
+	}else
+	{
+	alert('취소되었습니다.');
+	}
+}
+
+</script>
 </body>
 </html>

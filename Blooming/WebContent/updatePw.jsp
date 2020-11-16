@@ -218,7 +218,6 @@
 
 $('#submit_button').on('click',function(){
     
-	   var check = "";
 	   
 	   let email ="<%=request.getParameter("email")%>";
 	   let pw = $('input[name="input_pw"]').val();

@@ -82,7 +82,7 @@ public class ConsultantDAO {
 		return consultant;
 	}
 	
-	//상담사 객체 반환 기능(상담사 프로필 등록에 사용)
+	//상담사 객체 반환 기능(상담사 프로필 등록에 사용)+my page 출력에 사용
 	public ConsultantDTO return_name_location(String con_email) {
 		
 		ConsultantDTO consultant = new ConsultantDTO();
