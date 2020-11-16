@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!-- 상단바, 하단바만 있는 페이지 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 
    <meta charset="utf-8">
@@ -234,7 +234,7 @@
 			<h5>14.</h5>
 			<input type="radio" name="14" value = "0"><label>나는 전보다 내 모습이 나빠졌다고 느끼지 않는다.</label><br>
 			<input type="radio" name="14" value = "1"><label> 나는 나이들어 보이거나 매력 없이 보일까봐 걱정한다.</label><br>
-			<input type="radio" name="14" value = "2"><label> 나는 매 모습이 매력 없게 변해버린 것 같은 느낌이 든다.</label><br>
+			<input type="radio" name="14" value = "2"><label> 나는 내 모습이 매력 없게 변해버린 것 같은 느낌이 든다.</label><br>
 			<input type="radio" name="14" value = "3"><label> 나는 내가 추하게 보인다고 믿는다.</label>
 			<br>
 			<br>

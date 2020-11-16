@@ -22,8 +22,8 @@ body {
 }
 
 a.btn-primary{
-	background-color: #4eae3a;
-	border-color: #4eae3a;
+	background-color: #aed581;
+	border-color: #aed581;
 }
 
 a.btn-primary:hover{
@@ -31,8 +31,8 @@ a.btn-primary:hover{
 	border-color: #5ec549;
 }
 button.btn-primary{
-	background-color: #4eae3a;
-	border-color: #4eae3a;
+	background-color: #aed581;
+	border-color: #aed581;
 }
 button.btn-primary:hover{
 	background-color: #5ec549;
@@ -457,7 +457,7 @@ footer p {
 	text-align: center;
 }
 .pagination_bar .pagination .page-item .page-link:hover{
-	background: #4eae3a;
+	background: #aed581;
 }
 .portfolio-item h4.card-title a{
 	font-size: 20px;
@@ -520,7 +520,7 @@ footer p {
 	text-align: center;
 }
 .pagination_bar_arrow .pagination .page-item .page-link:hover{
-	background: #4eae3a;
+	background: #4e3914;
 }
 .faq-main{
 	padding: 30px 35px;
@@ -633,6 +633,9 @@ footer p {
 	padding: 0px 15px;
 }
 
+#cp{
+	color:blue;
+}
 
 @media (min-width:768px) and (max-width:991px){
 	.navbar-expand-lg.top-nav .navbar-nav .nav-link.dropdown-toggle::after{
