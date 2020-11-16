@@ -1,10 +1,10 @@
 @font-face {
-	font-family:Futura Std Medium;
+	font-family:Futura Std Medium, NanumSquare;
 }
 
 .zmdi {
 	display: inline-block;
-	font: normal normal normal 14px/1 'Futura Std Medium';
+	font: normal normal normal 14px/1 'Futura Std Medium', NanumSquare;
 	font-size: inherit;
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
