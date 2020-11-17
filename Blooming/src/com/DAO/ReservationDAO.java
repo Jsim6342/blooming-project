@@ -276,4 +276,65 @@ public class ReservationDAO {
 		}
 		
 		
+		
+		
+		//예약 현황 지우기(회원탈퇴 시)
+		public ArrayList<ReservationDTO> delete_mem_Reservation(String nickname) {
+			
+			ReservationDTO reservation = new ReservationDTO();
+			ArrayList<ReservationDTO> reservationList = new ArrayList<>();
+
+			try {
+		        
+		         dao.getConn();
+		         // --------------------- DB 연결(고정된 문법)
+		         
+		         String sql = "select * from reservation where nickname=?";
+		         pst = Connect.conn.prepareStatement(sql);
+		         
+		         pst.setString(1, nickname);
+		         
+		         // --------------------- DB에 SQL문 명령준비
+		         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+		         // --------------------- SQL문 실행/ 실행 후 처리
+		         
+		         while(rs.next()) {
+		        	 
+		        	//전체 예약 데이터를 출력
+		        	 int res_num = rs.getInt(1);
+		        	 String nicknames = rs.getString(2);
+		        	 String res_date = rs.getString(3);
+		        	 String consultant = rs.getString(4);
+		        	 String pro_email = rs.getString(5);
+
+	 	        	 //reservationDTO 객체를 1개씩 DB에서 받은 후, ArrayList인 reviewList에 저장
+		        	 reservation = new ReservationDTO(res_num, nicknames, res_date, consultant,pro_email);
+		        	 reservationList.add(reservation);
+		         
+		         }
+		            
+		         dao.getConn();
+		         // --------------------- DB 연결(고정된 문법)  
+		         
+		         String sql2 = "delete from reservation where nickname=?";
+		         pst = Connect.conn.prepareStatement(sql2);
+		         
+		         pst.setString(1, nickname);
+		      
+		      // --------------------- DB에 SQL문 명령준비
+		         
+		         cnt = pst.executeUpdate(); //성공 시 1을 반환
+		      // --------------------- SQL문 실행/ 실행 후 처리
+		         
+		         
+			
+		        
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+			return reservationList; 	 
+		}
+		
 }
