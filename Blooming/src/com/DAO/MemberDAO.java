@@ -297,5 +297,33 @@ public class MemberDAO {
 		return cnt;
 	}
 	
+	//일반 회원 지우기
+	public int delete_Member(String nickname) {
+		
+		
+		try {
+	        
+	         dao.getConn();
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "delete from member where nickname=?";
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, nickname);
+
+	      // --------------------- DB에 SQL문 명령준비
+	         
+	         cnt = pst.executeUpdate(); //성공 시 1을 반환
+	      // --------------------- SQL문 실행/ 실행 후 처리
+		
+	        
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+		dao.close();
+	}
+	 return cnt;
+	}
+	
 	
 }

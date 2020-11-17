@@ -275,4 +275,43 @@ public class C_ProfileDAO {
 		return cnt;
 	}
 	
+	//상담사 이메일로 max_people값 반환
+	public int return_maxpeople(String email) {
+		
+		   int max_people = 0;
+		
+		
+		    try {
+			
+		    	
+			dao.getConn();
+			
+			
+			
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "select * from c_profile where pro_email = ?";
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, email);
+	         // --------------------- DB에 SQL문 명령준비
+	         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+	         // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	         if(rs.next()) {
+	        	 max_people = rs.getInt(6);
+	         }
+		    
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return max_people;
+		
+	}
+	
+	
+	
 }

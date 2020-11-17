@@ -57,12 +57,12 @@
  				//session값 email 가져오기
 				String email = (String)session.getAttribute("email");
 				System.out.println("현재 접속한 사람의 이메일: " + email);
-	
+				
 				//session값 nickname 가져오기
 				String nickname = (String)session.getAttribute("nickname");
 				System.out.println("현재 접속한 사람의 닉네임: " + nickname);
-	
-				if(email.equals(null)) { // 회원일 경우
+
+				if(email==null) { // 회원일 경우
 					
 					MemberDTO member = new MemberDTO();
 					MemberDAO mem_dao = new MemberDAO();
@@ -92,7 +92,9 @@
 
 					
 					
-				}else if(nickname.equals(null)) { // 상담사일 경우
+				}
+				
+				if(nickname==null) { // 상담사일 경우
 					
 					ConsultantDTO consultant = new ConsultantDTO();
 					ConsultantDAO con_dao = new ConsultantDAO();
@@ -126,14 +128,12 @@
 					out.print("<input type='button' onclick='con_check()' value = '회원탈퇴' id = 'delete_con' class='login100-form-btn' >");
 					out.print("</div>");
 					
-				}else {
-					System.out.println("로그인 정보 없음");
 				}
 				
 
  				%>
 				
-<             <!--  <div class="wrap-input100 validate-input m-t-55 m-b-35" data-validate = "Enter email">
+             <!--  <div class="wrap-input100 validate-input m-t-55 m-b-35" data-validate = "Enter email">
                   <p class="input100" name="">이메일</p>
                </div>
                
@@ -291,23 +291,30 @@
    
 <script type="text/javascript">
 
-<%if(email.equals(null)) { //회원이면
+<%if(email==null) { //회원이면
  MemberDTO member = new MemberDTO();
  MemberDAO mem_dao = new MemberDAO();
  member = mem_dao.return_member(nickname); 
- %> let now_pw = "<%=member.getPw() %>";  <%
+ %> 
+ let now_pw = "<%=member.getPw() %>";  
+ let nickname = "<%=member.getNickname() %>";  
+ 
+ <%
 }else { //상담사면
  ConsultantDTO consultant = new ConsultantDTO();
  ConsultantDAO con_dao = new ConsultantDAO();
  consultant = con_dao.return_name_location(email);
- %> let now_pw = "<%=consultant.getCon_pw() %>";  <%
+ %> 
+ let now_pw = "<%=consultant.getCon_pw() %>";  
+ let email = "<%=consultant.getCon_email() %>";  
+ <%
  }%> 
 	   
 
 
 $('#update_pw').on('click',function(){
     
-	   let email = $('input[name="show_email"]').val();
+	 /*   let email = $('input[name="show_email"]').val();  */
 	   let pw = $('input[name="input_pw"]').val();
 	   
 
@@ -344,6 +351,7 @@ function con_check(){
 			
 		 var pw = prompt('비밀번호를 입력해주세요.');
 		 	if(pw==now_pw) {
+		 		alert("그동안 블루밍을 이용해주셔서 감사합니다.");
 		 		location.href = "Delete_Con?email="+encodeURIComponent(encodeURIComponent(email),"UTF-8");
 		 	}else {
 		 		alert("비밀번호가 일치하지 않습니다.");
@@ -361,7 +369,8 @@ function mem_check(){
 		
 	 var pw = prompt('비밀번호를 입력해주세요.');
 	 	if(pw==now_pw) {
-	 		location.href = "Delete_Mem?email="+encodeURIComponent(encodeURIComponent(email),"UTF-8");
+	 		alert("그동안 블루밍을 이용해주셔서 감사합니다.");
+	 		location.href = "Delete_Mem?nickname="+encodeURIComponent(encodeURIComponent(nickname),"UTF-8");
 	 	}else {
 	 		alert("비밀번호가 일치하지 않습니다.");
 	 	}
