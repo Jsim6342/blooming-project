@@ -119,7 +119,7 @@ review = dao.showReview(rev_num);
 
 			</div>
 				<!-- Preview Image -->
-				<img class="img-fluid rounded" src="images/aa.jpg" alt="" />
+				<img class="img-fluid rounded" src="images/comm.png" alt="" />
 				<hr>
 				<!-- Date/Time -->
 				<blockquote class="blockquote">
