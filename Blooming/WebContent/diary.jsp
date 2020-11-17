@@ -37,7 +37,6 @@
          setTimeout("rotate()", interval);
       }
 </script>
-<!-- 해 자동 이미지 바꿈 -->
 
 
 <!-- Bootstrap core CSS -->

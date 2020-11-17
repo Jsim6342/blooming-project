@@ -637,6 +637,15 @@ footer p {
 	color:blue;
 }
 
+#cob{
+	background-color: #AED581;
+	border-color: #AED581;
+}
+
+#in{
+	font-weight: 800;
+}
+
 @media (min-width:768px) and (max-width:991px){
 	.navbar-expand-lg.top-nav .navbar-nav .nav-link.dropdown-toggle::after{
 		position: absolute;
