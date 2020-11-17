@@ -185,9 +185,9 @@
    			   }
    		   }else {//상담사일 때
    				if(email.equals(pro_email)) {//내 상담일 때
-   					out.println("<a onclick='finish(\""+pro_email+"\")' id='com' class='btn btn-primary'>상담완료</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>"); 
+   					out.println("<a onclick='finish(\""+pro_email+"\")' id='cob' class='btn btn-primary'>상담완료</a> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>"); 
    				}else {//다른 상담일 때
-   				out.println("<p onclick='notice1()' class='btn btn-primary'>예약하기</p> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
+   				out.println("<p onclick='notice1()' class='btn btn-primary' id='cob'>예약하기</p> &nbsp;&nbsp; <h id='update_people'>남은인원: "+profileList.get(i).getMax_people()+"</h>");
    				}
    		   }
    	   
