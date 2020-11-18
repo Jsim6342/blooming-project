@@ -297,7 +297,8 @@
  member = mem_dao.return_member(nickname); 
  %> 
  let now_pw = "<%=member.getPw() %>";  
- let nickname = "<%=member.getNickname() %>";  
+ let nickname = "<%=member.getNickname() %>";
+ let email = "<%=member.getEmail() %>";
  
  <%
 }else { //상담사면

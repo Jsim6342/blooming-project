@@ -70,7 +70,8 @@
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
 					<%}else { %>
-					
+					<li class="nav-item"><a class="nav-link" href="mypage.jsp">마이페이지</a>
+					</li>
 					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
 					</li>
 					<%} %>

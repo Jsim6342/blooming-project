@@ -154,7 +154,7 @@ $('#submit_button').on('click',function(){
 		         
 		         check = data;
 		         	if(check==="False") {
-		         		alert("이메일 또는 비밀번호가 틀렸습니다.");
+		         		alert("이메일 또는 비밀번호가 일치하지 않습니다.");
 		         	}else {
 		         	    location.href = "LoginService?email="+encodeURIComponent(encodeURIComponent(Email),"UTF-8")+"&pw="+encodeURIComponent(encodeURIComponent(Pw),"UTF-8");
 		         	}
