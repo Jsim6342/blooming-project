@@ -65,7 +65,9 @@
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
 					<%}else { %>
+					<li class="nav-item"><a class="nav-link" href="mypage.jsp">마이페이지</a>
 					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
+					</li>
 					</li>
 					<%} %>
 				</ul>
@@ -215,22 +217,18 @@
 		<div class="about-main">
 			<div class="row">
 				<div class="col-lg-6">
-					<h2>우울증은 누구에게나 나타나는 마음의 감기입니다.</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					<h5>Our smart approach</h5>
+					<h2>우울증은 누구나 겪을 수 있는 마음의 감기입니다.</h2>
+					<p>우울한 감정이 느껴진다고 절대 잘못되고 심각한 것이 아닙니다. <br>우울증은 많은 분들에게 익숙한 질환이지만, 정확히 우울증에 대해 알고 있는 분은 드뭅니다.</p>
+					<h5>다양한 우울장애의 종류</h5>
 					<ul>
-						<li>Sed at tellus eu quam posuere mattis.</li>
-						<li>Phasellus quis erat et enim laoreet posuere ac porttitor
-							ipsum.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-						<li>Duis porttitor odio pellentesque mollis vulputate.</li>
-						<li>Quisque ac eros non ex hendrerit vehicula.</li>
+						<li>산후 우울증 :출산에 따른 호르몬의 불균형과 불안에 따른 심리적인 갈등에서 오는 우울장애</li>
+						<li>가면성 우울증 : 우울증상이 연련층에 따라 다른모습으로 나오는 우울장애</li>
+						<li>주부 우울증 : 주부에게서 나를 희생하고 잘못 살아왔다는 생각에서 오는 우울장애</li>
+						<li>노인 우울증 : 노년기에 오는 은퇴나 이별, 가족 및 친구의 사망 등에서 오는 상실 우울장애</li>
 					</ul>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Corporis, omnis doloremque non cum id reprehenderit, quisquam
-						totam aspernatur tempora minima unde aliquid ea culpa sunt.
-						Reiciendis quia dolorum ducimus unde.</p>
+					<p>감기도 심해지면 여러 합병증이 찾아오듯이, 우울장애 역시 심해진다면 개인의 의지로만 이겨내기 힘들 수 있습니다.
+					 심한 우울증의 경우 약물치료가 필요할 수 있고 심리치료 없이는 재발되기도 쉽습니다. 이에 효과적인 심리 상담을 위해 한국심리학회가 공인하는 임상심리전문가 또는 심리상담기관을 찾아
+					  나의 상태를 확인하고 이해하며 상담계획을 논의할 수 있습니다. </p>
 				</div>
 				<div class="col-lg-6">
 					<img class="img-fluid rounded" src="images/team.png" alt="" />

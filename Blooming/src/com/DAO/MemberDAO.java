@@ -197,4 +197,133 @@ public class MemberDAO {
 		
 		return check;
 	}
+
+	//아이디 찾기 기능
+	public String search_email(String tel) {
+		
+		String email ="";
+		
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from member where tel = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			pst.setString(1, tel);
+			
+			
+			rs = pst.executeQuery();
+			
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+				//전체 맴버 데이터를 출력
+	        	 email = rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		
+		return email;
+	}
+	
+	
+	//비밀번호 찾기 기능
+	public String search_pw(String email, String tel) {
+		
+		String get_email ="";
+		
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from member where email = ? and tel = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			pst.setString(1, email);
+			pst.setString(2, tel);
+			
+			
+			rs = pst.executeQuery();
+			
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+				//전체 맴버 데이터를 출력
+	        	
+				get_email = rs.getString(1);
+
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		
+		return get_email;
+	}
+	
+	//비밀번호 업데이트
+	public int update_pw(String email, String pw) {
+
+		
+		
+		try {
+			
+			 dao.getConn();
+			 
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "update member set pw=? where email = ?"; 
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, pw);
+	         pst.setString(2, email);
+
+	         cnt = pst.executeUpdate(); //성공 시 1을 반환
+	      // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	      // --------------------- DB에 SQL문 명령준비	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return cnt;
+	}
+	
+	//일반 회원 지우기
+	public int delete_Member(String nickname) {
+		
+		
+		try {
+	        
+	         dao.getConn();
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "delete from member where nickname=?";
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, nickname);
+
+	      // --------------------- DB에 SQL문 명령준비
+	         
+	         cnt = pst.executeUpdate(); //성공 시 1을 반환
+	      // --------------------- SQL문 실행/ 실행 후 처리
+		
+	        
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+		dao.close();
+	}
+	 return cnt;
+	}
+	
+	
 }

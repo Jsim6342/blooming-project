@@ -14,6 +14,7 @@ public class ConsultantDAO {
 	//주로 많이 전역적으로 사용하는 것들을 멤버변수로 빼놓는다. 
 		PreparedStatement pst = null;
 		ResultSet rs = null;
+		int cnt = 0;
 	
 	Connect dao = new Connect();
 	
@@ -81,7 +82,7 @@ public class ConsultantDAO {
 		return consultant;
 	}
 	
-	//상담사 객체 반환 기능(상담사 프로필 등록에 사용)
+	//상담사 객체 반환 기능(상담사 프로필 등록에 사용)+my page 출력에 사용
 	public ConsultantDTO return_name_location(String con_email) {
 		
 		ConsultantDTO consultant = new ConsultantDTO();
@@ -147,4 +148,134 @@ public class ConsultantDAO {
 		
 		return check;
 	}
+	
+	//상담사 이메일 찾기
+	public String search_email(String tel) {
+		
+		String email = "";
+		
+
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from consultant where con_tel = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			pst.setString(1, tel);
+			
+			
+			rs = pst.executeQuery();
+			
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+				
+				email = rs.getString(1);
+
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		
+		return email;
+	}
+	
+	//상담사 비밀번호 찾기
+	public String search_pw(String email, String tel) {
+		
+		
+		String get_email = "";
+		
+		try {
+			
+			//DB연결 기능
+			dao.getConn();
+			
+			String sql = "select * from consultant where con_email = ? and con_tel = ?";
+			pst = Connect.conn.prepareStatement(sql); //static변수 Connect.conn 사용
+			pst.setString(1, email);
+			pst.setString(2, tel);
+			
+			
+			rs = pst.executeQuery();
+			
+			if(rs.next()) { //rs.next() 함수는 1행씩 데이터를 확인하며 값이 있으면 True, 없으면 False를 반환 
+				get_email = rs.getString(1);
+     
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//DB연결 종료
+			dao.close();
+		}
+		
+		return get_email;
+	}
+	
+	//비밀번호 업데이트
+	public int update_pw(String email, String pw) {
+
+		
+		try {
+			
+			 dao.getConn();
+			 
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "update consultant set con_pw=? where con_email = ?"; 
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, pw);
+	         pst.setString(2, email);
+
+	         cnt = pst.executeUpdate(); //성공 시 1을 반환
+	      // --------------------- SQL문 실행/ 실행 후 처리
+	         
+	      // --------------------- DB에 SQL문 명령준비	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+			dao.close();
+		}
+		return cnt;
+	}
+	
+	
+	//상담사 회원 지우기
+	public int delete_Consultant(String email) {
+		
+		
+		try {
+	        
+	         dao.getConn();
+	         // --------------------- DB 연결(고정된 문법)
+	         
+	         String sql = "delete from consultant where con_email=?";
+	         pst = Connect.conn.prepareStatement(sql);
+	         
+	         pst.setString(1, email);
+
+	      // --------------------- DB에 SQL문 명령준비
+	         
+	         cnt = pst.executeUpdate(); //성공 시 1을 반환
+	      // --------------------- SQL문 실행/ 실행 후 처리
+		
+	        
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+		dao.close();
+	}
+	 return cnt;
+	}
+	
+	
+	
 }

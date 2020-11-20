@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
 <!-- 상단바, 하단바만 있는 페이지 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -71,7 +71,8 @@
                <li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
                </li>
                <%}else { %>
-               
+               <li class="nav-item"><a class="nav-link" href="mypage.jsp">마이페이지</a>
+					</li>
                <li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
                </li>
                <%} %>
@@ -98,55 +99,92 @@
 				<li class="breadcrumb-item active">일기</li>
 			</ol>
 		</div>
-		
+
 		<!-- 일기쓰기 -->
-              
-			<div class="row">
-				<div class="col-lg-8 mb-4 contact-left">
-					<!--  -->
-					<form name="" id="DiaryForm" action="http://192.168.50.22:5000/DiaryPost1" method="post" novalidate>
-						<div class="control-group form-group">
-							<div class="controls"></div>
+
+		<div class="row">
+			<div class="col-lg-8 mb-4 contact-left">
+				<!--  -->
+				<form name="" id="DiaryForm"
+					action="http://192.168.50.22:5000/DiaryPost1" method="post"
+					novalidate>
+					<div class="control-group form-group">
+						<div class="controls"></div>
+					</div>
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>날짜</label> <input type="date" class="form-control"
+								name="DI_DATE" id="title" required
+								data-validation-required-message="Please enter your email address.">
 						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>날짜</label> <input type="date" class="form-control"
-									name="DI_DATE" id="title" required 
-									data-validation-required-message="Please enter your email address.">
-							</div>
+					</div>
+
+
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>제목</label> <input type="text" class="form-control"
+								name="DI_TITLE" id="title" required
+								data-validation-required-message="Please enter your email address.">
 						</div>
-						
-						
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>제목</label> <input type="text" class="form-control"
-									name="DI_TITLE" id="title" required
-									data-validation-required-message="Please enter your email address.">
-							</div>
+					</div>
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>내용</label>
+							<textarea rows="20" cols="100" class="form-control"
+								name="DI_CONTENTS" id="content" required
+								data-validation-required-message="Please enter your message"
+								maxlength="999" style="resize: none"></textarea>
 						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>내용</label>
-								<textarea rows="20" cols="100" class="form-control"
-									name="DI_CONTENTS" id="content" required
-									data-validation-required-message="Please enter your message"
-									maxlength="999" style="resize: none"></textarea>
-							</div>
-						</div>
-						<div id="success"></div>
-						<!-- For success/fail messages -->
-						<button type="submit" class="btn btn-primary"
-							id="sendMessageButton">작성완료</button>
-					</form>
+					</div>
+					<div id="success"></div>
+					<!-- For success/fail messages -->
+					<button type="submit" class="btn btn-primary"
+						id="sendMessageButton">작성완료</button>
+				</form>
+			</div>
+
+			<!-- Sidebar Widgets Column -->
+			<div class="col-md-4 blog-right-side">
+
+				<!-- Side Widget -->
+				<div class="card my-4">
+					<h5 class="card-header">우울감에 대하여</h5>
+					<div class="card-body">우울증의 가장 힘든 점은 남들 앞에서 정상적인 척해야 하는것과 남들이 내게 정상인인 척 하길 바라는 것. <br>그리고 누구에게 털어놓지 못하는 점입니다.<br>우울감은 단지 날씨와 같습니다.</div>
 				</div>
-</div>		
-</div>		
+				<div class="card my-4">
+					<h5 class="card-header">오늘의 과제</h5>
+					<div class="card-body">현재에서 감사할 것들을 발견할 것.<br>감사할 것이 없다 여겨질 땐 과감히 떠날 것.<br>어디에 있든 나를 바로 읽을 수 있도록<br>마음의 균형을 잡을 것.<br><br>- 정민선, 집 나간 마음을 찾습니다</div>
+				</div>
 
-	
-
-
-
-
+				<!-- Categories Widget -->
+				<div class="card my-4">
+					<h5 class="card-header">추천 영상</h5>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-6">
+								<ul class="list-unstyled mb-0">
+									<li><a href="https://youtu.be/m7GOmncIU5A" target="_blank">지친 마음을 <br>달래주는 음악</a></li>
+									<hr>
+									<li><a href="https://youtu.be/_f-yw10lfgI" target="_blank">알파웨이브를 <br>통한 힐링음악</a></li>
+									<hr>
+									<li><a href="https://youtu.be/jME5_dk3mkQ" target="_blank">몸이 보내는 <br>우울증 신호</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-6">
+								<ul class="list-unstyled mb-0">
+									<li><a href="https://youtu.be/nYCO7PeR6go" target="_blank">가장 보통의 존재,<br>나의 우울증 이야기</a></li>
+									<hr>
+									<li><a href="https://youtu.be/9H5_3gaReCg" target="_blank">다큐 - 시선<br>우울증이 어때서요?</a></li>
+									<hr>
+									<li><a href="https://youtu.be/l554AcoIL-A" target="_blank">어쩌다 어른<br>우울증 편</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- /.container -->
 	<!--footer starts from here-->
@@ -182,7 +220,7 @@
 		      
 		      
 		       if(dateC==='' || titleC==='' || contentC==='') {
-		    	  alert("모든 항목을 채워주세요.");
+		    	  alert("모든 내용을 작성해주세요.");
 		    	  return false;
 		      } 		      
 		      

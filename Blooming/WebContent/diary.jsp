@@ -37,7 +37,6 @@
          setTimeout("rotate()", interval);
       }
 </script>
-<!-- 해 자동 이미지 바꿈 -->
 
 
 <!-- Bootstrap core CSS -->
@@ -101,10 +100,6 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
                  }
                  %>
             
-          <%-- ['<%=di_date%>',<%=di_score%>] --%>
-          /* ['1주차', -1],
-          ['2주차',1],
-          ['3주차',0] */
         
           ]);
       
@@ -175,8 +170,10 @@ ArrayList<DiaryDTO> diaryList = dao.showDiaryDateScore(nickname);
                </li>
                <%}else { %>
                
-               <li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
+               <li class="nav-item"><a class="nav-link" href="mypage.jsp">마이페이지</a>
                </li>
+               <li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
+					</li>
                <%} %>
             </ul>
          </div>

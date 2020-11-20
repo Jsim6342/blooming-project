@@ -69,7 +69,8 @@
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
 					</li>
 					<%}else { %>
-					
+					<li class="nav-item"><a class="nav-link" href="mypage.jsp">마이페이지</a>
+					</li>
 					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
 					</li>
 					<%} %>
@@ -130,7 +131,20 @@
 				</div>
 
 				<!-- 게시글입력 영역 옆에 출력되는 영역시작 -->
+<div class="col-md-4 blog-right-side">
 
+				<!-- Side Widget -->
+				<div class="card my-4">
+					<h5 class="card-header" id = "in">공지사항</h5>
+					<div class="card-body" id = "in">무성의하거나 장난식으로 작성된 글은 관리자에 <br>의해 삭제되거나 제재를 받을 수 있습니다.</div>
+				</div>
+				<div class="card my-4">
+					<h5 class="card-header">작성요령</h5>
+					<div class="card-body">익명성이 보장되지만 다른 사람들을 위해 <br>보다 구체적으로 적어주시면 좋습니다. <br><br>
+					자신이 겪었던 상황, 이겨냈던 방법, <br>도움이 되었던 방식 등을 작성해주세요.<br><br>
+					하나의 후기일지라도 다른 사람들에게 큰 도움과 <br>희망을 줄 수 있습니다. 내 주변사람과 공유한다는 <br>마음으로 성심성의껏 작성해주시면 감사하겠습니다. </div>
+				</div>
+			</div>
 				<!-- 게시글입력 영역 옆에 출력되는 영역끝 -->
 			</div>
 			<!-- /.row -->

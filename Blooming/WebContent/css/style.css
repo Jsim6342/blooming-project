@@ -1,6 +1,3 @@
-/*!
- *  N & LW Lawn Care - Landscaping Bootstrap4 HTML5 Responsive Template
- */
 
  
  
@@ -496,8 +493,8 @@ footer p {
 	border: none;
 }
 .blog-right-side .card h5.card-header{
-	background-color: #4e3914;
-	color: #ffffff;
+	background-color: #E1EBD5;
+	color: #4E3914;
 	font-size: 20px;
 	font-weight: 400;
 }
@@ -507,7 +504,6 @@ footer p {
 .blog-right-side .card .card-body ul li a{
 	border-radius: 4.8px;
 	padding: 6px;
-	background: #4e3914;
 	color: #4eae3a;
 	display: inline-block;
 }
@@ -609,6 +605,10 @@ footer p {
 }
 
 
+#com{
+	color:#fff;
+}
+
 .contact-left h3{
 	font-weight: 600;
 	font-size: 24px;
@@ -635,6 +635,16 @@ footer p {
 
 #cp{
 	color:blue;
+}
+
+#cob{
+	background-color: #AED581;
+	border-color: #AED581;
+	color : #fff;
+}
+
+#in{
+	font-weight: 800;
 }
 
 @media (min-width:768px) and (max-width:991px){
