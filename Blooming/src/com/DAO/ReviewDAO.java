@@ -270,4 +270,75 @@ public class ReviewDAO {
 		}
 		
 		
+		//후기 수정 시, 자신의 후기 출력
+		public ReviewDTO showMyReview(int rev_num) {
+			
+			ReviewDTO review = null;
+			
+			try {
+				
+				dao.getConn();
+				
+		         // --------------------- DB 연결(고정된 문법)
+		         
+		         String sql = "select * from review where rev_num = ?";
+		         pst = Connect.conn.prepareStatement(sql);
+		         
+		         pst.setInt(1, rev_num);
+		         
+		         // --------------------- DB에 SQL문 명령준비
+		         rs = pst.executeQuery(); //select문은 DB에서 data를 반환받기 때문에 excuteQuery함수를 사용
+		         // --------------------- SQL문 실행/ 실행 후 처리
+		         
+		         if(rs.next()) {
+		        	 
+		        	//전체 후기 데이터를 출력
+		        	 int rev_nums = rs.getInt(1);
+		        	 String nickname = rs.getString(2);
+		        	 String rev_title = rs.getString(3);
+		        	 String rev_contents = rs.getString(4);
+		        	 
+
+	 	        	 //ReviewDTO 객체를 1개씩 DB에서 받은 후, ArrayList인 reviewList에 저장
+		        	 review = new ReviewDTO(rev_nums, nickname, rev_title, rev_contents);
+	 	        	 
+		         }
+		         
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+				dao.close();
+			}
+			return review;
+		}
+		
+		//후기 수정
+		public int update_review(int rev_num, String title, String content) {
+
+			
+			try {
+				
+				 dao.getConn();
+				 
+		         // --------------------- DB 연결(고정된 문법)
+		         
+		         String sql = "update review set rev_title=?, rev_contents=? where rev_num = ?"; 
+		         pst = Connect.conn.prepareStatement(sql);
+		         
+		         pst.setString(1, title);
+		         pst.setString(2, content);
+		         pst.setInt(3, rev_num);
+
+		         cnt = pst.executeUpdate(); //성공 시 1을 반환
+		      // --------------------- SQL문 실행/ 실행 후 처리
+		         
+		      // --------------------- DB에 SQL문 명령준비	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally { //finally는 정상실행이 되도, 오류가 나도 무조건 실행되는 부분.
+				dao.close();
+			}
+			return cnt;
+		}
+		
 }

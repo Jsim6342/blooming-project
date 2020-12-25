@@ -1,16 +1,16 @@
-<%@page import="com.DAO.ReviewDAO"%>
 <%@page import="com.DTO.ReviewDTO"%>
+<%@page import="com.DAO.ReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Blooming - 극복후기</title>
+<title>Blooming - 극복후기작성</title>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontawesome CSS -->
@@ -30,6 +30,12 @@
 	System.out.println("현재 접속한 사람의 닉네임: " + nickname);
 	
  %>
+ 	<%
+	//rev_num 받아오기
+	int rev_num = Integer.parseInt(request.getParameter("rev_num").trim());
+	//System.out.println(rev_num); //값 넘어오는것 확인
+	%>
+
 	<!-- Navigation -->
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
@@ -64,7 +70,7 @@
 						</div></li>
 					<li class="nav-item "><a class="nav-link active" href="comments.jsp">극복후기</a>
 					</li>
-					<li class="nav-item "><a class="nav-link" href="contact.jsp">센터찾기</a>
+					<li class="nav-item"><a class="nav-link" href="contact.jsp">센터찾기</a>
 					</li>
 					<%if(email==null&&nickname==null) {%>
 					<li class="nav-item"><a class="nav-link" href="login.html">로그인</a>
@@ -75,7 +81,6 @@
 					<li class="nav-item"><a class="nav-link" href="LogoutService">로그아웃</a>
 					</li>
 					<%} %>
-
 				</ul>
 			</div>
 		</div>
@@ -86,7 +91,7 @@
 		<div class="container">
 			<!-- Page Heading/Breadcrumbs -->
 			<h1 class="mt-4 mb-3">
-				극복후기 <small>post-overcoming review</small>
+				극복후기작성 <small>Post</small>
 			</h1>
 		</div>
 	</div>
@@ -96,65 +101,67 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-				<a href="comments.jsp" class="breadcrumb-item active" id="cp">극복후기 게시판으로돌아가기</a>
+				<li class="breadcrumb-item active">Post</li>
 			</ol>
 		</div>
+		<div class="container">
 
-		<div class="row">
-			<!-- Post Content Column -->
-			<div class="col-lg-20">
 
-<%
-//rev_num 받아오기
-int rev_num = Integer.parseInt(request.getParameter("rev_num").trim());
-
-//rev_num에 맞는 후기 불러오기
-ReviewDTO review = new ReviewDTO();
-ReviewDAO dao = new ReviewDAO();
-review = dao.showReview(rev_num);
-%>
-
-				
-				<div class="col-lg-6">
-					
-
-			</div>
-				<!-- Preview Image -->
-				<img class="img-fluid rounded" src="images/comm.png" alt="" />
-				<hr>
-				<!-- Date/Time -->
-				<blockquote class="blockquote">
-				<h3>제목 : <%=review.getRev_title()%></h3>
-				<blockquote class="blockquote">
-				<h5>닉네임: <%=review.getNickname()%></h5>
-				</blockquote>
-				<hr>
-				<!-- Post Content -->
-				<blockquote class="blockquote">
-				<p class="lead"><%=review.getRev_contents()%></p>
-				</blockquote>
-				<hr>
-
-				
-
-				<div class="blog-right-side">
-					<div class="row mb-4">
-									<div class="col-md-8"></div>
-									<%if(dao.check_Review(rev_num, nickname)) { %>
-									<div class="col-md-4">
-										<a class="btn btn-lg btn-secondary btn-block"
-											href="postFix.jsp?rev_num=<%=rev_num %>">후기 수정하기</a>
-									</div>
-									<%}%>
-								</div>
-							</form>
+			<div class="row">
+				<div class="col-lg-8 mb-4 contact-left">
+					<!--  -->
+					<form name="" id="ReviewForm" action="ReviewFix?rev_num=<%=rev_num %>" method="post" novalidate>
+						<div class="control-group form-group">
+							<div class="controls"></div>
+						</div>
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>제목</label> 
+								<input type="text" class="form-control"
+									name="rev_title" id="title" required
+									data-validation-required-message="Please enter your email address.">
+							</div>
+						</div>
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>내용</label>
+								<textarea rows="20" cols="100" class="form-control"
+									name="rev_contents" id="content" required
+									data-validation-required-message="Please enter your message"
+									maxlength="999" style="resize: none"></textarea>
+							</div>
+						</div>
+						<div id="success"></div>
+						<!-- For success/fail messages -->
+						<button type="submit" class="btn btn-primary"
+							id="sendMessageButton">작성완료</button>
+					</form>
 				</div>
-	</div>
-	<!-- /.row -->
 
+				<!-- 게시글입력 영역 옆에 출력되는 영역시작 -->
+<div class="col-md-4 blog-right-side">
+
+				<!-- Side Widget -->
+				<div class="card my-4">
+					<h5 class="card-header" id = "in">공지사항</h5>
+					<div class="card-body" id = "in">무성의하거나 장난식으로 작성된 글은 관리자에 <br>의해 삭제되거나 제재를 받을 수 있습니다.</div>
+				</div>
+				<div class="card my-4">
+					<h5 class="card-header">작성요령</h5>
+					<div class="card-body">익명성이 보장되지만 다른 사람들을 위해 <br>보다 구체적으로 적어주시면 좋습니다. <br><br>
+					자신이 겪었던 상황, 이겨냈던 방법, <br>도움이 되었던 방식 등을 작성해주세요.<br><br>
+					하나의 후기일지라도 다른 사람들에게 큰 도움과 <br>희망을 줄 수 있습니다. 내 주변사람과 공유한다는 <br>마음으로 성심성의껏 작성해주시면 감사하겠습니다. </div>
+				</div>
+			</div>
+				<!-- 게시글입력 영역 옆에 출력되는 영역끝 -->
+			</div>
+			<!-- /.row -->
+
+
+		</div>
 	</div>
 	<!-- /.container -->
-</div>
+
 	<!--footer starts from here-->
 	<footer class="footer">
 		<div class="container bottom_border">
@@ -174,5 +181,40 @@ review = dao.showReview(rev_num);
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+	
+
+	<%
+	//ReviewDAO, DTO 생성
+	ReviewDAO dao = new ReviewDAO();
+	ReviewDTO review = new ReviewDTO();
+	//받아온 rev_num을 이용하여 해당 review를 객체에 저장
+	review = dao.showMyReview(rev_num);
+	
+	%>
+	
+	//title과 content value에 받아온 review 객체의 title과 content 값을 출력
+	var title = document.getElementById("title");
+	title.value = "<%=review.getRev_title() %>";
+	
+	var content = document.getElementById("content");
+	content.value = "<%=review.getRev_contents() %>";
+	
+	//빈 항목 방지 기능
+	$('form#ReviewForm').submit(function(){
+			  let titleC = $('input[name="rev_title"]').val();
+		      let contentC = $('input[name="rev_contents"]').val();
+		      
+		       if(titleC==='' || contentC==='') {
+		    	  alert("모든 항목을 채워주세요.");
+		    	  return false;
+		      } 		      
+		      
+		});
+	
+	</script>
 </body>
 </html>
