@@ -1,6 +1,3 @@
-# Smart_Project
-스마트미디어 최종 프로젝트
-
 # :pushpin: Blooming Project
 >머신러닝 기반 우울증 극복 지원 웹 서비스 
 
