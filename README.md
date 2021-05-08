@@ -85,11 +85,15 @@ __5.2.1. 일기 작성 기능__
 - **데이터 입력 및 요청** :pushpin: [코드 확인]()  
   - JSP에서 form에서 Flask 서버 주소로 작성한 일기 데이터를 전송합니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117237466-0218a980-ae66-11eb-8c28-a68f27722238.png)
+
 </br>
+
 - **Flask** :pushpin: [코드 확인]()  
   - JSP로 부터 전송 받은 데이터를 학습한 모델로 가공 후, Servlet으로 return 합니다.  
 > ![image](https://user-images.githubusercontent.com/70616657/117237808-a7338200-ae66-11eb-9b9f-89cda20b8ef1.png)
+
 </br>
+
 - **Servlet** :pushpin: [코드 확인]()  
   - Flask로 부터 받아온 데이터를 DB에 저장합니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117238038-1f9a4300-ae67-11eb-856a-0214fc8885b1.png)
@@ -111,7 +115,9 @@ __5.2.3. 이미지, 그래프 출력 기능__
 - **그래프 출력** :pushpin: [코드 확인]()
   - 구글 차트 API를 양식을 활용하여 그래프를 구현했습니다. 작성한 일기 점수에 따라 그래프 점수를 책정하여 출력해줍니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117238541-08a82080-ae68-11eb-9b9b-c55edf3f1714.png)
+
 </br>
+
 - **나무 성장 이미지 출력** :pushpin: [코드 확인]()  
   - 일기 점수에 따라 출력할 이미지를 선택하여 출력해줍니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117238690-5cb30500-ae68-11eb-8493-5866d522c279.png)
@@ -140,7 +146,9 @@ __5.3.2. 상담 출력__
 - **상담 게시글 출력** :pushpin: [코드 확인]()
   - 세션에 저장된 이메일을 조회하여 회원, 상담사, 예약, 비예약 등 상황별로 출력문을 조정하여 상담 게시글 상태를 출력해줍니다. 
 >![image](https://user-images.githubusercontent.com/70616657/117239343-8b7dab00-ae69-11eb-87a9-c3b82282ff67.png)
+
 </br>
+
 - **상담 예약 리스트 조회** :pushpin: [코드 확인]()  
   - 세션에 저장된 이메일을 통해 접속한 사람과 연관된 상담 예약 현황을 예약 테이블 DB에서 조회하여 출력해줍니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117239187-422d5b80-ae69-11eb-8462-4bfcb2d0d265.png)
@@ -160,7 +168,9 @@ __5.4.1. 지도 기능__
 - **마커 표시** :pushpin: [코드 확인]()
   - 카카오톡 지도 API를 활용하여 지도와 관련된 서비스 구현했습니다.
 >![image](https://user-images.githubusercontent.com/70616657/117239520-e2838000-ae69-11eb-98b5-4b1202c7d956.png)
+
 </br>
+
 - **센터 찾기 기능** :pushpin: [코드 확인]()  
   - 마우스와 접촉한 데이터 문자열을 필요한 부분만 파싱 후, Ajax를 통해 파싱된 데이터를 DB에서 센터를 찾는 검색 조건으로 활용했습니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117239557-fe872180-ae69-11eb-99a1-cdc1ad1aa2e6.png)
