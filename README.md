@@ -12,7 +12,9 @@
 ## 2. 서비스 소개
 
 __서비스 동작 영상__
-추가 예정
+[블루밍 시연 영상](https://www.youtube.com/watch?v=EmWq5_p0dwE)
+
+
 
 __핵심 서비스__  
 - 전문가로부터 인증 받은 ‘우울증 진단 도구’를 활용하여, 간단한 우울증 자가 진단과 우울 극복 서비스 권유
@@ -28,12 +30,12 @@ __서비스 흐름도__
 
 </br>
 
-## 3. 사용 기술Java 8
+## 3. 사용 기술
 #### `Back-end`
   - Java 8
   - Servlet
   - JSP
-  - SQL
+  - Oracle
   - Python
 #### `Front-end`
   - HTML
@@ -68,10 +70,8 @@ __서비스 흐름도__
 ### 5.1. 전체 흐름
 ![image](https://user-images.githubusercontent.com/70616657/117235753-4b66fa00-ae62-11eb-9995-bab7b4a26955.png)
 
-__MVC 모델을 기반으로 제작__
-- Model: DB 테이블을 기반으로한 자바 class를 만들어 구현
-- View: JSP 활용
-- Controller: Servlet과 JSP를 활용
+__JSP와 Servlet을 기반으로 제작__
+- Servlet과 JSP를 활용하여 화면과 내부 로직을 구현
 - DAO class를 통해 DB와 연동
 - Python Flask를 활용하여 클라이언트로 부터 받은 데이터를 머신러닝으로 가공 후, Servlet에 반환.
 
@@ -82,19 +82,19 @@ __MVC 모델을 기반으로 제작__
   
 ### 5.2. 일기 기능
 __5.2.1. 일기 작성 기능__  
-- **데이터 입력 및 요청** :pushpin: [코드 확인]()  
+- **데이터 입력 및 요청** 
   - JSP에서 form에서 Flask 서버 주소로 작성한 일기 데이터를 전송합니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117237466-0218a980-ae66-11eb-8c28-a68f27722238.png)
 
 </br>
 
-- **Flask** :pushpin: [코드 확인]()  
+- **Flask** 
   - JSP로 부터 전송 받은 데이터를 학습한 모델로 가공 후, Servlet으로 return 합니다.  
 > ![image](https://user-images.githubusercontent.com/70616657/117237808-a7338200-ae66-11eb-9b9f-89cda20b8ef1.png)
 
 </br>
 
-- **Servlet** :pushpin: [코드 확인]()  
+- **Servlet** 
   - Flask로 부터 받아온 데이터를 DB에 저장합니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117238038-1f9a4300-ae67-11eb-856a-0214fc8885b1.png)
 
@@ -102,7 +102,7 @@ __5.2.1. 일기 작성 기능__
 </br>
 
 __5.2.2. 일기 출력 기능__  
-- **날짜에 따른 일기 출력** :pushpin: [코드 확인]()  
+- **날짜에 따른 일기 출력** 
   - 사용자로 부터 날짜를 입력 받아 DB에서 해당 날짜에 해당하는 일기 데이터를 조회하여, 일기 제목을 출력해줍니다. 이 때, Ajax를 활용해 비동기화 출력을 구현했습니다.
   - 제목을 누르면, 일기 제목에 해당하는 구체적인 내용 값을 DB에서 조회하여 새 페이지에 출력해줍니다.
 >![image](https://user-images.githubusercontent.com/70616657/117238166-5ff9c100-ae67-11eb-90fd-d6af9ae4b988.png)
@@ -112,13 +112,13 @@ __5.2.2. 일기 출력 기능__
 </br>
 
 __5.2.3. 이미지, 그래프 출력 기능__  
-- **그래프 출력** :pushpin: [코드 확인]()
+- **그래프 출력** 
   - 구글 차트 API를 양식을 활용하여 그래프를 구현했습니다. 작성한 일기 점수에 따라 그래프 점수를 책정하여 출력해줍니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117238541-08a82080-ae68-11eb-9b9b-c55edf3f1714.png)
 
 </br>
 
-- **나무 성장 이미지 출력** :pushpin: [코드 확인]()  
+- **나무 성장 이미지 출력** 
   - 일기 점수에 따라 출력할 이미지를 선택하여 출력해줍니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117238690-5cb30500-ae68-11eb-8493-5866d522c279.png)
 >![image](https://user-images.githubusercontent.com/70616657/117238694-5de43200-ae68-11eb-8863-018935fac1a5.png)
@@ -135,7 +135,7 @@ __5.2.3. 이미지, 그래프 출력 기능__
   
 ### 5.3. 상담 예약 기능
 __5.3.1. 상담 신청__  
-- **상담 신청** :pushpin: [코드 확인]()
+- **상담 신청** 
   - 상담 신청 버튼을 누르면, 상담 게시글을 작성한 상담자를 받고, 세션에 저장되어 있는 접속한 사람의 이메일과 연관된 정보를 DB에서 조회 후, 해당 데이터를 예약 테이블 DB에 저장합니다. 이 때, encodeURI를 활용했습니다.
 >![image](https://user-images.githubusercontent.com/70616657/117238884-ad2a6280-ae68-11eb-9af8-70d495b36540.png)
 
@@ -143,13 +143,13 @@ __5.3.1. 상담 신청__
 </br>
 
 __5.3.2. 상담 출력__  
-- **상담 게시글 출력** :pushpin: [코드 확인]()
+- **상담 게시글 출력** 
   - 세션에 저장된 이메일을 조회하여 회원, 상담사, 예약, 비예약 등 상황별로 출력문을 조정하여 상담 게시글 상태를 출력해줍니다. 
 >![image](https://user-images.githubusercontent.com/70616657/117239343-8b7dab00-ae69-11eb-87a9-c3b82282ff67.png)
 
 </br>
 
-- **상담 예약 리스트 조회** :pushpin: [코드 확인]()  
+- **상담 예약 리스트 조회**   
   - 세션에 저장된 이메일을 통해 접속한 사람과 연관된 상담 예약 현황을 예약 테이블 DB에서 조회하여 출력해줍니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117239187-422d5b80-ae69-11eb-8462-4bfcb2d0d265.png)
 
@@ -165,13 +165,13 @@ __5.3.2. 상담 출력__
 
 ### 5.4. 지도, 센터 찾기 기능
 __5.4.1. 지도 기능__  
-- **마커 표시** :pushpin: [코드 확인]()
+- **마커 표시** 
   - 카카오톡 지도 API를 활용하여 지도와 관련된 서비스 구현했습니다.
 >![image](https://user-images.githubusercontent.com/70616657/117239520-e2838000-ae69-11eb-98b5-4b1202c7d956.png)
 
 </br>
 
-- **센터 찾기 기능** :pushpin: [코드 확인]()  
+- **센터 찾기 기능**   
   - 마우스와 접촉한 데이터 문자열을 필요한 부분만 파싱 후, Ajax를 통해 파싱된 데이터를 DB에서 센터를 찾는 검색 조건으로 활용했습니다.  
 >![image](https://user-images.githubusercontent.com/70616657/117239557-fe872180-ae69-11eb-99a1-cdc1ad1aa2e6.png)
 >![image](https://user-images.githubusercontent.com/70616657/117239565-00e97b80-ae6a-11eb-92fe-ba2bca3e1c2e.png)
@@ -187,7 +187,7 @@ __5.4.1. 지도 기능__
 <div markdown="1">
 
 ### 5.5. 로그인 기능
-- **로그인 기능** :pushpin: [코드 확인]()
+- **로그인 기능** 
   - JSP form으로 부터 받은 회원 정보와 DB 내의 회원 정보 일치여부 확인하여 로그인 기능을 구현했습니다.
 >![image](https://user-images.githubusercontent.com/70616657/117239719-41e19000-ae6a-11eb-9149-7fde4fb11e48.png)
 
