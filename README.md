@@ -11,7 +11,8 @@
 
 ## 2. 서비스 소개
 
-__서비스 동작 영상__
+__서비스 동작 영상__  
+
 [블루밍 시연 영상](https://www.youtube.com/watch?v=EmWq5_p0dwE)
 
 
