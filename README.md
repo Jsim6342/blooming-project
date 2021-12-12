@@ -11,19 +11,19 @@
 
 </br>
 
-## 💁‍♂️ Wiki
-- [프로젝트 기획서]()
-- [요구사항정의서]()
-- [화면설계서]()
-- [디렉토리 구조]()
-- [테이블명세서](https://docs.google.com/spreadsheets/d/1z0fQGa-jDU6VtstaX6q32KdWzGoP96jn/edit?rtpof=true#gid=772229341)
-- [시스템테스트결과서](https://docs.google.com/spreadsheets/d/1pxLfP4I-14TaykQ29HPGUvtomYH-BtCL/edit?rtpof=true#gid=1773828449)
-- [WBS](https://docs.google.com/spreadsheets/d/1FFf4eUWjx_aUscvl1EpUPWHeILDGQolj/edit?rtpof=true)
-- [블루밍 시연 영상](https://www.youtube.com/watch?v=EmWq5_p0dwE)
+## 📔 Documents
+- 📝 [일일 회의록](https://github.com/Jsim6342/blooming-project/tree/master/%EB%B8%94%EB%A3%A8%EB%B0%8D%20%ED%9A%8C%EC%9D%98%EB%A1%9D)
+- 📰 [프로젝트 기획서](https://github.com/Jsim6342/blooming-project/blob/master/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B8%B0%ED%9A%8D%EC%84%9C(%EB%B8%94%EB%A3%A8%EB%B0%8D).pdf)
+- 📜 [요구사항정의서](https://github.com/Jsim6342/blooming-project/blob/master/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%EC%A0%95%EC%9D%98%EC%84%9C(%EB%B8%94%EB%A3%A8%EB%B0%8D).pdf)
+- 📱 [화면설계서](https://github.com/Jsim6342/blooming-project/blob/master/%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84%EC%84%9C(%EB%B8%94%EB%A3%A8%EB%B0%8D).pdf)
+- 🗃 [테이블명세서](https://docs.google.com/spreadsheets/d/1z0fQGa-jDU6VtstaX6q32KdWzGoP96jn/edit?rtpof=true#gid=772229341)
+- 📑 [시스템테스트결과서](https://docs.google.com/spreadsheets/d/1pxLfP4I-14TaykQ29HPGUvtomYH-BtCL/edit?rtpof=true#gid=1773828449)
+- 📅 [WBS](https://docs.google.com/spreadsheets/d/1FFf4eUWjx_aUscvl1EpUPWHeILDGQolj/edit?rtpof=true)
+- 🎥 [블루밍 시연 영상](https://www.youtube.com/watch?v=EmWq5_p0dwE)
 
 </br>
 
-## 👨‍🏫 서비스 소개
+## 💁‍♂ 서비스 소개
 
 ### 핵심 서비스 
 - 전문가로부터 인증 받은 `우울증 진단 도구`를 활용하여, 간단한 우울증 자가 진단과 우울 극복 서비스 권유
@@ -53,7 +53,67 @@
   - CSS
   - Javascript
 
-</br>
+<br>
+
+## 📦 디렉토리 구조
+```
+📂 Blooming
+ ├── 📂 WebContent         
+ |    ├── 📂 META-INF      
+ |    ├── 📂 WEB-INF/lib 
+ |    ├── 📂 css
+ |    ├── 📂 fonts
+ |    ├── 📂 images
+ |    ├── 📂 js
+ |    ├── 📂 Wmail
+ |    ├── 📂 vendor
+ |    ├── 📂 webfonts
+ |    └── 📄📄📄... html, jsp 파일들 위치
+ |
+ └── 📂 src/corn
+     ├── 📂 DAO
+     |    ├── 📄 C_ProfileDAO.java
+     |    ├── 📄 Connect.java
+     |    ├── 📄 ConsultatnDAO.java
+     |    ├── 📄 DiaryDAO.java
+     |    ├── 📄 MemberDAO.java
+     |    ├── 📄 ReservationDAO.java
+     |    └── 📄 ReviewDAO.java
+     | 
+     ├── 📂 DTO
+     |    ├── 📄 C_ProfileDTO.java
+     |    ├── 📄 CenterDTO.java
+     |    ├── 📄 ConsultantDTO.java
+     |    ├── 📄 DiaryDTO.java
+     |    ├── 📄 MemberDTO.java
+     |    ├── 📄 ReservationDTO.java
+     |    └── 📄 ReviewDTO.java
+     | 
+     └── 📂 control
+          ├── 📄 CenterCheck.java
+          ├── 📄 ConsultantSignup.java
+          ├── 📄 DeleteCounsel.java
+          ├── 📄 Delete_Con.java
+          ├── 📄 Delete_Mem.java
+          ├── 📄 DiagnosisCheck.java
+          ├── 📄 DiaryPost.java
+          ├── 📄 DiaryShow.java
+          ├── 📄 EmailCheck.java
+          ├── 📄 LoginService.java
+          ├── 📄 LogoutService.java
+          ├── 📄 MemberSignup.java
+          ├── 📄 NicknameCheck.java
+          ├── 📄 ProfileSignup.java
+          ├── 📄 ReserveDelete.java
+          ├── 📄 ReviewFix.java
+          ├── 📄 ReviewPost.java
+          ├── 📄 ScoreCheck.java
+          ├── 📄 SearchEmail.java
+          ├── 📄 SearchPw.java
+          └── 📄 updatePw.java
+```
+
+<br>
 
 ## 📦 ERD 설계
 ![image](https://user-images.githubusercontent.com/70616657/145718092-3f628dd2-cec3-42c4-817f-583a8d068a21.png)
@@ -182,8 +242,6 @@ __`1. 지도 기능`__
 </div>
 </details> 
 
-<br>
-
 <details>
 <summary> encoding 문제 </summary>
 <div markdown="1">
@@ -195,8 +253,6 @@ __`1. 지도 기능`__
 </div>
 </details>
 
-<br>
-
 <details>
 <summary> 동적 이미지 처리 문제 </summary>
 <div markdown="1">
@@ -206,8 +262,6 @@ __`1. 지도 기능`__
    
 </div>
 </details>
-
-<br>
 
 <details>
 <summary> Json 데이터 변환 </summary>
@@ -219,8 +273,6 @@ __`1. 지도 기능`__
 </div>
 </details>
 
-<br>
-
 <details>
 <summary> 극복 후기 페이지 페이징 처리 </summary>
 <div markdown="1">
@@ -230,8 +282,6 @@ __`1. 지도 기능`__
    
 </div>
 </details>
-
-<br>
 
 <details>
 <summary> 지도 API 활용 </summary>
