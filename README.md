@@ -16,9 +16,9 @@
 - [요구사항정의서]()
 - [화면설계서]()
 - [디렉토리 구조]()
-- [테이블명세서]()
-- [시스템테스트결과서]()
-- [WBS]()
+- [테이블명세서](https://docs.google.com/spreadsheets/d/1z0fQGa-jDU6VtstaX6q32KdWzGoP96jn/edit?rtpof=true#gid=772229341)
+- [시스템테스트결과서](https://docs.google.com/spreadsheets/d/1pxLfP4I-14TaykQ29HPGUvtomYH-BtCL/edit?rtpof=true#gid=1773828449)
+- [WBS](https://docs.google.com/spreadsheets/d/1FFf4eUWjx_aUscvl1EpUPWHeILDGQolj/edit?rtpof=true)
 - [블루밍 시연 영상](https://www.youtube.com/watch?v=EmWq5_p0dwE)
 
 </br>
@@ -56,7 +56,7 @@
 </br>
 
 ## 📦 ERD 설계
-![image](https://user-images.githubusercontent.com/70616657/117235987-bf090700-ae62-11eb-869a-003342bd51a4.png)
+![image](https://user-images.githubusercontent.com/70616657/145718092-3f628dd2-cec3-42c4-817f-583a8d068a21.png)
 
 
 
@@ -222,7 +222,7 @@ __`1. 지도 기능`__
 <br>
 
 <details>
-<summary> 극복 후기  </summary>
+<summary> 극복 후기 페이지 페이징 처리 </summary>
 <div markdown="1">
   
   - 극복 후기를 출력하는 페이지에서 DB 데이터에 있는 모든 극복 후기를 내려주는 것이 아닌 페이지로 데이터를 나누어 보여주는 페이징 작업이 필요했습니다.
