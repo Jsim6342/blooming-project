@@ -166,7 +166,7 @@ __`1. 일기 작성 기능`__
 - **데이터 입력 및 요청** :pushpin: [코드 확인](https://github.com/Jsim6342/blooming-project/blob/239e746c9e85225b3ef2ef651c77802622cb8453/Blooming/WebContent/diaryWrite.jsp#L103-L144)
   - JSP에서 form에서 Flask 서버 주소로 작성한 일기 데이터를 전송합니다.  
 
-- **Flask** :pushpin: [코드 확인]()
+- **Flask** :pushpin: [코드 확인](https://github.com/Jsim6342/blooming-project/blob/master/blooming_python.ipynb)
   - JSP로 부터 전송 받은 데이터를 학습한 모델로 가공 후, Servlet으로 return 합니다.  
 
 - **Servlet** :pushpin: [코드 확인](https://github.com/Jsim6342/blooming-project/blob/239e746c9e85225b3ef2ef651c77802622cb8453/Blooming/src/com/control/DiaryPost.java#L15)
